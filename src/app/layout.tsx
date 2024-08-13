@@ -3,10 +3,11 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Baloo_2, Londrina_Solid } from 'next/font/google';
+import { description, name, tagline } from '../../config';
 
 export const metadata: Metadata = {
-  title: 'Headfirst Bristol',
-  description: 'Headfirst is an events company...',
+  title: `${name} | ${tagline}`,
+  description,
 };
 
 const baloo_2 = Baloo_2({

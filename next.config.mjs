@@ -13,6 +13,11 @@ const nextConfig = {
         hostname: 'dice-media.imgix.net',
         port: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'videos.pexels.com',
+        port: '',
+      },
     ],
   },
 };
