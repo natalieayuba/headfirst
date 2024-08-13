@@ -28,6 +28,7 @@ const EventCard = (event: EventProps) => {
           src={images[0]}
           alt={`${title} 01`}
           fill
+          sizes='100vw'
           className='group-hover:scale-105 duration-300 ease-out'
         />
         <button

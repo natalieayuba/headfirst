@@ -3,7 +3,7 @@ import { MdSearch } from 'react-icons/md';
 
 const SearchButton = () => {
   return (
-    <button>
+    <button className='z-10'>
       <MdSearch size={24} />
     </button>
   );

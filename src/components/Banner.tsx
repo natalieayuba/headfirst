@@ -10,23 +10,22 @@ const Banner = () => {
       style={{
         backgroundImage: `linear-gradient(transparent, ${colors['darkest-purple']})`,
       }}
-      className={`h-screen w-full margin-x-outer relative`}
+      className={`h-svh w-full margin-x-outer relative`}
     >
       <Image
         src={images.banner}
-        className='-z-[1] grayscale'
-        alt='Party gorl'
-        objectFit='cover'
+        className='-z-[1] grayscale object-cover'
+        alt='Hero image'
         fill
+        sizes='100vw'
       />
-      <div className='flex flex-col h-full py-[14%] justify-end items-start lg:max-w-3xl'>
-        <h1>Bristol&apos;s trusted What&apos;s On Guide.</h1>
-        <p className='text-md lg:text-2xl leading-6'>
-          BRIGHT works directly with the city&apos;s biggest promoters to
-          provide the most up-to-date what&apos;s on in Bristol guide
-          you&apos;ll find.
+      <div className='flex flex-col h-full pb-10 justify-end items-start lg:max-w-3xl'>
+        <h1 className='heading-lg'>Find the Bristol scene that fits.</h1>
+        <p className='text-md lg:text-2xl my-1'>
+          Discover local gigs, clubnights, and social events from Bristol&apos;s
+          biggest promoters.
         </p>
-        <Button className='mt-5'>Find an event</Button>
+        <Button className='mt-5'>Browse events</Button>
       </div>
     </div>
   );

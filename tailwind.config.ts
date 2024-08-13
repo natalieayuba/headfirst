@@ -8,7 +8,15 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: { colors },
+    extend: {
+      colors,
+      fontSize: {
+        'heading-lg': 'clamp(52px, 14vw, 96px)',
+      },
+      fontFamily: {
+        'heading-lg': ['var(--font-londrina_solid)'],
+      },
+    },
   },
   plugins: [],
 };

@@ -44,9 +44,9 @@ const Footer = () => {
 
   return (
     <footer className='bg-dark-purple margin-x-outer text-sm'>
-      <div className='pt-16 pb-12'>
+      <div className='pt-16 pb-6'>
         <a href='/' className='text-xl font-semibold tracking-widest'>
-          BRIGHT
+          Headfirst
         </a>
         <div className='my-6'>
           {footerLinks.map(({ heading, links }) => (
@@ -60,20 +60,6 @@ const Footer = () => {
                 ))}
               </ul>
             </div>
-          ))}
-        </div>
-        <div className='flex gap-4 mt-8'>
-          {appDownloadImgs.map(({ src, alt }) => (
-            <a href='#' key={alt}>
-              <Image
-                alt={alt}
-                src={src}
-                sizes='100vw'
-                width={0}
-                height={0}
-                className='h-10 w-auto'
-              />
-            </a>
           ))}
         </div>
       </div>

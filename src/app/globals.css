@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply bg-darkest-purple text-white-alpha-90;
-  }
-
   h1 {
-    @apply uppercase text-5xl lg:text-8xl font-bold mb-2;
+    @apply mb-2;
   }
 
   h2 {
     @apply text-2xl lg:text-4xl mb-2;
+  }
+
+  .heading-lg {
+    @apply font-heading-lg leading-[0.85] uppercase text-heading-lg;
   }
 }
 

@@ -1,10 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: [
-      'images.unsplash.com',
-      'upload.wikimedia.org',
-      'dice-media.imgix.net',
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/photo-**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'dice-media.imgix.net',
+        port: '',
+      },
     ],
   },
 };
