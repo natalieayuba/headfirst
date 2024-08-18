@@ -12,7 +12,7 @@
   }
 
   .heading-lg {
-    @apply font-heading-lg leading-[0.85] uppercase text-heading-lg;
+    @apply font-heading-lg leading-[0.85] uppercase text-5xl;
   }
 }
 
@@ -29,5 +29,9 @@
 
   .black-and-white {
     @apply saturate-0;
+  }
+
+  .border-10 {
+    @apply border border-lilac border-opacity-10;
   }
 }

@@ -15,15 +15,11 @@ module.exports = {
     'https://videos.pexels.com/video-files/5039537/5039537-uhd_2732_1440_25fps.mp4',
   ],
   colors: {
-    'darkest-purple': '#0E0C12',
-    'dark-purple': '#1E1B28',
-    purple: '#BA9CFF',
-    white: '#ffffff',
-    'black-alpha-90': 'rgba(0,0,0,0.9)',
-    'black-alpha-60': 'rgba(0,0,0,0.6)',
+    lilac: '#BA9CFF',
+    night: '#1E1B28',
+    'dark-night': '#0E0C12',
     'white-alpha-90': 'rgba(255,255,255,0.9)',
     'white-alpha-60': 'rgba(255,255,255,0.6)',
-    'white-alpha-10': 'rgba(255,255,255,0.1)',
   },
   navLinks: [
     {
@@ -32,19 +28,36 @@ module.exports = {
     },
     {
       name: 'About',
-      url: '/about',
+      url: '#',
     },
     {
       name: 'Donations',
-      url: '/donations',
+      url: '#',
     },
     {
       name: 'Help',
-      url: '/help',
+      url: '#',
     },
     {
       name: 'My account',
-      url: '/my-account',
+      links: [
+        {
+          name: 'Tickets',
+        },
+        {
+          name: 'Saved',
+        },
+        {
+          name: 'Settings',
+        },
+        {
+          name: 'Sign out',
+        },
+      ],
     },
   ],
+  animationDurations: {
+    banner: 500,
+    default: 200,
+  },
 };

@@ -9,8 +9,8 @@ interface ButtonProps {
 const Button = ({ children, className, alt }: ButtonProps) => {
   return (
     <button
-      className={`h-11 min-w-32 px-4 font-semibold rounded ${
-        alt ? 'border' : 'bg-white text-dark-purple'
+      className={`min-w-32 px-8 py-4 font-semibold rounded ${
+        alt ? 'bg-white' : 'bg-lilac text-dark-night'
       }${className ? ` ${className}` : ''}`}
     >
       {children}

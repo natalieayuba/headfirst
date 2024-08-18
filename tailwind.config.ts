@@ -1,5 +1,5 @@
 import type { Config } from 'tailwindcss';
-import { colors } from './config';
+import { animationDurations, colors } from './config';
 
 const config: Config = {
   content: [
@@ -15,6 +15,20 @@ const config: Config = {
       },
       fontFamily: {
         'heading-lg': ['var(--font-londrina_solid)'],
+      },
+      keyframes: {
+        fadeIn: {
+          from: { opacity: '0' },
+          to: { opacity: '1' },
+        },
+        maskIn: {
+          from: { transform: 'translateY(100%)' },
+          to: { transform: 'translateY(0)' },
+        },
+      },
+      animation: {
+        fadeIn: `fadeIn ${animationDurations.banner}ms ease-in-out`,
+        maskIn: `maskIn ${animationDurations.default}ms ease-out backwards`,
       },
     },
   },

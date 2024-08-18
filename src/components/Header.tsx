@@ -21,17 +21,17 @@ const Header = () => {
 
   return (
     <header
-      className={`z-10 fixed w-full flex flex-col justify-between transition-all duration-300 ease-out margin-x-outer bg-darkest-purple ${
+      className={`z-10 fixed w-full flex flex-col justify-between transition-all duration-300 ease-out margin-x-outer bg-dark-night ${
         prevScrollY < 100 ? 'h-20' : 'h-16'
       } ${prevScrollY < 200 ? 'bg-opacity-0' : ''} ${
         visible ? 'top-0' : '-top-16'
       }`}
     >
       <nav className='flex justify-between h-full items-center transition-all duration-300 margin'>
-        <a href='/' className='z-10 h-full py-3'>
+        <a href='/' className='h-full py-3'>
           <Image
             src='/logo.svg'
-            alt='Headfirst logo'
+            alt='Headfirst Bristol logo'
             width='0'
             height='0'
             className='h-full w-auto'
