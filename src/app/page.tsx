@@ -1,15 +1,15 @@
 import React from 'react';
 import Banner from '@/components/Banner';
-import PopularEvents from '@/components/PopularEvents';
-import PromoterCTA from '@/components/PromoterCTA';
+import PopularCategories from '@/components/PopularCategories';
+import EditorPicks from '@/components/EditorPicks';
 
 const Home = () => {
   return (
-    <>
+    <main>
       <Banner />
-      <PopularEvents />
-      <PromoterCTA />
-    </>
+      <PopularCategories />
+      <EditorPicks />
+    </main>
   );
 };
 

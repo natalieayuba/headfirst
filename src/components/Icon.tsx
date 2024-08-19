@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { cloneElement } from 'react';
 import type { IconType } from 'react-icons';
+import { FiSearch, FiX } from 'react-icons/fi';
 import { RiFacebookFill, RiInstagramLine, RiTwitterFill } from 'react-icons/ri';
 
-const Icon = ({ name }: { name: string }) => {
+interface IconProps {
+  name: string;
+  size?: number | string;
+  className?: string;
+}
+
+const Icon = ({ name, size, className }: IconProps) => {
   const icons = {
     facebook: <RiFacebookFill />,
     instagram: <RiInstagramLine />,
     twitter: <RiTwitterFill />,
+    search: <FiSearch />,
+    close: <FiX />,
   };
 
-  return icons[name as keyof IconType];
+  const icon = icons[name as keyof IconType];
+
+  return cloneElement(icon, { size: size ?? 24, className });
 };
 
 export default Icon;

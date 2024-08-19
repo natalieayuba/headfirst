@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import NavLinks from './navigation/NavLinks';
 import NavMenu from './navigation/NavMenu';
-import SearchButton from './navigation/SearchButton';
+import Search from './navigation/Search';
 import Image from 'next/image';
 
 const Header = () => {
@@ -21,11 +21,9 @@ const Header = () => {
 
   return (
     <header
-      className={`z-10 fixed w-full flex flex-col justify-between transition-all duration-300 ease-out margin-x-outer bg-dark-night ${
-        prevScrollY < 100 ? 'h-20' : 'h-16'
-      } ${prevScrollY < 200 ? 'bg-opacity-0' : ''} ${
-        visible ? 'top-0' : '-top-16'
-      }`}
+      className={`z-10 fixed w-full flex flex-col justify-between transition-all duration-300 ease-out margin-x-outer bg-dark-night h-16 ${
+        prevScrollY < 200 ? 'bg-opacity-0' : ''
+      } ${visible ? 'top-0' : '-top-16'}`}
     >
       <nav className='flex justify-between h-full items-center transition-all duration-300 margin'>
         <a href='/' className='h-full py-3'>
@@ -38,7 +36,7 @@ const Header = () => {
           />
         </a>
         <div className='flex'>
-          <SearchButton />
+          <Search />
           <NavLinks />
           <NavMenu />
         </div>

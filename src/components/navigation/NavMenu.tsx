@@ -1,13 +1,14 @@
 'use client';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 import { navLinks } from '../../../config';
 import { Squash as Hamburger } from 'hamburger-react';
 import Divider from '../Divider';
 import type { NavLinksProps } from './NavLinks';
+import Lightbox from '../Lightbox';
+import useLightbox from '@/hooks/useLightbox';
 
 const NavMenu = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const { isOpen, setIsOpen } = useLightbox();
 
   const list = (links: NavLinksProps[]) => (
     <ul className={`font-medium text-lg flex flex-col`}>
@@ -15,7 +16,7 @@ const NavMenu = () => {
         <li key={name} className='w-full'>
           <Link
             href={url ?? '#'}
-            onClick={() => setMenuOpen(false)}
+            onClick={() => setIsOpen(false)}
             className='block py-2'
           >
             {name}
@@ -25,26 +26,13 @@ const NavMenu = () => {
     </ul>
   );
 
-  useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : 'auto';
-  }, [menuOpen]);
-
   return (
     <div className='lg:hidden'>
-      <div
-        className='z-10 relative -mr-2 hover:scale-110 transition-all duration-150'
-        title={`${menuOpen ? 'Close' : 'Open'} menu`}
-      >
-        <Hamburger
-          rounded
-          toggled={menuOpen}
-          toggle={() => setMenuOpen(!menuOpen)}
-          size={18}
-        />
-      </div>
-      <div
-        className={`fixed flex flex-col bg-dark-night h-screen w-screen top-0 bottom-0 right-0 pt-20 px-6 transition-left duration-300 ${
-          menuOpen ? 'left-0' : 'left-full'
+      <Lightbox
+        setIsOpen={setIsOpen}
+        hideClose
+        className={`transition-left duration-300 z-0 ${
+          isOpen ? 'left-0' : 'left-full'
         }`}
       >
         {list(
@@ -58,6 +46,19 @@ const NavMenu = () => {
           navLinks.find(({ name }) => name === 'My account')
             ?.links as NavLinksProps[]
         )}
+      </Lightbox>
+      <div
+        className={`relative -mr-2 hover:scale-110 transition-all duration-150${
+          isOpen ? ' z-20' : ''
+        }`}
+        title={`${isOpen ? 'Close' : 'Open'} menu`}
+      >
+        <Hamburger
+          rounded
+          toggled={isOpen}
+          toggle={() => setIsOpen(!isOpen)}
+          size={18}
+        />
       </div>
     </div>
   );

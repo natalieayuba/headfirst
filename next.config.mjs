@@ -15,7 +15,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'videos.pexels.com',
+        hostname: '**.pexels.com',
         port: '',
       },
     ],

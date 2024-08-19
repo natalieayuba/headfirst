@@ -56,6 +56,33 @@ module.exports = {
       ],
     },
   ],
+  categories: [
+    {
+      name: 'Live music',
+      image:
+        'https://images.unsplash.com/photo-1575672913784-11a7cd4f25f4?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    },
+    {
+      name: 'Club nights',
+      image:
+        'https://images.unsplash.com/photo-1626553202550-992f4f500d4a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    },
+    {
+      name: 'Arts & performance',
+      image:
+        'https://images.pexels.com/photos/3778868/pexels-photo-3778868.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    },
+    {
+      name: 'Workshops & classes',
+      image:
+        'https://images.unsplash.com/photo-1526718583451-e88ebf774771?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    },
+    {
+      name: 'Socials & hobbies',
+      image:
+        'https://images.pexels.com/photos/8111364/pexels-photo-8111364.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    },
+  ],
   animationDurations: {
     banner: 500,
     default: 200,

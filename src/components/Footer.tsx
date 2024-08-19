@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import Icon from './Icon';
+import Divider from './Divider';
 
 const Footer = () => {
   const legalLinks = [
@@ -12,7 +13,7 @@ const Footer = () => {
 
   const footerLinks = [
     {
-      heading: 'Customers & Promoters',
+      heading: 'Events',
       links: ['Find an event', 'Promote an event'],
     },
     {
@@ -26,8 +27,8 @@ const Footer = () => {
   ];
 
   return (
-    <footer className='bg-dark-purple margin-x-outer text-sm'>
-      <div className='pt-16 pb-6'>
+    <footer className='bg-night margin-x-outer text-sm'>
+      <div className='pt-16'>
         <a href='/'>
           <Image
             src='/logo.svg'
@@ -52,26 +53,16 @@ const Footer = () => {
           ))}
         </div>
       </div>
-      <div className='border-t border-t-white-alpha-10'>
-        <div className='py-10 flex flex-col gap-6'>
-          <ul className='flex flex-wrap gap-x-4'>
-            {legalLinks.map((link) => (
-              <li key={link}>
-                <a href='#'>{link}</a>
-              </li>
-            ))}
-          </ul>
-          <ul className='flex gap-3'>
-            {['facebook', 'instagram', 'twitter'].map((social) => (
-              <li key={social}>
-                <a className='text-2xl'>
-                  <Icon name={social} />
-                </a>
-              </li>
-            ))}
-          </ul>
-          <p className='text-white-alpha-60'>© 2024 Bright</p>
-        </div>
+      <Divider />
+      <div className='pb-10 flex flex-col gap-3'>
+        <p className='text-white-alpha-60'>© 2024 Headfirst Bristol</p>
+        <ul className='flex flex-wrap gap-x-4'>
+          {legalLinks.map((link) => (
+            <li key={link}>
+              <a href='#'>{link}</a>
+            </li>
+          ))}
+        </ul>
       </div>
     </footer>
   );
