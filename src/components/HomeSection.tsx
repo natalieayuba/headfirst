@@ -8,8 +8,8 @@ interface HomeSectionProps {
 
 const HomeSection = ({ heading, caption, children }: HomeSectionProps) => {
   return (
-    <div className='px-6 my-16'>
-      <header className='mb-6'>
+    <div className='flex flex-col gap-6 px-6 my-16'>
+      <header>
         <h2>{heading}</h2>
         <p>{caption}</p>
       </header>

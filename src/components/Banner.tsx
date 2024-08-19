@@ -1,16 +1,11 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import {
-  animationDurations,
-  colors,
-  description,
-  tagline,
-  videos,
-} from '../../config';
+import React, { useEffect, useRef, useState } from 'react';
+import { colors, description, tagline } from '../../config';
 import Button from '@/components/Button';
 
 const Banner = () => {
-  const [videoIndex, setVideoIndex] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
 
   const lines = () => {
     const words = tagline.split(' ');
@@ -23,28 +18,38 @@ const Banner = () => {
     return lines;
   };
 
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setVideoIndex(videoIndex === videos.length - 1 ? 0 : videoIndex + 1);
+  //   }, 7500);
+  //   return () => clearInterval(interval);
+  // });
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      setVideoIndex(videoIndex === videos.length - 1 ? 0 : videoIndex + 1);
-    }, 7500);
-    return () => clearInterval(interval);
-  });
+    if (videoRef.current?.readyState === 4) {
+      videoRef.current.play();
+      setPlaying(true);
+    }
+  }, []);
 
   return (
     <div
       style={{
         backgroundImage: `linear-gradient(transparent, ${colors['dark-night']})`,
       }}
-      className='h-svh w-full margin-x-outer relative animate-fadeIn'
+      className={`h-svh w-full margin-x-outer relative`}
     >
       <video
-        autoPlay
-        muted
         playsInline
-        key={videos[videoIndex]}
-        className='object-cover absolute h-full -z-10 left-0 grayscale -top-1'
+        muted
+        loop
+        ref={videoRef}
+        className={`object-cover absolute h-full -z-10 left-0  transition-opacity duration-500 ${
+          playing ? 'opacity-100' : 'opacity-0'
+        }
+      `}
       >
-        <source src={videos[videoIndex]} type='video/mp4' />
+        <source src='/banner-video.mp4' type='video/mp4' />
       </video>
       <div className='flex flex-col h-full pb-10 justify-end items-start lg:max-w-3xl'>
         <h1 className='heading-lg'>

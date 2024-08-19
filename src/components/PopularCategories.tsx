@@ -10,7 +10,8 @@ const PopularCategories = () => {
       <Image
         src={item.image}
         fill
-        objectFit='cover'
+        sizes='100%'
+        className='object-cover'
         alt={`${item.name} background image`}
       />
       <div className='bg-gradient-to-b from-transparent to-dark-night to-[120%] w-full h-full absolute'></div>
@@ -19,7 +20,7 @@ const PopularCategories = () => {
   );
 
   return (
-    <HomeSection heading='Popular Categories'>
+    <HomeSection heading='Popular categories'>
       <HorizontalScroll list={categories} card={card} />
     </HomeSection>
   );

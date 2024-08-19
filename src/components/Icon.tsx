@@ -1,7 +1,7 @@
 import React, { cloneElement } from 'react';
 import type { IconType } from 'react-icons';
-import { FiSearch, FiX } from 'react-icons/fi';
-import { RiFacebookFill, RiInstagramLine, RiTwitterFill } from 'react-icons/ri';
+import { FiArrowRight, FiSearch, FiX } from 'react-icons/fi';
+import { PiHandsClapping } from 'react-icons/pi';
 
 interface IconProps {
   name: string;
@@ -11,11 +11,10 @@ interface IconProps {
 
 const Icon = ({ name, size, className }: IconProps) => {
   const icons = {
-    facebook: <RiFacebookFill />,
-    instagram: <RiInstagramLine />,
-    twitter: <RiTwitterFill />,
     search: <FiSearch />,
     close: <FiX />,
+    'arrow-right': <FiArrowRight />,
+    clap: <PiHandsClapping />,
   };
 
   const icon = icons[name as keyof IconType];
