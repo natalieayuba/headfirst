@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Dropdown from '../Dropdown';
 import { Button } from '../buttons/Button';
-import type { FilterProps } from '@/app/whats-on/page';
+import type { AddFilterProps } from '@/app/whats-on/page';
 import { getMaxPrice } from '@/utils/formatting';
 import { events, type TicketProps } from '../../data/data';
 import Slider from '@mui/material/Slider';
 import { colors } from '../../../config';
 
-const PriceDropdown = ({ filter }: FilterProps) => {
+const PriceDropdown = ({ addFilter }: AddFilterProps) => {
   const min = 0;
   const max = () => {
     const allTickets: TicketProps[] = [];
@@ -27,7 +27,7 @@ const PriceDropdown = ({ filter }: FilterProps) => {
 
   useEffect(() => {
     if (price && price.length > 0) {
-      filter('price', price);
+      addFilter('price', price);
     }
   }, [price]);
 

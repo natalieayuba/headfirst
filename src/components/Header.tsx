@@ -24,11 +24,7 @@ const Header = () => {
   return (
     <header
       className={`z-10 fixed w-full flex flex-col justify-between transition-all duration-200 ease-out margin-x-outer bg-dark-night h-16 ${
-        pathname === '/' &&
-        typeof window !== 'undefined' &&
-        window.scrollY < 300
-          ? 'bg-opacity-0'
-          : ''
+        pathname === '/' && window.scrollY < 300 ? 'bg-opacity-0' : ''
       } ${visible ? 'top-0' : '-top-16'}`}
     >
       <nav className='flex justify-between h-full items-center transition-all duration-300 margin'>

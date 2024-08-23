@@ -13,24 +13,26 @@ interface DropdownProps {
 
 const Dropdown = ({ title, children, icon, selected }: DropdownProps) => {
   const { isOpen, setIsOpen } = useLightbox();
-  const ref = useRef<HTMLButtonElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [top, setTop] = useState(0);
 
   useEffect(() => {
-    if (ref.current && isOpen) {
-      setTop(ref.current.offsetTop + ref.current.offsetHeight + 8);
+    if (buttonRef.current && isOpen) {
+      setTop(buttonRef.current.offsetTop + buttonRef.current.offsetHeight + 8);
     }
   }, [isOpen]);
 
   useEffect(() => {
     setIsOpen(false);
-  }, [selected, setIsOpen]);
+  }, [selected]);
 
   return (
     <div>
       {isOpen && (
         <Lightbox hideClose setIsOpen={setIsOpen}>
           <div
+            ref={containerRef}
             className='bg-night rounded-xl p-6 shadow absolute right-6 left-6'
             style={{ top }}
           >
@@ -39,14 +41,16 @@ const Dropdown = ({ title, children, icon, selected }: DropdownProps) => {
         </Lightbox>
       )}
       <button
-        ref={ref}
+        ref={buttonRef}
         type='button'
         className={`filter-chip relative${
           isOpen
             ? ' z-20 hover:bg-opacity-100 hover:bg-night hover:text-white-alpha-90'
             : ''
         }${selected !== '' ? ' bg-lilac text-dark-night font-medium' : ''}`}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => {
+          if (!isOpen) setIsOpen(true);
+        }}
       >
         <Icon name={icon} size={16} />
         {selected !== '' ? selected : title}

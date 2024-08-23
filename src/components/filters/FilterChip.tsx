@@ -4,11 +4,18 @@ import Icon from '../Icon';
 interface FilterChipProps {
   text: string;
   name: string;
+  value: string;
   selected: string;
-  setSelected: Dispatch<SetStateAction<any>>;
+  setSelected: Dispatch<SetStateAction<string>>;
 }
 
-const FilterChip = ({ text, name, selected, setSelected }: FilterChipProps) => {
+const FilterChip = ({
+  text,
+  name,
+  value,
+  selected,
+  setSelected,
+}: FilterChipProps) => {
   return (
     <div key={text} className='filter-chip'>
       <label htmlFor={text}>
@@ -17,18 +24,16 @@ const FilterChip = ({ text, name, selected, setSelected }: FilterChipProps) => {
           id={text}
           name={name}
           className='hidden'
-          value={text}
-          checked={text === selected}
+          value={value}
+          checked={value === selected}
           onChange={(e) => setSelected(e.target.value)}
         />
         {text}
       </label>
-      {text === selected && (
+      {value === selected && (
         <button
           className='p-0.5 opacity-50 hover:opacity-100 transition-opacity duration-100'
-          onClick={() => {
-            setSelected('');
-          }}
+          onClick={() => setSelected('')}
         >
           <Icon name='close' size={12} />
         </button>

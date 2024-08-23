@@ -8,39 +8,28 @@ import Link from 'next/link';
 import PriceDropdown from '@/components/filters/PriceDropdown';
 import CategoryChips from '@/components/filters/CategoryChips';
 
-export interface FilterProps {
-  filter: (name: string, value: any) => void;
+export interface AddFilterProps {
+  addFilter: (name: string, value: any) => void;
 }
 
 interface FiltersProps {
   date?: string;
   price?: number[];
-  category?: string;
-  subcategory?: string;
+  categoryId?: string;
+  subcategoryId?: string;
 }
 
 const WhatsOn = () => {
   const [filters, setFilters] = useState<FiltersProps>({});
   const [filteredEvents, setFilteredEvents] = useState(events);
 
-  const filter = (name: string, value: any) => {
+  const addFilter = (name: string, value: any) => {
     setFilters((filters) => ({ ...filters, [name]: value }));
   };
 
   useEffect(() => {
-    if (filters.category === '') {
-      delete filters.category;
-    }
-    if (filters.subcategory === '') {
-      delete filters.subcategory;
-    }
     setFilteredEvents(
       events.filter(({ startDate, categoryId, tickets, subcategoryIds }) => {
-        console.log(
-          categories[categoryId].subcategories.findIndex(
-            (subcategory) => subcategory === filters.subcategory
-          )
-        );
         return (
           (!filters.date ||
             formatDate(filters.date) === formatDate(startDate)) &&
@@ -51,14 +40,9 @@ const WhatsOn = () => {
                 price >= filters.price[0] &&
                 price <= filters.price[1]
             )) &&
-          (!filters.category ||
-            filters.category === categories[categoryId].name) &&
-          (!filters.subcategory ||
-            subcategoryIds.includes(
-              categories[categoryId].subcategories.findIndex(
-                (subcategory) => subcategory === filters.subcategory
-              )
-            ))
+          (!filters.categoryId || filters.categoryId === categoryId) &&
+          (!filters.subcategoryId ||
+            subcategoryIds.includes(filters.subcategoryId))
         );
       })
     );
@@ -70,10 +54,10 @@ const WhatsOn = () => {
         <h1 className='text-4xl p-6 pb-2'>What&apos;s on in Bristol</h1>
         <div className='flex flex-col gap-2'>
           <div className='pl-6 flex gap-2'>
-            <DateDropdown filter={filter} />
-            <PriceDropdown filter={filter} />
+            <DateDropdown addFilter={addFilter} />
+            <PriceDropdown addFilter={addFilter} />
           </div>
-          <CategoryChips filter={filter} />
+          <CategoryChips addFilter={addFilter} />
         </div>
       </form>
       <div className='p-6 pt-2'>
@@ -88,10 +72,10 @@ const WhatsOn = () => {
             href='/whats-on'
             onClick={() => window.location.reload()}
           >
-            Clear filters
+            Clear all filters
           </Link>
         </div>
-        <div className='grid gap-4 mt-4'>
+        <div className='grid gap-4 mt-5'>
           {filteredEvents.length > 0 &&
             filteredEvents.map((event) => (
               <EventCard key={event.name} horizontal showTime event={event} />

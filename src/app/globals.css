@@ -45,7 +45,7 @@ input[type='search']::-webkit-search-results-decoration {
   }
 
   .filter-chip {
-    @apply bg-night px-3 h-8 w-fit flex items-center gap-2 rounded-full hover:bg-lilac hover:bg-opacity-50 transition-opacity duration-150 flex-shrink-0;
+    @apply bg-night px-3 h-8 w-fit flex items-center gap-1.5 rounded-full hover:bg-lilac hover:bg-opacity-50 transition-opacity duration-150 flex-shrink-0;
   }
 
   .filter-chip:has(input:checked) {

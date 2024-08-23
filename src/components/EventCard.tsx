@@ -1,11 +1,11 @@
 'use client';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import { IoMdHeartEmpty, IoMdHeart } from 'react-icons/io';
-import { venues, type EventProps } from '../data/data';
+import { type EventProps } from '../data/data';
 import { formatDate, formatPrice, toUrl } from '@/utils/formatting';
 import SaveButton from './buttons/SaveButton';
+import { getVenueById } from '@/data/utils';
 
 interface EventCardProps {
   event: EventProps;
@@ -18,7 +18,9 @@ const EventCard = ({ event, showTime, horizontal }: EventCardProps) => {
 
   return (
     <Link
-      className={`group flex ${horizontal ? 'gap-3' : 'w-36 flex-col gap-2'}`}
+      className={`group flex relative ${
+        horizontal ? 'gap-3' : 'w-36 flex-col gap-2'
+      }`}
       href={`/event/${toUrl(name)}`}
     >
       <div
@@ -38,13 +40,13 @@ const EventCard = ({ event, showTime, horizontal }: EventCardProps) => {
         <h3 className='mb-1 leading-[110%]'>{name}</h3>
         <div className='flex secondary-text flex-col leading-tight'>
           <p>{formatDate(startDate, showTime)}</p>
-          <p>{venues[venueId].name}</p>
+          <p>{getVenueById(venueId)?.name}</p>
           <p>{formatPrice(tickets)}</p>
         </div>
       </div>
       <SaveButton
         event={event}
-        className={horizontal ? '' : 'z-10 absolute top-1 right-1 bg-night'}
+        className={horizontal ? '' : 'absolute top-1 right-1 bg-night'}
         size={16}
       />
     </Link>

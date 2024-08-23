@@ -26,16 +26,17 @@ const Lightbox = ({
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!clickOutsideOff) {
-      const handleClickOutside = (event: MouseEvent) => {
-        if (ref.current && !ref.current.contains(event.target as Node)) {
-          setIsOpen(false);
-        }
-      };
-      document.addEventListener('mousedown', handleClickOutside);
-      return () =>
-        document.removeEventListener('mousedown', handleClickOutside);
-    }
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        !clickOutsideOff &&
+        ref.current &&
+        !ref.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [ref, setIsOpen]);
 
   return (

@@ -14,11 +14,7 @@ const NavMenu = () => {
     <ul className={`font-medium text-lg flex flex-col`}>
       {links.map(({ name, url }) => (
         <li key={name} className='w-full'>
-          <Link
-            href={url ?? '#'}
-            onClick={() => setIsOpen(false)}
-            className='block py-2'
-          >
+          <Link href={url ?? '#'} className='block py-2'>
             {name}
           </Link>
         </li>
@@ -31,6 +27,7 @@ const NavMenu = () => {
       <Lightbox
         setIsOpen={setIsOpen}
         hideClose
+        clickOutsideOff
         className={`transition-left duration-300 z-0 ${
           isOpen ? 'left-0' : 'left-full'
         }`}
