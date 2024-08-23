@@ -1,53 +1,52 @@
 'use client';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
-import type { EventProps } from './EventProps';
-import moment from 'moment';
 import Link from 'next/link';
 import { IoMdHeartEmpty, IoMdHeart } from 'react-icons/io';
+import { venues, type EventProps } from '../data/data';
+import { formatDate, formatPrice, toUrl } from '@/utils/formatting';
+import SaveButton from './buttons/SaveButton';
 
-const EventCard = (event: EventProps) => {
-  const { images, title, startDate, venue, tickets, saved } = event;
-  const [saveEvent, setSaveEvent] = useState(false);
-  const minPrice = tickets.reduce((a, b) => (a.price < b.price ? a : b)).price;
-  const maxPrice = tickets.reduce((a, b) => (a.price > b.price ? a : b)).price;
-  const formatDate = (date: string) =>
-    moment(date).format(
-      `ddd Do MMM, ${new Date(date).getMinutes() > 0 ? 'h:mma' : 'ha'}`
-    );
+interface EventCardProps {
+  event: EventProps;
+  showTime?: boolean;
+  horizontal?: boolean;
+}
 
-  useEffect(() => {
-    event.saved = saveEvent;
-  }, [event, saveEvent]);
+const EventCard = ({ event, showTime, horizontal }: EventCardProps) => {
+  const { name, image, startDate, venueId, tickets } = event;
 
   return (
-    // when card hovered, we want image to zoom in slightly?
-    <Link className='group block w-40' href='#'>
-      <div className='w-full aspect-square h-auto relative mb-3 overflow-hidden rounded-lg'>
+    <Link
+      className={`group flex ${horizontal ? 'gap-3' : 'w-36 flex-col gap-2'}`}
+      href={`/event/${toUrl(name)}`}
+    >
+      <div
+        className={`${
+          horizontal ? 'w-24' : 'w-36'
+        } aspect-square h-auto relative overflow-hidden rounded-lg`}
+      >
         <Image
-          src={images[0]}
-          alt={`${title} 01`}
+          src={image}
+          alt={`${name} image`}
           fill
-          sizes='100vw'
-          className='group-hover:scale-105 duration-300 ease-out'
+          sizes='100%'
+          className='md:group-hover:scale-105 duration-200 ease-out object-cover'
         />
-        <button
-          className='z-10 absolute bg-darkest-purple bg-opacity-60 p-2 rounded-full bottom-1 right-1'
-          onClick={() => setSaveEvent(!saveEvent)}
-        >
-          <span className='text-lg'>
-            {saved ? <IoMdHeart /> : <IoMdHeartEmpty />}
-          </span>
-        </button>
       </div>
-      <h3 className='mb-1 line-clamp-2 overflow-ellipsis'>{title}</h3>
-      <div className='text-sm text-white-alpha-60 flex flex-col'>
-        <p>{formatDate(startDate)}</p>
-        <p>{venue.name}</p>
-        <p>
-          £{minPrice} - £{maxPrice}
-        </p>
+      <div className='flex-1'>
+        <h3 className='mb-1 leading-[110%]'>{name}</h3>
+        <div className='flex secondary-text flex-col leading-tight'>
+          <p>{formatDate(startDate, showTime)}</p>
+          <p>{venues[venueId].name}</p>
+          <p>{formatPrice(tickets)}</p>
+        </div>
       </div>
+      <SaveButton
+        event={event}
+        className={horizontal ? '' : 'z-10 absolute top-1 right-1 bg-night'}
+        size={16}
+      />
     </Link>
   );
 };

@@ -28,17 +28,42 @@ input[type='search']::-webkit-search-results-decoration {
   }
 
   h2 {
-    @apply text-2xl lg:text-4xl mb-2;
+    @apply text-2xl lg:text-4xl mb-2 leading-none;
+  }
+
+  .overflow-y-scroll {
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .overflow-y-scroll {
+    display: none; /* Safari and Chrome */
   }
 
   .heading-lg {
     @apply font-heading-lg leading-[0.85] uppercase text-5xl;
+  }
+
+  .filter-chip {
+    @apply bg-night px-3 h-8 w-fit flex items-center gap-2 rounded-full hover:bg-lilac hover:bg-opacity-50 transition-opacity duration-150 flex-shrink-0;
+  }
+
+  .filter-chip:has(input:checked) {
+    @apply bg-lilac text-dark-night font-medium;
+  }
+
+  .link {
+    @apply text-lilac font-medium transition-opacity duration-200 hover:opacity-90;
   }
 }
 
 @layer component {
   .secondary-text {
     @apply text-white-alpha-60 text-sm;
+  }
+
+  .filter-chip-scroll {
+    @apply flex gap-2 overflow-y-scroll px-6;
   }
 }
 

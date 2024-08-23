@@ -1,4 +1,4 @@
-import { getUrlFromHeading } from '@/utils/formatting';
+import { toUrl } from '@/utils/formatting';
 import Link from 'next/link';
 import React, { type ReactElement } from 'react';
 
@@ -12,9 +12,8 @@ const HorizontalScroll = ({ list, card }: HorizontalScrollProps) => {
     <ol className='flex overflow-y-scroll gap-4'>
       {list.map((item) => (
         <li key={item.name} className='flex-shrink-0'>
-          <Link href={`/events/${getUrlFromHeading(item.name)}`}>
-            {card(item)}
-          </Link>
+          {/* <Link href={`/events/${toUrl(item.name)}`}>{card(item)}</Link> */}
+          {card(item)}
         </li>
       ))}
     </ol>

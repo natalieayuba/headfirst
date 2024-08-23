@@ -1,5 +1,7 @@
 import { appendClassName } from '@/utils/formatting';
 import React, {
+  useEffect,
+  useRef,
   type Dispatch,
   type ReactNode,
   type SetStateAction,
@@ -11,6 +13,7 @@ interface LightboxProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
   className?: string;
   hideClose?: boolean;
+  clickOutsideOff?: boolean;
 }
 
 const Lightbox = ({
@@ -18,7 +21,23 @@ const Lightbox = ({
   setIsOpen,
   className,
   hideClose,
+  clickOutsideOff,
 }: LightboxProps) => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!clickOutsideOff) {
+      const handleClickOutside = (event: MouseEvent) => {
+        if (ref.current && !ref.current.contains(event.target as Node)) {
+          setIsOpen(false);
+        }
+      };
+      document.addEventListener('mousedown', handleClickOutside);
+      return () =>
+        document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, [ref, setIsOpen]);
+
   return (
     <div
       className={`fixed flex flex-col z-20 bg-dark-night bg-opacity-95 h-screen w-screen top-0 bottom-0 right-0${appendClassName(
@@ -32,7 +51,9 @@ const Lightbox = ({
           </button>
         )}
       </header>
-      <div className='p-6'>{children}</div>
+      <div className='px-6' ref={ref}>
+        {children}
+      </div>
     </div>
   );
 };

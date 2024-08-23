@@ -1,13 +1,17 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Baloo_2, Londrina_Solid } from 'next/font/google';
-import { description, name, tagline } from '../../config';
+import { colors, description, name, tagline } from '../../config';
 
 export const metadata: Metadata = {
   title: `${name} | ${tagline}`,
   description,
+};
+
+export const viewport: Viewport = {
+  themeColor: colors['dark-night'],
 };
 
 const baloo_2 = Baloo_2({

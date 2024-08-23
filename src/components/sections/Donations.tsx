@@ -1,7 +1,7 @@
 import React from 'react';
 import HomeSection from './HomeSection';
-import Hyperlink from './Hyperlink';
-import Icon from './Icon';
+import Hyperlink from '../Hyperlink';
+import Icon from '../Icon';
 
 const Donations = () => {
   return (

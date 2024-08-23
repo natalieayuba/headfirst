@@ -4,6 +4,12 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
+        hostname: 'headfirstbristol.co.uk',
+        port: '',
+        pathname: '/images/**',
+      },
+      {
+        protocol: 'https',
         hostname: 'images.unsplash.com',
         port: '',
         pathname: '/photo-**',
@@ -16,6 +22,16 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: '**.pexels.com',
+        port: '',
+      },
+      {
+        protocol: 'http',
+        hostname: 'dummyimage.com',
+        port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'loremflickr.com',
         port: '',
       },
     ],

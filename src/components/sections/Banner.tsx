@@ -1,12 +1,9 @@
 'use client';
-import React, { useEffect, useRef, useState } from 'react';
-import { colors, description, tagline } from '../../config';
-import Button from '@/components/Button';
+import React from 'react';
+import { colors, description, tagline } from '../../../config';
+import { ButtonLink } from '@/components/buttons/Button';
 
 const Banner = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(false);
-
   const lines = () => {
     const words = tagline.split(' ');
     const lines = [];
@@ -18,20 +15,6 @@ const Banner = () => {
     return lines;
   };
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setVideoIndex(videoIndex === videos.length - 1 ? 0 : videoIndex + 1);
-  //   }, 7500);
-  //   return () => clearInterval(interval);
-  // });
-
-  useEffect(() => {
-    if (videoRef.current?.readyState === 4) {
-      videoRef.current.play();
-      setPlaying(true);
-    }
-  }, []);
-
   return (
     <div
       style={{
@@ -42,23 +25,20 @@ const Banner = () => {
       <video
         playsInline
         muted
+        autoPlay
         loop
-        ref={videoRef}
-        className={`object-cover absolute h-full -z-10 left-0  transition-opacity duration-500 ${
-          playing ? 'opacity-100' : 'opacity-0'
-        }
-      `}
+        className='object-cover absolute h-full -z-10 left-0 animate-fadeIn -mt-1 saturate-50 contrast-150 brightness-110'
       >
         <source src='/banner-video.mp4' type='video/mp4' />
       </video>
-      <div className='flex flex-col h-full pb-10 justify-end items-start lg:max-w-3xl'>
+      <div className='flex flex-col h-full pb-10 justify-end items-start lg:max-w-3xl relative'>
         <h1 className='heading-lg'>
           {lines().map((line, index) => (
             <span key={line} className='overflow-hidden inline-block'>
               <span
                 className='bg-purple block animate-maskIn'
                 style={{
-                  animationDelay: `${100 * index}ms`,
+                  animationDelay: `${150 * index}ms`,
                 }}
               >
                 {line}
@@ -67,7 +47,9 @@ const Banner = () => {
           ))}
         </h1>
         <p className='text-md lg:text-2xl my-1'>{description}</p>
-        <Button className='mt-5'>Browse events</Button>
+        <ButtonLink className='mt-5' href='/whats-on'>
+          Browse events
+        </ButtonLink>
       </div>
     </div>
   );
