@@ -21,34 +21,27 @@ module.exports = {
     },
     {
       name: 'About',
-      url: '#',
     },
     {
       name: 'Donations',
-      url: '#',
     },
     {
       name: 'Help',
-      url: '#',
     },
     {
       name: 'My account',
       links: [
         {
           name: 'Tickets',
-          url: '#',
         },
         {
           name: 'Saved',
-          url: '#',
         },
         {
           name: 'Settings',
-          url: '#',
         },
         {
           name: 'Sign out',
-          url: '#',
         },
       ],
     },

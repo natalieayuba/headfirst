@@ -3,7 +3,12 @@ import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link';
 import { type EventProps } from '../data/data';
-import { formatDate, formatPrice, toUrl } from '@/utils/formatting';
+import {
+  appendClassName,
+  formatDate,
+  formatPrice,
+  toUrl,
+} from '@/utils/formatting';
 import SaveButton from './buttons/SaveButton';
 import { getVenueById } from '@/data/utils';
 
@@ -11,22 +16,57 @@ interface EventCardProps {
   event: EventProps;
   showTime?: boolean;
   horizontal?: boolean;
+  showSaved?: boolean;
+  hidePrice?: boolean;
+  size?: 'xs' | 'sm' | 'md';
 }
 
-const EventCard = ({ event, showTime, horizontal }: EventCardProps) => {
+export const CardImage = ({
+  image,
+  name,
+  className,
+}: {
+  image: string;
+  name: string;
+  className?: string;
+}) => {
+  return (
+    <div
+      className={`aspect-square h-auto relative overflow-hidden rounded-lg${appendClassName(
+        className
+      )}`}
+    >
+      <Image
+        src={image}
+        alt={`${name} image`}
+        fill
+        sizes='100%'
+        className='md:group-hover:scale-105 duration-200 ease-out object-cover'
+      />
+    </div>
+  );
+};
+
+const EventCard = ({
+  event,
+  showTime,
+  horizontal,
+  showSaved,
+  hidePrice,
+  size = 'md',
+}: EventCardProps) => {
   const { name, image, startDate, venueId, tickets } = event;
+  const width = size === 'xs' ? 'w-14' : size === 'sm' ? 'w-24' : 'w-36';
 
   return (
     <Link
       className={`group flex relative ${
-        horizontal ? 'gap-3' : 'w-36 flex-col gap-2'
+        horizontal ? 'gap-3' : `${width} flex-col gap-2`
       }`}
       href={`/event/${toUrl(name)}`}
     >
       <div
-        className={`${
-          horizontal ? 'w-24' : 'w-36'
-        } aspect-square h-auto relative overflow-hidden rounded-lg`}
+        className={`${width} aspect-square h-fit relative overflow-hidden rounded-lg`}
       >
         <Image
           src={image}
@@ -37,18 +77,30 @@ const EventCard = ({ event, showTime, horizontal }: EventCardProps) => {
         />
       </div>
       <div className='flex-1'>
-        <h3 className='mb-1 leading-[110%]'>{name}</h3>
-        <div className='flex secondary-text flex-col leading-tight'>
+        <h3
+          className={
+            size === 'xs' ? 'leading-[112%] text-sm' : 'mb-1 leading-[110%]'
+          }
+        >
+          {name}
+        </h3>
+        <div
+          className={`flex secondary-text flex-col ${
+            size === 'xs' ? 'leading-[112%]' : 'leading-tight'
+          }`}
+        >
           <p>{formatDate(startDate, showTime)}</p>
           <p>{getVenueById(venueId)?.name}</p>
-          <p>{formatPrice(tickets)}</p>
+          {!hidePrice && <p>{formatPrice(tickets)}</p>}
         </div>
       </div>
-      <SaveButton
-        event={event}
-        className={horizontal ? '' : 'absolute top-1 right-1 bg-night'}
-        size={16}
-      />
+      {showSaved && (
+        <SaveButton
+          event={event}
+          className={horizontal ? '' : 'absolute top-1 right-1 bg-night'}
+          size={16}
+        />
+      )}
     </Link>
   );
 };

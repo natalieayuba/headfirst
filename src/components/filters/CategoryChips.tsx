@@ -3,9 +3,13 @@ import { categories, type SubcategoryProps } from '../../data/data';
 import FilterChip from './FilterChip';
 import type { AddFilterProps } from '@/app/whats-on/page';
 import { getCategoryById } from '@/data/utils';
+import { useSearchParams } from 'next/navigation';
 
-const CategoryChips = ({ addFilter }: AddFilterProps) => {
-  const [categoryId, setCategoryId] = useState('');
+const CategoryChips = ({ addFilter, clear }: AddFilterProps) => {
+  const searchParams = useSearchParams();
+  const [categoryId, setCategoryId] = useState(
+    searchParams.get('categoryId') ?? ''
+  );
   const [subcategories, setSubcategories] = useState<SubcategoryProps[]>([]);
   const [subcategoryId, setSubcategoryId] = useState('');
   const subcategoriesRef = useRef<HTMLDivElement>(null);
@@ -23,6 +27,14 @@ const CategoryChips = ({ addFilter }: AddFilterProps) => {
   }, [categoryId]);
 
   useEffect(() => addFilter('subcategoryId', subcategoryId), [subcategoryId]);
+
+  useEffect(() => {
+    if (clear) {
+      setCategoryId('');
+      setSubcategories([]);
+      setSubcategoryId('');
+    }
+  }, [clear]);
 
   return (
     <div className='flex gap-2 flex-col'>

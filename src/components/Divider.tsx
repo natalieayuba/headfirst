@@ -1,9 +1,9 @@
 import { appendClassName } from '@/utils/formatting';
 import React from 'react';
 
-const Divider = ({ width }: { width?: string }) => {
+const Divider = ({ className }: { className?: string }) => {
   return (
-    <hr className={`rounded my-8 mx-auto border-10${appendClassName(width)}`} />
+    <hr className={`rounded my-8 border-10${appendClassName(className)}`} />
   );
 };
 

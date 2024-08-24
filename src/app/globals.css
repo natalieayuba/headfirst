@@ -22,6 +22,12 @@ input[type='search']::-webkit-search-results-decoration {
   display: none;
 }
 
+.backdrop-blur-sm {
+  --tw-backdrop-blur: blur(4px);
+  -webkit-backdrop-filter: var(--tw-backdrop-blur);
+  backdrop-filter: var(--tw-backdrop-blur);
+}
+
 @layer base {
   h1 {
     @apply mb-2;

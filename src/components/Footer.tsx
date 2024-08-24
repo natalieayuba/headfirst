@@ -2,6 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 import Icon from './Icon';
 import Divider from './Divider';
+import Link from 'next/link';
 
 const Footer = () => {
   const legalLinks = [
@@ -45,7 +46,9 @@ const Footer = () => {
               <ul className='flex flex-col gap-4'>
                 {links.map((link) => (
                   <li key={link}>
-                    <a href='#'>{link}</a>
+                    <Link href={link === 'Find an event' ? '/whats-on' : '#'}>
+                      {link}
+                    </Link>
                   </li>
                 ))}
               </ul>

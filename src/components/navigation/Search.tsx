@@ -1,11 +1,50 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState, type ChangeEvent } from 'react';
 import Lightbox from '../Lightbox';
 import Icon from '../Icon';
 import useLightbox from '@/hooks/useLightbox';
+import {
+  categories,
+  events,
+  type CategoryProps,
+  type EventProps,
+} from '@/data/data';
+import EventCard from '../EventCard';
+import Link from 'next/link';
 
 const Search = () => {
   const { isOpen, setIsOpen } = useLightbox();
-  const [value, setValue] = useState('');
+  const [query, setQuery] = useState('');
+  const [searchResults, setSearchResults] = useState<
+    (EventProps | CategoryProps)[]
+  >([]);
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setQuery(e.target.value);
+  };
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+      setSearchResults(
+        query === ''
+          ? []
+          : [...categories, ...events].filter(({ name }) =>
+              name
+                .toLowerCase()
+                .split(' ')
+                .some((word) => word.startsWith(query.toLowerCase()))
+            )
+      );
+    }
+  }, [query]);
+
+  useEffect(() => {
+    if (!isOpen) {
+      setSearchResults([]);
+      setQuery('');
+    }
+  }, [isOpen]);
 
   return (
     <div className='flex'>
@@ -17,22 +56,47 @@ const Search = () => {
           <div className='bg-night rounded-md border border-20 flex h-12 items-center px-4'>
             <Icon name='search' className='w-4 mr-3' />
             <input
+              ref={inputRef}
               type='search'
               placeholder='Search events and categories'
               className='bg-transparent flex-1 outline-none'
-              value={value}
-              onChange={(e) => setValue(e.target.value)}
+              value={query}
+              onChange={handleChange}
               autoFocus
             />
-            {value && (
+            {query && (
               <button
-                onClick={() => setValue('')}
+                onClick={() => setQuery('')}
                 className='pl-3 text-white-alpha-60 hover:opacity-85'
               >
                 <Icon name='close' size={16} />
               </button>
             )}
           </div>
+          {query !== '' && (
+            <div className='mt-4 max-h-dvh p-5 bg-night rounded-lg shadow-md overflow-scroll'>
+              {searchResults.length === 0 ? (
+                <p className='secondary-text'>No results found</p>
+              ) : (
+                <div className='flex flex-col gap-3'>
+                  {searchResults.map((result) =>
+                    events.some((event) => result === event) ? (
+                      <EventCard
+                        event={result as EventProps}
+                        horizontal
+                        size='xs'
+                        hidePrice
+                      />
+                    ) : (
+                      <Link href={`whats-on?categoryId${result.id}`}>
+                        {result.name}
+                      </Link>
+                    )
+                  )}
+                </div>
+              )}
+            </div>
+          )}
         </Lightbox>
       )}
     </div>

@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: colors['dark-night'],
+  interactiveWidget: 'resizes-content',
 };
 
 const baloo_2 = Baloo_2({

@@ -7,7 +7,7 @@ import { events, type TicketProps } from '../../data/data';
 import Slider from '@mui/material/Slider';
 import { colors } from '../../../config';
 
-const PriceDropdown = ({ addFilter }: AddFilterProps) => {
+const PriceDropdown = ({ addFilter, clear }: AddFilterProps) => {
   const min = 0;
   const max = () => {
     const allTickets: TicketProps[] = [];
@@ -30,6 +30,13 @@ const PriceDropdown = ({ addFilter }: AddFilterProps) => {
       addFilter('price', price);
     }
   }, [price]);
+
+  useEffect(() => {
+    if (clear) {
+      setPrice([]);
+      setTmpPrice([min, max()]);
+    }
+  }, [clear]);
 
   const handleChange = (
     event: Event,
@@ -57,7 +64,7 @@ const PriceDropdown = ({ addFilter }: AddFilterProps) => {
     <Dropdown
       title='Price'
       icon='pound'
-      selected={price ? formatPrice(price) : ''}
+      selected={price && price.length > 0 ? formatPrice(price) : ''}
     >
       <Slider
         value={tmpPrice}

@@ -41,7 +41,7 @@ const Lightbox = ({
 
   return (
     <div
-      className={`fixed flex flex-col z-20 bg-dark-night bg-opacity-95 h-screen w-screen top-0 bottom-0 right-0${appendClassName(
+      className={`fixed flex flex-col z-20 bg-dark-night backdrop-blur-sm bg-opacity-95 h-dvh w-screen top-0 bottom-0 right-0${appendClassName(
         className
       )}`}
     >

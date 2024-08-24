@@ -14,7 +14,11 @@ const NavMenu = () => {
     <ul className={`font-medium text-lg flex flex-col`}>
       {links.map(({ name, url }) => (
         <li key={name} className='w-full'>
-          <Link href={url ?? '#'} className='block py-2'>
+          <Link
+            href={url ?? '#'}
+            className='block py-2'
+            onClick={() => setIsOpen(false)}
+          >
             {name}
           </Link>
         </li>
@@ -37,7 +41,7 @@ const NavMenu = () => {
             (link) => link !== navLinks[navLinks.length - 1]
           ) as NavLinksProps[]
         )}
-        <Divider width='w-14 ' />
+        <Divider className='w-14' />
         <h3 className='mb-2 text-white-alpha-60'>My account</h3>
         {list(
           navLinks.find(({ name }) => name === 'My account')
