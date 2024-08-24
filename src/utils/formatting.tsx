@@ -1,5 +1,4 @@
-import type { TicketProps } from '@/components/database';
-import moment from 'moment';
+import type { TicketProps } from '@/data/data';
 
 export const appendClassName = (className: string | undefined) =>
   className ? ` ${className}` : '';
@@ -7,32 +6,27 @@ export const appendClassName = (className: string | undefined) =>
 export const toUrl = (heading: string) =>
   heading.toLowerCase().replace('&', 'and').replace(/ /g, '-');
 
-const dateOptions: Intl.DateTimeFormatOptions = {
-  weekday: 'short',
-  day: 'numeric',
-  month: 'short',
-};
+export const dateFormat = (date: string) =>
+  new Intl.DateTimeFormat('en-GB', {
+    weekday: 'short',
+    day: 'numeric',
+    month: 'short',
+  }).format(new Date(date));
 
-const timeOptions: Intl.DateTimeFormatOptions = {
-  hour: 'numeric',
-  minute: 'numeric',
-  hour12: true,
-};
+export const timeFormat = (date: string) =>
+  new Intl.DateTimeFormat('en-US', {
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true,
+  }).format(new Date(date));
 
-export const formatDate = (date: string, withTime?: boolean) => {
-  const formattedDate = new Intl.DateTimeFormat('en-GB', dateOptions).format(
-    new Date(date)
-  );
-  const formattedTime = new Intl.DateTimeFormat('en-US', timeOptions).format(
-    new Date(date)
-  );
-  return `${formattedDate}${withTime ? `, ${formattedTime}` : ''}`;
-};
+export const formatDate = (date: string, withTime?: boolean) =>
+  `${dateFormat(date)}${withTime ? `, ${timeFormat(date)}` : ''}`;
 
-export const formatDateRange = (start: Date, end: Date) =>
+export const formatDateRange = (start: string, end: string) =>
   `${formatDate(start, true)} - ${
-    start.getDate() === end.getDate()
-      ? moment(end).format(timeFormat)
+    new Date(start).getDate() === new Date(end).getDate()
+      ? timeFormat(end)
       : formatDate(end, true)
   }`;
 
@@ -65,3 +59,6 @@ export const formatPrice = (tickets: TicketProps[]) => {
 
 export const capitaliseFirstLetter = (text: string) =>
   text.charAt(0).toUpperCase() + text.slice(1);
+
+export const formatEventUrl = (id: string, name: string) =>
+  toUrl(`${name}-${id}`);

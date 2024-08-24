@@ -1,5 +1,3 @@
-import { toUrl } from '@/utils/formatting';
-import Link from 'next/link';
 import React, { type ReactElement } from 'react';
 
 interface HorizontalScrollProps {
@@ -9,10 +7,9 @@ interface HorizontalScrollProps {
 
 const HorizontalScroll = ({ list, card }: HorizontalScrollProps) => {
   return (
-    <ol className='flex overflow-y-scroll gap-4'>
+    <ol className='flex overflow-y-scroll gap-4 px-6'>
       {list.map((item) => (
         <li key={item.name} className='flex-shrink-0'>
-          {/* <Link href={`/events/${toUrl(item.name)}`}>{card(item)}</Link> */}
           {card(item)}
         </li>
       ))}

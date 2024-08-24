@@ -6,8 +6,8 @@ import { type EventProps } from '../data/data';
 import {
   appendClassName,
   formatDate,
+  formatEventUrl,
   formatPrice,
-  toUrl,
 } from '@/utils/formatting';
 import SaveButton from './buttons/SaveButton';
 import { getVenueById } from '@/data/utils';
@@ -55,7 +55,7 @@ const EventCard = ({
   hidePrice,
   size = 'md',
 }: EventCardProps) => {
-  const { name, image, startDate, venueId, tickets } = event;
+  const { id, name, image, startDate, venueId, tickets } = event;
   const width = size === 'xs' ? 'w-14' : size === 'sm' ? 'w-24' : 'w-36';
 
   return (
@@ -63,7 +63,7 @@ const EventCard = ({
       className={`group flex relative ${
         horizontal ? 'gap-3' : `${width} flex-col gap-2`
       }`}
-      href={`/event/${toUrl(name)}`}
+      href={`/event/${formatEventUrl(id, name)}`}
     >
       <div
         className={`${width} aspect-square h-fit relative overflow-hidden rounded-lg`}

@@ -82,13 +82,23 @@ const Search = () => {
                   {searchResults.map((result) =>
                     events.some((event) => result === event) ? (
                       <EventCard
+                        key={result.id}
                         event={result as EventProps}
                         horizontal
                         size='xs'
                         hidePrice
                       />
                     ) : (
-                      <Link href={`whats-on?categoryId${result.id}`}>
+                      <Link
+                        key={result.id}
+                        href={`whats-on?categoryId${result.id}`}
+                        className='flex gap-3 items-center'
+                      >
+                        <div className='w-14 flex justify-center'>
+                          <div className='p-3 bg-white bg-opacity-20 rounded-full'>
+                            <Icon name='tag' size={18} />
+                          </div>
+                        </div>
                         {result.name}
                       </Link>
                     )

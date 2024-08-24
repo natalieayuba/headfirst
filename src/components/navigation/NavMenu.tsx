@@ -11,12 +11,12 @@ const NavMenu = () => {
   const { isOpen, setIsOpen } = useLightbox();
 
   const list = (links: NavLinksProps[]) => (
-    <ul className={`font-medium text-lg flex flex-col`}>
+    <ul className={`font-medium text-lg`}>
       {links.map(({ name, url }) => (
-        <li key={name} className='w-full'>
+        <li key={name}>
           <Link
             href={url ?? '#'}
-            className='block py-2'
+            className='block py-2 w-fit'
             onClick={() => setIsOpen(false)}
           >
             {name}

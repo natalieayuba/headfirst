@@ -59,7 +59,6 @@ const WhatsOn = () => {
     });
 
     const query = params.toString() ? `?${params.toString()}` : '';
-    console.log(filters);
     router.push(`${pathname}${query}`);
 
     setFilteredEvents(
