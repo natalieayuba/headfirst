@@ -2,6 +2,7 @@ import { appendClassName } from '@/utils/formatting';
 import React, {
   useEffect,
   useRef,
+  type CSSProperties,
   type Dispatch,
   type ReactNode,
   type SetStateAction,
@@ -37,7 +38,7 @@ const Lightbox = ({
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [ref, setIsOpen]);
+  }, [ref, setIsOpen, clickOutsideOff]);
 
   return (
     <div

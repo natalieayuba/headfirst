@@ -67,6 +67,7 @@ const EventCard = ({
       }`}
       href={`/event/${formatEventUrl(id, name)}`}
       onClick={onClick}
+      onMouseDown={(e) => e.preventDefault()}
     >
       <div
         className={`${width} aspect-square h-fit relative overflow-hidden rounded-lg`}

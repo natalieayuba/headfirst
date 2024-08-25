@@ -18,6 +18,15 @@ const Search = () => {
     (EventProps | CategoryProps)[]
   >([]);
   const inputRef = useRef<HTMLInputElement>(null);
+  const [maxHeight, setMaxHeight] = useState(window.visualViewport?.height);
+  const isSafari = navigator.userAgent.indexOf('Safari') != -1;
+
+  useEffect(() => {
+    const handleIosViewport = () => setMaxHeight(window.visualViewport?.height);
+    window.visualViewport?.addEventListener('resize', handleIosViewport);
+    return () =>
+      window.visualViewport?.removeEventListener('resize', handleIosViewport);
+  }, [maxHeight]);
 
   useEffect(() => {
     if (inputRef.current) {
@@ -58,6 +67,7 @@ const Search = () => {
               className='bg-transparent flex-1 outline-none'
               value={query}
               onChange={(e) => setQuery(e.target.value)}
+              onBlur={(e) => setIsOpen(false)}
               autoFocus
             />
             {query && (
@@ -70,7 +80,12 @@ const Search = () => {
             )}
           </div>
           {query !== '' && (
-            <div className='mt-4 max-h-dvh p-5 bg-night rounded-lg shadow-md overflow-scroll'>
+            <div
+              className='mt-4 p-5 bg-night rounded-lg overflow-scroll transition-all duration-200'
+              style={{
+                maxHeight: isSafari ? `calc(${maxHeight}px - 150px)` : '450px',
+              }}
+            >
               {searchResults.length === 0 ? (
                 <p className='secondary-text'>No results found</p>
               ) : (
@@ -78,22 +93,23 @@ const Search = () => {
                   {searchResults.map((result) =>
                     events.some((event) => result === event) ? (
                       <EventCard
-                        key={result.id}
+                        key={result.name + result.id}
                         event={result as EventProps}
-                        onClick={() => setIsOpen(false)}
                         horizontal
                         size='xs'
                         hidePrice
+                        onClick={() => setIsOpen(false)}
                       />
                     ) : (
                       <Link
-                        key={result.id}
-                        href={`whats-on?categoryId${result.id}`}
-                        className='flex gap-3 items-center'
+                        key={result.name + result.id}
+                        href={`/whats-on?categoryId=${result.id}`}
+                        onMouseDown={(e) => e.preventDefault()}
                         onClick={() => setIsOpen(false)}
+                        className='flex gap-3 items-center'
                       >
                         <div className='w-14 flex justify-center'>
-                          <div className='p-3 bg-white bg-opacity-20 rounded-full'>
+                          <div className='p-3 bg-lilac bg-opacity-20 rounded-full'>
                             <Icon name='tag' size={18} />
                           </div>
                         </div>
