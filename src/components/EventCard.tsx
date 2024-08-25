@@ -18,6 +18,7 @@ interface EventCardProps {
   horizontal?: boolean;
   showSaved?: boolean;
   hidePrice?: boolean;
+  onClick?: () => void;
   size?: 'xs' | 'sm' | 'md';
 }
 
@@ -53,6 +54,7 @@ const EventCard = ({
   horizontal,
   showSaved,
   hidePrice,
+  onClick,
   size = 'md',
 }: EventCardProps) => {
   const { id, name, image, startDate, venueId, tickets } = event;
@@ -64,6 +66,7 @@ const EventCard = ({
         horizontal ? 'gap-3' : `${width} flex-col gap-2`
       }`}
       href={`/event/${formatEventUrl(id, name)}`}
+      onClick={onClick}
     >
       <div
         className={`${width} aspect-square h-fit relative overflow-hidden rounded-lg`}

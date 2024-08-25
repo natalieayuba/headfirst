@@ -19,10 +19,6 @@ const Search = () => {
   >([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.target.value);
-  };
-
   useEffect(() => {
     if (inputRef.current) {
       inputRef.current.focus();
@@ -61,7 +57,7 @@ const Search = () => {
               placeholder='Search events and categories'
               className='bg-transparent flex-1 outline-none'
               value={query}
-              onChange={handleChange}
+              onChange={(e) => setQuery(e.target.value)}
               autoFocus
             />
             {query && (
@@ -84,6 +80,7 @@ const Search = () => {
                       <EventCard
                         key={result.id}
                         event={result as EventProps}
+                        onClick={() => setIsOpen(false)}
                         horizontal
                         size='xs'
                         hidePrice
@@ -93,6 +90,7 @@ const Search = () => {
                         key={result.id}
                         href={`whats-on?categoryId${result.id}`}
                         className='flex gap-3 items-center'
+                        onClick={() => setIsOpen(false)}
                       >
                         <div className='w-14 flex justify-center'>
                           <div className='p-3 bg-white bg-opacity-20 rounded-full'>
