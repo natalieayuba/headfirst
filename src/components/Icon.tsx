@@ -16,6 +16,7 @@ import {
   FiChevronUp,
   FiCalendar,
   FiChevronLeft,
+  FiPlay,
 } from 'react-icons/fi';
 import { PiHandsClapping } from 'react-icons/pi';
 import { IoMdHeartEmpty, IoMdHeart } from 'react-icons/io';
@@ -47,6 +48,7 @@ const Icon = ({ name, size, className }: IconProps) => {
     copy: <FiCopy />,
     calendar: <FiCalendar />,
     pound: <TbCurrencyPound />,
+    play: <FiPlay />,
   };
 
   const icon = icons[name as keyof IconType];

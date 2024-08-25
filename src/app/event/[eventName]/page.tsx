@@ -22,6 +22,7 @@ import {
   getSubcategoryById,
   getVenueById,
 } from '@/data/utils';
+import Media from '@/components/whats-on/media/Media';
 
 const Event = ({ params }: { params: { eventName: string } }) => {
   const event = events.find(
@@ -185,6 +186,7 @@ const Event = ({ params }: { params: { eventName: string } }) => {
           </ButtonLink>
         </div>
       </div>
+      {event.media && <Media media={event.media} />}
       <div className='bg-night px-6 py-4 flex justify-between items-center sticky bottom-0'>
         <p className='text-2xl font-medium'>{formatPrice(event.tickets)}</p>
         <Button onClick={() => ''}>Get tickets </Button>

@@ -18,20 +18,6 @@ const Search = () => {
     (EventProps | CategoryProps)[]
   >([]);
   const inputRef = useRef<HTMLInputElement>(null);
-  const [maxHeight, setMaxHeight] = useState(
-    typeof window != 'undefined' ? window.visualViewport?.height : 0
-  );
-  const isIos =
-    typeof navigator !== 'undefined'
-      ? navigator.userAgent.match(/ipad|ipod|iphone/i)
-      : false;
-
-  useEffect(() => {
-    const handleIosViewport = () => setMaxHeight(window.visualViewport?.height);
-    window.visualViewport?.addEventListener('resize', handleIosViewport);
-    return () =>
-      window.visualViewport?.removeEventListener('resize', handleIosViewport);
-  }, [maxHeight]);
 
   useEffect(() => {
     if (inputRef.current) {
@@ -85,12 +71,7 @@ const Search = () => {
             )}
           </div>
           {query !== '' && (
-            <div
-              className='mt-4 p-5 bg-night rounded-lg overflow-scroll transition-all duration-200'
-              style={{
-                maxHeight: isIos ? `calc(${maxHeight}px - 150px)` : '450px',
-              }}
-            >
+            <div className='mt-4 p-5 bg-night rounded-lg overflow-scroll transition-all duration-200'>
               {searchResults.length === 0 ? (
                 <p className='secondary-text'>No results found</p>
               ) : (

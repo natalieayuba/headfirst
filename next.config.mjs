@@ -16,22 +16,12 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'dice-media.imgix.net',
-        port: '',
-      },
-      {
-        protocol: 'https',
         hostname: '**.pexels.com',
         port: '',
       },
       {
-        protocol: 'http',
-        hostname: 'dummyimage.com',
-        port: '',
-      },
-      {
         protocol: 'https',
-        hostname: 'loremflickr.com',
+        hostname: '**.youtube.com',
         port: '',
       },
     ],
