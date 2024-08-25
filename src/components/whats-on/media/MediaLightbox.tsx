@@ -1,90 +1,75 @@
 import React, {
   useEffect,
-  useState,
+  useRef,
   type Dispatch,
   type SetStateAction,
 } from 'react';
 import Lightbox from '../../Lightbox';
 import type { MediaProps } from '@/data/data';
 import HorizontalScroll from '../../HorizontalScroll';
-import MediaThumbnail, { isVideo } from './MediaThumbnail';
-import Image from 'next/image';
+import MediaThumbnail from './MediaThumbnail';
+import MediaSwiper from './MediaSwiper';
 
 interface MediaLightboxProps {
   media: MediaProps[];
-  selectedMedium: MediaProps | null;
-  setSelectedMedium: Dispatch<SetStateAction<MediaProps | null>>;
+  selectedIndex: number;
+  setSelectedIndex: Dispatch<SetStateAction<number>>;
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 const MediaLightbox = ({
   media,
-  selectedMedium,
-  setSelectedMedium,
+  selectedIndex,
+  setSelectedIndex,
   setIsOpen,
 }: MediaLightboxProps) => {
-  const margin = 24;
-  const resolution = 16 / 9;
-
-  const [videoSize, setVideoSize] = useState([
-    window.innerWidth - margin * 2,
-    window.innerWidth / resolution,
-  ]);
+  const scrollerRef = useRef<HTMLOListElement>(null);
+  const thumbnailRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (isVideo(selectedMedium!)) {
-      const updateSize = () =>
-        setVideoSize([
-          window.innerWidth - margin * 2,
-          window.innerWidth / resolution,
-        ]);
-      window.addEventListener('resize', updateSize);
-      updateSize();
-      return () => window.removeEventListener('resize', updateSize);
+    if (thumbnailRef.current && scrollerRef.current) {
+      const rect = thumbnailRef.current.getBoundingClientRect();
+      console.log(rect.left);
+      if (rect.right > window.innerWidth) {
+        scrollerRef.current.scroll(rect.right - window.innerWidth + 16, 0);
+      }
+      if (rect.left < 0) {
+        scrollerRef.current.scroll(rect.left - 16, 0);
+      }
     }
-  }, []);
+  }, [selectedIndex]);
 
   return (
     <Lightbox setIsOpen={setIsOpen}>
       <div className='flex flex-col h-full gap-4 justify-between '>
         <p className='text-center'>
-          {media.findIndex((medium) => medium === selectedMedium) + 1}
+          {selectedIndex + 1}
           {' of '}
           {media.length}
         </p>
-        <div className='flex-1 flex flex-col'>
-          <div className='flex-1 relative flex items-center'>
-            {isVideo(selectedMedium!) ? (
-              <iframe
-                src={selectedMedium?.src.replace('/watch?v=', '/embed/')}
-                allowFullScreen
-                width={videoSize[0]}
-                height={videoSize[1]}
-                title={selectedMedium?.alt}
-              />
-            ) : (
-              <Image
-                src={selectedMedium?.src!}
-                alt={selectedMedium?.alt!}
-                width={0}
-                height={0}
-                sizes='100vw'
-                fill
-                className='object-contain'
-              />
-            )}
-          </div>
-          <p className='text-center mt-4'>{selectedMedium?.alt}</p>
-        </div>
+        <MediaSwiper
+          onSwipe={(index) => setSelectedIndex(index)}
+          media={media}
+          selectedIndex={selectedIndex}
+        />
+        <p className='text-center mt-4'>{media[selectedIndex]?.alt}</p>
         <HorizontalScroll
+          ref={scrollerRef}
           className='-mx-6'
           list={media}
           card={(item) => (
             <MediaThumbnail
+              ref={
+                media.findIndex((medium) => medium === item) === selectedIndex
+                  ? thumbnailRef
+                  : null
+              }
               medium={item}
-              onClick={() => setSelectedMedium(item)}
+              onClick={() =>
+                setSelectedIndex(media.findIndex((medium) => medium === item))
+              }
               className={
-                item === selectedMedium
+                item === media[selectedIndex]
                   ? 'outline outline-2 outline-lilac'
                   : 'opacity-50'
               }

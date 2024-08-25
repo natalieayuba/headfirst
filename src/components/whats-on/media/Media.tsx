@@ -6,12 +6,12 @@ import MediaLightbox from './MediaLightbox';
 import MediaThumbnail from './MediaThumbnail';
 
 const Media = ({ media }: { media: MediaProps[] }) => {
-  const [selectedMedium, setSelectedMedium] = useState<MediaProps | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
   const { isOpen, setIsOpen } = useLightbox();
 
   const handleClick = (medium: MediaProps) => {
     setIsOpen(true);
-    setSelectedMedium(medium);
+    setSelectedIndex(media.findIndex((m, index) => m === medium)!);
   };
 
   return (
@@ -26,8 +26,8 @@ const Media = ({ media }: { media: MediaProps[] }) => {
       {isOpen && (
         <MediaLightbox
           media={media}
-          selectedMedium={selectedMedium}
-          setSelectedMedium={setSelectedMedium}
+          selectedIndex={selectedIndex}
+          setSelectedIndex={setSelectedIndex}
           setIsOpen={setIsOpen}
         />
       )}
