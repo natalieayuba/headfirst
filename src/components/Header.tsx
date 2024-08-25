@@ -5,6 +5,7 @@ import NavMenu from './navigation/NavMenu';
 import Search from './navigation/Search';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 const Header = () => {
   const [prevScrollY, setPrevScrollY] = useState(0);
@@ -28,7 +29,7 @@ const Header = () => {
       } ${visible ? 'top-0' : '-top-16'}`}
     >
       <nav className='flex justify-between h-full items-center transition-all duration-300 margin'>
-        <a href='/' className='h-full py-3'>
+        <Link href='/' className='h-full py-3'>
           <Image
             src='/logo.svg'
             alt='Headfirst Bristol logo'
@@ -36,7 +37,7 @@ const Header = () => {
             height='0'
             className='h-full w-auto'
           />
-        </a>
+        </Link>
         <div className='flex'>
           <Search />
           <NavLinks />

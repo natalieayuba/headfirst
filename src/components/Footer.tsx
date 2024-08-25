@@ -30,7 +30,7 @@ const Footer = () => {
   return (
     <footer className='bg-night margin-x-outer text-sm'>
       <div className='pt-16'>
-        <a href='/'>
+        <Link href='/'>
           <Image
             src='/logo.svg'
             alt='Headfirst logo'
@@ -38,7 +38,7 @@ const Footer = () => {
             height='0'
             className='w-20 h-auto'
           />
-        </a>
+        </Link>
         <div className='my-6'>
           {footerLinks.map(({ heading, links }) => (
             <div key={heading} className='mb-6'>
@@ -62,7 +62,7 @@ const Footer = () => {
         <ul className='flex flex-wrap gap-x-4'>
           {legalLinks.map((link) => (
             <li key={link}>
-              <a href='#'>{link}</a>
+              <Link href='#'>{link}</Link>
             </li>
           ))}
         </ul>

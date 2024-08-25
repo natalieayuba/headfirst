@@ -1,4 +1,4 @@
-import React, { type Dispatch, type SetStateAction } from 'react';
+import React from 'react';
 import Icon from '../Icon';
 
 interface FilterChipProps {
@@ -6,7 +6,7 @@ interface FilterChipProps {
   name: string;
   value: string;
   selected: string;
-  setSelected: Dispatch<SetStateAction<string>>;
+  setSelected: (value: string) => void;
 }
 
 const FilterChip = ({
@@ -32,6 +32,7 @@ const FilterChip = ({
       </label>
       {value === selected && (
         <button
+          type='button'
           className='p-0.5 opacity-50 hover:opacity-100 transition-opacity duration-100'
           onClick={() => setSelected('')}
         >

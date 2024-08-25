@@ -1,42 +1,42 @@
 import React, { useEffect, useState } from 'react';
 import Dropdown from '../Dropdown';
 import { Button } from '../buttons/Button';
-import type { AddFilterProps } from '@/app/whats-on/page';
 import { getMaxPrice } from '@/utils/formatting';
 import { events, type TicketProps } from '../../data/data';
 import Slider from '@mui/material/Slider';
 import { colors } from '../../../config';
+import { usePathname, useSearchParams, useRouter } from 'next/navigation';
 
-const PriceDropdown = ({ addFilter, clear }: AddFilterProps) => {
+const PriceDropdown = () => {
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const router = useRouter();
+
   const min = 0;
+  const minDistance = 5;
   const max = () => {
     const allTickets: TicketProps[] = [];
     events.forEach((event) => allTickets.push(...event.tickets));
     return getMaxPrice(allTickets);
   };
 
-  const minDistance = 5;
+  const [price, setPrice] = useState<number[]>(
+    searchParams.has('priceFrom')
+      ? [
+          searchParams.get('priceFrom')?.toString(),
+          searchParams.get('priceTo')?.toString(),
+        ]
+      : [min, max()]
+  );
 
-  const [price, setPrice] = useState<number[]>();
-  const [tmpPrice, setTmpPrice] = useState<number[]>([min, max()]);
-
-  const formatPrice = (priceArr: number[]) => `${
-    priceArr[0] === min ? 'Free' : `£${priceArr[0]}`
+  const formatPrice = (priceArr: (number | string)[]) => `${
+    priceArr[0].toString() === min.toString() ? 'Free' : `£${priceArr[0]}`
   } -
-  ${priceArr[1] === max() ? 'any amount' : `£${priceArr[1]}`}`;
-
-  useEffect(() => {
-    if (price && price.length > 0) {
-      addFilter('price', price);
-    }
-  }, [price]);
-
-  useEffect(() => {
-    if (clear) {
-      setPrice([]);
-      setTmpPrice([min, max()]);
-    }
-  }, [clear]);
+  ${
+    priceArr[1].toString() === max().toString()
+      ? 'any amount'
+      : `£${priceArr[1]}`
+  }`;
 
   const handleChange = (
     event: Event,
@@ -48,26 +48,40 @@ const PriceDropdown = ({ addFilter, clear }: AddFilterProps) => {
     }
 
     if (activeThumb === 0) {
-      setTmpPrice([
-        Math.min(newValue[0], tmpPrice[1] - minDistance),
-        tmpPrice[1],
-      ]);
+      setPrice([Math.min(newValue[0], price[1] - minDistance), price[1]]);
     } else {
-      setTmpPrice([
-        tmpPrice[0],
-        Math.max(newValue[1], tmpPrice[0] + minDistance),
-      ]);
+      setPrice([price[0], Math.max(newValue[1], price[0] + minDistance)]);
     }
   };
+
+  const handleClick = () => {
+    const params = new URLSearchParams(searchParams);
+    params.set('priceFrom', price[0].toString());
+    params.set('priceTo', price[1].toString());
+    router.replace(`${pathname}?${params.toString()}`);
+  };
+
+  useEffect(() => {
+    if (!searchParams.has('priceFrom')) {
+      setPrice([min, max()]);
+    }
+  }, [searchParams]);
 
   return (
     <Dropdown
       title='Price'
       icon='pound'
-      selected={price && price.length > 0 ? formatPrice(price) : ''}
+      selected={
+        searchParams.has('priceFrom')
+          ? `${formatPrice([
+              searchParams.get('priceFrom')!,
+              searchParams.get('priceTo')!,
+            ])}`
+          : ''
+      }
     >
       <Slider
-        value={tmpPrice}
+        value={price}
         min={min}
         max={max()}
         onChange={handleChange}
@@ -85,10 +99,15 @@ const PriceDropdown = ({ addFilter, clear }: AddFilterProps) => {
           },
         }}
       />
-      <Button alt className='w-full' onClick={() => setPrice(tmpPrice)}>
+      <Button
+        alt
+        className='w-full'
+        onClick={handleClick}
+        disabled={price[0] === min && price[1] === max()}
+      >
         Show prices between
         <span className='block text-xl leading-[105%]'>
-          {formatPrice(tmpPrice)}
+          {formatPrice(price)}
         </span>
       </Button>
     </Dropdown>

@@ -45,7 +45,7 @@ const Event = ({ params }: { params: { eventName: string } }) => {
     },
     {
       name: getCategoryById(event.categoryId)?.name,
-      url: `/whats-on?category=${event.categoryId}`,
+      url: `/whats-on?categoryId=${event.categoryId}`,
     },
   ];
 

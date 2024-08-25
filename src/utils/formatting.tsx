@@ -62,3 +62,11 @@ export const capitaliseFirstLetter = (text: string) =>
 
 export const formatEventUrl = (id: string, name: string) =>
   toUrl(`${name}-${id}`);
+
+export const formatDateParam = (date: Date) => {
+  const yyyy = date.getFullYear();
+  const mm = date.getMonth() + 1;
+  const dd = date.getDate();
+  const pad = (n: number) => (n < 10 ? `0${n}` : n);
+  return `${yyyy}-${pad(mm)}-${pad(dd)}`;
+};

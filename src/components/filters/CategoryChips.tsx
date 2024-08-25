@@ -1,40 +1,50 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { categories, type SubcategoryProps } from '../../data/data';
 import FilterChip from './FilterChip';
-import type { AddFilterProps } from '@/app/whats-on/page';
 import { getCategoryById } from '@/data/utils';
-import { useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
-const CategoryChips = ({ addFilter, clear }: AddFilterProps) => {
+const CategoryChips = () => {
   const searchParams = useSearchParams();
-  const [categoryId, setCategoryId] = useState(
-    searchParams.get('categoryId') ?? ''
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const category = getCategoryById(searchParams.get('categoryId')?.toString()!);
+  const [subcategories, setSubcategories] = useState<SubcategoryProps[]>(
+    category ? category.subcategories : []
   );
-  const [subcategories, setSubcategories] = useState<SubcategoryProps[]>([]);
-  const [subcategoryId, setSubcategoryId] = useState('');
   const subcategoriesRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    addFilter('categoryId', categoryId);
-    const category = getCategoryById(categoryId);
-    if (category && subcategoriesRef.current) {
-      setSubcategories(category.subcategories);
+  const onCategoryChange = (id: string) => {
+    const params = new URLSearchParams(searchParams);
+    if (id && subcategoriesRef.current) {
+      const category = getCategoryById(id);
+      params.set('categoryId', id);
+      setSubcategories(category?.subcategories!);
+      params.delete('subcategoryId');
       subcategoriesRef.current.scrollLeft = 0;
-      setSubcategoryId('');
     } else {
+      params.delete('categoryId');
       setSubcategories([]);
     }
-  }, [categoryId]);
+    router.replace(`${pathname}?${params.toString()}`);
+  };
 
-  useEffect(() => addFilter('subcategoryId', subcategoryId), [subcategoryId]);
+  const onSubcategoryChange = (id: string) => {
+    const params = new URLSearchParams(searchParams);
+    if (id) {
+      params.set('subcategoryId', id);
+    } else {
+      params.delete('subcategoryId');
+    }
+    router.replace(`${pathname}?${params.toString()}`);
+  };
 
   useEffect(() => {
-    if (clear) {
-      setCategoryId('');
+    if (!searchParams.has('categoryId')) {
       setSubcategories([]);
-      setSubcategoryId('');
     }
-  }, [clear]);
+  }, [searchParams]);
 
   return (
     <div className='flex gap-2 flex-col'>
@@ -45,8 +55,8 @@ const CategoryChips = ({ addFilter, clear }: AddFilterProps) => {
             text={name}
             value={id}
             name='category'
-            selected={categoryId}
-            setSelected={setCategoryId}
+            selected={searchParams.get('categoryId')?.toString() ?? ''}
+            setSelected={onCategoryChange}
           />
         ))}
       </div>
@@ -64,8 +74,8 @@ const CategoryChips = ({ addFilter, clear }: AddFilterProps) => {
               text={name}
               value={id}
               name='subcategory'
-              selected={subcategoryId}
-              setSelected={setSubcategoryId}
+              selected={searchParams.get('subcategoryId')?.toString() ?? ''}
+              setSelected={onSubcategoryChange}
             />
           ))}
       </div>

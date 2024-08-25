@@ -15,6 +15,7 @@ import {
   FiChevronDown,
   FiChevronUp,
   FiCalendar,
+  FiChevronLeft,
 } from 'react-icons/fi';
 import { PiHandsClapping } from 'react-icons/pi';
 import { IoMdHeartEmpty, IoMdHeart } from 'react-icons/io';
@@ -33,6 +34,7 @@ const Icon = ({ name, size, className }: IconProps) => {
     'arrow-right': <FiArrowRight />,
     clap: <PiHandsClapping />,
     'angle-right': <FiChevronRight />,
+    'angle-left': <FiChevronLeft />,
     'angle-down': <FiChevronDown />,
     'angle-up': <FiChevronUp />,
     heart: <FiHeart />,

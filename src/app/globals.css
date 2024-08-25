@@ -28,6 +28,21 @@ input[type='search']::-webkit-search-results-decoration {
   backdrop-filter: var(--tw-backdrop-blur);
 }
 
+.react-calendar__navigation {
+  display: flex;
+  margin-bottom: 16px;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.react-calendar__month-view__weekdays__weekday {
+  text-align: center;
+}
+
+.react-calendar__month-view__weekdays__weekday abbr:where([title]) {
+  text-decoration: none;
+}
+
 @layer base {
   h1 {
     @apply mb-2;
