@@ -77,7 +77,7 @@ events.forEach((event) => {
   if (event.lastEntry) {
     const lastEntry = new Date(event.lastEntry);
     lastEntry.setDate(lastEntry.getDate() + diff);
-    event.lastEntry = endDate.toISOString();
+    event.lastEntry = lastEntry.toISOString();
   }
 
   return event;

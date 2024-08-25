@@ -15,7 +15,7 @@ const SaveButton = ({ event, className, size }: SaveButtonProps) => {
     <button
       type='button'
       onClick={() => (event.saved = !event.saved)}
-      className={`p-2 bg-opacity-80 rounded-full${appendClassName(className)}`}
+      className={`bg-opacity-80 rounded-full${appendClassName(className)}`}
     >
       <Icon
         size={size}

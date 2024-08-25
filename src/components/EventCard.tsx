@@ -101,7 +101,7 @@ const EventCard = ({
       {showSaved && (
         <SaveButton
           event={event}
-          className={horizontal ? '' : 'absolute top-1 right-1 bg-night'}
+          className={horizontal ? '' : 'absolute top-1 right-1 bg-night p-2'}
           size={16}
         />
       )}

@@ -15,7 +15,7 @@ interface ButtonLinkProps extends ButtonProps {
 }
 
 const styling = (alt?: boolean, className?: string) =>
-  `min-w-32 w-fit px-6 py-4 font-semibold rounded text-dark-night enabled:hover:opacity-80 disabled:opacity-30 transition-opacity duration-200 ${
+  `min-w-32 w-fit px-4 py-[14px] font-semibold rounded text-dark-night enabled:hover:opacity-80 disabled:opacity-30 transition-opacity duration-200 ${
     alt ? 'bg-white' : 'bg-lilac'
   }${className ? ` ${className}` : ''}`;
 

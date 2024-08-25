@@ -18,8 +18,13 @@ const Search = () => {
     (EventProps | CategoryProps)[]
   >([]);
   const inputRef = useRef<HTMLInputElement>(null);
-  const [maxHeight, setMaxHeight] = useState(window.visualViewport?.height);
-  const isSafari = navigator.userAgent.indexOf('Safari') != -1;
+  const [maxHeight, setMaxHeight] = useState(
+    typeof window != 'undefined' ? window.visualViewport?.height : 0
+  );
+  const isIos =
+    typeof navigator !== 'undefined'
+      ? navigator.userAgent.match(/ipad|ipod|iphone/i)
+      : false;
 
   useEffect(() => {
     const handleIosViewport = () => setMaxHeight(window.visualViewport?.height);
@@ -83,7 +88,7 @@ const Search = () => {
             <div
               className='mt-4 p-5 bg-night rounded-lg overflow-scroll transition-all duration-200'
               style={{
-                maxHeight: isSafari ? `calc(${maxHeight}px - 150px)` : '450px',
+                maxHeight: isIos ? `calc(${maxHeight}px - 150px)` : '450px',
               }}
             >
               {searchResults.length === 0 ? (
