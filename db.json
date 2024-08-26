@@ -1,0 +1,729 @@
+{
+  "categories": [
+    {
+      "id": "1001",
+      "name": "Live music",
+      "image": "https://images.unsplash.com/photo-1575672913784-11a7cd4f25f4?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "subcategories": [
+        {
+          "id": "1001",
+          "name": "Pop"
+        },
+        {
+          "id": "1002",
+          "name": "R&B"
+        },
+        {
+          "id": "1003",
+          "name": "Metal"
+        },
+        {
+          "id": "1004",
+          "name": "Reggae"
+        },
+        {
+          "id": "1005",
+          "name": "Afrobeats"
+        },
+        {
+          "id": "1006",
+          "name": "Salsa"
+        },
+        {
+          "id": "1007",
+          "name": "World"
+        },
+        {
+          "id": "1008",
+          "name": "Classical"
+        },
+        {
+          "id": "1009",
+          "name": "Rock"
+        },
+        {
+          "id": "1010",
+          "name": "Country"
+        },
+        {
+          "id": "1011",
+          "name": "Blues"
+        },
+        {
+          "id": "1012",
+          "name": "Open mic"
+        },
+        {
+          "id": "1013",
+          "name": "Jam session"
+        },
+        {
+          "id": "1014",
+          "name": "Indie"
+        },
+        {
+          "id": "1015",
+          "name": "Punk"
+        },
+        {
+          "id": "1016",
+          "name": "Folk"
+        },
+        {
+          "id": "1017",
+          "name": "Jazz"
+        },
+        {
+          "id": "1018",
+          "name": "Singer-songwriter"
+        },
+        {
+          "id": "1019",
+          "name": "Hip-hop"
+        },
+        {
+          "id": "1020",
+          "name": "Rap"
+        },
+        {
+          "id": "1021",
+          "name": "Soul"
+        },
+        {
+          "id": "1022",
+          "name": "Funk"
+        },
+        {
+          "id": "1023",
+          "name": "Gospel"
+        }
+      ]
+    },
+    {
+      "id": "1002",
+      "name": "Club nights",
+      "image": "https://images.unsplash.com/photo-1626553202550-992f4f500d4a?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "subcategories": [
+        {
+          "id": "1001",
+          "name": "House"
+        },
+        {
+          "id": "1002",
+          "name": "Disco"
+        },
+        {
+          "id": "1003",
+          "name": "Techno"
+        },
+        {
+          "id": "1004",
+          "name": "Garage"
+        },
+        {
+          "id": "1005",
+          "name": "Electro"
+        },
+        {
+          "id": "1006",
+          "name": "Dancehall"
+        },
+        {
+          "id": "1007",
+          "name": "Reggaeton"
+        },
+        {
+          "id": "1009",
+          "name": "Amapiano"
+        },
+        {
+          "id": "1010",
+          "name": "Trance"
+        },
+        {
+          "id": "1011",
+          "name": "Jungle"
+        },
+        {
+          "id": "1012",
+          "name": "Dubstep"
+        },
+        {
+          "id": "1013",
+          "name": "Experimental"
+        },
+        {
+          "id": "1014",
+          "name": "Drum & bass"
+        }
+      ]
+    },
+    {
+      "id": "1003",
+      "name": "Arts & performance",
+      "image": "https://images.pexels.com/photos/3778868/pexels-photo-3778868.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "subcategories": [
+        {
+          "id": "1001",
+          "name": "LGBTQ+"
+        },
+        {
+          "id": "1002",
+          "name": "Drag"
+        },
+        {
+          "id": "1003",
+          "name": "Theatre"
+        },
+        {
+          "id": "1004",
+          "name": "Musical"
+        },
+        {
+          "id": "1005",
+          "name": "Comedy"
+        },
+        {
+          "id": "1006",
+          "name": "Spoken word"
+        },
+        {
+          "id": "1007",
+          "name": "Poetry"
+        },
+        {
+          "id": "1009",
+          "name": "Life drawing"
+        },
+        {
+          "id": "1010",
+          "name": "Film screening"
+        },
+        {
+          "id": "1011",
+          "name": "Cabaret"
+        },
+        {
+          "id": "1012",
+          "name": "Circus"
+        },
+        {
+          "id": "1013",
+          "name": "Acrobatics"
+        },
+        {
+          "id": "1014",
+          "name": "Exhibition"
+        }
+      ]
+    },
+    {
+      "id": "1004",
+      "name": "Workshops & classes",
+      "image": "https://images.unsplash.com/photo-1526718583451-e88ebf774771?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "subcategories": [
+        {
+          "id": "1001",
+          "name": "Talks"
+        },
+        {
+          "id": "1002",
+          "name": "Business"
+        },
+        {
+          "id": "1003",
+          "name": "Q&A"
+        },
+        {
+          "id": "1004",
+          "name": "Presentation"
+        }
+      ]
+    },
+    {
+      "id": "1005",
+      "name": "Socials & hobbies",
+      "image": "https://images.pexels.com/photos/8111364/pexels-photo-8111364.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "subcategories": [
+        {
+          "id": "1001",
+          "name": "Food & drink"
+        },
+        {
+          "id": "1002",
+          "name": "Festival"
+        },
+        {
+          "id": "1003",
+          "name": "Pub quiz"
+        },
+        {
+          "id": "1004",
+          "name": "Film"
+        },
+        {
+          "id": "1005",
+          "name": "Pub crawl"
+        },
+        {
+          "id": "1006",
+          "name": "Board games"
+        }
+      ]
+    }
+  ],
+  "venues": [
+    {
+      "id": "1001",
+      "name": "Strange Brew",
+      "address": "10-12 Fairfax St, Bristol BS1 3DB",
+      "googleMapsLink": "https://www.google.com/maps/dir//strange+brew/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x48718f05f5bc6dcf:0x1b68321cc30b3853?sa=X&ved=1t:3061&ictx=111"
+    },
+    {
+      "id": "1002",
+      "name": "Mr Wolfs",
+      "address": "32 St Nicholas St, Bristol BS1 1TG",
+      "googleMapsLink": "https://www.google.com/maps?sca_esv=63ac0807f30938cd&sca_upv=1&rlz=1C1ONGR_en-GBGB1086GB1086&uact=5&gs_lp=Egxnd3Mtd2l6LXNlcnAiCG1yIHdvbGZzMg4QLhiABBjHARiOBRivATIHEC4YgAQYCjIHEC4YgAQYCjIHEC4YgAQYCjIFEAAYgAQyBRAAGIAEMgUQABiABDINEC4YgAQYxwEYChivATIFEC4YgAQyBxAAGIAEGAoyHRAuGIAEGMcBGI4FGK8BGJcFGNwEGN4EGOAE2AEBSP0SUABYjhJwAXgBkAEAmAGlAaABogeqAQM1LjS4AQPIAQD4AQGYAgqgAs8HqAIUwgIUEC4YgAQYkQIYxwEYigUYjgUYrwHCAgsQLhiABBiRAhiKBcICDhAuGIAEGLEDGIMBGIoFwgILEC4YgAQYsQMYgwHCAhEQLhiABBixAxiDARjUAhiKBcICCBAuGIAEGLEDwgIjEC4YgAQYkQIYxwEYigUYjgUYrwEYlwUY3AQY3gQY4ATYAQHCAhYQABgDGLQCGOUCGOoCGIwDGI8B2AECwgIWEC4YAxi0AhjlAhjqAhiMAxiPAdgBAsICHBAuGIAEGEMYtAIYxwEYigUY6gIYjgUYrwHYAQPCAhMQLhiABBhDGLQCGIoFGOoC2AEDwgITEAAYgAQYQxi0AhiKBRjqAtgBA8ICFhAuGIAEGEMY1AIYtAIYigUY6gLYAQPCAgoQLhiABBhDGIoFwgILEAAYgAQYsQMYgwHCAhEQLhiABBixAxjRAxiDARjHAcICGRAuGIAEGEMYigUYlwUY3AQY3gQY3wTYAQHCAgoQABiABBhDGIoFwgINEC4YgAQYQxjUAhiKBcICKBAuGIAEGEMYigUYlwUY3AQY3gQY4AQY9AMY8QMY9QMY9gMY9wPYAQHCAg0QLhiABBixAxiDARgKwgIIEAAYgAQYsQPCAg4QLhiABBixAxjHARivAcICCxAuGIAEGMcBGK8BmAMEugYGCAEQARgUugYGCAIQARgKugYECAMYB5IHAzYuNKAH0_kB&um=1&ie=UTF-8&fb=1&gl=uk&sa=X&geocode=KZn2URJ4jnFIMf7ZCZqueNT-&daddr=32+St+Nicholas+St,+Bristol+BS1+1TG"
+    },
+    {
+      "id": "1003",
+      "name": "Exchange",
+      "address": "72, 73 Old Market St, Bristol BS2 0EJ",
+      "googleMapsLink": "https://www.google.com/maps/dir//exchange+venue+bristol/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x48718fbf6d1aaed3:0x7136710466bba5f?sa=X&ved=1t:3061&ictx=111"
+    },
+    {
+      "id": "1004",
+      "name": "The Canteen",
+      "address": "Hamilton House, 80 Stokes Croft, St Paul's, Bristol BS1 3QY",
+      "googleMapsLink": "https://www.google.com/maps/dir//the+canteen/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x48718e7382a77e71:0x7e1afcc4518de42f?sa=X&ved=1t:3061&ictx=111"
+    },
+    {
+      "id": "1005",
+      "name": "The Jam Jar",
+      "address": "Unit 4a, The Jam Jar, The Old Malt House, Little Ann St, St Jude's, Bristol BS2 9EB",
+      "googleMapsLink": "https://www.google.com/maps/dir//the+jam+jar/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x48718e6eb0ed6fa9:0xe0b916c9ea82b2c0?sa=X&ved=1t:3061&ictx=111"
+    },
+    {
+      "id": "1006",
+      "name": "Cloak",
+      "address": "182, 184 Cheltenham Rd, Cotham, Bristol BS6 5RB",
+      "googleMapsLink": "https://www.google.com/maps?sca_esv=63ac0807f30938cd&sca_upv=1&rlz=1C1ONGR_en-GBGB1086GB1086&uact=5&gs_lp=Egxnd3Mtd2l6LXNlcnAiDWNsb2FrIGJyaXN0b2wyCxAuGIAEGMcBGK8BMgUQABiABDIFEAAYgAQyBhAAGBYYHjIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeMgYQABgWGB4yCBAAGBYYChgeMhoQLhiABBjHARivARiXBRjcBBjeBBjgBNgBA0jQCVC6AljfCHABeAGQAQCYAWSgAbMFqgEDNy4xuAEDyAEA-AEBmAIJoALUBcICChAAGLADGNYEGEfCAg0QABiABBiwAxhDGIoFwgIOEAAYsAMY5AIY1gTYAQHCAhYQLhiABBiwAxhDGNQCGMgDGIoF2AECwgIZEC4YgAQYsAMY0QMYQxjHARjIAxiKBdgBAsICDRAAGIAEGLEDGEMYigXCAgoQABiABBhDGIoFwgILEC4YgAQYsQMY1ALCAggQABiABBixA8ICERAuGIAEGJECGMcBGIoFGK8BwgIIEAAYFhgeGA-YAwCIBgGQBhG6BgYIARABGAm6BgYIAhABGAi6BgYIAxABGBSSBwM4LjGgB_VI&um=1&ie=UTF-8&fb=1&gl=uk&sa=X&geocode=KWnJWp0LjnFIMX69zHf4FCoU&daddr=182,+184+Cheltenham+Rd,+Cotham,+Bristol+BS6+5RB"
+    },
+    {
+      "id": "1007",
+      "name": "The Old England",
+      "address": "43 Bath Buildings, Montpelier, Bristol BS6 5PT",
+      "googleMapsLink": "https://www.google.com/maps?sca_esv=63ac0807f30938cd&sca_upv=1&rlz=1C1ONGR_en-GBGB1086GB1086&uact=5&gs_lp=Egxnd3Mtd2l6LXNlcnAiE3RoZSBvbGQgZW5nbGFuZCBwdWIyDhAuGIAEGMcBGI4FGK8BMgUQABiABDILEC4YgAQYxwEYrwEyBRAAGIAEMgUQABiABDIGEAAYFhgeMgYQABgWGB4yBhAAGBYYHjIGEAAYFhgeMgYQABgWGB4yHRAuGIAEGMcBGI4FGK8BGJcFGNwEGN4EGOAE2AEBSPgUUABYzxNwAXgBkAEAmAGoAaABsxKqAQQzLjE3uAEDyAEA-AEBmAIVoAKKE8ICExAuGIAEGEMYxwEYigUYjgUYrwHCAgoQABiABBhDGIoFwgIQEC4YgAQYQxjHARiKBRivAcICFBAuGIAEGJECGMcBGIoFGI4FGK8BwgIiEC4YgAQYQxjHARiKBRiOBRivARiXBRjcBBjeBBjgBNgBAcICGRAuGIAEGEMYxwEYmAUYmQUYigUYjgUYrwHCAhcQLhiABBiRAhjUAhjHARiKBRiOBRivAcICCxAAGIAEGJECGIoFwgIREC4YgAQYsQMYgwEYxwEYrwHCAgsQABiABBixAxiDAcICIxAuGIAEGJECGMcBGIoFGI4FGK8BGJcFGNwEGN4EGOAE2AEBwgIFEC4YgATCAhQQLhiABBjHARiYBRiZBRieBRivAZgDALoGBggBEAEYFJIHBDQuMTegB8iFAw&um=1&ie=UTF-8&fb=1&gl=uk&sa=X&geocode=KT8mgcEMjnFIMT2Z3jLwhEWn&daddr=43+Bath+Buildings,+Montpelier,+Bristol+BS6+5PT"
+    },
+    {
+      "id": "1008",
+      "name": "The Lanes",
+      "address": "22 Nelson St, Bristol BS1 2LE",
+      "googleMapsLink": "https://www.google.com/maps?sca_esv=63ac0807f30938cd&sca_upv=1&rlz=1C1ONGR_en-GBGB1086GB1086&uact=5&gs_lp=Egxnd3Mtd2l6LXNlcnAiCXRoZSBsYW5lczIREC4YgAQYsQMYxwEYjgUYrwEyCBAAGIAEGLEDMgUQABiABDIXEC4YgAQYsQMYxwEYmAUYmQUYngUYrwEyCxAuGIAEGLEDGIMBMhEQLhiABBixAxiDARjHARivATIFEAAYgAQyBRAAGIAEMgsQLhiABBjHARivATIFEAAYgAQyIBAuGIAEGLEDGMcBGI4FGK8BGJcFGNwEGN4EGOAE2AEBSL4GUABYkwZwAHgAkAEAmAGmAaABkAiqAQMwLji4AQPIAQD4AQGYAgigArMIwgITEC4YgAQYQxjHARiKBRiOBRivAcICEBAuGIAEGEMYxwEYigUYrwHCAgoQABiABBhDGIoFwgIOEC4YgAQYsQMY0QMYxwHCAhYQLhiABBixAxjRAxhDGIMBGMcBGIoFwgILEAAYgAQYsQMYgwHCAhEQLhiABBixAxjRAxiDARjHAcICIhAuGIAEGEMYxwEYigUYjgUYrwEYlwUY3AQY3gQY4ATYAQHCAgoQLhiABBhDGIoFwgIOEC4YgAQYsQMYgwEYigXCAg0QABiABBhDGMkDGIoFwgILEAAYgAQYkgMYigXCAgsQABiABBiRAhiKBcICDRAuGIAEGEMY1AIYigXCAg4QLhiABBjHARiOBRivAcICDhAuGIAEGLEDGIMBGNQCwgIIEC4YgAQYsQPCAg0QABiABBiRAhiKBRgKwgIXEC4YgAQYkQIYxwEYmAUYigUYjgUYrwHCAh0QLhiABBixAxiDARjUAhjHARiYBRiZBRieBRivAcICFxAuGIAEGLEDGIMBGMcBGJgFGJkFGK8BmAMAugYGCAEQARgUkgcDMC44oAf6nwE&um=1&ie=UTF-8&fb=1&gl=uk&sa=X&geocode=KbEZCQp3jnFIMX9ifV_z5360&daddr=22+Nelson+St,+Bristol+BS1+2LE"
+    },
+    {
+      "id": "1009",
+      "name": "Moor Beer Co",
+      "address": "Days Rd, Bristol BS2 0QS",
+      "googleMapsLink": "https://www.google.com/maps?sca_esv=63ac0807f30938cd&sca_upv=1&rlz=1C1ONGR_en-GBGB1086GB1086&uact=5&gs_lp=Egxnd3Mtd2l6LXNlcnAiDG1vb3IgYmVlciBjbzILEC4YgAQYxwEYrwEyBRAAGIAEMgsQLhiABBjHARivATIFEAAYgAQyBRAAGIAEMggQABiABBiiBDIIEAAYgAQYogQyCBAAGIAEGKIEMhoQLhiABBjHARivARiXBRjcBBjeBBjgBNgBAUj6C1AAWNsKcAB4AJABAJgBiwGgAeMJqgEDNi42uAEDyAEA-AEBmAIMoAKaCsICFBAuGIAEGJECGMcBGIoFGI4FGK8BwgIWEC4YgAQYQxjHARiYBRiKBRiOBRivAcICChAuGIAEGEMYigXCAhAQABiABBixAxhDGIMBGIoFwgIOEC4YgAQYsQMYgwEYigXCAhEQLhiABBixAxjRAxiDARjHAcICCxAuGIAEGLEDGIMBwgIjEC4YgAQYkQIYxwEYigUYjgUYrwEYlwUY3AQY3gQY4ATYAQHCAhMQLhiABBhDGMcBGIoFGI4FGK8BwgIXEC4YgAQYkQIYxwEYmAUYigUYjgUYrwHCAgoQABiABBhDGIoFwgILEAAYgAQYsQMYgwHCAg4QLhiABBixAxjRAxjHAcICIhAuGIAEGEMYxwEYigUYjgUYrwEYlwUY3AQY3gQY4ATYAQHCAhAQLhiABBhDGMcBGIoFGK8BwgITEC4YgAQYsQMY0QMYQxjHARiKBcICExAuGIAEGLEDGEMYgwEY1AIYigXCAg4QABiABBixAxiDARiKBcICDRAAGIAEGLEDGEMYigXCAh8QLhiABBhDGMcBGIoFGK8BGJcFGNwEGN4EGOAE2AEBwgIREC4YgAQYsQMYgwEYxwEYrwHCAhcQLhiABBixAxiDARjHARiYBRiZBRivAcICCBAAGIAEGLEDwgIOEC4YgAQY1AIYxwEYrwHCAgsQABiABBiRAhiKBcICDhAuGIAEGMcBGI4FGK8BmAMAugYGCAEQARgUkgcDNS43oAfjsQE&um=1&ie=UTF-8&fb=1&gl=uk&sa=X&geocode=KaV2ImfDE3JIMSRtLarmtTV9&daddr=Days+Rd,+Bristol+BS2+0QS"
+    },
+    {
+      "id": "1010",
+      "name": "The Wardrobe Theatre",
+      "address": "25 West St, Bristol BS2 0DF",
+      "googleMapsLink": "https://www.google.com/maps/dir//the+wardrobe+theatre/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x48718e6f16076561:0xc6a045d5b8aa43e?sa=X&ved=1t:3061&ictx=111"
+    },
+    {
+      "id": "1011",
+      "name": "The Trinity Centre",
+      "address": "Trinity Centre, Trinity Rd, St Jude's, Bristol BS2 0NW",
+      "googleMapsLink": "https://www.google.com/maps/dir//the+trinity+centre/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x48718e692141ad59:0xad74b64e0769a931?sa=X&ved=1t:3061&ictx=111"
+    },
+    {
+      "id": "1012",
+      "name": "The Red Church",
+      "address": "190 Church Rd, Redfield, Bristol BS5 8AE",
+      "googleMapsLink": "https://www.google.com/maps?rlz=1C1ONGR_en-GBGB1086GB1086&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg80gEIMjA1NmowajeoAgCwAgA&um=1&ie=UTF-8&fb=1&gl=uk&sa=X&geocode=KeFGxufcj3FIMb4S2bN-ino8&daddr=190+Church+Rd,+Redfield,+Bristol+BS5+8AE"
+    },
+    {
+      "id": "1013",
+      "name": "Dare to Club",
+      "address": "1 Alfred St, Bristol BS2 0RF",
+      "googleMapsLink": "https://www.google.com/maps/dir//dare+to+club/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x48718f4fa63aed71:0xfdd03197c9f5d027?sa=X&ved=1t:3061&ictx=111"
+    },
+    {
+      "id": "1014",
+      "name": "The Full Moon & Attic Bar",
+      "address": "1 North St, St Paul's, Bristol BS1 3PR",
+      "googleMapsLink": "https://www.google.com/maps/dir//The+Full+Moon+and+Attic+Bar/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x48718e737ecb0eeb:0x9d17d738b461e0ce?sa=X&ved=1t:3061&ictx=111"
+    },
+    {
+      "id": "1015",
+      "name": "Lakota",
+      "address": "6 Upper York St, St Paul's, Bristol BS2 8QN",
+      "googleMapsLink": "https://www.google.com/maps/dir//lakota/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x48718e73c32b1ab9:0xa2ba0be681faa28f?sa=X&ved=1t:3061&ictx=111"
+    },
+    {
+      "id": "1016",
+      "name": "Basement 45",
+      "address": "Avon, 8 Frogmore St, Bristol BS1 5NA",
+      "googleMapsLink": "https://www.google.com/maps?rlz=1C1ONGR_en-GBGB1086GB1086&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg80gEIMTM0NGowajeoAgCwAgA&um=1&ie=UTF-8&fb=1&gl=uk&sa=X&geocode=KZGJwUbXjXFIMSs5Te4dPuAL&daddr=Avon,+8+Frogmore+St,+Bristol+BS1+5NA"
+    }
+  ],
+  "events": [
+    {
+      "id": "1001",
+      "name": "A Long Strange Dream: Batu (All Night)",
+      "startDate": "2024-08-23T22:00",
+      "endDate": "2024-08-24T03:00",
+      "venueId": "1001",
+      "categoryId": "1002",
+      "subcategoryIds": ["1001", "1003", "1004", "1005", "1006"],
+      "about": "Batu is back at Strange Brew for his annual all nighter. Firmly Rooted will provide sound and local legend Roo will provide lighting. The Strange Brew backroom is gonna be popping for this all night extravaganza. Batu will provide his unique style of genre hopping, dubby sonics and trippers over a 5.5 hours. Grab a ticket early!",
+      "image": "https://headfirstbristol.co.uk/images/events/1124/e112407_i209742_s4.jpg",
+      "credit": "https://headfirstbristol.co.uk/whats-on/strange-brew/sat-24-aug-a-long-strange-dream-batu-all-night--112407#e112407",
+      "saved": false,
+      "ageLimit": 18,
+      "tickets": [
+        {
+          "name": "Early bird",
+          "price": 8
+        },
+        {
+          "name": "General release",
+          "price": 12
+        }
+      ],
+      "media": [
+        {
+          "src": "https://www.youtube.com/watch?v=lHlBGa1zVFc&embeds_referring_euri=https%3A%2F%2Fheadfirstbristol.co.uk%2F&source_ve_path=MjM4NTE",
+          "alt": "Batu DJ Set From DJ Mag HQ"
+        },
+        {
+          "src": "https://www.youtube.com/watch?v=j8Ni3HskCnc",
+          "alt": "London Unlocked: Batu at Smithfield Market"
+        }
+      ],
+      "socials": {
+        "spotify": "https://open.spotify.com/artist/4WmdmK9wvEhtRChA2ko9Sr?go=1&sp_cid=febb954c987fdc5abbcbb8e0ed23573f&utm_source=embed_player_p&utm_medium=desktop&nd=1&dlsi=7068f6162bbb47fd"
+      }
+    },
+    {
+      "id": "1002",
+      "name": "Melodies International: Mafalda, Theo Terev, Seiji",
+      "startDate": "2024-08-23T22:30",
+      "endDate": "2024-08-23T04:00",
+      "venueId": "1001",
+      "categoryId": "1002",
+      "subcategoryIds": ["1001", "1002"],
+      "about": "Melodies International presents\nMafalda, Theo Terev & Seiji Ono\nSat 31 Aug\n22:30 - 04:00\n\nExcited to announce the Melodies International label will be joining us this August for a summer hit of the finest Disco, House and soulful shakers. Melodies will be represented by label manager Seiji Ono and Parisian digger Theo Terev of the La Mamies collective plus vibrant eclecticism from Portuguese selector Mafalda\n\nFounded in 2015 by Floating Points, Melodies has been dedicated to re-issuing special uncovered sounds from across the world… check that back catalogue!\n\nMore recently, the label has launched a series of artist and DJ curated 12\" reissue mini compilations called Melodies Record Club in collaboration with Four Tet, Ben UFO and Hunee bringing beautiful music to new audiences across generations.",
+      "image": "https://headfirstbristol.co.uk/images/events/1133/e113366_i212585_s4.jpg",
+      "credit": "https://headfirstbristol.co.uk/whats-on/strange-brew/sat-31-aug-melodies-international-mafalda-theo-terev-seiji-113366#e113366",
+      "saved": false,
+      "ageLimit": 18,
+      "tickets": [
+        {
+          "name": "Early bird",
+          "price": 5
+        },
+        {
+          "name": "General release",
+          "price": 10
+        }
+      ],
+      "media": [
+        {
+          "src": "https://www.youtube.com/watch?v=PTHQHm_lvZM",
+          "alt": ""
+        },
+        {
+          "src": "https://www.youtube.com/watch?v=MIm20HZbPbk",
+          "alt": ""
+        }
+      ]
+    },
+    {
+      "id": "1003",
+      "name": "Disco Isn't Dead: System Olympia & DJ October",
+      "startDate": "2024-08-23T22:00",
+      "endDate": "2024-08-24T04:00",
+      "lastEntry": "2024-08-24T02:00",
+      "ageLimit": 18,
+      "venueId": "1012",
+      "categoryId": "1002",
+      "subcategoryIds": ["1001", "1002"],
+      "about": "Seeing out the summer in sizzling style with an masterclass in sultry, sleazy and jacking sounds from the disco-sphere and beyond as two maestros of the dancefloor step into The Red Church for an Sunday service like no other..\n\nSystem Olympia\nWith one stiletto planted firmly in the bathhouse and the other stepping out of a vintage Mercedes, System Olympia oozes style with a selection to die for and unique universe in which she spins her sound. Spanning disco, house, boogie, italo, soul, jazz and rare grooves - all with a distinctive System Olympia touch. A prolific producer alongside her DJ ventures, reworking hiphop classics into sultry soulful numbers, dusty downtempo house cuts and melancholic italo for those eyes-closed dancefloor moments. In short, you better not miss this..\n\nDJ October\nA bona-fide icon of the booth with bags deeper than the Mariana Trench - we've secured a very special set which will see October trip through the sound of NYC's queer 80s disco to pumping italo synth lines, dirty house jackers and plenty of left turns and surprise selections... A truly genre defying and decade spanning DJ, strap in.\n\nBurly Chassis\nParadisco's resident weirdo-disco selector, warming up the sound system with tripped out balearic sounds, punk-funk edits, technicolour disco shimmer and no-wave dancefloor frenzy.\n\nWe're going extra intimate for this one, tickets in advance HIGHLY recommended.",
+      "image": "https://headfirstbristol.co.uk/images/events/1127/e112769_i212528_s4.jpg",
+      "credit": "https://headfirstbristol.co.uk/whats-on/red-church/sun-25-aug-disco-isn-t-dead-system-olympia-dj-october-112769#e112769",
+      "saved": false,
+      "tickets": [
+        {
+          "name": "First release",
+          "price": 10
+        },
+        {
+          "name": "Second release",
+          "price": 12
+        },
+        {
+          "name": "Final release",
+          "price": 15
+        }
+      ],
+      "media": [
+        {
+          "src": "https://headfirstbristol.co.uk/images/events/1127/e112769_i212527_s5.jpg",
+          "alt": "System Olympia"
+        },
+        {
+          "src": "https://headfirstbristol.co.uk/images/events/1127/e112769_i212526_s4.jpg",
+          "alt": "DJ October"
+        },
+        {
+          "src": "https://headfirstbristol.co.uk/images/events/1127/e112769_i212529_s4.jpg",
+          "alt": "Burly Chassis"
+        },
+        {
+          "src": "https://www.youtube.com/watch?v=E7V3bkw-1co",
+          "alt": "System Olympia at Phonica Record Store Day 2023"
+        }
+      ],
+      "socials": {
+        "spotify": "https://open.spotify.com/artist/2qtARFvBzCjOuGbXFAF0iX?go=1&sp_cid=5c2edba9f8615f7f13ec5113dd2861f2&utm_source=embed_player_p&utm_medium=desktop&nd=1&dlsi=ba58726bfb4345d7",
+        "bandcamp": "https://systemolympia.bandcamp.com/album/new-erotica-collection?from=embed"
+      }
+    },
+    {
+      "id": "1004",
+      "name": "VINYL DESTINATION 11 - Autumn Stomp",
+      "startDate": "2024-08-24T14:00",
+      "endDate": "2024-08-24T22:00",
+      "lastEntry": "2024-08-24T21:00",
+      "ageLimit": 18,
+      "venueId": "1011",
+      "categoryId": "1002",
+      "subcategoryIds": ["1001", "1003", "1011"],
+      "about": "Our yearly techno edged outdoor event, expect old skool rave vibes, old skool hardcore/jungle/techno\nD.A.V.E The Drummer\nJerome Hill\nDj Twisted\nRelentless\nDestroyer\nTerminatrix\nDj Crisp\nMiss Mayhem\nMagpie\nPierot the acid clown\nLittle Martyn\nRascal\nDJ 31770\nHosts\nBuzz\n\nVINYL ONLY EVENT: OLDS SKOOL/HARDCORE/JUNGLE/TECHNO\n\nDARE TO CLUB: BS20RF TICKETS: HEADFIRST",
+      "image": "https://headfirstbristol.co.uk/images/events/1001/e100104_i192406_s4.jpg",
+      "credit": "https://headfirstbristol.co.uk/whats-on/dare2/sat-21-sep-vinyl-destination-11-autumn-stomp-100104#e100104",
+      "saved": false,
+      "tickets": [
+        {
+          "name": "Super early bird",
+          "price": 10
+        },
+        {
+          "name": "First release",
+          "price": 12.5
+        },
+        {
+          "name": "Second release",
+          "price": 13.9
+        }
+      ],
+      "media": [
+        {
+          "src": "https://www.youtube.com/watch?v=Bf5RUz3Q8r0",
+          "alt": "DJ Twisted, Bristol, Uk"
+        },
+        {
+          "src": "https://www.youtube.com/watch?v=PiIzY-5_rK0&embeds_referring_euri=https%3A%2F%2Fwww.headfirstbristol.co.uk%2F&source_ve_path=MjM4NTE",
+          "alt": "Dave the drummer-one night in hackney"
+        }
+      ],
+      "socials": {
+        "spotify": "https://open.spotify.com/artist/05hxRNU6PzDz1JQr9eV31W?go=1&sp_cid=d795c9c42c87820354c300b05779ae5d&utm_source=embed_player_p&utm_medium=desktop&nd=1&dlsi=aeff5956c525486a"
+      }
+    },
+    {
+      "id": "1005",
+      "name": "Pub Sessions: Just People",
+      "startDate": "2024-08-24T21:00",
+      "endDate": "2024-08-25T02:00",
+      "lastEntry": "2024-08-24T23:00",
+      "ageLimit": 18,
+      "venueId": "1014",
+      "categoryId": "1002",
+      "subcategoryIds": ["1004"],
+      "about": "The Full Moon & Attic Bar: Pub Sessions!\n\nReturning to take over the intimate Full Moon pub is local party starters Just People. Known for their UKG, Breaks & Bassy takeovers we can guarantee this pub session will have some spice to it!\n\n18+\n\nLast Entry 11pm\n\nTickets from £6\n\nFollow us on socials for announcements & updates:\nhttps://www.instagram.com/thefullmoonandatticbar/",
+      "image": "https://headfirstbristol.co.uk/images/events/1117/e111796_i207986_s5.jpg",
+      "credit": "https://headfirstbristol.co.uk/whats-on/the-attic-bar/fri-23-aug-pub-sessions-just-people-111796#e111796",
+      "saved": false,
+      "tickets": [
+        {
+          "name": "General release",
+          "price": 4.5
+        }
+      ]
+    },
+    {
+      "id": "1006",
+      "name": "Young Echo Sound w/ DAKN",
+      "startDate": "2024-08-24T23:00",
+      "endDate": "2024-08-25T03:00",
+      "lastEntry": "2024-08-25T02:00",
+      "ageLimit": 18,
+      "venueId": "1003",
+      "categoryId": "1002",
+      "subcategoryIds": ["1011", "1012", "1013"],
+      "about": "Young Echo Sound returns to Exchange this September 26th with special guests and the crew!\n\nLine up\n\nDAKN x BKV INDUSTRIAL (LIVE!)\nOSSIA\nANINA\nGUEST\nBOGUES\nINTEL MERCENARY\nO$VMV$M\n\n£5 - 11PM - 3AM\n\nALL PROFITS WILL BE DONATED TO PALESTINE RED CRESCENT SOCIETY https://www.palestinercs.org/en/\n\nClubnights at Exchange are strictly 18+ adults only.",
+      "image": "https://headfirstbristol.co.uk/images/events/1137/e113749_i213916_s5.jpg",
+      "credit": "https://headfirstbristol.co.uk/whats-on/exchange/thu-26-sep-young-echo-sound-w-dakn-113749#e113749",
+      "saved": false,
+      "tickets": [
+        {
+          "name": "Final release",
+          "price": 0
+        }
+      ],
+      "media": [
+        {
+          "src": "https://headfirstbristol.co.uk/images/events/1137/e113749_i214419_s3.jpg",
+          "alt": ""
+        },
+        {
+          "src": "https://www.youtube.com/watch?v=K9X_EalUtEA",
+          "alt": "Big Murk, Rknddn, Dakn - Gasolina (Music Video)"
+        },
+        {
+          "src": "https://www.youtube.com/watch?v=8eCfATqH9EY",
+          "alt": "Dakn x Muqata’a - Fi Mi’ad (Prod.Dakn) / في ميعاد - داكن و مقاطعة"
+        },
+        {
+          "src": "https://www.youtube.com/watch?v=HOd7l--6tbw",
+          "alt": "Ossia – Devil's Dance [Blackest Ever Black]"
+        },
+        {
+          "src": "https://www.youtube.com/watch?v=hJNP2h0BQBE",
+          "alt": "O$VMV$M - Weekend Saviour"
+        }
+      ],
+      "socials": {
+        "spotify": "https://open.spotify.com/artist/1ypDqDpEEuuHi9pDuCQadC?go=1&sp_cid=9949d61ad0089bc5067aa0cbf4e32ba8&utm_source=embed_player_p&utm_medium=desktop&nd=1&dlsi=7ecc92e802bf499e",
+        "bandcamp": "https://bilnaes.bandcamp.com/album/too-low-too-far?from=embed"
+      }
+    },
+    {
+      "id": "1007",
+      "name": "Void Radio: Joe Koshin B2B Chez",
+      "startDate": "2024-08-24T23:00",
+      "endDate": "2024-08-25T03:00",
+      "lastEntry": "2024-08-25T02:00",
+      "ageLimit": 18,
+      "venueId": "1015",
+      "categoryId": "1002",
+      "subcategoryIds": ["1001", "1004", "1014"],
+      "about": "Broadcasting worldwide from their home of Bristol; Void Radio brings you sounds of the underground alongside an array of alternative programming.\nWe welcome them to Lakota with a headline appearance from Joe Koshin.\nJoe Koshin’s diverse and high-energy productions have established him as a notable name in the UK’s dance music scene. Since relocating from London to Bristol, Koshin has positioned himself on a roster of renowned dance-centric labels including Time Is Now, EC2A, and Gimme A Break. An adept solo producer in his own right, Koshin is a keen collaborator and has delivered notable works with Denham Audio and Bristol trailblazer SSSLIP. A brace of recent vinyl releases on Hardline (previous host to Interplanetary Criminal, Main Phase) and Pakistani-based label Jugaar has gained Koshin club and radio support from Madam X, Emerald, Borai, Tom Ravenscroft, Sicaria Sound & more.\nSupport from Void Radio residents and friends Lolli, Fern and Say Nuffin.",
+      "image": "https://headfirstbristol.co.uk/images/events/1136/e113657_i213338_s3.jpg",
+      "credit": "https://headfirstbristol.co.uk/whats-on/lakota/fri-23-aug-void-radio-joe-koshin-b2b-chez-113657#e113657",
+      "saved": false,
+      "tickets": [
+        {
+          "name": "Free entry before 11PM",
+          "price": 0
+        },
+        {
+          "name": "General release",
+          "price": 5
+        }
+      ],
+      "socials": {
+        "spotify": "https://open.spotify.com/artist/0JmWEqtyaMaRnGQMP6IXz0?go=1&sp_cid=b53ad94059762eda86c82719e01fab5e&utm_source=embed_player_p&utm_medium=desktop&nd=1&dlsi=95d324e28a124a70"
+      }
+    },
+    {
+      "id": "1008",
+      "name": "Wide Eyes: Longeez",
+      "startDate": "2024-08-24T23:00",
+      "endDate": "2024-08-25T03:00",
+      "lastEntry": "2024-08-25T02:00",
+      "ageLimit": 18,
+      "venueId": "1015",
+      "categoryId": "1002",
+      "subcategoryIds": ["1001", "1004"],
+      "about": "Longeez has been a mainstay in the Bristol music scene for years. After dominating the UKG scene, with releases on highly regarded labels such as EC2A, he transcended into the world of hard groove and techno where he is already a highly regarded household name. Longeez sets are high-energy and unpredictable, but one thing is a guarantee...he'll have your feet stomping.\nSupport from local regulars Dashy, Styli, and Hywel Gregory.\nSee you in the dance.",
+      "image": "https://headfirstbristol.co.uk/images/events/1131/e113123_i211878_s3.jpg",
+      "credit": "https://headfirstbristol.co.uk/whats-on/lakota/fri-23-aug-wide-eyes-longeez-113123#e113123",
+      "saved": false,
+      "tickets": [
+        {
+          "name": "Free entry before 11PM",
+          "price": 0
+        },
+        {
+          "name": "General admission",
+          "price": 5
+        }
+      ],
+      "socials": {
+        "spotify": "https://open.spotify.com/artist/5wSR3OKDgZpsw2ltfcSoZk?go=1&sp_cid=ad55fc7585cf184de96fb30ba838515e&utm_source=embed_player_p&utm_medium=desktop&nd=1&dlsi=1bc7fc3380044102"
+      }
+    },
+    {
+      "id": "1009",
+      "name": "Wide Eyes: Majistrate",
+      "startDate": "2024-08-24T23:00",
+      "endDate": "2024-08-25T03:00",
+      "lastEntry": "2024-08-25T02:00",
+      "ageLimit": 18,
+      "venueId": "1015",
+      "categoryId": "1002",
+      "subcategoryIds": ["1015", "1011"],
+      "about": "Majistrate aka Ian Jordan is a jump-up D&B producer and DJ from Kent, who has been DJing since 1989 and producing since 1994. Since his first 12” release, Open Circuit, Majistrate went on to have over 10 releases on the classic jungle label and established himself as one of the most in demand artists in drum and bass.\n\nFast forward to 2024, Majistrate is now firmly established on the jump-up scene, and is signed to LowDownDeep, one of the most prestigious and highly regarded jump-up labels in the game.\nWith a killer support lineup in tow feat. ACP, Bisco, Chlocaine and Avie, this is shaping up to be a naughty one.\nEarplugs advised.",
+      "image": "https://headfirstbristol.co.uk/images/events/1136/e113656_i213332_s3.jpg",
+      "credit": "https://headfirstbristol.co.uk/whats-on/lakota/fri-30-aug-wide-eyes-majistrate-113656#e113656",
+      "saved": false,
+      "tickets": [
+        {
+          "name": "Free entry before 11PM",
+          "price": 0
+        },
+        {
+          "name": "General release",
+          "price": 5
+        }
+      ],
+      "socials": {
+        "spotify": "https://open.spotify.com/artist/7Kmqpu1E2yI5ijuB1dcNTg?go=1&sp_cid=9b2aae76db56d28825088844e101f16b&utm_source=embed_player_p&utm_medium=desktop&nd=1&dlsi=b2c94a76405c4770"
+      }
+    },
+    {
+      "id": "1010",
+      "name": "Sober Club Night: Nicky Blackmarket | Dazee",
+      "startDate": "2024-08-24T17:00",
+      "endDate": "2024-08-24T21:00",
+      "lastEntry": "2024-08-25T20:30",
+      "ageLimit": 18,
+      "venueId": "1016",
+      "categoryId": "1002",
+      "subcategoryIds": ["1004", "1015", "1011"],
+      "about": "~ Nicky Blackmarket ~\nAfter the huge success of our first sober club night In January, we’ve only got Nicky Blackmarket back again!\n\nNicky started DJing in the 1980s when he was 14 and is regarded as one of the pivotal figures in the early jungle/drum and bass scene. He also founded independent dance music record store Blackmarket Records (now known as BM-Soho).\n\nHe’s been playing drum and bass all over the world for the past two decades and we are over the moon to have him back to support our night again.\n\n~ DJ Dazee ~\nDrum and bass Dj, producer, label owner and broadcaster, Dazee champions a jungle-jump-up hybrid style characterised by the warmth of her “Bristol Sound” roots. Resident for one of the UKs largest dnb brands, Run and a regular player at major events such as Glastonbury, Hospitality, Love Saves The Day and Westfest, Dazee has relentlessly pursued her jungle campaign on airwaves and dance floors across the globe for three decades.\n\nHer fluid and musical DJ style with signature rolling bass, stepper style breaks and sample-based motivs have kept her in demand with fitness brands and world class stages alike and in addition to managing her label, Dazee has an ever-growing catalogue of her own productions and colabs.\n\n~ MC Joe Peng ~\nJoe Peng is not only a legend from the dawn of rave and the Tape Pack era, he is lead vocalist and founder member of Laidblak, Bristol's most loved roots band. Known for their vibing mixture of reggae, dub and hip hop, they have continued to grace the biggest stages including major festivals such as Reggae land for two decades.\n\nJoe has a regular drive time radio show on SWU fm \"playing all that is good in underground muzik\" and outside of Laidblak he host's DJ sets for Bunjy and Feel The Reel, with several appearances at this year's Glastonbury. Always true to his roots in the sound system movement, Joe continues to work with Firmly Rooted. Kaotik Cartel and Roots soup.\n\nJoe frequently steps up for Ruffneck Ting performances and his inimitable musical style, phenomenal lyrics and witty banter always captivate crowds\nLaid Blak https://open.spotify.com/artist/3QM7x03GglGPjt0Ori7JAK\n\n~ JEZELDER ~\nBristol based JEZELDER has played at various venues and events across Bristol including Basement45, Thekla, Lost Horizon, Attic Bar, Trinity, The Plough and is the resident of Fight Klub Central. She has also graced the decks at parties as far reaching as Mexico, Norway, and the iconic Ministry of Sound in London.\n\nJEZELDER’s style is an eclectic blend of old and new owing to her vast knowledge of dnb. She takes the listener on a musical journey through the realms of liquid, rollers and dancefloor. Not one to be pigeonholed, she is also a multi genre DJ with an array of musical tastes from garage, to Afrobeats, to dancehall.\n\n~ Anonymous Dub Sound ~\nAnonymous has been playing reggae music since the 1980’s, also chatting lyrics on the mic. Anonymous Dub Sound was established in 2014 so young, but old in their roots. They play all genres of reggae music, even soul, funk, R & B and hip hop. You can listen to Anonymous on BCFM 93.2fm every Wednesday 9 – 10pm.\n\nHe's also one of our resident Sober Spaces DJs and we massively appreciate his support for what we do!",
+      "image": "https://headfirstbristol.co.uk/images/events/1120/e112095_i210594_s4.jpg",
+      "credit": "https://headfirstbristol.co.uk/whats-on/basement-45/sat-31-aug-sober-club-night-nicky-blackmarket-dazee-112095#e112095",
+      "saved": false,
+      "tickets": [
+        {
+          "name": "First release",
+          "price": 0
+        },
+        {
+          "name": "Second release",
+          "price": 0
+        }
+      ],
+      "media": [
+        {
+          "src": "https://www.youtube.com/watch?v=Eh0RkdvY8Vk",
+          "alt": "Anonymous Dub Sound Showreel"
+        },
+        {
+          "src": "https://www.youtube.com/watch?v=kQKnlmucM6k",
+          "alt": "Fight Klub Bristol DJ JEZELDER Special"
+        }
+      ],
+      "socials": {
+        "spotify": "https://open.spotify.com/artist/6mkmQWYJRNw07qnQGI2bIN?go=1&sp_cid=c4bc7f2cc162ae0d741d6e9888ed3f10&utm_source=embed_player_p&utm_medium=desktop&nd=1&dlsi=471cd3d4559648c6"
+      }
+    }
+  ]
+}

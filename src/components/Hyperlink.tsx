@@ -10,16 +10,14 @@ interface HyperLinkProps {
   className?: string;
 }
 
-const HyperLink = ({ href, text, icon, className }: HyperLinkProps) => {
-  return (
-    <Link
-      href={href}
-      className={`text-lilac font-medium${appendClassName(className)}`}
-    >
-      {text}
-      {icon && <Icon name={icon} size={14} className='ml-2 inline-block' />}
-    </Link>
-  );
-};
+const HyperLink = ({ href, text, icon, className }: HyperLinkProps) => (
+  <Link
+    href={href}
+    className={`text-lilac font-medium${appendClassName(className)}`}
+  >
+    {text}
+    {icon && <Icon name={icon} size={14} className='ml-2 inline-block' />}
+  </Link>
+);
 
 export default HyperLink;

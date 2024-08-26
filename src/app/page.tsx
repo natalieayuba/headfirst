@@ -5,16 +5,14 @@ import EditorPicks from '@/components/sections/EditorPicks';
 import Donations from '@/components/sections/Donations';
 import AppAd from '@/components/sections/AppAd';
 
-const Home = () => {
-  return (
-    <main>
-      <Banner />
-      <PopularCategories />
-      <EditorPicks />
-      <Donations />
-      <AppAd />
-    </main>
-  );
-};
+const Home = () => (
+  <>
+    <Banner />
+    <PopularCategories />
+    <EditorPicks />
+    <Donations />
+    <AppAd />
+  </>
+);
 
 export default Home;

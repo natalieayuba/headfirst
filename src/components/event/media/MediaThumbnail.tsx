@@ -43,4 +43,6 @@ const MediaThumbnail = forwardRef<HTMLDivElement, ThumbnailProps>(
   )
 );
 
+MediaThumbnail.displayName = 'MediaThumbnail';
+
 export default MediaThumbnail;

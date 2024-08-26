@@ -7,10 +7,10 @@ import MediaThumbnail from './MediaThumbnail';
 
 const Media = ({ media }: { media: MediaProps[] }) => {
   const [selectedIndex, setSelectedIndex] = useState(-1);
-  const { isOpen, setIsOpen } = useLightbox();
+  const { isOpen, open } = useLightbox();
 
   const handleClick = (medium: MediaProps) => {
-    setIsOpen(true);
+    open();
     setSelectedIndex(media.findIndex((m, index) => m === medium)!);
   };
 
@@ -19,8 +19,8 @@ const Media = ({ media }: { media: MediaProps[] }) => {
       <h2 className='px-6'>Media</h2>
       <HorizontalScroll
         list={media}
-        card={(item) => (
-          <MediaThumbnail medium={item} onClick={() => handleClick(item)} />
+        card={(medium) => (
+          <MediaThumbnail medium={medium} onClick={() => handleClick(medium)} />
         )}
       />
       {isOpen && (
@@ -28,7 +28,6 @@ const Media = ({ media }: { media: MediaProps[] }) => {
           media={media}
           selectedIndex={selectedIndex}
           setSelectedIndex={setSelectedIndex}
-          setIsOpen={setIsOpen}
         />
       )}
     </div>

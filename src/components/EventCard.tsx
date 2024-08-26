@@ -3,12 +3,7 @@ import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link';
 import { type EventProps } from '../data/data';
-import {
-  appendClassName,
-  formatDate,
-  formatEventUrl,
-  formatPrice,
-} from '@/utils/formatting';
+import { formatDate, formatEventUrl, formatPrice } from '@/utils/formatting';
 import SaveButton from './buttons/SaveButton';
 import { getVenueById } from '@/data/utils';
 
@@ -21,32 +16,6 @@ interface EventCardProps {
   onClick?: () => void;
   size?: 'xs' | 'sm' | 'md';
 }
-
-export const CardImage = ({
-  image,
-  name,
-  className,
-}: {
-  image: string;
-  name: string;
-  className?: string;
-}) => {
-  return (
-    <div
-      className={`aspect-square h-auto relative overflow-hidden rounded-lg${appendClassName(
-        className
-      )}`}
-    >
-      <Image
-        src={image}
-        alt={`${name} image`}
-        fill
-        sizes='100%'
-        className='md:group-hover:scale-105 duration-200 ease-out object-cover'
-      />
-    </div>
-  );
-};
 
 const EventCard = ({
   event,
@@ -100,7 +69,7 @@ const EventCard = ({
       </div>
       {showSaved && (
         <SaveButton
-          event={event}
+          saved={event.saved}
           className={horizontal ? '' : 'absolute top-1 right-1 bg-night p-2'}
           size={16}
         />

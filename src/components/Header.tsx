@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import NavLinks from './navigation/NavLinks';
 import NavMenu from './navigation/NavMenu';
-import Search from './navigation/Search';
+import Search from './navigation/search/Search';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';

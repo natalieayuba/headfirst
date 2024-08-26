@@ -12,7 +12,7 @@ interface DropdownProps {
 }
 
 const Dropdown = ({ title, children, icon, selected }: DropdownProps) => {
-  const { isOpen, setIsOpen } = useLightbox();
+  const { isOpen, close, open } = useLightbox();
   const buttonRef = useRef<HTMLButtonElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [top, setTop] = useState(0);
@@ -23,14 +23,12 @@ const Dropdown = ({ title, children, icon, selected }: DropdownProps) => {
     }
   }, [isOpen]);
 
-  useEffect(() => {
-    setIsOpen(false);
-  }, [selected]);
+  useEffect(() => close(), [selected]);
 
   return (
     <div>
       {isOpen && (
-        <Lightbox hideClose setIsOpen={setIsOpen}>
+        <Lightbox hideClose>
           <div
             ref={containerRef}
             className='bg-night rounded-xl p-6 shadow absolute right-6 left-6'
@@ -49,7 +47,7 @@ const Dropdown = ({ title, children, icon, selected }: DropdownProps) => {
             : ''
         }${selected !== '' ? ' bg-lilac text-dark-night font-medium' : ''}`}
         onClick={() => {
-          if (!isOpen) setIsOpen(true);
+          if (!isOpen) open();
         }}
       >
         <Icon name={icon} size={16} />

@@ -1,9 +1,4 @@
-import React, {
-  useEffect,
-  useRef,
-  type Dispatch,
-  type SetStateAction,
-} from 'react';
+import React, { useEffect, useRef } from 'react';
 import Lightbox from '../../Lightbox';
 import type { MediaProps } from '@/data/data';
 import HorizontalScroll from '../../HorizontalScroll';
@@ -13,15 +8,13 @@ import MediaSwiper from './MediaSwiper';
 interface MediaLightboxProps {
   media: MediaProps[];
   selectedIndex: number;
-  setSelectedIndex: Dispatch<SetStateAction<number>>;
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
+  setSelectedIndex: (index: number) => void;
 }
 
 const MediaLightbox = ({
   media,
   selectedIndex,
   setSelectedIndex,
-  setIsOpen,
 }: MediaLightboxProps) => {
   const scrollerRef = useRef<HTMLOListElement>(null);
   const thumbnailRef = useRef<HTMLDivElement>(null);
@@ -40,7 +33,7 @@ const MediaLightbox = ({
   }, [selectedIndex]);
 
   return (
-    <Lightbox setIsOpen={setIsOpen}>
+    <Lightbox>
       <div className='flex flex-col h-full gap-4 justify-between '>
         <p className='text-center'>
           {selectedIndex + 1}
@@ -48,9 +41,9 @@ const MediaLightbox = ({
           {media.length}
         </p>
         <MediaSwiper
-          onSwipe={(index) => setSelectedIndex(index)}
           media={media}
           selectedIndex={selectedIndex}
+          setSelectedIndex={setSelectedIndex}
         />
         <p className='text-center mt-4'>{media[selectedIndex]?.alt}</p>
         <HorizontalScroll

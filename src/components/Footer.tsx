@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import React from 'react';
-import Icon from './Icon';
 import Divider from './Divider';
 import Link from 'next/link';
 

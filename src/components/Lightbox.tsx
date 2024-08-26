@@ -1,18 +1,10 @@
 import { appendClassName } from '@/utils/formatting';
-import React, {
-  useEffect,
-  useRef,
-  useState,
-  type CSSProperties,
-  type Dispatch,
-  type ReactNode,
-  type SetStateAction,
-} from 'react';
+import React, { useEffect, useRef, useState, type ReactNode } from 'react';
 import Icon from './Icon';
+import useLightbox from '@/hooks/useLightbox';
 
 interface LightboxProps {
   children: ReactNode;
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
   className?: string;
   hideClose?: boolean;
   clickOutsideOff?: boolean;
@@ -20,21 +12,20 @@ interface LightboxProps {
 
 const Lightbox = ({
   children,
-  setIsOpen,
   className,
   hideClose,
   clickOutsideOff,
 }: LightboxProps) => {
+  const { close } = useLightbox();
   const ref = useRef<HTMLDivElement>(null);
+  const [maxHeight, setMaxHeight] = useState(
+    typeof window != 'undefined' ? window.visualViewport?.height : 0
+  );
 
   const isIos =
     typeof navigator !== 'undefined'
       ? navigator.userAgent.match(/ipad|ipod|iphone/i)
       : false;
-
-  const [maxHeight, setMaxHeight] = useState(
-    typeof window != 'undefined' ? window.visualViewport?.height : 0
-  );
 
   useEffect(() => {
     const handleIosViewport = () => setMaxHeight(window.visualViewport?.height);
@@ -50,12 +41,12 @@ const Lightbox = ({
         ref.current &&
         !ref.current.contains(event.target as Node)
       ) {
-        setIsOpen(false);
+        close();
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [ref, setIsOpen, clickOutsideOff]);
+  }, [ref, close, clickOutsideOff]);
 
   return (
     <div
@@ -68,7 +59,7 @@ const Lightbox = ({
     >
       <header className='flex justify-between h-16 px-6'>
         {!hideClose && (
-          <button onClick={() => setIsOpen(false)} className='ml-auto'>
+          <button onClick={close} className='ml-auto'>
             <Icon name='close' />
           </button>
         )}

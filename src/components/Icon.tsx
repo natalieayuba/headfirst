@@ -19,7 +19,7 @@ import {
   FiPlay,
 } from 'react-icons/fi';
 import { PiHandsClapping } from 'react-icons/pi';
-import { IoMdHeartEmpty, IoMdHeart } from 'react-icons/io';
+import { IoMdHeart } from 'react-icons/io';
 import { TbCurrencyPound } from 'react-icons/tb';
 
 interface IconProps {

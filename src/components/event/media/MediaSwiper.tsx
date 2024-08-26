@@ -6,14 +6,17 @@ import type { MediaProps } from '@/data/data';
 interface MediaSwiperProps {
   media: MediaProps[];
   selectedIndex: number;
-  onSwipe: (index: number) => void;
+  setSelectedIndex: (index: number) => void;
 }
 
-const MediaSwiper = ({ onSwipe, media, selectedIndex }: MediaSwiperProps) => {
+const MediaSwiper = ({
+  media,
+  selectedIndex,
+  setSelectedIndex,
+}: MediaSwiperProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const margin = 24;
   const resolution = 16 / 9;
-  const snapDistance = 50;
   const [videoSize, setVideoSize] = useState([
     window.innerWidth - margin * 2,
     window.innerWidth / resolution,
@@ -29,7 +32,7 @@ const MediaSwiper = ({ onSwipe, media, selectedIndex }: MediaSwiperProps) => {
       window.addEventListener('resize', updateSize);
       return () => window.removeEventListener('resize', updateSize);
     }
-  }, []);
+  }, [media, resolution, selectedIndex]);
 
   const handleScroll = (e: UIEvent) => {
     const swiper = e.target as HTMLDivElement;
@@ -37,7 +40,7 @@ const MediaSwiper = ({ onSwipe, media, selectedIndex }: MediaSwiperProps) => {
       swiper.scrollLeft === 0 ||
       swiper.scrollLeft % swiper.clientWidth === 0
     ) {
-      onSwipe(swiper.scrollLeft / swiper.clientWidth);
+      setSelectedIndex(swiper.scrollLeft / swiper.clientWidth);
     }
   };
 
@@ -56,7 +59,10 @@ const MediaSwiper = ({ onSwipe, media, selectedIndex }: MediaSwiperProps) => {
       onScroll={handleScroll}
     >
       {media.map((medium) => (
-        <div className='w-screen h-full flex items-center p-6 snap-center'>
+        <div
+          key={medium.src}
+          className='w-screen h-full flex items-center p-6 snap-center'
+        >
           {isVideo(medium) ? (
             <iframe
               src={medium.src.replace('/watch?v=', '/embed/')}
