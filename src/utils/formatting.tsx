@@ -1,4 +1,4 @@
-import type { TicketProps } from '@/data/data';
+import type { Ticket } from '@/data/data';
 
 export const appendClassName = (className: string | undefined) =>
   className ? ` ${className}` : '';
@@ -36,7 +36,7 @@ export const getMinPrice = (list: any[]) =>
 export const getMaxPrice = (list: any[]) =>
   list.reduce((a, b) => (a.price > b.price ? a : b)).price;
 
-export const formatPrice = (tickets: TicketProps[]) => {
+export const formatPrice = (tickets: Ticket[]) => {
   const toString = (price: number) =>
     price === 0
       ? 'Free'

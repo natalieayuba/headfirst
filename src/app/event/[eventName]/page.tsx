@@ -1,21 +1,24 @@
-'use client';
 import React from 'react';
 import { notFound } from 'next/navigation';
 import { formatEventUrl, formatPrice } from '@/utils/formatting';
 import Image from 'next/image';
-import SaveButton from '@/components/buttons/SaveButton';
-import ShareButton from '@/components/buttons/ShareButton';
-import Divider from '@/components/Divider';
-import { Button } from '@/components/buttons/Button';
-import { events } from '@/data/data';
-import Media from '@/components/event/media/Media';
-import Breadcrumbs from '@/components/event/Breadcrumbs';
-import Details from '@/components/event/Details';
-import About from '@/components/event/About';
-import Venue from '@/components/event/Venue';
-import SimilarEvents from '@/components/event/SimilarEvents';
+import SaveButton from '@/app/components/buttons/SaveButton';
+import ShareButton from '@/app/components/buttons/ShareButton';
+import { Button } from '@/app/components/buttons/Button';
+import Media from '@/app/event/[eventName]/components/media/Media';
+import Breadcrumbs from '@/app/event/[eventName]/components/Breadcrumbs';
+import Details from '@/app/event/[eventName]/components/Details';
+import About from '@/app/event/[eventName]/components/About';
+import Venue from '@/app/event/[eventName]/components/Venue';
+import SimilarEvents from '@/app/event/[eventName]/components/SimilarEvents';
+import Divider from '@/app/components/Divider';
+import { getCategories, getEvents, getVenues } from '@/data/utils';
 
-const Event = ({ params }: { params: { eventName: string } }) => {
+const Event = async ({ params }: { params: { eventName: string } }) => {
+  const events = await getEvents();
+  const venues = await getVenues();
+  const categories = await getCategories();
+
   const event = events.find(
     ({ id, name }) =>
       formatEventUrl(id, name) === decodeURIComponent(params.eventName)
@@ -27,7 +30,7 @@ const Event = ({ params }: { params: { eventName: string } }) => {
 
   return (
     <div className='pt-16'>
-      <Breadcrumbs categoryId={event.categoryId} />
+      <Breadcrumbs categoryId={event.categoryId} categories={categories} />
       <div className='p-6 pt-4'>
         <div className='w-full aspect-square relative'>
           <Image
@@ -45,17 +48,17 @@ const Event = ({ params }: { params: { eventName: string } }) => {
           </div>
           <h1 className='text-4xl font-medium'>{event.name}</h1>
         </div>
-        <Details event={event} />
+        <Details event={event} categories={categories} venues={venues} />
         <Divider className='w-28 mx-auto' />
         <About about={event.about} />
-        <Venue venueId={event.venueId} />
+        <Venue venueId={event.venueId} venues={venues} />
       </div>
       {event.media && <Media media={event.media} />}
       <div className='bg-night px-6 py-4 flex justify-between items-center sticky bottom-0'>
         <p className='text-2xl font-medium'>{formatPrice(event.tickets)}</p>
-        <Button onClick={() => ''}>Get tickets </Button>
+        <Button>Get tickets </Button>
       </div>
-      <SimilarEvents event={event} />
+      <SimilarEvents event={event} events={events} />
     </div>
   );
 };

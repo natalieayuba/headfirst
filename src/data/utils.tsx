@@ -1,12 +1,16 @@
-import { categories, venues, type EventProps } from './data';
+import type { CategoryProps, EventProps, VenueProps } from './data';
 
-export const getCategoryById = (id: string) =>
-  categories.find((category) => category.id === id);
+export const getCategories = async () => {
+  const data = await fetch('http://localhost:3030/categories');
+  return (await data.json()) as CategoryProps[];
+};
 
-export const getVenueById = (id: string) =>
-  venues.find((venue) => venue.id === id);
+export const getVenues = async () => {
+  const data = await fetch('http://localhost:3030/venues');
+  return (await data.json()) as VenueProps[];
+};
 
-export const getSubcategoryById = (categoryId: string, subcategoryId: string) =>
-  getCategoryById(categoryId)?.subcategories.find(
-    ({ id }) => subcategoryId === id
-  );
+export const getEvents = async () => {
+  const data = await fetch('http://localhost:3030/events');
+  return (await data.json()) as EventProps[];
+};

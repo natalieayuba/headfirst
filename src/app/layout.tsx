@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import { Baloo_2, Londrina_Solid } from 'next/font/google';
 import { colors, description, name, tagline } from '../../config';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 export const metadata: Metadata = {
   title: `${name} | ${tagline}`,
