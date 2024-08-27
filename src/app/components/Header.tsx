@@ -1,31 +1,23 @@
 'use client';
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import NavLinks from '@/app/components/navigation/NavLinks';
 import NavMenu from '@/app/components/navigation/NavMenu';
-import Search from './search/Search';
+import useHeaderVisibility from '@/hooks/useHeaderVisibility';
+import { usePathname } from 'next/navigation';
 
-const Header = () => {
-  const [prevScrollY, setPrevScrollY] = useState(0);
-  const [visible, setVisible] = useState(true);
+const Header = ({ search }: { search: JSX.Element }) => {
   const pathname = usePathname();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setVisible(prevScrollY > scrollY || prevScrollY < 0);
-      setPrevScrollY(scrollY);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  });
+  const { visible } = useHeaderVisibility();
 
   return (
     <header
       className={`z-10 fixed w-full flex flex-col justify-between transition-all duration-200 ease-out margin-x-outer bg-dark-night h-16 ${
-        pathname === '/' && window.scrollY < 300 ? 'bg-opacity-0' : ''
+        pathname === '/' &&
+        typeof window !== 'undefined' &&
+        window.scrollY < 300
+          ? 'bg-opacity-0 '
+          : ' '
       } ${visible ? 'top-0' : '-top-16'}`}
     >
       <nav className='flex justify-between h-full items-center transition-all duration-300 margin'>
@@ -39,7 +31,7 @@ const Header = () => {
           />
         </Link>
         <div className='flex'>
-          <Search />
+          {search}
           <NavLinks />
           <NavMenu />
         </div>

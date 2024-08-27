@@ -4,6 +4,7 @@ import { Baloo_2, Londrina_Solid } from 'next/font/google';
 import { colors, description, name, tagline } from '../../config';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Search from './components/search/Search';
 
 export const metadata: Metadata = {
   title: `${name} | ${tagline}`,
@@ -37,7 +38,7 @@ export default function RootLayout({
       <body
         className={`${baloo_2.className} ${londrina_solid.variable} bg-dark-night text-white-alpha-90 leading-5`}
       >
-        <Header />
+        <Header search={<Search />} />
         <main>{children}</main>
         <Footer />
       </body>
