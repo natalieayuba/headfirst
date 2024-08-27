@@ -32,11 +32,9 @@ const FiltersDropdown = ({
         ref={triggerRef}
         className={`filter-chip ${
           selected
-            ? 'filter-chip-selected'
-            : isOpen
-            ? 'filter-chip-hovered'
+            ? 'relative z-[12] filter-chip-selected'
             : 'hover:filter-chip-hovered'
-        }`}
+        }${isOpen ? ' relative z-[12]' : ''}`}
         onClick={toggleDropdown}
       >
         <Icon name={icon} size={16} />
@@ -50,12 +48,15 @@ const FiltersDropdown = ({
         />
       </button>
       {isOpen && (
-        <div
-          ref={popoverRef}
-          className='z-10 mt-2 bg-night rounded-xl absolute p-6 left-6 right-6'
-        >
-          {children}
-        </div>
+        <>
+          <div
+            ref={popoverRef}
+            className='z-[11] mt-2 bg-night rounded-xl absolute p-6 left-6 right-6'
+          >
+            {children}
+          </div>
+          <div className='bg-dark-night bg-opacity-50 transition-opacity duration-150 fixed z-10 h-screen w-screen top-0 left-0'></div>
+        </>
       )}
     </div>
   );

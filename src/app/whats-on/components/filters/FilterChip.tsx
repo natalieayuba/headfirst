@@ -19,8 +19,10 @@ const FilterChip = ({
   return (
     <div
       key={text}
-      className={`filter-chip hover:filter-chip-hovered${
-        selected === value ? ' filter-chip-selected' : ''
+      className={`filter-chip ${
+        selected === value
+          ? 'filter-chip-selected'
+          : 'hover:filter-chip-hovered'
       }`}
     >
       <label htmlFor={text}>
