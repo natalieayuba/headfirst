@@ -26,7 +26,9 @@ const SimilarEvents = ({ event, events, venues }: SimilarEventsProps) => {
       <h2 className='mb-6 px-6'>Other events you might like</h2>
       <HorizontalScroll
         list={similarEvents}
-        card={(event) => <EventCard venues={venues} event={event} showTime />}
+        card={(event) => (
+          <EventCard venues={venues} event={event} showTime showSaved />
+        )}
       />
     </div>
   );

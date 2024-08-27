@@ -70,8 +70,12 @@ const EventCard = ({
       {showSaved && (
         <SaveButton
           event={event}
-          className={horizontal ? '' : 'absolute top-1 right-1 bg-night p-1.5'}
-          size={14}
+          className={
+            horizontal
+              ? ''
+              : 'absolute top-1 right-1 bg-night p-1.5 bg-opacity-80 rounded-full'
+          }
+          size={15}
         />
       )}
     </Link>

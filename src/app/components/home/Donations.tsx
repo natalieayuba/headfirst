@@ -2,12 +2,13 @@ import React from 'react';
 import HomeSection from './HomeSection';
 import Hyperlink from '../Hyperlink';
 import Icon from '../Icon';
+import { colors } from '../../../../config';
 
 const Donations = () => (
   <HomeSection heading='Join us in supporting local causes'>
     <div className='px-6'>
       <div className='w-full h-auto aspect-[1.9] bg-night text-lilac rounded-lg flex flex-col p-6 gap-3 items-center justify-center mb-6'>
-        <Icon name='clap' size={32} />
+        <Icon name='clap' size={32} fill={colors.lilac} />
         <p className='heading-lg'>
           <span className='font-sans font-extrabold text-3xl'>£</span>
           14,177.50

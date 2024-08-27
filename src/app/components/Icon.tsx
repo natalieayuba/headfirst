@@ -52,7 +52,11 @@ const Icon = ({ name, size, className, fill }: IconProps) => {
 
   const icon = icons[name as keyof IconType];
 
-  return cloneElement(icon, { size: size ?? 24, className, fill });
+  return cloneElement(icon, {
+    size: size ?? 24,
+    className,
+    fill: fill ?? 'none',
+  });
 };
 
 export default Icon;
