@@ -17,7 +17,7 @@ const CategoryChips = ({ categories }: { categories: CategoryProps[] }) => {
   );
   const subcategoriesRef = useRef<HTMLDivElement>(null);
 
-  const onCategoryChange = (id: string) => {
+  const updateCategoryParam = (id: string) => {
     const params = new URLSearchParams(searchParams);
     if (id && subcategoriesRef.current) {
       const category = categories.find((category) => category.id === id);
@@ -27,12 +27,13 @@ const CategoryChips = ({ categories }: { categories: CategoryProps[] }) => {
       subcategoriesRef.current.scrollLeft = 0;
     } else {
       params.delete('categoryId');
+      params.delete('subcategoryId');
       setSubcategories([]);
     }
     router.replace(`${pathname}?${params.toString()}`);
   };
 
-  const onSubcategoryChange = (id: string) => {
+  const updateSubcategoryParam = (id: string) => {
     const params = new URLSearchParams(searchParams);
     if (id) {
       params.set('subcategoryId', id);
@@ -58,7 +59,7 @@ const CategoryChips = ({ categories }: { categories: CategoryProps[] }) => {
             value={id}
             name='category'
             selected={searchParams.get('categoryId')?.toString() ?? ''}
-            setSelected={onCategoryChange}
+            setSelected={updateCategoryParam}
           />
         ))}
       </div>
@@ -77,7 +78,7 @@ const CategoryChips = ({ categories }: { categories: CategoryProps[] }) => {
               value={id}
               name='subcategory'
               selected={searchParams.get('subcategoryId')?.toString() ?? ''}
-              setSelected={onSubcategoryChange}
+              setSelected={updateSubcategoryParam}
             />
           ))}
       </div>

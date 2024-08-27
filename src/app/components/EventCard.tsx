@@ -7,7 +7,7 @@ import SaveButton from './buttons/SaveButton';
 
 interface EventCardProps {
   event: EventProps;
-  venues?: VenueProps[];
+  venues: VenueProps[];
   showTime?: boolean;
   horizontal?: boolean;
   showSaved?: boolean;

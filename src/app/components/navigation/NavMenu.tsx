@@ -25,19 +25,20 @@ const NavList = ({ links, close }: NavListProps) => (
 );
 
 const NavMenu = () => {
-  const { isOpen, close, toggle } = useLightbox();
+  const { isOpen, closeLightbox, openLightbox, lightboxRef } =
+    useLightbox(false);
 
   const mainLinks = navLinks.filter(
     (link) => link !== navLinks[navLinks.length - 1]
   );
+
   const accountLinks = navLinks.find(({ name }) => name === 'My account')
     ?.links!;
 
   return (
     <div className='lg:hidden'>
       <Lightbox
-        hideClose
-        clickOutsideOff
+        ref={lightboxRef}
         className={`transition-left duration-300 z-0 ${
           isOpen ? 'left-0' : 'left-full'
         }`}
@@ -53,7 +54,12 @@ const NavMenu = () => {
         }`}
         title={`${isOpen ? 'Close' : 'Open'} menu`}
       >
-        <Hamburger rounded toggled={isOpen} toggle={toggle} size={18} />
+        <Hamburger
+          rounded
+          toggled={isOpen}
+          toggle={isOpen ? closeLightbox : openLightbox}
+          size={18}
+        />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import Dropdown from './Dropdown';
+import Dropdown from './FiltersDropdown';
 import { Button } from '../../../components/buttons/Button';
 import { getMaxPrice } from '@/utils/formatting';
 import { type EventProps, type TicketProps } from '../../../../data/data';

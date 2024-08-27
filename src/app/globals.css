@@ -66,11 +66,15 @@ input[type='search']::-webkit-search-results-decoration {
   }
 
   .filter-chip {
-    @apply bg-night px-3 h-8 w-fit flex items-center gap-1.5 rounded-full hover:bg-lilac hover:bg-opacity-50 transition-opacity duration-150 flex-shrink-0;
+    @apply bg-night px-3 h-8 w-fit flex items-center gap-1.5 rounded-full transition-opacity duration-150 flex-shrink-0;
   }
 
-  .filter-chip:has(input:checked) {
+  .filter-chip-selected {
     @apply bg-lilac text-dark-night font-medium;
+  }
+
+  .filter-chip-hovered {
+    @apply bg-lilac bg-opacity-30;
   }
 
   .link {
@@ -103,5 +107,13 @@ input[type='search']::-webkit-search-results-decoration {
 
   .border-20 {
     @apply border border-lilac border-opacity-20;
+  }
+
+  .fade {
+    @apply opacity-50 pointer-events-none;
+  }
+
+  .no-fade {
+    @apply opacity-100 pointer-events-auto;
   }
 }

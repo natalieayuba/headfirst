@@ -1,17 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const useLightbox = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const open = () => setIsOpen(true);
-  const close = () => setIsOpen(false);
-  const toggle = () => setIsOpen(!isOpen);
+  const lightboxRef = useRef<HTMLDivElement>(null);
+
+  const openLightbox = () => setIsOpen(true);
+  const closeLightbox = () => setIsOpen(false);
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : 'auto';
     document.body.style.touchAction = isOpen ? 'none' : 'auto';
   }, [isOpen]);
 
-  return { isOpen, open, close, toggle };
+  return { isOpen, openLightbox, closeLightbox, lightboxRef };
 };
 
 export default useLightbox;

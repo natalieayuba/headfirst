@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import Dropdown from './Dropdown';
+import Dropdown from './FiltersDropdown';
 import Calendar from 'react-calendar';
 import { formatDate, formatDateParam } from '@/utils/formatting';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';

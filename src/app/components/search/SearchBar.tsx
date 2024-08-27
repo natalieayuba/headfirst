@@ -3,14 +3,17 @@ import Icon from '../Icon';
 
 interface SearchBarProps {
   query: string;
-  close: () => void;
-  update: (e: ChangeEvent<HTMLInputElement>) => void;
-  clear: () => void;
+  closeSearch: () => void;
+  updateQuery: (e: ChangeEvent<HTMLInputElement>) => void;
+  clearInput: () => void;
 }
 
 const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
-  ({ query, update, close, clear }, ref) => (
-    <div className='bg-night rounded-md border border-20 flex h-12 items-center px-4'>
+  ({ query, updateQuery, closeSearch, clearInput }, ref) => (
+    <div
+      className='bg-night rounded-md border border-20 flex h-12 items-center px-4'
+      onMouseDown={(e) => e.preventDefault()}
+    >
       <Icon name='search' className='w-4 mr-3' />
       <input
         ref={ref}
@@ -18,13 +21,14 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
         placeholder='Search events and categories'
         className='bg-transparent flex-1 outline-none'
         value={query}
-        onChange={update}
-        onBlur={close}
+        onChange={updateQuery}
+        // onBlur={closeSearch}
         autoFocus
       />
       {query && (
         <button
-          onClick={clear}
+          onClick={clearInput}
+          onMouseDown={(e) => e.preventDefault()}
           className='pl-3 text-white-alpha-60 hover:opacity-85'
         >
           <Icon name='close' size={16} />

@@ -17,7 +17,12 @@ const FilterChip = ({
   setSelected,
 }: FilterChipProps) => {
   return (
-    <div key={text} className='filter-chip'>
+    <div
+      key={text}
+      className={`filter-chip hover:filter-chip-hovered${
+        selected === value ? ' filter-chip-selected' : ''
+      }`}
+    >
       <label htmlFor={text}>
         <input
           type='radio'
