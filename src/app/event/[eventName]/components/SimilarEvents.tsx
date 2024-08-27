@@ -1,4 +1,4 @@
-import { type EventProps } from '@/data/data';
+import { type EventProps, type VenueProps } from '@/data/data';
 import React from 'react';
 import HorizontalScroll from '../../../components/HorizontalScroll';
 import EventCard from '../../../components/EventCard';
@@ -6,9 +6,10 @@ import EventCard from '../../../components/EventCard';
 interface SimilarEventsProps {
   event: EventProps;
   events: EventProps[];
+  venues: VenueProps[];
 }
 
-const SimilarEvents = ({ event, events }: SimilarEventsProps) => {
+const SimilarEvents = ({ event, events, venues }: SimilarEventsProps) => {
   const similarEvents = events
     .filter(
       ({ id, categoryId, subcategoryIds }) =>
@@ -25,7 +26,7 @@ const SimilarEvents = ({ event, events }: SimilarEventsProps) => {
       <h2 className='mb-6 px-6'>Other events you might like</h2>
       <HorizontalScroll
         list={similarEvents}
-        card={(event) => <EventCard event={event} showTime />}
+        card={(event) => <EventCard venues={venues} event={event} showTime />}
       />
     </div>
   );

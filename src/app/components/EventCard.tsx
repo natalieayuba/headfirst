@@ -69,9 +69,9 @@ const EventCard = ({
       </div>
       {showSaved && (
         <SaveButton
-          saved={event.saved}
-          className={horizontal ? '' : 'absolute top-1 right-1 bg-night p-2'}
-          size={16}
+          event={event}
+          className={horizontal ? '' : 'absolute top-1 right-1 bg-night p-1.5'}
+          size={14}
         />
       )}
     </Link>

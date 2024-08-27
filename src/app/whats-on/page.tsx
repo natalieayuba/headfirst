@@ -1,9 +1,9 @@
 import React from 'react';
-import { getCategories, getEvents, getVenues } from '@/data/utils';
 import DateDropdown from './components/filters/DateDropdown';
 import FilteredEvents from './components/FilteredEvents';
 import CategoryChips from './components/filters/CategoryChips';
 import PriceDropdown from './components/filters/PriceDropdown';
+import { getCategories, getEvents, getVenues } from '@/utils/db';
 
 const WhatsOn = async () => {
   const events = await getEvents();

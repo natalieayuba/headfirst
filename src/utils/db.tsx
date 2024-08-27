@@ -1,17 +1,20 @@
-import type { CategoryProps, EventProps, VenueProps } from './data';
+'use server';
+import type { CategoryProps, EventProps, VenueProps } from '../data/data';
+
+const baseUrl = 'http://localhost:30301';
 
 export const getCategories = async () => {
-  const data = await fetch('http://localhost:3030/categories');
+  const data = await fetch(`${baseUrl}/categories`);
   return (await data.json()) as CategoryProps[];
 };
 
 export const getVenues = async () => {
-  const data = await fetch('http://localhost:3030/venues');
+  const data = await fetch(`${baseUrl}/venues`);
   return (await data.json()) as VenueProps[];
 };
 
 export const getEvents = async () => {
-  const data = await fetch('http://localhost:3030/events');
+  const data = await fetch(`${baseUrl}/events`);
   const events = (await data.json()) as EventProps[];
 
   events.sort(sortDateAsc);

@@ -1,14 +1,13 @@
 import React from 'react';
 import HomeSection from './HomeSection';
 import HorizontalScroll from '../HorizontalScroll';
-import { sortDateAsc } from '../../../data/data';
 import EventCard from '../EventCard';
+import { getEvents, getVenues, sortDateAsc } from '@/utils/db';
 
 const EditorPicks = async () => {
-  let data = await fetch('http://localhost:3030/events');
-  let events = await data.json();
+  const events = await getEvents();
+  const venues = await getVenues();
 
-  // how would editorsPicks be stored? its own db? much to think about...
   const editorsPicks = events
     .sort(() => 0.5 - Math.random())
     .slice(0, 10)
@@ -21,7 +20,7 @@ const EditorPicks = async () => {
     >
       <HorizontalScroll
         list={editorsPicks}
-        card={(event) => <EventCard event={event} />}
+        card={(event) => <EventCard venues={venues} event={event} showSaved />}
       />
     </HomeSection>
   );

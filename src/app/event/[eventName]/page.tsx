@@ -12,7 +12,7 @@ import About from '@/app/event/[eventName]/components/About';
 import Venue from '@/app/event/[eventName]/components/Venue';
 import SimilarEvents from '@/app/event/[eventName]/components/SimilarEvents';
 import Divider from '@/app/components/Divider';
-import { getCategories, getEvents, getVenues } from '@/data/utils';
+import { getCategories, getEvents, getVenues } from '@/utils/db';
 
 const Event = async ({ params }: { params: { eventName: string } }) => {
   const events = await getEvents();
@@ -42,8 +42,8 @@ const Event = async ({ params }: { params: { eventName: string } }) => {
           />
         </div>
         <div className='mt-5 mb-2'>
-          <div className='flex gap-2 mt-2 ml-3 float-right'>
-            <SaveButton saved={event.saved} />
+          <div className='flex gap-3 mt-2 ml-3 float-right'>
+            <SaveButton event={event} />
             <ShareButton />
           </div>
           <h1 className='text-4xl font-medium'>{event.name}</h1>
@@ -58,7 +58,7 @@ const Event = async ({ params }: { params: { eventName: string } }) => {
         <p className='text-2xl font-medium'>{formatPrice(event.tickets)}</p>
         <Button>Get tickets </Button>
       </div>
-      <SimilarEvents event={event} events={events} />
+      <SimilarEvents venues={venues} event={event} events={events} />
     </div>
   );
 };

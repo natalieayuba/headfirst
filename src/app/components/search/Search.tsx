@@ -1,4 +1,4 @@
-import { getCategories, getEvents, getVenues } from '@/data/utils';
+import { getCategories, getEvents, getVenues } from '@/utils/db';
 import SearchLightbox from './SearchLightbox';
 
 const Search = async () => {

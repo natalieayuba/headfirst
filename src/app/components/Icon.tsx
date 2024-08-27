@@ -19,16 +19,16 @@ import {
   FiPlay,
 } from 'react-icons/fi';
 import { PiHandsClapping } from 'react-icons/pi';
-import { IoMdHeart } from 'react-icons/io';
 import { TbCurrencyPound } from 'react-icons/tb';
 
 interface IconProps {
   name: string;
   size?: number | string;
   className?: string;
+  fill?: string;
 }
 
-const Icon = ({ name, size, className }: IconProps) => {
+const Icon = ({ name, size, className, fill }: IconProps) => {
   const icons = {
     search: <FiSearch />,
     close: <FiX />,
@@ -39,7 +39,6 @@ const Icon = ({ name, size, className }: IconProps) => {
     'angle-down': <FiChevronDown />,
     'angle-up': <FiChevronUp />,
     heart: <FiHeart />,
-    'heart-filled': <IoMdHeart />,
     share: <FiShare />,
     clock: <FiClock />,
     location: <FiMapPin />,
@@ -53,7 +52,7 @@ const Icon = ({ name, size, className }: IconProps) => {
 
   const icon = icons[name as keyof IconType];
 
-  return cloneElement(icon, { size: size ?? 24, className });
+  return cloneElement(icon, { size: size ?? 24, className, fill });
 };
 
 export default Icon;

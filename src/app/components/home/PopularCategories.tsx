@@ -1,11 +1,12 @@
 import React from 'react';
 import HomeSection from './HomeSection';
-import { type Category } from '../../../data/data';
 import Image from 'next/image';
 import HorizontalScroll from '../HorizontalScroll';
 import Link from 'next/link';
+import type { CategoryProps } from '@/data/data';
+import { getCategories } from '@/utils/db';
 
-const CategoryCard = ({ category }: { category: Category }) => (
+const CategoryCard = ({ category }: { category: CategoryProps }) => (
   <Link
     href={`/whats-on?categoryId=${category.id}`}
     className='block flex-shrink-0 w-[190px] aspect-[1.5] h-auto rounded-lg relative overflow-hidden'
@@ -23,9 +24,7 @@ const CategoryCard = ({ category }: { category: Category }) => (
 );
 
 const PopularCategories = async () => {
-  let data = await fetch('http://localhost:3030/categories');
-  let categories = await data.json();
-
+  const categories = await getCategories();
   return (
     <HomeSection heading='Popular categories'>
       <HorizontalScroll
