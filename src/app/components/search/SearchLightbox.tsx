@@ -10,6 +10,7 @@ import {
 } from '@/data/data';
 import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
+import useClickOutside from '@/hooks/useClickOutside';
 
 export type SearchResults = (EventProps | CategoryProps)[];
 
@@ -24,6 +25,7 @@ const SearchLightbox = ({ categories, venues, events }: SearchProps) => {
   const [query, setQuery] = useState('');
   const [searchResults, setSearchResults] = useState<SearchResults>([]);
   const inputRef = useRef<HTMLInputElement>(null);
+  useClickOutside([inputRef, lightboxRef], closeLightbox);
 
   const clearInput = () => setQuery('');
   const updateQuery = (e: ChangeEvent<HTMLInputElement>) =>

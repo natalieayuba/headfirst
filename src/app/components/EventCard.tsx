@@ -2,7 +2,11 @@ import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link';
 import { type EventProps, type VenueProps } from '../../data/data';
-import { formatDate, formatEventUrl, formatPrice } from '@/utils/formatting';
+import {
+  formatDate,
+  formatEventUrl,
+  formatPriceRange,
+} from '@/utils/formatting';
 import SaveButton from './buttons/SaveButton';
 
 interface EventCardProps {
@@ -64,7 +68,7 @@ const EventCard = ({
         >
           <p>{formatDate(startDate, showTime)}</p>
           <p>{venue?.name}</p>
-          {!hidePrice && <p>{formatPrice(tickets)}</p>}
+          {!hidePrice && <p>{formatPriceRange(tickets)}</p>}
         </div>
       </div>
       {showSaved && (

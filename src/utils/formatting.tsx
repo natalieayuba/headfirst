@@ -1,4 +1,4 @@
-import type { Ticket } from '@/data/data';
+import type { TicketProps } from '@/data/data';
 
 export const appendClassName = (className: string | undefined) =>
   className ? ` ${className}` : '';
@@ -36,15 +36,12 @@ export const getMinPrice = (list: any[]) =>
 export const getMaxPrice = (list: any[]) =>
   list.reduce((a, b) => (a.price > b.price ? a : b)).price;
 
-export const formatPrice = (tickets: Ticket[]) => {
+export const formatPrice = (price: number) =>
+  `£${price % 1 !== 0 ? price.toFixed(2) : price}`;
+
+export const formatPriceRange = (tickets: TicketProps[]) => {
   const toString = (price: number) =>
-    price === 0
-      ? 'Free'
-      : `£${
-          price % 1 !== 0
-            ? price.toLocaleString('en', { minimumFractionDigits: 2 })
-            : price
-        }`;
+    price === 0 ? 'Free' : formatPrice(price);
 
   if (
     tickets.length === 1 ||

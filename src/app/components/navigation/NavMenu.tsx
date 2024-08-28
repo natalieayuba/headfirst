@@ -25,8 +25,7 @@ const NavList = ({ links, close }: NavListProps) => (
 );
 
 const NavMenu = () => {
-  const { isOpen, closeLightbox, openLightbox, lightboxRef } =
-    useLightbox(false);
+  const { isOpen, closeLightbox, openLightbox, lightboxRef } = useLightbox();
 
   const mainLinks = navLinks.filter(
     (link) => link !== navLinks[navLinks.length - 1]
@@ -43,10 +42,10 @@ const NavMenu = () => {
           isOpen ? 'left-0' : 'left-full'
         }`}
       >
-        <NavList links={mainLinks} close={close} />
+        <NavList links={mainLinks} close={closeLightbox} />
         <Divider className='w-14' />
         <h3 className='mb-2 text-white-alpha-60'>My account</h3>
-        <NavList links={accountLinks} close={close} />
+        <NavList links={accountLinks} close={closeLightbox} />
       </Lightbox>
       <div
         className={`relative -mr-2 hover:scale-110 transition-all duration-150${

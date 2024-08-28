@@ -109,11 +109,7 @@ input[type='search']::-webkit-search-results-decoration {
     @apply border border-lilac border-opacity-20;
   }
 
-  .fade {
-    @apply opacity-50 pointer-events-none;
-  }
-
-  .no-fade {
-    @apply opacity-100 pointer-events-auto;
+  .list-divider {
+    @apply [&:not(:last-child)]:border-b [&:not(:last-child)]:border-lilac [&:not(:last-child)]:border-opacity-10;
   }
 }

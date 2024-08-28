@@ -1,5 +1,11 @@
 import { appendClassName } from '@/utils/formatting';
-import React, { forwardRef, useState, type ReactNode } from 'react';
+import React, {
+  forwardRef,
+  useEffect,
+  useRef,
+  useState,
+  type ReactNode,
+} from 'react';
 import Icon from './Icon';
 
 interface LightboxProps {
@@ -9,34 +15,24 @@ interface LightboxProps {
 }
 
 const Lightbox = forwardRef<HTMLDivElement, LightboxProps>(
-  ({ children, className, onClose }, ref) => {
-    const isIos =
-      typeof navigator !== 'undefined'
-        ? navigator.userAgent.match(/ipad|ipod|iphone/i)
-        : false;
-
-    return (
-      <div
-        className={`fixed flex flex-col z-20 bg-dark-night backdrop-blur-sm bg-opacity-95 h-dvh w-screen top-0 bottom-0 right-0${appendClassName(
-          className
-        )}`}
-        // style={{
-        //   maxHeight: isIos ? `${maxHeight}px` : '450px',
-        // }}
-      >
-        <header className='flex justify-between h-16 px-6'>
-          {onClose && (
-            <button onClick={onClose} className='ml-auto'>
-              <Icon name='close' />
-            </button>
-          )}
-        </header>
-        <div className='px-6' ref={ref}>
-          {children}
-        </div>
+  ({ children, className, onClose }, ref) => (
+    <div
+      className={`fixed z-20 bg-dark-night backdrop-blur-sm bg-opacity-95 max-h-full h-screen w-screen overflow-y-auto left-0 top-0 ${appendClassName(
+        className
+      )}`}
+    >
+      <nav className='flex justify-between h-16 px-6'>
+        {onClose && (
+          <button onClick={onClose} className='ml-auto'>
+            <Icon name='close' />
+          </button>
+        )}
+      </nav>
+      <div className='px-6 pb-6' ref={ref}>
+        {children}
       </div>
-    );
-  }
+    </div>
+  )
 );
 
 Lightbox.displayName = 'Lightbox';

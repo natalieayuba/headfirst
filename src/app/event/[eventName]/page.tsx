@@ -1,10 +1,9 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { formatEventUrl, formatPrice } from '@/utils/formatting';
+import { formatEventUrl } from '@/utils/formatting';
 import Image from 'next/image';
 import SaveButton from '@/app/components/buttons/SaveButton';
 import ShareButton from '@/app/components/buttons/ShareButton';
-import { Button } from '@/app/components/buttons/Button';
 import Media from '@/app/event/[eventName]/components/media/Media';
 import Breadcrumbs from '@/app/event/[eventName]/components/Breadcrumbs';
 import Details from '@/app/event/[eventName]/components/Details';
@@ -13,6 +12,7 @@ import Venue from '@/app/event/[eventName]/components/Venue';
 import SimilarEvents from '@/app/event/[eventName]/components/SimilarEvents';
 import Divider from '@/app/components/Divider';
 import { getCategories, getEvents, getVenues } from '@/utils/db';
+import Checkout from './components/checkout/Checkout';
 
 const Event = async ({ params }: { params: { eventName: string } }) => {
   const events = await getEvents();
@@ -54,10 +54,7 @@ const Event = async ({ params }: { params: { eventName: string } }) => {
         <Venue venueId={event.venueId} venues={venues} />
       </div>
       {event.media && <Media media={event.media} />}
-      <div className='bg-night px-6 py-4 flex justify-between items-center sticky bottom-0'>
-        <p className='text-2xl font-medium'>{formatPrice(event.tickets)}</p>
-        <Button>Get tickets </Button>
-      </div>
+      <Checkout event={event} venues={venues} />
       <SimilarEvents venues={venues} event={event} events={events} />
     </div>
   );

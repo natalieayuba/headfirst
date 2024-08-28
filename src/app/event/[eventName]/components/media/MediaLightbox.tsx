@@ -31,7 +31,10 @@ const MediaLightbox = forwardRef<HTMLDivElement, MediaLightboxProps>(
 
     return (
       <Lightbox onClose={onClose} ref={lightboxRef}>
-        <div className='flex flex-col h-full gap-4 justify-between '>
+        <div
+          className='flex flex-col h-full gap-4 justify-between overflow-hidden'
+          style={{ height: 'calc(100dvh - 80px)' }}
+        >
           <p className='text-center'>
             {selectedIndex + 1}
             {' of '}
@@ -45,7 +48,7 @@ const MediaLightbox = forwardRef<HTMLDivElement, MediaLightboxProps>(
           <p className='text-center mt-4'>{media[selectedIndex]?.alt}</p>
           <HorizontalScroll
             ref={scrollerRef}
-            className='-mx-6'
+            className='-mx-6 scroll-smooth'
             list={media}
             card={(item) => (
               <MediaThumbnail

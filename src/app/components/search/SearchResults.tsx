@@ -33,7 +33,12 @@ const SearchResults = ({
     <div
       className='my-4 p-5 bg-night rounded-lg overflow-scroll transition-all duration-200'
       onMouseDown={(e) => e.preventDefault()}
-      style={{ maxHeight: isIos ? `calc(${maxHeight}px - 150px)` : 450 }}
+      style={{
+        maxHeight:
+          isIos && (maxHeight as number) < 400
+            ? `calc(${maxHeight}px - 150px)`
+            : 400,
+      }}
     >
       {searchResults.length === 0 ? (
         <p className='secondary-text'>No results found</p>
