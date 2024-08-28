@@ -1,13 +1,10 @@
 import { Button } from '@/app/components/buttons/Button';
 import EventCard from '@/app/components/EventCard';
-import Icon from '@/app/components/Icon';
 import Lightbox from '@/app/components/Lightbox';
-import type { EventProps, TicketProps, VenueProps } from '@/data/data';
-import React, { useEffect, useState, type ReactNode } from 'react';
-import CheckoutSection from './CheckoutSection';
+import type { EventProps, VenueProps } from '@/data/data';
+import React, { useEffect, useState } from 'react';
 import Tickets from './Tickets';
 import Donate from './Donate';
-import { formatPrice } from '@/utils/formatting';
 
 const CheckoutLightbox = ({
   event,
@@ -18,6 +15,7 @@ const CheckoutLightbox = ({
   venues: VenueProps[];
   closeLightbox: () => void;
 }) => {
+  const bookingFee = 0.8;
   const [ticketCount, setTicketCount] = useState<number[]>(
     event.tickets.map(() => 0)
   );
@@ -29,9 +27,10 @@ const CheckoutLightbox = ({
     event.tickets.forEach(
       ({ price }, index) => (total += price * ticketCount[index])
     );
+    total = total > 0 ? total + bookingFee : total;
     total += donation;
     setTotal(total);
-  }, [ticketCount, donation]);
+  }, [event.tickets, ticketCount, donation]);
 
   return (
     <Lightbox onClose={closeLightbox}>
@@ -49,7 +48,7 @@ const CheckoutLightbox = ({
           ticketCount={ticketCount}
           setTicketCount={setTicketCount}
         />
-        <Donate setDonation={setDonation} />
+        <Donate donation={donation} setDonation={setDonation} />
         <div>
           <div className='flex justify-between text-xl font-medium'>
             <p>Total</p>

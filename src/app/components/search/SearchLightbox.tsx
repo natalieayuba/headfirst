@@ -8,9 +8,9 @@ import {
   type EventProps,
   type VenueProps,
 } from '@/data/data';
-import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
 import useClickOutside from '@/hooks/useClickOutside';
+import Input from '../Input';
 
 export type SearchResults = (EventProps | CategoryProps)[];
 
@@ -27,7 +27,6 @@ const SearchLightbox = ({ categories, venues, events }: SearchProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   useClickOutside([inputRef, lightboxRef], closeLightbox);
 
-  const clearInput = () => setQuery('');
   const updateQuery = (e: ChangeEvent<HTMLInputElement>) =>
     setQuery(e.target.value);
 
@@ -60,12 +59,16 @@ const SearchLightbox = ({ categories, venues, events }: SearchProps) => {
       </button>
       {isOpen && (
         <Lightbox ref={lightboxRef} onClose={closeSearch}>
-          <SearchBar
+          <Input
+            type='search'
+            icon='search'
             ref={inputRef}
-            query={query}
-            updateQuery={updateQuery}
-            closeSearch={closeSearch}
-            clearInput={clearInput}
+            value={query}
+            onChange={updateQuery}
+            onBlur={closeSearch}
+            placeholder='Search events and categories'
+            autoFocus
+            clearInput={() => setQuery('')}
           />
           {query !== '' && (
             <SearchResults

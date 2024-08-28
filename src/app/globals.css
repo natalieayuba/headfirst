@@ -112,4 +112,13 @@ input[type='search']::-webkit-search-results-decoration {
   .list-divider {
     @apply [&:not(:last-child)]:border-b [&:not(:last-child)]:border-lilac [&:not(:last-child)]:border-opacity-10;
   }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 }

@@ -1,13 +1,33 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, type ChangeEvent } from 'react';
 import CheckoutSection from './CheckoutSection';
 import { formatPrice } from '@/utils/formatting';
+import Input from '@/app/components/Input';
 
-const Donate = ({ setDonation }: { setDonation: (pound: number) => void }) => {
-  const [selected, setSelected] = useState(-1);
+const Donate = ({
+  donation,
+  setDonation,
+}: {
+  donation: number;
+  setDonation: (pound: number) => void;
+}) => {
+  const [selectedDonation, setSelectedDonation] = useState(0);
+  const [customDonation, setCustomDonation] = useState('');
 
-  const handleClick = (pound: number, index: number) => {
-    setDonation(selected === index ? 0 : pound);
-    setSelected(selected === index ? -1 : index);
+  const handleClick = (pound: number) => {
+    setSelectedDonation(pound === selectedDonation ? 0 : pound);
+    setDonation(pound === selectedDonation ? 0 : pound);
+  };
+
+  const handleChange = (e: ChangeEvent) => {
+    const value = (e.target as HTMLInputElement).value;
+    setSelectedDonation(0);
+    setCustomDonation(value);
+    setDonation(Number(value));
+  };
+
+  const clearInput = () => {
+    setCustomDonation('');
+    setDonation(0);
   };
 
   return (
@@ -17,17 +37,27 @@ const Donate = ({ setDonation }: { setDonation: (pound: number) => void }) => {
         support, community arts & activism.
       </p>
       <div className='flex gap-2'>
-        {[1, 3, 5].map((pound, index) => (
+        {[1, 3, 5].map((pound) => (
           <button
+            key={pound}
             className={`border font-medium border-lilac rounded flex-1 px-3 py-1.5 ${
-              selected === index ? 'bg-lilac text-dark-night' : 'text-lilac'
+              selectedDonation === pound
+                ? 'bg-lilac text-dark-night'
+                : 'text-lilac'
             }`}
-            onClick={() => handleClick(pound, index)}
+            onClick={() => handleClick(pound)}
           >
             {formatPrice(pound)}
           </button>
         ))}
       </div>
+      <Input
+        type='currency'
+        icon='pound'
+        onChange={handleChange}
+        value={customDonation}
+        clearInput={clearInput}
+      />
     </CheckoutSection>
   );
 };

@@ -17,7 +17,7 @@ const Header = ({ search }: { search: JSX.Element }) => {
         typeof window !== 'undefined' &&
         window.scrollY < 300
           ? 'bg-opacity-0 '
-          : ' '
+          : ''
       } ${visible ? 'top-0' : '-top-16'}`}
     >
       <nav className='flex justify-between h-full items-center transition-all duration-300 margin'>
