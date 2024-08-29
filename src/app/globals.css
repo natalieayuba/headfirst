@@ -80,11 +80,26 @@ input[type='search']::-webkit-search-results-decoration {
   .link {
     @apply text-lilac font-medium transition-opacity duration-200 hover:opacity-90;
   }
+
+  .radio-button {
+    @apply invisible relative after:content-[""] after:visible after:absolute after:w-3 after:h-3 after:rounded-full after:border-2 after:border-night after:outline after:outline-1 after:outline-lilac;
+  }
+
+  .radio-button:checked {
+    @apply after:bg-lilac;
+  }
+
+  .checkbox {
+    @apply invisible relative after:content-[""] after:visible after:absolute after:top-1 after:w-3 after:h-3 after:rounded-sm after:border after:border-lilac;
+  }
+  .checkbox:checked {
+    @apply after:bg-lilac before:content-['✓'] before:text-dark-night before:visible before:absolute before:w-3 before:h-3 before:z-10 before:top-[1px] before:left-[1px];
+  }
 }
 
 @layer component {
   .secondary-text {
-    @apply text-white-alpha-60 text-sm;
+    @apply text-white text-opacity-60 text-sm;
   }
 
   .filter-chip-scroll {

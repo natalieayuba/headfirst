@@ -32,7 +32,7 @@ const Donate = ({
 
   return (
     <CheckoutSection heading='Donate'>
-      <p className='text-white-alpha-60 my-1'>
+      <p className='text-white text-opacity-60 my-1'>
         Your donation will help PRSC continue their programme of homeless
         support, community arts & activism.
       </p>

@@ -41,7 +41,7 @@ const Footer = () => {
         <div className='my-6'>
           {footerLinks.map(({ heading, links }) => (
             <div key={heading} className='mb-6'>
-              <h3 className='text-white-alpha-60 mb-4'>{heading}</h3>
+              <h3 className='text-white text-opacity-60 mb-4'>{heading}</h3>
               <ul className='flex flex-col gap-4'>
                 {links.map((link) => (
                   <li key={link}>
@@ -57,7 +57,7 @@ const Footer = () => {
       </div>
       <Divider />
       <div className='pb-10 flex flex-col gap-3'>
-        <p className='text-white-alpha-60'>© 2024 Headfirst Bristol</p>
+        <p className='text-white text-opacity-60'>© 2024 Headfirst Bristol</p>
         <ul className='flex flex-wrap gap-x-4'>
           {legalLinks.map((link) => (
             <li key={link}>

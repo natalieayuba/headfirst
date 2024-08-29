@@ -44,7 +44,7 @@ const NavMenu = () => {
       >
         <NavList links={mainLinks} close={closeLightbox} />
         <Divider className='w-14' />
-        <h3 className='mb-2 text-white-alpha-60'>My account</h3>
+        <h3 className='mb-2 text-white text-opacity-60'>My account</h3>
         <NavList links={accountLinks} close={closeLightbox} />
       </Lightbox>
       <div

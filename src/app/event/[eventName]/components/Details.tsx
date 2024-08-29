@@ -47,7 +47,7 @@ const Details = ({ event, venues, categories }: DetailsProps) => {
               <Icon
                 name={icon}
                 size={16}
-                className='text-white-alpha-60 inline-block mr-3'
+                className='text-white text-opacity-60 inline-block mr-3'
               />
               {text}
             </li>

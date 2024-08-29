@@ -13,17 +13,17 @@ const Donations = () => (
           <span className='font-sans font-extrabold text-3xl'>£</span>
           14,177.50
         </p>
-        <p className='text-white-alpha-60 -mt-2'>raised from ticket sales</p>
+        <p className='text-white text-opacity-60 -mt-2'>
+          raised from ticket sales
+        </p>
       </div>
       <p>
         Headfirst is a not-for-profit-orientated, local business. 100% of
         booking fees are donated directly to local causes in Bristol.
-        <Hyperlink
-          href='#'
-          text='Read more'
-          icon='arrow-right'
-          className='block mt-4'
-        />
+        <Hyperlink href='#' className='block mt-4'>
+          Read more
+          <Icon name='arrow-right' size={14} className='ml-2 inline-block' />
+        </Hyperlink>
       </p>
     </div>
   </HomeSection>

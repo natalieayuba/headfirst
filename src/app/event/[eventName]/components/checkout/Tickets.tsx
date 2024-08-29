@@ -44,7 +44,10 @@ const Tickets = ({
     <CheckoutSection heading='Tickets'>
       <ol>
         {tickets.map((ticket, index) => (
-          <li className='flex justify-between py-3 list-divider'>
+          <li
+            key={ticket.name}
+            className='flex justify-between py-3 list-divider'
+          >
             <div>
               <p>{ticket.name}</p>
               <p className='font-medium text-lg'>{formatPrice(ticket.price)}</p>

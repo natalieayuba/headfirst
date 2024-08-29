@@ -8,7 +8,7 @@ const About = ({ about }: { about: string }) => {
     <div>
       <h2 className='mb-4'>About this event</h2>
       <p
-        className={`text-white-alpha-60 whitespace-pre-wrap break-words${
+        className={`text-white text-opacity-60 whitespace-pre-wrap break-words${
           readMore ? '' : ' line-clamp-6'
         }`}
       >

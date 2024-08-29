@@ -11,8 +11,6 @@ module.exports = {
     lilac: '#BA9CFF',
     night: '#1E1B28',
     'dark-night': '#0E0C12',
-    'white-alpha-90': 'rgba(255,255,255,0.9)',
-    'white-alpha-60': 'rgba(255,255,255,0.6)',
   },
   navLinks: [
     {

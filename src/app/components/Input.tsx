@@ -79,7 +79,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           <button
             onClick={clearInput}
             onMouseDown={(e) => e.preventDefault()}
-            className='pl-3 text-white-alpha-60 hover:opacity-85 ml-auto'
+            className='pl-3 text-white text-opacity-60 hover:opacity-85 ml-auto'
           >
             <Icon name='close' size={16} />
           </button>

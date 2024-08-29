@@ -1,27 +1,27 @@
 import { appendClassName } from '@/utils/formatting';
-import React, {
-  forwardRef,
-  useEffect,
-  useRef,
-  useState,
-  type ReactNode,
-} from 'react';
+import React, { forwardRef, type ReactNode } from 'react';
 import Icon from './Icon';
 
 interface LightboxProps {
   children: ReactNode;
   className?: string;
   onClose?: () => void;
+  onBack?: () => void;
 }
 
 const Lightbox = forwardRef<HTMLDivElement, LightboxProps>(
-  ({ children, className, onClose }, ref) => (
+  ({ children, className, onClose, onBack }, ref) => (
     <div
       className={`fixed z-20 bg-dark-night backdrop-blur-sm bg-opacity-95 max-h-full h-screen w-screen overflow-y-auto left-0 top-0 ${appendClassName(
         className
       )}`}
     >
       <nav className='flex justify-between h-16 px-6'>
+        {onBack && (
+          <button onClick={onBack}>
+            <Icon name='angle-left' />
+          </button>
+        )}
         {onClose && (
           <button onClick={onClose} className='ml-auto'>
             <Icon name='close' />

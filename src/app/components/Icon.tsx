@@ -19,9 +19,11 @@ import {
   FiPlay,
   FiPlusCircle,
   FiMinusCircle,
+  FiCreditCard,
 } from 'react-icons/fi';
 import { PiHandsClapping } from 'react-icons/pi';
 import { TbCurrencyPound } from 'react-icons/tb';
+import { FaCcVisa } from 'react-icons/fa';
 
 interface IconProps {
   name: string;
@@ -52,6 +54,8 @@ const Icon = ({ name, size, className, fill }: IconProps) => {
     play: <FiPlay />,
     plus: <FiPlusCircle />,
     minus: <FiMinusCircle />,
+    card: <FiCreditCard />,
+    visa: <FaCcVisa />,
   };
 
   const icon = icons[name as keyof IconType];

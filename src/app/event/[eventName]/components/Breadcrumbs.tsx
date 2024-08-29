@@ -31,7 +31,7 @@ const Breadcrumbs = ({ categoryId, categories }: BreadcrumbsProps) => {
             key={name}
             className={`inline-block font-medium ${
               index !== breadcrumbs.length - 1
-                ? 'text-white-alpha-60'
+                ? 'text-white text-opacity-60'
                 : 'text-lilac'
             }`}
           >
