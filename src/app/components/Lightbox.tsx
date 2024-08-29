@@ -28,7 +28,7 @@ const Lightbox = forwardRef<HTMLDivElement, LightboxProps>(
           </button>
         )}
       </nav>
-      <div className='px-6 pb-6' ref={ref}>
+      <div className='px-6 mb-6' ref={ref}>
         {children}
       </div>
     </div>

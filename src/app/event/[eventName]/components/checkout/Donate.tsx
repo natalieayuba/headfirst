@@ -1,15 +1,9 @@
-import React, { useEffect, useState, type ChangeEvent } from 'react';
+import React, { useState, type ChangeEvent } from 'react';
 import CheckoutSection from './CheckoutSection';
 import { formatPrice } from '@/utils/formatting';
 import Input from '@/app/components/Input';
 
-const Donate = ({
-  donation,
-  setDonation,
-}: {
-  donation: number;
-  setDonation: (pound: number) => void;
-}) => {
+const Donate = ({ setDonation }: { setDonation: (pound: number) => void }) => {
   const [selectedDonation, setSelectedDonation] = useState(0);
   const [customDonation, setCustomDonation] = useState('');
 
@@ -23,11 +17,6 @@ const Donate = ({
     setSelectedDonation(0);
     setCustomDonation(value);
     setDonation(Number(value));
-  };
-
-  const clearInput = () => {
-    setCustomDonation('');
-    setDonation(0);
   };
 
   return (
@@ -52,13 +41,16 @@ const Donate = ({
         ))}
       </div>
       <Input
+        id='custom-donation'
         type='currency'
-        icon='pound'
         onChange={handleChange}
         value={customDonation}
-        clearInput={clearInput}
         label='Custom donation'
-        className='mt-2'
+        className={`mt-2 ${
+          customDonation === ''
+            ? 'focus-within:before:content-["£"]'
+            : 'before:content-["£"]'
+        }`}
       />
     </CheckoutSection>
   );

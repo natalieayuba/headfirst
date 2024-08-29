@@ -7,6 +7,7 @@ import GetTickets from './GetTickets';
 import Payment from './Payment';
 import HyperLink from '@/app/components/Hyperlink';
 import Checkbox from '@/app/components/Checkbox';
+import Confirmation from './Confirmation';
 
 export interface NewCardDetails {
   name: string;
@@ -64,7 +65,6 @@ const CheckoutLightbox = ({
           tickets={event.tickets}
           ticketCount={ticketCount}
           setTicketCount={(count) => setTicketCount(count)}
-          donation={donation}
           setDonation={(donation) => setDonation(donation)}
         />
       ),
@@ -109,6 +109,9 @@ const CheckoutLightbox = ({
           newCardDetails &&
           Object.values(newCardDetails).some((value) => value === '')),
     },
+    {
+      content: <Confirmation event={event} venues={venues} />,
+    },
   ];
 
   useEffect(() => {
@@ -145,38 +148,42 @@ const CheckoutLightbox = ({
       onClose={closeLightbox}
       onBack={step > 0 ? () => setStep((step) => step - 1) : undefined}
     >
-      <div className='flex gap-6 flex-col min-h-dvh'>
+      <div className='flex gap-6 flex-col flex-1'>
         {/* // fix event card by making each part different */}
-        <EventCard
-          event={event}
-          venues={venues}
-          horizontal
-          size='xs'
-          hidePrice
-        />
+        {step < 2 && (
+          <EventCard
+            event={event}
+            venues={venues}
+            horizontal
+            size='xs'
+            hidePrice
+          />
+        )}
         {steps[step].content}
-        <div>
-          {step > 0 && (
-            <div>
-              <h2 className='mb-2'>Order Summary</h2>
-              {orderSummary.map(({ text, price }) => (
-                <div key={text} className='flex justify-between'>
-                  <p>{text}</p>
-                  <p>£{price.toFixed(2)}</p>
-                </div>
-              ))}
-            </div>
-          )}
-          <Total total={total} />
-          <p className='secondary-text'>{steps[step].footerContent}</p>
-          <Button
-            className='w-full mt-4'
-            onClick={() => setStep((step) => step + 1)}
-            disabled={steps[step].buttonDisabled}
-          >
-            {steps[step].buttonText}
-          </Button>
-        </div>
+        {step < 2 && (
+          <div>
+            {step === 1 && (
+              <div>
+                <h2 className='mb-2'>Order Summary</h2>
+                {orderSummary.map(({ text, price }) => (
+                  <div key={text} className='flex justify-between'>
+                    <p>{text}</p>
+                    <p>£{price.toFixed(2)}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+            <Total total={total} />
+            <p className='secondary-text'>{steps[step].footerContent}</p>
+            <Button
+              className='w-full mt-4'
+              onClick={() => setStep((step) => step + 1)}
+              disabled={steps[step].buttonDisabled}
+            >
+              {steps[step].buttonText}
+            </Button>
+          </div>
+        )}
       </div>
     </Lightbox>
   );

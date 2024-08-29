@@ -19,6 +19,7 @@ interface InputProps {
   onBlur?: () => void;
   onKeyDown?: (e: KeyboardEvent) => void;
   onKeyUp?: (e: KeyboardEvent) => void;
+  onFocus?: () => void;
   autoFocus?: boolean;
   clearInput?: () => void;
   pattern?: string;
@@ -40,6 +41,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       placeholder,
       onChange,
       onBlur,
+      onFocus,
       icon,
       autoFocus,
       value,
@@ -59,8 +61,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     ref
   ) => {
     const [isFocused, setIsFocused] = useState(false);
-
-    useEffect(() => {}, [value]);
 
     return (
       <div
@@ -95,7 +95,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             setIsFocused(false);
             onBlur;
           }}
-          onFocus={() => setIsFocused(true)}
+          onFocus={() => {
+            setIsFocused(true);
+            onFocus;
+          }}
           onKeyUp={onKeyUp}
           onKeyDown={onKeyDown}
           onChange={onChange}
