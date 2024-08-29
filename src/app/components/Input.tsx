@@ -3,6 +3,7 @@ import React, {
   useEffect,
   useState,
   type ChangeEvent,
+  type KeyboardEvent,
 } from 'react';
 import Icon from './Icon';
 import { appendClassName } from '@/utils/formatting';
@@ -10,23 +11,32 @@ import { appendClassName } from '@/utils/formatting';
 interface InputProps {
   value: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  id: string;
   label?: string;
-  type?: string;
+  type: string;
   placeholder?: string;
   clear?: boolean;
   onBlur?: () => void;
+  onKeyDown?: (e: KeyboardEvent) => void;
+  onKeyUp?: (e: KeyboardEvent) => void;
   autoFocus?: boolean;
   clearInput?: () => void;
+  pattern?: string;
   min?: number;
   inputMode?: any;
   icon?: string;
   className?: string;
+  maxLength?: number;
+  autoCorrect?: string;
+  spellCheck?: boolean;
+  autoComplete?: string;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
       type,
+      id,
       placeholder,
       onChange,
       onBlur,
@@ -34,48 +44,70 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       autoFocus,
       value,
       clearInput,
+      pattern,
       min,
       inputMode,
       label,
       className,
+      maxLength,
+      onKeyDown,
+      onKeyUp,
+      autoCorrect,
+      spellCheck,
+      autoComplete,
     },
     ref
   ) => {
-    const [showClearButton, setShowClearButton] = useState(false);
+    const [isFocused, setIsFocused] = useState(false);
 
-    useEffect(() => {
-      setShowClearButton(value !== '');
-    }, [value]);
+    useEffect(() => {}, [value]);
 
     return (
       <div
-        className={`bg-night relative rounded-md border border-20 flex h-12 items-center px-4 transition-all duration-150 focus-within:border-opacity-60${appendClassName(
+        className={`bg-night relative rounded-md border border-20 flex h-12 items-center px-4 transition-all duration-150 focus-within:border-opacity-60 max-w-full${appendClassName(
           className
         )}`}
       >
         {icon && <Icon name={icon} className='w-4 mr-3' />}
         {label && (
-          <label className='absolute -top-2.5 px-1 bg-night text-sm font-medium text-lilac text-opacity-60'>
+          <label
+            htmlFor={id}
+            className={`absolute font-medium text-lilac text-opacity-60 transition-all duration-200${
+              isFocused || value !== ''
+                ? ' -translate-y-6 -translate-x-1 px-0.5 bg-night text-sm'
+                : ''
+            }`}
+          >
             {label}
           </label>
         )}
         <input
           ref={ref}
+          id={id}
           value={value}
           type={type === 'currency' ? 'number' : type}
           placeholder={placeholder}
           min={type === 'currency' ? 0 : min}
+          pattern={pattern}
           inputMode={type === 'currency' ? 'decimal' : inputMode}
+          maxLength={maxLength}
           onBlur={() => {
-            setShowClearButton(false);
+            setIsFocused(false);
             onBlur;
           }}
-          onFocus={() => setShowClearButton(value !== '')}
+          onFocus={() => setIsFocused(true)}
+          onKeyUp={onKeyUp}
+          onKeyDown={onKeyDown}
           onChange={onChange}
-          className='bg-transparent outline-none'
+          autoCorrect={autoCorrect}
+          spellCheck={spellCheck}
+          autoComplete={autoComplete}
+          className={`bg-transparent outline-none w-full flex-1 placeholder:transition-colors placeholder:duration-150${
+            !isFocused ? ' placeholder-transparent' : ''
+          }`}
           autoFocus={autoFocus}
         />
-        {showClearButton && (
+        {clearInput && isFocused && value !== '' && (
           <button
             onClick={clearInput}
             onMouseDown={(e) => e.preventDefault()}

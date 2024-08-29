@@ -92,6 +92,7 @@ input[type='search']::-webkit-search-results-decoration {
   .checkbox {
     @apply invisible relative after:content-[""] after:visible after:absolute after:top-1 after:w-3 after:h-3 after:rounded-sm after:border after:border-lilac;
   }
+
   .checkbox:checked {
     @apply after:bg-lilac before:content-['✓'] before:text-dark-night before:visible before:absolute before:w-3 before:h-3 before:z-10 before:top-[1px] before:left-[1px];
   }

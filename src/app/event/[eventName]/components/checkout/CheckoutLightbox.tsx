@@ -6,6 +6,27 @@ import React, { useEffect, useState } from 'react';
 import GetTickets from './GetTickets';
 import Payment from './Payment';
 import HyperLink from '@/app/components/Hyperlink';
+import Checkbox from '@/app/components/Checkbox';
+
+export interface NewCardDetails {
+  name: string;
+  cardNumber: string;
+  expiryDate: string;
+  securityCode: string;
+  postcode: string;
+  save: boolean;
+  default: boolean;
+}
+
+export const cardDetailsDefault = {
+  name: '',
+  cardNumber: '',
+  expiryDate: '',
+  securityCode: '',
+  postcode: '',
+  save: false,
+  default: false,
+};
 
 const Total = ({ total }: { total: number }) => (
   <div className='flex justify-between text-xl font-medium'>
@@ -34,7 +55,7 @@ const CheckoutLightbox = ({
   );
   const [donation, setDonation] = useState(0);
   const [selectedPaymentOption, setSelectedPaymentOption] = useState(-1);
-  const [newCardDetails, setNewCardDetails] = useState([]);
+  const [newCardDetails, setNewCardDetails] = useState(cardDetailsDefault);
 
   const steps = [
     {
@@ -62,19 +83,19 @@ const CheckoutLightbox = ({
         <Payment
           selectedPaymentOption={selectedPaymentOption}
           setSelectedPaymentOption={setSelectedPaymentOption}
+          newCardDetails={newCardDetails}
+          setNewCardDetails={(details) => setNewCardDetails(details)}
         />
       ),
       footerContent: (
         <>
-          <label
-            htmlFor='get-emails'
-            className='text-white text-opacity-60 flex gap-4 border-y border-lilac border-opacity-20 py-4 my-4'
-          >
-            <input className='checkbox' type='checkbox' id='get-emails' />
-            Receive emails from the event organisers about future events
-          </label>
+          <Checkbox
+            label='Receive emails from the event organisers about future events'
+            id='get-emails'
+            className='border-y border-lilac border-opacity-20 py-4 my-4'
+          />
           <p>
-            By purchasing, you are agreeing to Headfirst's{' '}
+            By purchasing, you are agreeing to Headfirst&apos;s{' '}
             <HyperLink href='#'>Terms & Conditions</HyperLink>
             {' and '}
             <HyperLink href='#'>Privacy Policy</HyperLink>.
@@ -84,7 +105,9 @@ const CheckoutLightbox = ({
       buttonText: 'Purchase tickets',
       buttonDisabled:
         selectedPaymentOption === -1 ||
-        (selectedPaymentOption === 1 && newCardDetails.length === 0),
+        (selectedPaymentOption === 1 &&
+          newCardDetails &&
+          Object.values(newCardDetails).some((value) => value === '')),
     },
   ];
 
@@ -137,7 +160,7 @@ const CheckoutLightbox = ({
             <div>
               <h2 className='mb-2'>Order Summary</h2>
               {orderSummary.map(({ text, price }) => (
-                <div className='flex justify-between'>
+                <div key={text} className='flex justify-between'>
                   <p>{text}</p>
                   <p>£{price.toFixed(2)}</p>
                 </div>

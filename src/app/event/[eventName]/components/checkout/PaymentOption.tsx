@@ -1,5 +1,14 @@
 import React, { type ChangeEvent } from 'react';
 
+interface PaymentOptionProps {
+  index: number;
+  icon: JSX.Element;
+  title: string;
+  subtitle?: string;
+  isDefault?: boolean;
+  handleChange: (e: ChangeEvent<HTMLInputElement>, index: number) => void;
+}
+
 const PaymentOption = ({
   index,
   icon,
@@ -7,16 +16,9 @@ const PaymentOption = ({
   subtitle,
   isDefault,
   handleChange,
-}: {
-  index: number;
-  icon: JSX.Element;
-  title: string;
-  subtitle?: string;
-  isDefault?: boolean;
-  handleChange: (e: ChangeEvent<HTMLInputElement>, index: number) => void;
-}) => (
+}: PaymentOptionProps) => (
   <label
-    className='flex gap-4 py-3 items-center list-divider'
+    className='flex gap-4 py-3 items-center'
     htmlFor={title.toLowerCase().replace(' ', '-')}
   >
     <input

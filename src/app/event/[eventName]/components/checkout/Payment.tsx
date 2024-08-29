@@ -1,16 +1,21 @@
 import HyperLink from '@/app/components/Hyperlink';
-import React from 'react';
+import React, { useEffect } from 'react';
 import CheckoutSection from './CheckoutSection';
 import NewCardForm from './NewCardForm';
 import PaymentOption from './PaymentOption';
 import Icon from '@/app/components/Icon';
+import { cardDetailsDefault, type NewCardDetails } from './CheckoutLightbox';
 
 const Payment = ({
   selectedPaymentOption,
   setSelectedPaymentOption,
+  newCardDetails,
+  setNewCardDetails,
 }: {
   selectedPaymentOption: number;
   setSelectedPaymentOption: (index: number) => void;
+  newCardDetails: NewCardDetails;
+  setNewCardDetails: (details: NewCardDetails) => void;
 }) => {
   // dosent scroll to top on phone
 
@@ -27,6 +32,12 @@ const Payment = ({
     },
   ];
 
+  useEffect(() => {
+    if (selectedPaymentOption !== 1) {
+      setNewCardDetails(cardDetailsDefault);
+    }
+  }, [selectedPaymentOption]);
+
   return (
     <div className='flex flex-col gap-5'>
       <p className='secondary-text'>
@@ -35,23 +46,29 @@ const Payment = ({
         <HyperLink href='/'>Sign out</HyperLink>
       </p>
       <CheckoutSection heading='Payment method'>
-        {options.map(({ icon, title, subtitle, isDefault }, index) => (
-          <>
-            <PaymentOption
-              index={index}
-              icon={icon}
-              title={title}
-              subtitle={subtitle}
-              isDefault={isDefault}
-              handleChange={(e) => {
-                if (e.target.value === 'on') setSelectedPaymentOption(index);
-              }}
-            />
-            {index === selectedPaymentOption && selectedPaymentOption === 1 && (
-              <NewCardForm />
-            )}
-          </>
-        ))}
+        <ul>
+          {options.map(({ icon, title, subtitle, isDefault }, index) => (
+            <li key={title} className='list-divider'>
+              <PaymentOption
+                index={index}
+                icon={icon}
+                title={title}
+                subtitle={subtitle}
+                isDefault={isDefault}
+                handleChange={(e) => {
+                  if (e.target.value === 'on') setSelectedPaymentOption(index);
+                }}
+              />
+              {index === selectedPaymentOption &&
+                selectedPaymentOption === 1 && (
+                  <NewCardForm
+                    newCardDetails={newCardDetails}
+                    setNewCardDetails={setNewCardDetails}
+                  />
+                )}
+            </li>
+          ))}
+        </ul>
       </CheckoutSection>
     </div>
   );
