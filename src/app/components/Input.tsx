@@ -5,10 +5,12 @@ import React, {
   type ChangeEvent,
 } from 'react';
 import Icon from './Icon';
+import { appendClassName } from '@/utils/formatting';
 
 interface InputProps {
   value: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  label?: string;
   type?: string;
   placeholder?: string;
   clear?: boolean;
@@ -18,6 +20,7 @@ interface InputProps {
   min?: number;
   inputMode?: any;
   icon?: string;
+  className?: string;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -33,6 +36,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       clearInput,
       min,
       inputMode,
+      label,
+      className,
     },
     ref
   ) => {
@@ -43,8 +48,17 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     }, [value]);
 
     return (
-      <div className='bg-night rounded-md border border-20 flex h-12 items-center px-4'>
+      <div
+        className={`bg-night relative rounded-md border border-20 flex h-12 items-center px-4 transition-all duration-150 focus-within:border-opacity-60${appendClassName(
+          className
+        )}`}
+      >
         {icon && <Icon name={icon} className='w-4 mr-3' />}
+        {label && (
+          <label className='absolute -top-2.5 px-1 bg-night text-sm font-medium text-lilac text-opacity-60'>
+            {label}
+          </label>
+        )}
         <input
           ref={ref}
           value={value}

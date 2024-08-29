@@ -57,6 +57,8 @@ const Donate = ({
         onChange={handleChange}
         value={customDonation}
         clearInput={clearInput}
+        label='Custom donation'
+        className='mt-2'
       />
     </CheckoutSection>
   );
