@@ -15,6 +15,7 @@ const SaveButton = ({ event, className, size }: SaveButtonProps) => {
 
   const handleClick = (e: MouseEvent) => {
     e.preventDefault();
+    e.stopPropagation();
     setSaved(!saved);
   };
 

@@ -17,8 +17,6 @@ const Payment = ({
   newCardDetails: NewCardDetails;
   setNewCardDetails: (details: NewCardDetails) => void;
 }) => {
-  // dosent scroll to top on phone
-
   const options = [
     {
       title: 'Card ending in 6159',

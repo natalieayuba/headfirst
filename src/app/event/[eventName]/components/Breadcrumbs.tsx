@@ -1,7 +1,7 @@
-import Link from 'next/link';
 import React from 'react';
 import Icon from '../../../components/Icon';
 import type { CategoryProps } from '@/data/data';
+import Link from '@/app/components/Link';
 
 interface BreadcrumbsProps {
   categoryId: string;

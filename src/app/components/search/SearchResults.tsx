@@ -4,10 +4,10 @@ import {
   type EventProps,
   type VenueProps,
 } from '@/data/data';
-import Link from 'next/link';
 import React from 'react';
 import Icon from '../Icon';
 import useViewportHeight from '@/hooks/useViewportHeight';
+import Link from '../Link';
 
 interface SearchResultsProps {
   events: EventProps[];
@@ -52,14 +52,14 @@ const SearchResults = ({
                 horizontal
                 size='xs'
                 hidePrice
-                onClick={closeSearch}
+                onSelect={closeSearch}
                 venues={venues}
               />
             ) : (
               <Link
                 key={result.name + result.id}
                 href={`/whats-on?categoryId=${result.id}`}
-                onClick={closeSearch}
+                onSelect={closeSearch}
                 className='flex gap-3 items-center'
               >
                 <div className='w-14 flex justify-center'>

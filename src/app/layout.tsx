@@ -5,6 +5,8 @@ import { colors, description, name, tagline } from '../../config';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Search from './components/search/Search';
+import { Suspense } from 'react';
+import Loader from './components/Loader';
 
 export const metadata: Metadata = {
   title: `${name} | ${tagline}`,
@@ -38,8 +40,7 @@ export default function RootLayout({
       <body
         className={`${baloo_2.className} ${londrina_solid.variable} bg-dark-night text-white text-opacity-90 leading-5`}
       >
-        <Header search={<Search />} />
-        <main>{children}</main>
+        {children}
         <Footer />
       </body>
     </html>

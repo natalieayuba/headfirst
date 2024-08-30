@@ -45,12 +45,13 @@ const Donate = ({ setDonation }: { setDonation: (pound: number) => void }) => {
         id='custom-donation'
         type='currency'
         onChange={handleChange}
+        clearInput={() => setCustomDonation('')}
         value={customDonation}
         label='Custom donation'
         className={`mt-2 ${
           customDonation === ''
-            ? 'focus-within:before:content-["£"] focus-within:before:mt-[1px]'
-            : 'before:content-["£"] before:mt-[1px]'
+            ? 'focus-within:before:content-["£"]'
+            : 'before:content-["£"]'
         }`}
       />
     </CheckoutSection>

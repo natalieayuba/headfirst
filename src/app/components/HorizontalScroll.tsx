@@ -15,8 +15,8 @@ const HorizontalScroll = forwardRef<HTMLOListElement, HorizontalScrollProps>(
         className
       )}`}
     >
-      {list.map((item) => (
-        <li key={item.name} className='flex-shrink-0'>
+      {list.map((item, index) => (
+        <li key={`${item.name}${index}`} className='flex-shrink-0'>
           {card(item)}
         </li>
       ))}

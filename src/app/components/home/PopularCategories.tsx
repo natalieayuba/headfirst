@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import HomeSection from './HomeSection';
 import Image from 'next/image';
 import HorizontalScroll from '../HorizontalScroll';

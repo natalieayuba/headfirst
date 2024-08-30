@@ -4,6 +4,8 @@ import FilteredEvents from './components/FilteredEvents';
 import CategoryChips from './components/filters/CategoryChips';
 import PriceDropdown from './components/filters/PriceDropdown';
 import { getCategories, getEvents, getVenues } from '@/utils/db';
+import Header from '../components/Header';
+import Search from '../components/search/Search';
 
 const WhatsOn = async () => {
   const events = await getEvents();
@@ -12,6 +14,7 @@ const WhatsOn = async () => {
 
   return (
     <div className='mt-16'>
+      <Header search={<Search />} />
       <h1 className='text-4xl p-6 pb-2'>What&apos;s on in Bristol</h1>
       <div className='flex flex-col gap-2'>
         <div className='pl-6 flex gap-2'>

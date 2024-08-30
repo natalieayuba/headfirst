@@ -13,6 +13,8 @@ import SimilarEvents from '@/app/event/[eventName]/components/SimilarEvents';
 import Divider from '@/app/components/Divider';
 import { getCategories, getEvents, getVenues } from '@/utils/db';
 import Checkout from './components/checkout/Checkout';
+import Header from '@/app/components/Header';
+import Search from '@/app/components/search/Search';
 
 const Event = async ({ params }: { params: { eventName: string } }) => {
   const events = await getEvents();
@@ -30,6 +32,7 @@ const Event = async ({ params }: { params: { eventName: string } }) => {
 
   return (
     <div className='pt-16'>
+      <Header search={<Search />} />
       <Breadcrumbs categoryId={event.categoryId} categories={categories} />
       <div className='p-6 pt-4'>
         <div className='w-full aspect-square relative'>

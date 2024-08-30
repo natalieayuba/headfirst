@@ -8,6 +8,8 @@ import Payment from './Payment';
 import HyperLink from '@/app/components/Hyperlink';
 import Checkbox from '@/app/components/Checkbox';
 import Confirmation from './Confirmation';
+import useLoader from '@/hooks/useLoader';
+import Loader from '@/app/components/Loader';
 
 export interface NewCardDetails {
   name: string;
@@ -57,6 +59,7 @@ const CheckoutLightbox = ({
   const [donation, setDonation] = useState(0);
   const [selectedPaymentOption, setSelectedPaymentOption] = useState(-1);
   const [newCardDetails, setNewCardDetails] = useState(cardDetailsDefault);
+  const { loading, loadPage } = useLoader();
 
   const steps = [
     {
@@ -144,47 +147,56 @@ const CheckoutLightbox = ({
   }, [step]);
 
   return (
-    <Lightbox
-      onClose={closeLightbox}
-      onBack={step === 1 ? () => setStep((step) => step - 1) : undefined}
-    >
-      <div className='flex gap-6 flex-col flex-1'>
-        {step < 2 && (
-          <EventCard
-            event={event}
-            venues={venues}
-            horizontal
-            size='xs'
-            hidePrice
-          />
-        )}
-        {steps[step].content}
-        {step < 2 && (
-          <div>
-            {step === 1 && (
-              <div>
-                <h2 className='mb-2'>Order Summary</h2>
-                {orderSummary.map(({ text, price }) => (
-                  <div key={text} className='flex justify-between'>
-                    <p>{text}</p>
-                    <p>£{price.toFixed(2)}</p>
-                  </div>
-                ))}
-              </div>
-            )}
-            <Total total={total} />
-            <p className='secondary-text'>{steps[step].footerContent}</p>
-            <Button
-              className='w-full mt-4'
-              onClick={() => setStep((step) => step + 1)}
-              disabled={steps[step].buttonDisabled}
-            >
-              {steps[step].buttonText}
-            </Button>
-          </div>
-        )}
-      </div>
-    </Lightbox>
+    <>
+      {loading && <Loader />}
+      <Lightbox
+        onClose={closeLightbox}
+        onBack={step === 1 ? () => setStep((step) => step - 1) : undefined}
+      >
+        <div className='flex gap-6 flex-col flex-1'>
+          {step < 2 && (
+            <EventCard
+              event={event}
+              venues={venues}
+              horizontal
+              size='xs'
+              hidePrice
+            />
+          )}
+          {steps[step].content}
+          {step < 2 && (
+            <div>
+              {step === 1 && (
+                <div>
+                  <h2 className='mb-2'>Order Summary</h2>
+                  {orderSummary.map(({ text, price }) => (
+                    <div key={text} className='flex justify-between'>
+                      <p>{text}</p>
+                      <p>£{price.toFixed(2)}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+              <Total total={total} />
+              <p className='secondary-text'>{steps[step].footerContent}</p>
+              <Button
+                className='w-full mt-4'
+                onClick={() => {
+                  if (step === 1) {
+                    loadPage(() => setStep((step) => step + 1));
+                  } else {
+                    setStep((step) => step + 1);
+                  }
+                }}
+                disabled={steps[step].buttonDisabled}
+              >
+                {steps[step].buttonText}
+              </Button>
+            </div>
+          )}
+        </div>
+      </Lightbox>
+    </>
   );
 };
 

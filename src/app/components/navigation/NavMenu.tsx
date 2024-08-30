@@ -16,7 +16,7 @@ const NavList = ({ links, close }: NavListProps) => (
   <ul className={`font-medium text-lg`}>
     {links.map(({ name, url }) => (
       <li key={name}>
-        <Link href={url ?? '#'} className='block py-2 w-fit' onClick={close}>
+        <Link href={url ?? '#'} className='block py-2 w-fit' onSelect={close}>
           {name}
         </Link>
       </li>

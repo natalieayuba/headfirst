@@ -60,6 +60,7 @@ const SearchLightbox = ({ categories, venues, events }: SearchProps) => {
       {isOpen && (
         <Lightbox ref={lightboxRef} onClose={closeSearch}>
           <Input
+            id='search'
             type='search'
             icon='search'
             ref={inputRef}
