@@ -1,10 +1,10 @@
 'use client';
 import Image from 'next/image';
-import Link from 'next/link';
 import NavLinks from '@/app/components/navigation/NavLinks';
 import NavMenu from '@/app/components/navigation/NavMenu';
 import useHeaderVisibility from '@/hooks/useHeaderVisibility';
 import { usePathname } from 'next/navigation';
+import Link from './Link';
 
 const Header = ({ search }: { search: JSX.Element }) => {
   const pathname = usePathname();

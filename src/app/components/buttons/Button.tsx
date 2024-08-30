@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import React, { type ReactNode } from 'react';
+import Link from '../Link';
 
 interface ButtonProps {
   children: ReactNode;
@@ -48,6 +48,7 @@ const ButtonLink = ({
     href={href}
     target={external ? '_blank' : ''}
   >
+    {' '}
     {children}
   </Link>
 );

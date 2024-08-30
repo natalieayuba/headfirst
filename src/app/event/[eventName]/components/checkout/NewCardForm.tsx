@@ -43,7 +43,7 @@ const NewCardForm = ({
   };
 
   return (
-    <div className='flex flex-col gap-4 ml-7 py-1'>
+    <div className='flex flex-col gap-4 py-1'>
       <Input
         type='text'
         label='Name on card'
@@ -55,6 +55,8 @@ const NewCardForm = ({
         autoComplete='cc-name'
         autoCorrect='off'
         spellCheck={false}
+        autoFocus
+        tabIndex={0}
       />
       <Input
         type='text'
@@ -69,6 +71,7 @@ const NewCardForm = ({
         autoCorrect='off'
         spellCheck={false}
         autoComplete='cc-number'
+        tabIndex={0}
       />
       <div className='flex'>
         <Input
@@ -85,6 +88,7 @@ const NewCardForm = ({
           autoComplete='cc-exp'
           autoCorrect='off'
           spellCheck={false}
+          tabIndex={0}
         />
         <Input
           type='text'
@@ -99,6 +103,7 @@ const NewCardForm = ({
           autoComplete='cc-csc'
           autoCorrect='off'
           spellCheck={false}
+          tabIndex={0}
         />
       </div>
       <Input
@@ -112,6 +117,7 @@ const NewCardForm = ({
         autoComplete='postal-code'
         autoCorrect='off'
         spellCheck={false}
+        tabIndex={0}
       />
       <div className='flex flex-col gap-1'>
         <Checkbox

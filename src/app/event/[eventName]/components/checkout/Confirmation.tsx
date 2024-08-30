@@ -33,7 +33,7 @@ const Confirmation = ({
         <p className='mt-1'>{formatDate(event.startDate, true)}</p>
         <p>{venues.find(({ id }) => id === event.venueId)?.name}</p>
       </div>
-      <Divider className='w-32 my-0' />
+      <Divider className='w-32 [&&]:m-0' />
       <p className='text-white text-opacity-75'>
         Your tickets have been emailed to
         <span className='font-medium block text-white text-opacity-100'>

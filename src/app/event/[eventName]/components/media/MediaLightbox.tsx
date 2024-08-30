@@ -48,7 +48,7 @@ const MediaLightbox = forwardRef<HTMLDivElement, MediaLightboxProps>(
           <p className='text-center mt-4'>{media[selectedIndex]?.alt}</p>
           <HorizontalScroll
             ref={scrollerRef}
-            className='-mx-6 scroll-smooth'
+            className='-mx-5 scroll-smooth'
             list={media}
             card={(item) => (
               <MediaThumbnail

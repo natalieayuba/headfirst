@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import Divider from './Divider';
-import Link from 'next/link';
+import Link from './Link';
 
 const Footer = () => {
   const legalLinks = [
@@ -29,15 +29,13 @@ const Footer = () => {
   return (
     <footer className='bg-night margin-x-outer text-sm'>
       <div className='pt-16'>
-        <Link href='/'>
-          <Image
-            src='/logo.svg'
-            alt='Headfirst logo'
-            width='0'
-            height='0'
-            className='w-20 h-auto'
-          />
-        </Link>
+        <Image
+          src='/logo.svg'
+          alt='Headfirst logo'
+          width='0'
+          height='0'
+          className='w-20 h-auto'
+        />
         <div className='my-6'>
           {footerLinks.map(({ heading, links }) => (
             <div key={heading} className='mb-6'>

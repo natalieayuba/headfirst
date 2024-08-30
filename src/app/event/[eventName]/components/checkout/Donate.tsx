@@ -10,6 +10,7 @@ const Donate = ({ setDonation }: { setDonation: (pound: number) => void }) => {
   const handleClick = (pound: number) => {
     setSelectedDonation(pound === selectedDonation ? 0 : pound);
     setDonation(pound === selectedDonation ? 0 : pound);
+    setCustomDonation('');
   };
 
   const handleChange = (e: ChangeEvent) => {
@@ -48,8 +49,8 @@ const Donate = ({ setDonation }: { setDonation: (pound: number) => void }) => {
         label='Custom donation'
         className={`mt-2 ${
           customDonation === ''
-            ? 'focus-within:before:content-["£"]'
-            : 'before:content-["£"]'
+            ? 'focus-within:before:content-["£"] focus-within:before:mt-[1px]'
+            : 'before:content-["£"] before:mt-[1px]'
         }`}
       />
     </CheckoutSection>

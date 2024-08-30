@@ -24,7 +24,7 @@ const SaveButton = ({ event, className, size }: SaveButtonProps) => {
         size={size}
         name='heart'
         fill={saved ? colors.lilac : 'none'}
-        className={saved ? 'text-lilac' : ''}
+        className={saved ? 'text-lilac animate-heartbeat' : ''}
       />
     </button>
   );

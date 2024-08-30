@@ -32,8 +32,8 @@ const Details = ({ event, venues, categories }: DetailsProps) => {
     },
     {
       icon: 'info',
-      text: `${event.ageLimit ? `${event.ageLimit}+ event, ` : ''}${
-        event.lastEntry ? `last entry ${timeFormat(event.lastEntry)}` : ''
+      text: `${event.ageLimit ? `${event.ageLimit}+ event` : ''}${
+        event.lastEntry ? `, last entry ${timeFormat(event.lastEntry)}` : ''
       }`,
     },
   ];

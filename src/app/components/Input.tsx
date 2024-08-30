@@ -31,6 +31,7 @@ interface InputProps {
   autoCorrect?: string;
   spellCheck?: boolean;
   autoComplete?: string;
+  tabIndex?: number;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -57,6 +58,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       autoCorrect,
       spellCheck,
       autoComplete,
+      tabIndex,
     },
     ref
   ) => {
@@ -91,6 +93,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           pattern={pattern}
           inputMode={type === 'currency' ? 'decimal' : inputMode}
           maxLength={maxLength}
+          tabIndex={tabIndex}
           onBlur={() => {
             setIsFocused(false);
             onBlur;

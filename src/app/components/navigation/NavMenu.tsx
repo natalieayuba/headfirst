@@ -1,11 +1,11 @@
 'use client';
-import Link from 'next/link';
 import { Squash as Hamburger } from 'hamburger-react';
 import type { NavLinksProps } from './NavLinks';
 import useLightbox from '@/hooks/useLightbox';
 import { navLinks } from '../../../../config';
 import Lightbox from '@/app/components/Lightbox';
 import Divider from '@/app/components/Divider';
+import Link from '../Link';
 
 interface NavListProps {
   links: NavLinksProps[];

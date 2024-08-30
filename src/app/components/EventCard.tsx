@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import React from 'react';
-import Link from 'next/link';
 import { type EventProps, type VenueProps } from '../../data/data';
 import {
   formatDate,
@@ -8,6 +7,7 @@ import {
   formatPriceRange,
 } from '@/utils/formatting';
 import SaveButton from './buttons/SaveButton';
+import Link from './Link';
 
 interface EventCardProps {
   event: EventProps;

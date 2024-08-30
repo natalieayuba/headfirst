@@ -25,10 +25,16 @@ const config: Config = {
           from: { transform: 'translateY(100%)' },
           to: { transform: 'translateY(0)' },
         },
+        heartbeat: {
+          '0%': { transform: 'scale(1.2)' },
+          '100%': { transform: 'scale(1)' },
+        },
       },
       animation: {
         fadeIn: `fadeIn ${animationDurations.banner}ms ease-in-out`,
+        fadeOut: `fadeIn ${animationDurations.banner}ms ease-in-out reverse backwards`,
         maskIn: `maskIn ${animationDurations.default}ms ease-out backwards`,
+        heartbeat: `heartbeat 200ms ease-in`,
       },
     },
   },

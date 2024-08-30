@@ -146,10 +146,9 @@ const CheckoutLightbox = ({
   return (
     <Lightbox
       onClose={closeLightbox}
-      onBack={step > 0 ? () => setStep((step) => step - 1) : undefined}
+      onBack={step === 1 ? () => setStep((step) => step - 1) : undefined}
     >
       <div className='flex gap-6 flex-col flex-1'>
-        {/* // fix event card by making each part different */}
         {step < 2 && (
           <EventCard
             event={event}

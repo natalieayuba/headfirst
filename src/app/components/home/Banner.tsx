@@ -1,6 +1,7 @@
 import React from 'react';
 import { colors, description, tagline } from '../../../../config';
 import { ButtonLink } from '@/app/components/buttons/Button';
+import Link from '../Link';
 
 const Banner = () => {
   const lines = () => {

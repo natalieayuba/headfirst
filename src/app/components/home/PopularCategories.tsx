@@ -2,9 +2,9 @@ import React from 'react';
 import HomeSection from './HomeSection';
 import Image from 'next/image';
 import HorizontalScroll from '../HorizontalScroll';
-import Link from 'next/link';
 import type { CategoryProps } from '@/data/data';
 import { getCategories } from '@/utils/db';
+import Link from '../Link';
 
 const CategoryCard = ({ category }: { category: CategoryProps }) => (
   <Link
