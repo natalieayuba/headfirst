@@ -10,11 +10,13 @@ import Search from './components/search/Search';
 const Home = () => (
   <>
     <Header search={<Search />} />
-    <Banner />
-    <PopularCategories />
-    <EditorPicks />
-    <Donations />
-    <AppAd />
+    <main>
+      <Banner />
+      <PopularCategories />
+      <EditorPicks />
+      <Donations />
+      <AppAd />
+    </main>
   </>
 );
 

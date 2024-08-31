@@ -13,7 +13,7 @@ const Venue = ({ venueId, venues }: VenueSectionProps) => (
     <h2 className='mb-4'>Venue</h2>
     <div>
       <p>{venues.find(({ id }) => id === venueId)?.name}</p>
-      <p className='secondary-text leading-tight'>
+      <p className='secondary-text'>
         {venues.find(({ id }) => id === venueId)?.address}
       </p>
     </div>

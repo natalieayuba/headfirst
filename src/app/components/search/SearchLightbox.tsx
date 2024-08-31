@@ -68,8 +68,8 @@ const SearchLightbox = ({ categories, venues, events }: SearchProps) => {
             onChange={updateQuery}
             onBlur={closeSearch}
             placeholder='Search events and categories'
-            autoFocus
             clearInput={() => setQuery('')}
+            autoFocus
           />
           {query !== '' && (
             <SearchResults

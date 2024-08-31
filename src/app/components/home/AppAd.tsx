@@ -18,7 +18,7 @@ const AppAd = () => {
 
   return (
     <div className='bg-lilac flex flex-col h-[480px] pt-14 px-8 gap-6 text-night text-center relative overflow-clip'>
-      <h2 className='font-medium text-xl leading-none'>
+      <h2 className='font-medium text-xl leading-6'>
         Get tailored recommendations with the Headfirst mobile app
       </h2>
       <div className='flex justify-center gap-3'>

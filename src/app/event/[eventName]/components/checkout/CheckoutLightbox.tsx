@@ -1,5 +1,4 @@
 import { Button } from '@/app/components/buttons/Button';
-import EventCard from '@/app/components/EventCard';
 import Lightbox from '@/app/components/Lightbox';
 import type { EventProps, VenueProps } from '@/data/data';
 import React, { useEffect, useState } from 'react';
@@ -10,6 +9,7 @@ import Checkbox from '@/app/components/Checkbox';
 import Confirmation from './Confirmation';
 import useLoader from '@/hooks/useLoader';
 import Loader from '@/app/components/Loader';
+import EventCard from '@/app/components/EventCard';
 
 export interface NewCardDetails {
   name: string;
@@ -158,9 +158,11 @@ const CheckoutLightbox = ({
             <EventCard
               event={event}
               venues={venues}
+              imageSize='h-14'
+              showSaved={false}
+              showPrice={false}
               horizontal
-              size='xs'
-              hidePrice
+              narrow
             />
           )}
           {steps[step].content}

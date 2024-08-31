@@ -22,12 +22,12 @@ const SimilarEvents = ({ event, events, venues }: SimilarEventsProps) => {
     .slice(0, 10);
 
   return (
-    <div className='py-9'>
-      <h2 className='mb-6 px-6'>Other events you might like</h2>
+    <div className='py-10'>
+      <h2 className='px-6 mb-5'>Other events you might like</h2>
       <HorizontalScroll
         list={similarEvents}
         card={(event) => (
-          <EventCard venues={venues} event={event} showTime showSaved />
+          <EventCard venues={venues} event={event} cardSize='w-36' />
         )}
       />
     </div>

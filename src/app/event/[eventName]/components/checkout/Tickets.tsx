@@ -50,7 +50,9 @@ const Tickets = ({
           >
             <div>
               <p>{ticket.name}</p>
-              <p className='font-medium text-lg'>{formatPrice(ticket.price)}</p>
+              <p className='font-medium text-lg leading-none'>
+                {formatPrice(ticket.price)}
+              </p>
             </div>
             <div className='flex items-center w-20 justify-between'>
               <Stepper

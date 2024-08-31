@@ -1,12 +1,9 @@
 import { appendClassName } from '@/utils/formatting';
-import React from 'react';
+import React, { type ComponentProps } from 'react';
 
 interface CheckboxProps {
   label: string;
-  id: string;
-  className?: string;
   checked?: string;
-  onChange?: () => void;
 }
 
 const Checkbox = ({
@@ -15,7 +12,7 @@ const Checkbox = ({
   className,
   checked,
   onChange,
-}: CheckboxProps) => (
+}: CheckboxProps & ComponentProps<'input'>) => (
   <label
     htmlFor={id}
     className={`text-white text-opacity-60 flex gap-4${appendClassName(

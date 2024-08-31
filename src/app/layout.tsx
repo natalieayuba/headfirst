@@ -38,7 +38,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`${baloo_2.className} ${londrina_solid.variable} bg-dark-night text-white text-opacity-90 leading-5`}
+        className={`${baloo_2.className} ${londrina_solid.variable} bg-dark-night text-white text-opacity-90 leading-tight`}
       >
         {children}
         <Footer />

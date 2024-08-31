@@ -1,55 +1,30 @@
-import React, { type ReactNode } from 'react';
+import React, { type ComponentProps } from 'react';
 import Link from '../Link';
 
 interface ButtonProps {
-  children: ReactNode;
-  className?: string;
   alt?: boolean;
-  disabled?: boolean;
-  onClick?: () => void;
-}
-
-interface ButtonLinkProps extends ButtonProps {
-  href: string;
-  external?: boolean;
 }
 
 const styling = (alt?: boolean, className?: string) =>
-  `min-w-32 w-fit px-4 py-[14px] font-semibold rounded text-dark-night enabled:hover:opacity-80 disabled:opacity-30 transition-opacity duration-200 ${
-    alt ? 'bg-white' : 'bg-lilac'
-  }${className ? ` ${className}` : ''}`;
+  `button ${alt ? 'bg-white' : 'bg-lilac'}${className ? ` ${className}` : ''}`;
 
 const Button = ({
-  children,
-  className,
   alt,
-  onClick,
-  disabled,
-}: ButtonProps) => (
-  <button
-    type='button'
-    className={styling(alt, className)}
-    onClick={onClick}
-    disabled={disabled}
-  >
-    {children}
+  className,
+  ...rest
+}: ButtonProps & ComponentProps<'button'>) => (
+  <button type='button' className={styling(alt, className)} {...rest}>
+    {rest.children}
   </button>
 );
 
 const ButtonLink = ({
-  children,
-  className,
   alt,
-  href,
-  external,
-}: ButtonLinkProps) => (
-  <Link
-    className={styling(alt, className)}
-    href={href}
-    target={external ? '_blank' : ''}
-  >
-    {' '}
-    {children}
+  className,
+  ...rest
+}: ButtonProps & ComponentProps<typeof Link>) => (
+  <Link className={styling(alt, className)} href={rest.href}>
+    {rest.children}
   </Link>
 );
 

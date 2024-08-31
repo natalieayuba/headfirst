@@ -56,7 +56,7 @@ input[type='search']::-webkit-search-results-decoration {
   }
 
   h2 {
-    @apply text-2xl lg:text-4xl leading-none;
+    @apply text-2xl lg:text-4xl leading-none mb-2;
   }
 
   .overflow-y-scroll {
@@ -103,11 +103,15 @@ input[type='search']::-webkit-search-results-decoration {
   .checkbox:checked {
     @apply after:bg-lilac before:content-['✓'] before:text-dark-night before:visible before:absolute before:w-3 before:h-3 before:z-10 before:top-[1px] before:left-[1px];
   }
+
+  .button {
+    @apply min-w-32 w-fit px-4 py-[14px] font-semibold rounded text-dark-night enabled:hover:opacity-80 disabled:opacity-30 transition-opacity duration-200;
+  }
 }
 
 @layer component {
   .secondary-text {
-    @apply text-white text-opacity-60 text-sm;
+    @apply text-white text-opacity-60 text-sm leading-[125%];
   }
 
   .filter-chip-scroll {

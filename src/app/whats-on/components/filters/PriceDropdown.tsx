@@ -112,9 +112,7 @@ const PriceDropdown = ({ events }: { events: EventProps[] }) => {
           disabled={price[0] === min && price[1] === max()}
         >
           Show prices between
-          <span className='block text-xl leading-[105%]'>
-            {formatPrice(price)}
-          </span>
+          <span className='block text-xl'>{formatPrice(price)}</span>
         </Button>
       </Dropdown>
     </>

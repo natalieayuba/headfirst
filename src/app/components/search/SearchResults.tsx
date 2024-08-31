@@ -1,4 +1,3 @@
-import EventCard from '@/app/components/EventCard';
 import {
   type CategoryProps,
   type EventProps,
@@ -8,6 +7,7 @@ import React from 'react';
 import Icon from '../Icon';
 import useViewportHeight from '@/hooks/useViewportHeight';
 import Link from '../Link';
+import EventCard from '../EventCard';
 
 interface SearchResultsProps {
   events: EventProps[];
@@ -43,17 +43,20 @@ const SearchResults = ({
       {searchResults.length === 0 ? (
         <p className='secondary-text'>No results found</p>
       ) : (
-        <div className='flex flex-col gap-3'>
+        <div className='flex flex-col gap-4'>
           {searchResults.map((result) =>
             events.some((event) => result === event) ? (
               <EventCard
                 key={result.name + result.id}
                 event={result as EventProps}
-                horizontal
-                size='xs'
-                hidePrice
-                onSelect={closeSearch}
                 venues={venues}
+                onSelect={closeSearch}
+                showPrice={false}
+                showTime={false}
+                showSaved={false}
+                imageSize='h-14'
+                horizontal
+                narrow
               />
             ) : (
               <Link

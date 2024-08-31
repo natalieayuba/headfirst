@@ -1,8 +1,8 @@
 import { Button } from '@/app/components/buttons/Button';
 import Divider from '@/app/components/Divider';
+import { Image } from '@/app/components/EventCard';
 import type { EventProps, VenueProps } from '@/data/data';
 import { formatDate } from '@/utils/formatting';
-import Image from 'next/image';
 import React from 'react';
 
 const Confirmation = ({
@@ -16,14 +16,7 @@ const Confirmation = ({
     className='flex flex-col gap-7 items-center text-center'
     style={{ height: 'calc(100dvh - 100px)' }}
   >
-    <Image
-      src={event.image}
-      alt={event.name}
-      width={0}
-      height={0}
-      sizes='100vw'
-      className='w-32 h-32 rounded-lg'
-    ></Image>
+    <Image src={event.image} alt={`${event.name} image`} imageSize='w-28' />
     <div>
       <h2 className='text-3xl'>
         <span className='block text-2xl'>You&apos;re going to</span>
@@ -33,11 +26,9 @@ const Confirmation = ({
       <p>{venues.find(({ id }) => id === event.venueId)?.name}</p>
     </div>
     <Divider className='w-32 [&&]:m-0' />
-    <p className='text-white text-opacity-75'>
+    <p className='font-light'>
       Your tickets have been emailed to
-      <span className='font-medium block text-white text-opacity-100'>
-        johndoe@email.com
-      </span>
+      <span className='font-medium block'>johndoe@email.com</span>
     </p>
     <Button>View tickets</Button>
     <p className='mt-auto secondary-text'>

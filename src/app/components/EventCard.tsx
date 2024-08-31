@@ -1,7 +1,8 @@
-import Image from 'next/image';
+import NextImage from 'next/image';
 import React from 'react';
 import { type EventProps, type VenueProps } from '../../data/data';
 import {
+  appendClassName,
   formatDate,
   formatEventUrl,
   formatPriceRange,
@@ -12,65 +13,107 @@ import Link from './Link';
 interface EventCardProps {
   event: EventProps;
   venues: VenueProps[];
-  showTime?: boolean;
+  imageSize?: string;
+  cardSize?: string;
   horizontal?: boolean;
+  narrow?: boolean;
+  showTime?: boolean;
   showSaved?: boolean;
-  hidePrice?: boolean;
+  showPrice?: boolean;
   onSelect?: () => void;
-  size?: 'xs' | 'sm' | 'md';
 }
+
+interface ImageProps extends Partial<EventCardProps> {
+  animated?: boolean;
+}
+
+export const Image = ({
+  src,
+  alt,
+  animated,
+  imageSize,
+}: ImageProps & Parameters<typeof NextImage>[0]) => (
+  <div
+    className={`aspect-square h-auto relative overflow-hidden rounded-lg${appendClassName(
+      imageSize
+    )}`}
+  >
+    <NextImage
+      src={src}
+      fill
+      alt={alt}
+      sizes='100%'
+      className={`object-cover${
+        animated ? ' md:group-hover:scale-105 duration-200 ease-out' : ''
+      }`}
+    />
+  </div>
+);
+
+interface ContentProps extends Partial<EventCardProps> {
+  event: EventProps;
+  venue: VenueProps;
+}
+
+const Content = ({
+  event,
+  venue,
+  showTime,
+  showPrice,
+  narrow,
+}: ContentProps) => (
+  <div className='flex-1'>
+    <h3
+      className={`line-clamp-2 ${narrow ? 'text-sm leading-[120%]' : 'mb-0.5'}`}
+    >
+      {event.name}
+    </h3>
+    <div
+      className={`flex secondary-text flex-col ${
+        narrow ? 'leading-[120%]' : ''
+      }`}
+    >
+      <p>{formatDate(event.startDate, showTime)}</p>
+      <p className='line-clamp-1'>{venue.name}</p>
+      {showPrice && <p>{formatPriceRange(event.tickets)}</p>}
+    </div>
+  </div>
+);
 
 const EventCard = ({
   event,
   venues,
-  showTime,
+  imageSize,
+  cardSize,
   horizontal,
-  showSaved,
-  hidePrice,
+  narrow,
   onSelect,
-  size = 'md',
+  showSaved = true,
+  showPrice = true,
+  showTime = true,
 }: EventCardProps) => {
-  const { id, name, image, startDate, venueId, tickets } = event;
-  const width = size === 'xs' ? 'w-14' : size === 'sm' ? 'w-24' : 'w-36';
-  const venue = venues?.find(({ id }) => id === venueId);
-
+  const venue = venues?.find(({ id }) => id === event.venueId);
   return (
     <Link
-      className={`group flex relative ${
-        horizontal ? 'gap-3' : `${width} flex-col gap-2`
+      className={`group flex relative${appendClassName(cardSize)} ${
+        horizontal ? 'gap-3' : 'flex-col gap-2'
       }`}
-      href={`/event/${formatEventUrl(id, name)}`}
+      href={`/event/${formatEventUrl(event.id, event.name)}`}
       onSelect={onSelect}
     >
-      <div
-        className={`${width} aspect-square h-fit relative overflow-hidden rounded-lg`}
-      >
-        <Image
-          src={image}
-          alt={`${name} image`}
-          fill
-          sizes='100%'
-          className='md:group-hover:scale-105 duration-200 ease-out object-cover'
-        />
-      </div>
-      <div className='flex-1'>
-        <h3
-          className={
-            size === 'xs' ? 'leading-[112%] text-sm' : 'mb-1 leading-[110%]'
-          }
-        >
-          {name}
-        </h3>
-        <div
-          className={`flex secondary-text flex-col ${
-            size === 'xs' ? 'leading-[112%]' : 'leading-tight'
-          }`}
-        >
-          <p>{formatDate(startDate, showTime)}</p>
-          <p>{venue?.name}</p>
-          {!hidePrice && <p>{formatPriceRange(tickets)}</p>}
-        </div>
-      </div>
+      <Image
+        src={event.image}
+        alt={`${event.name} image`}
+        imageSize={imageSize}
+        animated
+      />
+      <Content
+        event={event}
+        venue={venue!}
+        showTime={showTime}
+        showPrice={showPrice}
+        narrow={narrow}
+      />
       {showSaved && (
         <SaveButton
           event={event}

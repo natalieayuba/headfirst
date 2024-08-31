@@ -21,8 +21,8 @@ const Media = ({ media }: { media: MediaProps[] }) => {
   };
 
   return (
-    <div className='my-6'>
-      <h2 className='px-6'>Media</h2>
+    <div className='mb-8'>
+      <h2 className='px-6 mb-4'>Media</h2>
       <HorizontalScroll
         list={media}
         card={(medium) => (

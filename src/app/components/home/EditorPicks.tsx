@@ -20,7 +20,15 @@ const EditorPicks = async () => {
     >
       <HorizontalScroll
         list={editorsPicks}
-        card={(event) => <EventCard venues={venues} event={event} showSaved />}
+        card={(event) => (
+          <EventCard
+            venues={venues}
+            event={event}
+            showTime={false}
+            showPrice={false}
+            cardSize='w-36'
+          />
+        )}
       />
     </HomeSection>
   );

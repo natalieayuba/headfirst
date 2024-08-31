@@ -78,12 +78,10 @@ const FilteredEvents = ({ events, venues }: FilteredEventsProps) => {
             filteredEvents.map((event) => (
               <EventCard
                 key={event.name}
-                venues={venues}
-                horizontal
-                size='sm'
-                showSaved
-                showTime
                 event={event}
+                venues={venues}
+                imageSize='w-24'
+                horizontal
               />
             ))}
         </div>

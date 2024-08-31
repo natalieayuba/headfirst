@@ -31,7 +31,7 @@ const PaymentOption = ({
     {icon}
     <div>
       <p>{title}</p>
-      <p className='secondary-text leading-tight'>{subtitle}</p>
+      <p className='secondary-text'>{subtitle}</p>
     </div>
     {isDefault && <p className='ml-auto secondary-text'>Default</p>}
   </label>
