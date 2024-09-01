@@ -8,7 +8,7 @@ import type { CategoryProps } from '@/db/schema';
 const CategoryCard = ({ category }: { category: CategoryProps }) => (
   <Link
     href={`/whats-on?categoryId=${category.id}`}
-    className='group block w-48 md:w-full aspect-[1.5] h-auto rounded-lg relative overflow-hidden'
+    className='group block w-48 md:w-auto aspect-[1.5] h-auto rounded-lg relative overflow-hidden'
   >
     <Image
       src={category.image}
@@ -28,6 +28,7 @@ const PopularCategories = ({ categories }: { categories: CategoryProps[] }) => {
   return (
     <HomeSection heading='Popular categories'>
       <HorizontalScroll
+        className='md:grid md:grid-flow-col md:grid-cols-4 md:w-full'
         list={categories}
         card={(category) => <CategoryCard category={category} />}
       />

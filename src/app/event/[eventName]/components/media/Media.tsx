@@ -21,10 +21,11 @@ const Media = ({ media }: { media: MediaProps[] }) => {
   };
 
   return (
-    <div className='mb-8'>
-      <h2 className='content-container mb-4'>Media</h2>
+    <div className='mt-8 md:mt-12'>
+      <h2 className='mb-4'>Media</h2>
       <HorizontalScroll
         list={media}
+        className='-ml-6 md:-ml-12'
         card={(medium) => (
           <MediaThumbnail
             medium={medium}

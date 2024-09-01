@@ -1,9 +1,9 @@
 import React, { forwardRef, useEffect, useRef } from 'react';
 import Lightbox from '../../../../components/Lightbox';
-import type { MediaProps } from '@/data/data';
 import HorizontalScroll from '../../../../components/HorizontalScroll';
 import MediaThumbnail from './MediaThumbnail';
 import MediaSwiper from './MediaSwiper';
+import type { MediaProps } from '@/db/schema';
 
 interface MediaLightboxProps {
   media: MediaProps[];
@@ -30,7 +30,12 @@ const MediaLightbox = forwardRef<HTMLDivElement, MediaLightboxProps>(
     }, [selectedIndex]);
 
     return (
-      <Lightbox onClose={onClose} ref={lightboxRef}>
+      <Lightbox
+        onClose={onClose}
+        ref={lightboxRef}
+        className='overflow-y-hidden'
+        maxWidth='md:max-w-[800px]'
+      >
         <div
           className='flex flex-col h-full gap-4 justify-between overflow-hidden'
           style={{ height: 'calc(100dvh - 80px)' }}
@@ -45,10 +50,10 @@ const MediaLightbox = forwardRef<HTMLDivElement, MediaLightboxProps>(
             selectedIndex={selectedIndex}
             setSelectedIndex={setSelectedIndex}
           />
-          <p className='text-center mt-4'>{media[selectedIndex]?.alt}</p>
+          <p className='text-center mb-12'>{media[selectedIndex]?.alt}</p>
           <HorizontalScroll
             ref={scrollerRef}
-            className='-mx-6 scroll-smooth'
+            className='scroll-smooth justify-center mb-6 md:mb-12'
             list={media}
             card={(item) => (
               <MediaThumbnail

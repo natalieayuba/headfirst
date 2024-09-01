@@ -54,7 +54,11 @@ const SearchLightbox = ({ categories, venues, events }: SearchProps) => {
         <Icon name='search' />
       </button>
       {isOpen && (
-        <Lightbox ref={lightboxRef} onClose={closeSearch}>
+        <Lightbox
+          ref={lightboxRef}
+          onClose={closeSearch}
+          maxWidth='md:max-w-[600px]'
+        >
           <div></div>
           <Input
             id='search'

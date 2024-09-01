@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState, type UIEvent } from 'react';
 import { isVideo } from './MediaThumbnail';
 import Image from 'next/image';
-import type { MediaProps } from '@/data/data';
+import type { MediaProps } from '@/db/schema';
+import SliderArrow from '@/app/components/SliderArrow';
 
 interface MediaSwiperProps {
   media: MediaProps[];
@@ -17,6 +18,7 @@ const MediaSwiper = ({
   const ref = useRef<HTMLDivElement>(null);
   const margin = 24;
   const resolution = 16 / 9;
+  const [scrollLeft, setScrollLeft] = useState(0);
   const [videoSize, setVideoSize] = useState([
     window.innerWidth - margin * 2,
     window.innerWidth / resolution,
@@ -42,6 +44,7 @@ const MediaSwiper = ({
     ) {
       setSelectedIndex(swiper.scrollLeft / swiper.clientWidth);
     }
+    setScrollLeft(swiper.scrollLeft);
   };
 
   useEffect(() => {
@@ -55,13 +58,21 @@ const MediaSwiper = ({
   return (
     <div
       ref={ref}
-      className='-mx-6 flex flex-1 items-center snap-x snap-mandatory overflow-x-scroll'
+      className='-mx-6 flex flex-1 items-center snap-x snap-mandatory scroll-smooth overflow-x-scroll md:overflow-hidden'
       onScroll={handleScroll}
     >
+      <div className='hidden md:flex w-[900px] left-1/2 -translate-x-1/2 justify-between absolute z-10 '>
+        <SliderArrow direction='left' sliderRef={ref} scrollLeft={scrollLeft} />
+        <SliderArrow
+          direction='right'
+          sliderRef={ref}
+          scrollLeft={scrollLeft}
+        />
+      </div>
       {media.map((medium) => (
         <div
           key={medium.src}
-          className='w-screen h-full flex items-center p-6 snap-center'
+          className='w-screen md:w-full h-full flex items-center p-6 md:p-12 snap-center'
         >
           {isVideo(medium) ? (
             <iframe

@@ -1,8 +1,8 @@
-import type { MediaProps } from '@/data/data';
 import React, { forwardRef } from 'react';
 import Image from 'next/image';
 import { appendClassName } from '@/utils/formatting';
 import Icon from '@/app/components/Icon';
+import type { MediaProps } from '@/db/schema';
 
 interface ThumbnailProps {
   medium: MediaProps;
@@ -22,7 +22,7 @@ const MediaThumbnail = forwardRef<HTMLDivElement, ThumbnailProps>(
   ({ medium, onClick, className }, ref) => (
     <div
       ref={ref}
-      className={`aspect-square w-24 rounded-lg overflow-hidden relative${appendClassName(
+      className={`group aspect-square w-24 md:w-36 rounded-lg overflow-hidden relative cursor-pointer transition-opacity duration-150 hover:opacity-80${appendClassName(
         className
       )}`}
       onClick={onClick}

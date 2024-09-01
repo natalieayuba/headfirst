@@ -35,7 +35,7 @@ const Event = async ({ params }: { params: { eventName: string } }) => {
       <Header search={<Search />} />
       <Breadcrumbs categoryId={event.categoryId} categories={categories} />
       <div className='content-container pt-4 md:pt-6 md:flex md:gap-12'>
-        <div className='w-full md:w-96 md:h-96 aspect-square relative'>
+        <div className='w-full md:w-auto md:h-[400px] aspect-square relative'>
           <Image
             src={event.image}
             alt={`${event.name} image`}
@@ -44,13 +44,15 @@ const Event = async ({ params }: { params: { eventName: string } }) => {
             className='object-cover rounded-lg'
           />
         </div>
-        <div className='flex-1'>
+        <div className='flex-1 mb-6 md:mb-12'>
           <div className='mt-5 mb-2 md:mt-0'>
             <div className='flex gap-3 mt-2 ml-3 float-right'>
               <SaveButton event={event} />
               <ShareButton />
             </div>
-            <h1 className='text-4xl md:text-5xl font-medium'>{event.name}</h1>
+            <h1 className='text-4xl md:text-5xl md:mb-4 font-medium'>
+              {event.name}
+            </h1>
           </div>
           <Details event={event} categories={categories} venues={venues} />
           <Divider className='w-28 mx-auto' />

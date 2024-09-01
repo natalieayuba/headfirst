@@ -1,7 +1,7 @@
 import React from 'react';
 import { ButtonLink } from '../../../components/buttons/Button';
 import Icon from '../../../components/Icon';
-import type { VenueProps } from '@/data/data';
+import type { VenueProps } from '@/db/schema';
 
 interface VenueSectionProps {
   venueId: string;
@@ -9,7 +9,7 @@ interface VenueSectionProps {
 }
 
 const Venue = ({ venueId, venues }: VenueSectionProps) => (
-  <div className='mt-8 mb-4'>
+  <div className='mt-8 md:mt-12'>
     <h2 className='mb-4'>Venue</h2>
     <div>
       <p>{venues.find(({ id }) => id === venueId)?.name}</p>

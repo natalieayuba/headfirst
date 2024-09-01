@@ -1,49 +1,10 @@
 'use client';
-import React, {
-  useRef,
-  useState,
-  type ComponentProps,
-  type ForwardedRef,
-  type MouseEvent,
-  type RefObject,
-  type UIEvent,
-} from 'react';
+import React, { useRef, useState, type MouseEvent, type UIEvent } from 'react';
 import HomeSection from './HomeSection';
 import HorizontalScroll from '../HorizontalScroll';
 import EventCard from '../EventCard';
-import Icon from '../Icon';
 import type { EventProps, VenueProps } from '@/db/schema';
-
-interface SliderArrowProps {
-  direction: 'right' | 'left';
-  sliderRef: ForwardedRef<HTMLOListElement>;
-}
-
-const SliderArrow = ({
-  direction,
-  sliderRef,
-  ...rest
-}: SliderArrowProps & ComponentProps<'button'>) => {
-  const handleClick = (e: MouseEvent) => {
-    const slider = (sliderRef as RefObject<HTMLOListElement>).current!;
-    console.log(slider.clientWidth);
-    if (direction === 'right') {
-      slider.scrollLeft += slider.clientWidth;
-    } else if (direction === 'left') {
-      slider.scrollLeft -= slider.clientWidth;
-    }
-  };
-
-  return (
-    <button
-      className='transition-opacity duration-150 disabled:opacity-30'
-      onClick={handleClick}
-      {...rest}
-    >
-      <Icon size={32} name={`angle-${direction}`} />
-    </button>
-  );
-};
+import SliderArrow from '../SliderArrow';
 
 interface EditorPicksProps {
   events: EventProps[];
@@ -52,7 +13,7 @@ interface EditorPicksProps {
 
 const EditorPicks = ({ events, venues }: EditorPicksProps) => {
   const sliderRef = useRef<HTMLOListElement>(null);
-  const [scrollLeft, setScrollLeft] = useState(sliderRef.current?.scrollLeft);
+  const [scrollLeft, setScrollLeft] = useState(0);
   const [maxScrollWidth, setMaxScrollWidth] = useState(0);
   const editorsPicks = events.filter(({ editorsPick }) => editorsPick === true);
   const [click, setClick] = useState(false);
@@ -84,12 +45,12 @@ const EditorPicks = ({ events, venues }: EditorPicksProps) => {
           <SliderArrow
             direction='left'
             sliderRef={sliderRef}
-            disabled={scrollLeft === 0}
+            scrollLeft={scrollLeft!}
           />
           <SliderArrow
             direction='right'
             sliderRef={sliderRef}
-            disabled={scrollLeft === maxScrollWidth}
+            scrollLeft={scrollLeft!}
           />
         </div>
       }

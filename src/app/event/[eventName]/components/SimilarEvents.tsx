@@ -19,11 +19,13 @@ const SimilarEvents = ({ event, events, venues }: SimilarEventsProps) => {
           event.subcategoryIds?.includes(subcategory)
         )
     )
-    .slice(0, 10);
+    .slice(0, 5);
 
   return (
-    <div className='py-10'>
-      <h2 className='content-container mb-5'>Other events you might like</h2>
+    <div className='py-10 md:py-12'>
+      <h2 className='content-container mb-5 md:mb-6'>
+        Other events you might like
+      </h2>
       <HorizontalScroll
         className='md:grid md:grid-cols-5 md:gap-4'
         list={similarEvents}

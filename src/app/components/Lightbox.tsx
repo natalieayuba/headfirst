@@ -7,31 +7,33 @@ interface LightboxProps {
   className?: string;
   onClose?: () => void;
   onBack?: () => void;
+  maxWidth?: string;
 }
 
 const Lightbox = forwardRef<HTMLDivElement, LightboxProps>(
-  ({ children, className, onClose, onBack }, ref) => (
+  ({ children, className, onClose, onBack, maxWidth }, ref) => (
     <div
       className={`fixed z-20 bg-dark-night backdrop-blur-sm bg-opacity-95 max-h-full h-screen w-screen overflow-y-auto left-0 top-0 ${appendClassName(
         className
       )}`}
     >
-      <div className='md:max-w-xl md:mx-auto'>
-        <nav className='flex justify-between h-16 px-6'>
-          {onBack && (
-            <button onClick={onBack}>
-              <Icon name='angle-left' />
-            </button>
-          )}
-          {onClose && (
-            <button onClick={onClose} className='ml-auto'>
-              <Icon name='close' />
-            </button>
-          )}
-        </nav>
-        <div className='px-6 mb-6' ref={ref}>
-          {children}
-        </div>
+      <nav className='flex justify-between h-16 px-6'>
+        {onBack && (
+          <button onClick={onBack}>
+            <Icon name='angle-left' />
+          </button>
+        )}
+        {onClose && (
+          <button onClick={onClose} className='ml-auto'>
+            <Icon name='close' />
+          </button>
+        )}
+      </nav>
+      <div
+        className={`px-6 mb-6 md:mx-auto${appendClassName(maxWidth)}`}
+        ref={ref}
+      >
+        {children}
       </div>
     </div>
   )

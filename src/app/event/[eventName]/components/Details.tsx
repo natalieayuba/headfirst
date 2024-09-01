@@ -1,7 +1,7 @@
-import type { CategoryProps, EventProps, VenueProps } from '@/data/data';
 import React from 'react';
 import Icon from '../../../components/Icon';
 import { formatDateRange, timeFormat } from '@/utils/formatting';
+import type { CategoryProps, EventProps, VenueProps } from '@/db/schema';
 
 interface DetailsProps {
   event: EventProps;
@@ -47,7 +47,7 @@ const Details = ({ event, venues, categories }: DetailsProps) => {
               <Icon
                 name={icon}
                 size={16}
-                className='text-white text-opacity-60 inline-block mr-3'
+                className='text-white text-opacity-40 inline-block mr-3'
               />
               {text}
             </li>
