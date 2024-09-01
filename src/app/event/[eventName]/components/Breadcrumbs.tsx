@@ -1,7 +1,7 @@
 import React from 'react';
 import Icon from '../../../components/Icon';
-import type { CategoryProps } from '@/data/data';
 import Link from '@/app/components/Link';
+import type { CategoryProps } from '@/db/schema';
 
 interface BreadcrumbsProps {
   categoryId: string;
@@ -25,7 +25,7 @@ const Breadcrumbs = ({ categoryId, categories }: BreadcrumbsProps) => {
 
   return (
     <nav>
-      <ul className='pt-1 px-6'>
+      <ul className='pt-1 md:pt-4 content-container'>
         {breadcrumbs.map(({ name, url }, index) => (
           <li
             key={name}

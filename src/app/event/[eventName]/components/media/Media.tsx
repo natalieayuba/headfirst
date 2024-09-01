@@ -1,10 +1,10 @@
 'use client';
 import React, { useState } from 'react';
 import HorizontalScroll from '../../../../components/HorizontalScroll';
-import type { MediaProps } from '@/data/data';
 import useLightbox from '@/hooks/useLightbox';
 import MediaLightbox from './MediaLightbox';
 import MediaThumbnail from './MediaThumbnail';
+import type { MediaProps } from '@/db/schema';
 
 const Media = ({ media }: { media: MediaProps[] }) => {
   const [selectedIndex, setSelectedIndex] = useState(-1);
@@ -22,7 +22,7 @@ const Media = ({ media }: { media: MediaProps[] }) => {
 
   return (
     <div className='mb-8'>
-      <h2 className='px-6 mb-4'>Media</h2>
+      <h2 className='content-container mb-4'>Media</h2>
       <HorizontalScroll
         list={media}
         card={(medium) => (

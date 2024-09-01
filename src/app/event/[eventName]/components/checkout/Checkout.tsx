@@ -1,12 +1,12 @@
 'use client';
 import { Button } from '@/app/components/buttons/Button';
-import type { EventProps, VenueProps } from '@/data/data';
 import useLightbox from '@/hooks/useLightbox';
 import { formatPriceRange } from '@/utils/formatting';
 import React from 'react';
 import CheckoutLightbox from './CheckoutLightbox';
 import useLoader from '@/hooks/useLoader';
 import Loader from '@/app/components/Loader';
+import type { EventProps, VenueProps } from '@/db/schema';
 
 const Checkout = ({
   event,
@@ -21,11 +21,13 @@ const Checkout = ({
   return (
     <>
       {loading && <Loader />}
-      <div className='bg-night px-6 py-4 flex justify-between items-center sticky bottom-0'>
-        <p className='text-2xl font-medium'>
-          {formatPriceRange(event.tickets)}
-        </p>
-        <Button onClick={() => loadPage(openLightbox)}>Get tickets</Button>
+      <div className='bg-night sticky bottom-0'>
+        <div className='content-container py-4 flex justify-between items-center'>
+          <p className='text-2xl font-medium'>
+            {formatPriceRange(event.tickets)}
+          </p>
+          <Button onClick={() => loadPage(openLightbox)}>Get tickets</Button>
+        </div>
       </div>
       {isOpen && (
         <CheckoutLightbox

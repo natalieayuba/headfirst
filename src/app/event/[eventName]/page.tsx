@@ -34,8 +34,8 @@ const Event = async ({ params }: { params: { eventName: string } }) => {
     <div className='pt-16'>
       <Header search={<Search />} />
       <Breadcrumbs categoryId={event.categoryId} categories={categories} />
-      <div className='p-6 pt-4'>
-        <div className='w-full aspect-square relative'>
+      <div className='content-container pt-4 md:pt-6 md:flex md:gap-12'>
+        <div className='w-full md:w-96 md:h-96 aspect-square relative'>
           <Image
             src={event.image}
             alt={`${event.name} image`}
@@ -44,19 +44,21 @@ const Event = async ({ params }: { params: { eventName: string } }) => {
             className='object-cover rounded-lg'
           />
         </div>
-        <div className='mt-5 mb-2'>
-          <div className='flex gap-3 mt-2 ml-3 float-right'>
-            <SaveButton event={event} />
-            <ShareButton />
+        <div className='flex-1'>
+          <div className='mt-5 mb-2 md:mt-0'>
+            <div className='flex gap-3 mt-2 ml-3 float-right'>
+              <SaveButton event={event} />
+              <ShareButton />
+            </div>
+            <h1 className='text-4xl md:text-5xl font-medium'>{event.name}</h1>
           </div>
-          <h1 className='text-4xl font-medium'>{event.name}</h1>
+          <Details event={event} categories={categories} venues={venues} />
+          <Divider className='w-28 mx-auto' />
+          <About about={event.about} />
+          <Venue venueId={event.venueId} venues={venues} />
+          {event.media && <Media media={event.media} />}
         </div>
-        <Details event={event} categories={categories} venues={venues} />
-        <Divider className='w-28 mx-auto' />
-        <About about={event.about} />
-        <Venue venueId={event.venueId} venues={venues} />
       </div>
-      {event.media && <Media media={event.media} />}
       <Checkout event={event} venues={venues} />
       <SimilarEvents venues={venues} event={event} events={events} />
     </div>

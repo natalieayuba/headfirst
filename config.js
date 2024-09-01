@@ -1,12 +1,8 @@
 module.exports = {
   name: 'Headfirst Bristol',
-  tagline: 'Find the Bristol scene that fits.',
+  tagline: 'Find the Bristol scene that fits',
   description:
     "Discover local gigs, club nights, and social events from Bristol's biggest promoters.",
-  images: {
-    banner:
-      'https://images.unsplash.com/photo-1635216615320-68906b26443b?q=80&w=1335&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  },
   colors: {
     lilac: '#BA9CFF',
     night: '#1E1B28',

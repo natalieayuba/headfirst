@@ -1,10 +1,14 @@
-import type { TicketProps } from '@/data/data';
+import type { TicketProps } from '@/db/schema';
 
 export const appendClassName = (className: string | undefined) =>
   className ? ` ${className}` : '';
 
 export const toUrl = (heading: string) =>
-  heading.toLowerCase().replace('&', 'and').replace(/ /g, '-');
+  heading
+    .toLowerCase()
+    .replace('/', ' ')
+    .replace('&', 'and')
+    .replace(/ /g, '-');
 
 export const dateFormat = (date: string) =>
   new Intl.DateTimeFormat('en-GB', {

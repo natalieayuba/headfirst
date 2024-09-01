@@ -19,7 +19,7 @@ const Banner = () => {
       style={{
         backgroundImage: `linear-gradient(transparent, ${colors['dark-night']})`,
       }}
-      className={`h-svh md:h-[900px] w-full margin-x-outer relative`}
+      className={`h-svh md:h-[950px] w-full margin-x-outer relative`}
     >
       <video
         playsInline

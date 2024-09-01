@@ -9,7 +9,7 @@ const About = ({ about }: { about: string }) => {
       <h2 className='mb-4'>About this event</h2>
       <p
         className={`text-white text-opacity-60 whitespace-pre-wrap break-words${
-          readMore ? '' : ' line-clamp-6'
+          readMore ? '' : ' line-clamp-6 md:line-clamp-[12]'
         }`}
       >
         {about}

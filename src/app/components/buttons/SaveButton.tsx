@@ -1,8 +1,9 @@
 'use client';
 import React, { useState, type MouseEvent } from 'react';
 import Icon from '../Icon';
-import type { EventProps } from '@/data/data';
 import { colors } from '../../../../config';
+import type { EventProps } from '@/db/schema';
+import { appendClassName } from '@/utils/formatting';
 
 interface SaveButtonProps {
   event: EventProps;
@@ -20,7 +21,12 @@ const SaveButton = ({ event, className, size }: SaveButtonProps) => {
   };
 
   return (
-    <button className={className} onClick={handleClick}>
+    <button
+      className={`group transition-all duration-200 hover:bg-opacity-100${appendClassName(
+        className
+      )}`}
+      onClick={handleClick}
+    >
       <Icon
         size={size}
         name='heart'

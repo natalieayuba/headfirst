@@ -1,8 +1,9 @@
 'use client';
 import EventCard from '@/app/components/EventCard';
 import Loader from '@/app/components/Loader';
-import type { EventProps, VenueProps } from '@/data/data';
+import type { EventProps, VenueProps } from '@/db/schema';
 import useLoader from '@/hooks/useLoader';
+import useWindowWidth from '@/hooks/useWindowWidth';
 import { formatDate } from '@/utils/formatting';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
@@ -14,11 +15,11 @@ interface FilteredEventsProps {
 
 const FilteredEvents = ({ events, venues }: FilteredEventsProps) => {
   const [filteredEvents, setFilteredEvents] = useState(events);
-
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { loading, loadPage } = useLoader();
+  const { windowWidth } = useWindowWidth();
 
   const clearFilters = () => {
     const params = new URLSearchParams(searchParams);
@@ -37,7 +38,7 @@ const FilteredEvents = ({ events, venues }: FilteredEventsProps) => {
               formatDate(startDate)) &&
           (!searchParams.has('priceFrom') ||
             tickets.some(
-              ({ price }) =>
+              ({ price }: { price: number }) =>
                 price >= Number(searchParams.get('priceFrom')?.toString()) &&
                 price <= Number(searchParams.get('priceTo')?.toString())
             )) &&
@@ -54,7 +55,7 @@ const FilteredEvents = ({ events, venues }: FilteredEventsProps) => {
   return (
     <>
       {loading && <Loader />}
-      <div className='p-6 pt-2'>
+      <div className='content-container pt-2'>
         <div className='flex justify-between'>
           <p className='secondary-text'>
             {filteredEvents.length > 0
@@ -73,15 +74,16 @@ const FilteredEvents = ({ events, venues }: FilteredEventsProps) => {
             Clear all filters
           </button>
         </div>
-        <div className='grid gap-4 mt-5'>
+        <div className='grid md:grid-cols-4 gap-4 md:gap-8 mt-5'>
           {filteredEvents.length > 0 &&
             filteredEvents.map((event) => (
               <EventCard
                 key={event.name}
                 event={event}
                 venues={venues}
-                imageSize='w-24'
-                horizontal
+                cardSize=''
+                imageSize='w-24 md:w-full'
+                horizontal={windowWidth < 768}
               />
             ))}
         </div>

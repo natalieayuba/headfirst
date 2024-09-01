@@ -124,11 +124,11 @@ input[type='search']::-webkit-search-results-decoration {
   }
 
   .button {
-    @apply min-w-32 w-fit px-4 py-[14px] font-semibold rounded text-dark-night enabled:hover:opacity-80 disabled:opacity-30 transition-opacity duration-200;
+    @apply min-w-32 w-fit px-4 py-[14px] font-semibold rounded text-dark-night enabled:hover:opacity-80 disabled:opacity-30 transition-opacity duration-200 hover:opacity-80;
   }
 
   .hovered-img {
-    @apply md:group-hover:scale-105 transition duration-200 ease-out;
+    @apply md:group-hover:scale-[104%] transition duration-200 ease-out;
   }
 }
 
@@ -138,7 +138,7 @@ input[type='search']::-webkit-search-results-decoration {
   }
 
   .filter-chip-scroll {
-    @apply flex gap-2 overflow-y-scroll px-6;
+    @apply flex gap-2 overflow-y-scroll content-container;
   }
 }
 

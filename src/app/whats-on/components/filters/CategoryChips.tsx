@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import FilterChip from './FilterChip';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { type CategoryProps, type SubcategoryProps } from '@/data/data';
+import type { CategoryProps, SubcategoryProps } from '@/db/schema';
 
 const CategoryChips = ({ categories }: { categories: CategoryProps[] }) => {
   const searchParams = useSearchParams();

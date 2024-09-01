@@ -26,10 +26,11 @@ const SliderArrow = ({
 }: SliderArrowProps & ComponentProps<'button'>) => {
   const handleClick = (e: MouseEvent) => {
     const slider = (sliderRef as RefObject<HTMLOListElement>).current!;
+    console.log(slider.clientWidth);
     if (direction === 'right') {
-      slider.scrollLeft += 800;
+      slider.scrollLeft += slider.clientWidth;
     } else if (direction === 'left') {
-      slider.scrollLeft -= 800;
+      slider.scrollLeft -= slider.clientWidth;
     }
   };
 
@@ -56,6 +57,7 @@ const EditorPicks = ({ events, venues }: EditorPicksProps) => {
   const editorsPicks = events.filter(({ editorsPick }) => editorsPick === true);
   const [click, setClick] = useState(false);
   const [startX, setStartX] = useState(0);
+  const [cursor, setCursor] = useState('pointer');
 
   const handleScroll = (e: UIEvent) => {
     const maxScrollLeft =
@@ -66,9 +68,10 @@ const EditorPicks = ({ events, venues }: EditorPicksProps) => {
 
   const handleDrag = (e: MouseEvent) => {
     if (click) {
-      console.log(e.clientX);
       e.preventDefault();
       e.currentTarget.scrollLeft -= e.clientX - startX * 2;
+      setCursor('grabbing');
+      document.body.style.cursor = 'grabbing';
     }
   };
 
@@ -97,12 +100,19 @@ const EditorPicks = ({ events, venues }: EditorPicksProps) => {
         list={editorsPicks}
         onScroll={handleScroll}
         onMouseDown={(e) => {
+          e.preventDefault();
           setClick(true);
           setStartX(e.clientX);
         }}
-        onMouseUp={() => setClick(false)}
+        onMouseUp={() => {
+          setClick(false);
+          document.body.style.cursor = 'auto';
+          setCursor('auto');
+        }}
         onMouseMove={handleDrag}
-        className='max-w-full scroll-smooth pb-6 select-none cursor-grab'
+        className={`max-w-full scroll-smooth pb-6 select-none${
+          cursor === 'grabbing' ? ' [&_a]:cursor-grabbing' : ''
+        }`}
         card={(event) => (
           <EventCard
             venues={venues}

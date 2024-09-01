@@ -234,34 +234,15 @@
         {
           "id": "1014",
           "name": "Exhibition"
+        },
+        {
+          "id": "1015",
+          "name": "Workshops & classes"
         }
       ]
     },
     {
       "id": "1004",
-      "name": "Workshops & classes",
-      "image": "https://images.unsplash.com/photo-1526718583451-e88ebf774771?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "subcategories": [
-        {
-          "id": "1001",
-          "name": "Talks"
-        },
-        {
-          "id": "1002",
-          "name": "Business"
-        },
-        {
-          "id": "1003",
-          "name": "Q&A"
-        },
-        {
-          "id": "1004",
-          "name": "Presentation"
-        }
-      ]
-    },
-    {
-      "id": "1005",
       "name": "Socials & hobbies",
       "image": "https://images.pexels.com/photos/8111364/pexels-photo-8111364.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       "subcategories": [
@@ -400,6 +381,18 @@
       "name": "The Cube",
       "address": "The Cube, Dove St South, Bristol BS2 8NQ",
       "googleMapsLink": "https://www.google.com/maps?sca_esv=9e19fdb118b43033&sca_upv=1&rlz=1C1ONGR_en-GBGB1086GB1086&output=search&q=the+cube+bristol+venue&source=lnms&fbs=AEQNm0Aa4sjWe7Rqy32pFwRj0UkWd8nbOJfsBGGB5IQQO6L3J3ppPdoHI1O-XvbXbpNjYYzWzi3ktijPMXxgEx0JuC82CgMco6f-xpqzUTRu1f7cOAGK_wuctSX-FscOOtg8xTiVSOnRa92w31oxgvPF8JRzYqH3wZaJuVosKHCuEAVU0Fxj8WU94-iFvMAmDAI9C2qzcwsX&entry=mc&ved=1t:200715&ictx=111"
+    },
+    {
+      "id": "1019",
+      "name": "The Ill Repute",
+      "address": "16 West St, Bristol BS2 0DF",
+      "googleMapsLink": "https://www.google.com/maps?rlz=1C1ONGR_en-GBGB1086GB1086&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRhA0gEIMTcyNWowajeoAgCwAgA&um=1&ie=UTF-8&fb=1&gl=uk&sa=X&geocode=KZcozUIFj3FIMZuDM97YE14b&daddr=16+West+St,+Bristol+BS2+0DF"
+    },
+    {
+      "id": "1020",
+      "name": "The Loco Klub",
+      "address": "Clock Tower Yd, Under stone archway, Bristol BS1 6QH",
+      "googleMapsLink": "https://www.google.com/maps/dir//The+Loco+Klub/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x48718e7cb4a48a13:0x80c4694d1e904341?sa=X&ved=1t:3061&ictx=111"
     }
   ],
   "events": [
@@ -1131,6 +1124,362 @@
         {
           "name": "General release",
           "price": 15
+        }
+      ]
+    },
+    {
+      "id": "1021",
+      "name": "Eraserhead (1977)",
+      "startDate": "2024-08-24T19:00Z",
+      "endDate": "2024-08-24T22:30Z",
+      "venueId": "1019",
+      "categoryId": "1003",
+      "subcategoryIds": ["1010"],
+      "ageLimit": 18,
+      "about": "Be Kind Rewind Bristol Cinema Club is proud to revisit David Lynch's dream of dark and torubling things, ERASERHEAD (1977) on Thursday 5th September downstairs at The Ill Repute.\n\nDavid Lynch’s 1977 debut feature, Eraserhead, is both a lasting cult sensation and a work of extraordinary craft and beauty. With its mesmerizing black-and-white photography by Frederick Elmes and Herbert Cardwell, evocative sound design, and unforgettably enigmatic performance by Jack Nance, this visionary nocturnal odyssey continues to haunt American cinema like no other film.\n\nOnce seen, it's impossible to unsee. Lynch's nightmarish DIY destruction of the fourth, fifth and sixth walls of cinema needs to be watched again and again and again and again.",
+      "image": "https://www.headfirstbristol.co.uk/images/events/1125/e112575_i210169_s5.jpg",
+      "credit": "https://www.headfirstbristol.co.uk/whats-on/ill-repute/thu-5-sep-eraserhead-1977--112575#e112575",
+      "saved": false,
+      "editorsPick": true,
+      "socials": {
+        "spotify": "https://open.spotify.com/album/0dWqp2IrTBMumfADclgSJz?go=1&sp_cid=1189c68a57d4270484b8163c3d0cedcd&utm_source=embed_player_p&utm_medium=desktop&nd=1&dlsi=c7e9fa9202534a13"
+      },
+      "media": [
+        {
+          "src": "https://www.headfirstbristol.co.uk/images/events/1125/e112575_i210170_s4.jpg",
+          "alt": "Eraserhead (1977)"
+        },
+        {
+          "src": "https://www.headfirstbristol.co.uk/images/events/1125/e112575_i210171_s4.jpg",
+          "alt": "Eraserhead (1977)"
+        },
+        {
+          "src": "https://www.headfirstbristol.co.uk/images/events/1125/e112575_i210173_s5.jpg",
+          "alt": "Eraserhead (1977)"
+        },
+        {
+          "src": "https://www.youtube.com/watch?v=oK-2_OsBe0s",
+          "alt": "Eraserhead Trailer"
+        },
+        {
+          "src": "https://www.youtube.com/watch?v=aFuAK0iH-fY",
+          "alt": "Audience reactions to David Lynch's « Eraserhead »"
+        }
+      ],
+      "tickets": [
+        {
+          "name": "Early bird",
+          "price": 5
+        },
+        {
+          "name": "General release",
+          "price": 10
+        }
+      ]
+    },
+    {
+      "id": "1022",
+      "name": "Arnow / A Tom Lowe portrait by Jack Whitefield",
+      "startDate": "2024-08-24T19:30Z",
+      "endDate": "2024-08-24T21:30Z",
+      "venueId": "1018",
+      "categoryId": "1003",
+      "subcategoryIds": ["1010"],
+      "ageLimit": 18,
+      "about": "Jack Whitefield’s portrait of professional big wave surfer Tom Lowe — A sensory and visceral journey through Cornwall and Ireland; this film builds a picture of Tom’s complex character using a patchwork of memories and stories sown together through interviews of family and associates who have bore witness to Tom’s dedicated and dangerous journey.\n\nTom Lowe, referred to as Lowey by friends, family and media alike is regarded by most as the greatest big wave surfer to come from British waters and respected as one of the best in the world at what he does.\n\nAn adolescence spent surfing his local beach somehow led him to long cold dark Winters in Ireland searching out new waves before travelling further afield to track, follow and surf the biggest swell forecasts on the planet.\n\nThis in turn blessed him with more magazine covers than most at that time, be it pioneering a slab in Ireland or (an Englishman) in the lip at Teahupoo. Renowned for paddling days no one else wants to be using arm power alone, the last few years has seen him nominated for multiple big wave awards while competing on the big wave world tour.\n\nTom and Vans have given free rein to childhood friend and talented artist Jack Whitefield to give a deep psychedelic trip through Tom’s past and present. A fellow St.Ives born and raised, who is more formerly known for his photography, art and book making studies in the public eye, but behind closed doors has worked on many a video project.\n\nCommissioned by Vans Europe.\n",
+      "image": "https://www.headfirstbristol.co.uk/images/events/1138/e113827_i213886_s4.jpg",
+      "credit": "https://www.headfirstbristol.co.uk/whats-on/the-cube/thu-5-sep-arnow-a-tom-lowe-portrait-by-jack-whitefield-113827#e113827",
+      "saved": false,
+      "editorsPick": true,
+      "tickets": [
+        {
+          "name": "General release",
+          "price": 5
+        }
+      ]
+    },
+    {
+      "id": "1023",
+      "name": "Tales From The Wasteland: Post-Apocalyptic Improv",
+      "startDate": "2024-08-25T19:30Z",
+      "endDate": "2024-08-25T22:00Z",
+      "venueId": "1006",
+      "categoryId": "1003",
+      "subcategoryIds": ["1003", "1005"],
+      "about": "Our talented cast of wastelanders will take a single suggestion from you and craft an entire narrative before your eyes with no pre-prepared characters, story or dialogue.\n\nIf the world was ending, what would be the one thing you’d want to survive? This band of dystopian adventurers will explore a new world and find out what’s left over after Earth’s devastation. Expect raiders, mutants and violence over scarce resources in this absurd dark comedy inspired by classics of the genre such as Mad Max, The Last of Us and Fallout.\n\nThis show is not recommended for the light of heart due to the tendency to have dark themes, violence and cannibalism. Seriously, cannibalism comes up way too often.\n\n\n\nWITH SUPPORT FROM: The Red Room\n\nImmerse yourself in a David Lynch inspired show, depicting a quaint middle-american town where the spectre of death has passed through and torn apart the lives of each and every member of this community.\nHearts break, hopes are born and passions ignite for these souls touched by loss -\n\nFor your viewing pleasure: an absurd and entirely improvised experience that will expose you to both the comedic highs and the tragic lows of these all too human characters.\n\nContent Warning: May contain descriptions of death and other adult themes.",
+      "image": "https://www.headfirstbristol.co.uk/images/events/1135/e113585_i213250_s5.jpg",
+      "credit": "https://www.headfirstbristol.co.uk/whats-on/cloak/thu-12-sep-tales-from-the-wasteland-post-apocalyptic-improv-113585#e113585",
+      "saved": false,
+      "editorsPick": true,
+      "media": [
+        {
+          "src": "https://www.headfirstbristol.co.uk/images/events/1135/e113585_i213951_s5.jpg",
+          "alt": "Tales From The Wasteland: Post-Apocalyptic Improv Cast"
+        },
+        {
+          "src": "https://www.headfirstbristol.co.uk/images/events/1135/e113585_i215371_s4.jpg",
+          "alt": "The Red Room"
+        }
+      ],
+      "tickets": [
+        {
+          "name": "General release",
+          "price": 8
+        }
+      ]
+    },
+    {
+      "id": "1024",
+      "name": "SICK, SAD WORLD - Cartoons from the 90's!",
+      "startDate": "2024-08-25T19:00Z",
+      "endDate": "2024-08-25T23:00Z",
+      "venueId": "1019",
+      "categoryId": "1003",
+      "subcategoryIds": ["1010"],
+      "ageLimit": 18,
+      "about": "Be Kind Rewind Bristol Cinema Club brings to you SICK, SAD WORLD.\n\nStep back in time and relive the golden age of 90's and early 00's cartoons. Whether you're a die-hard fan of classic animated series or just looking for a fun, nostalgic evening, SICK, SAD WORLD is a fun, inclusive space to watch your favourite retro cartoons.\n\nFeaturing all your after-school and Saturday morning favourites, we'll be screening the best episodes from an unmatched era of cartoons. All mixed in with retro commercials from the time.\n\nSICK, SAD WORLD: Because Some Things Never Go Out of Style!\n\nDoors: 19:00\nStart time: 19:30\n\nGet down early to guarantee yourself a good seat!",
+      "image": "https://www.headfirstbristol.co.uk/images/events/1140/e114028_i214409_s5.jpg",
+      "credit": "https://www.headfirstbristol.co.uk/whats-on/ill-repute/wed-18-sep-sick-sad-world-cartoons-from-the-90-s--114028#e114028",
+      "saved": false,
+      "editorsPick": true,
+      "socials": {
+        "spotify": "https://open.spotify.com/album/5GQvQeILBrTKANtyvNCsQx?go=1&sp_cid=a43be5ee0aec8800e15dd9532e77c575&utm_source=embed_player_p&utm_medium=desktop"
+      },
+      "media": [
+        {
+          "src": "https://www.headfirstbristol.co.uk/images/events/1140/e114028_i214410_s5.jpg",
+          "alt": "Powerpuff Girls"
+        },
+        {
+          "src": "https://www.headfirstbristol.co.uk/images/events/1140/e114028_i214411_s5.jpg",
+          "alt": "SICK, SAD WORLD"
+        },
+        {
+          "src": "https://www.youtube.com/watch?v=eLA8lIvOCwQ",
+          "alt": "Every 90s Cartoon Intro - Part 1"
+        }
+      ],
+      "tickets": [
+        {
+          "name": "Free entry",
+          "price": 0
+        }
+      ]
+    },
+    {
+      "id": "1025",
+      "name": "Garden Party",
+      "startDate": "2024-08-25T12:00Z",
+      "endDate": "2024-08-25T19:00Z",
+      "venueId": "1011",
+      "categoryId": "1004",
+      "subcategoryIds": ["1002"],
+      "about": "Trinity are pleased to launch our third September Garden Party, the sister event of our May Garden Party to round off the summer\n\nSo what is the difference between May Garden Party and September Garden Party?\nOur September Garden Party will be similar in terms of vibes but will be a calmer family friendly version.\n\nThe event will highlight our programme and the talent of our local businesses, organisations and community with creative arts activities, local and emerging artists as well as an enhanced programme of activity for children and young people.\n\nFind out more about what goes on inside Trinity’s walls and chat to the staff representing each of our diverse programmes - Children and Young People, Communities and Neighbourhoods, Arts and Engagement, Music and more.\n\nExpect stalls from businesses local to Trinity selling crafts, delicious foods and more…\n\nThis year ‘Garden Party - A Community Celebration’ is our flagship launch event of Destination: Old Market, a programme that over autumn will highlight the fine gastronomy, arts, independent businesses and heritage local to the Trinity Centre!\n\nLine up and activities TBA\n\n\n\nAccess - if you have access requirements please let one of our team know how we can help.\n\nPlay your part in Trinity's future and support events like Garden Party, with a suggested donation of £3 per person.\n\nPlease note that no alcohol and no dogs can be brought on site. Bag searches will take place.\n\n\nAbout Trinity Presents\nThis is part of Trinity Presents - our in-house programme of music and performance, bringing world-class artists and emerging talent to inner-city audiences.\n\nEntry requirements: no age restrictions (under 18s to be accompanied by an adult over 21yrs, 1:1 ratio)\n",
+      "image": "https://www.headfirstbristol.co.uk/images/events/1125/e112539_i210127_s5.jpg",
+      "credit": "https://www.headfirstbristol.co.uk/whats-on/the-trinity-centre/sun-22-sep-garden-party-112539#e112539",
+      "saved": false,
+      "tickets": [
+        {
+          "name": "Free entry",
+          "price": 0
+        }
+      ]
+    },
+    {
+      "id": "1026",
+      "name": "Satellite of Love: A Tale of Two Taylors",
+      "startDate": "2024-08-26T19:00Z",
+      "endDate": "2024-08-26T22:00Z",
+      "venueId": "1020",
+      "categoryId": "1003",
+      "subcategoryIds": ["1006", "1007"],
+      "about": "ENUE CHANGE: THIS EVENT IS NOW TAKING PLACE AT THE LOCO KLUB\n\nSatellite of Love Poetry and Spoken Word run monthly events, workshops and writing retreats. Our monthly events are usually at the John Sebastian Lightship and offer a platform for local and touring poets, open mic and a community poem.\n\nAll languages welcome.\n\nOpen mic sign ups are currently closed. Please email satelliteoflovepoetry@gmail.com if you would like your name added to the reserves list.\n\nWe will have 10 'on the door' open mic slots available on the night from 7pm. If we are over-subscribed we will draw names from a hat.\n\nDoors & Bar open - 7pm\nNight starts - 7:30pm\nNight ends - 10pm\n\nAddress: The Loco Klub, Clock Tower Yd, Under stone archway, Bristol BS1 6QH\n***********************************************************\n\nAbout the headliners:\n\nJoelle Taylor is the author of 4 collections of poetry. Her most recent collection C+NTO & Othered Poems won the 2021 T.S Eliot Prize, and the 2022 Polari Book Prize for LGBT authors. C+NTO is currently being adapted for theatre with a view to touring. She is a co- curator and host of Out-Spoken Live at the Southbank Centre, and tours her work nationally and internationally in a diverse range of venues, from Australia to Brazil. She is also a Poetry Fellow of University of East Anglia and the curator of the Koestler Awards 2023. She has judged several poetry and literary prizes including Jerwood Fellowship, the Forward Prize, and the Ondaatje Prize. Her novel of interconnecting stories The Night Alphabet will be published by Riverrun in Spring of 2024. She is a Fellow of the Royal Society of Literature, and the 2022 Saboteur Spoken Word Artist of the Year. Her most recent acting role was in Blue by Derek Jarman, which was directed by Neil Bartlett and featured Russell Tovey, Jay Bernard, and Travis Alabanza. Blue sold out its run across the UK and more dates are expected for the future.\n\nWhen we asked Bradley for a bio, all he wrote was:\n'Bradley Taylor (he/him) is a poet from Birmingham. Apologies.'",
+      "image": "https://www.headfirstbristol.co.uk/images/events/1125/e112539_i210127_s5.jpg",
+      "credit": "https://www.headfirstbristol.co.uk/whats-on/the-trinity-centre/sun-22-sep-garden-party-112539#e112539",
+      "saved": false,
+      "tickets": [
+        {
+          "name": "General release",
+          "price": 4.5
+        }
+      ],
+      "media": [
+        {
+          "src": "https://www.headfirstbristol.co.uk/images/events/1141/e114112_i214618_s4.jpg",
+          "alt": "Satellite of Love: A Tale of Two Taylors at The Loco Klub"
+        },
+        {
+          "src": "https://www.headfirstbristol.co.uk/images/events/1141/e114112_i214619_s2.jpg",
+          "alt": "Satellite of Love: A Tale of Two Taylors at The Loco Klub"
+        },
+        {
+          "src": "https://www.headfirstbristol.co.uk/images/events/1141/e114112_i214620_s3.jpg",
+          "alt": "Satellite of Love: A Tale of Two Taylors at The Loco Klub"
+        },
+        {
+          "src": "https://www.youtube.com/watch?v=K4EdtA4Aeyo",
+          "alt": "Joelle Taylor - C+nto || Spoken Word Poetry ||"
+        },
+        {
+          "src": "https://www.youtube.com/watch?v=bLIzQ8ZW-Cs",
+          "alt": "Bradley Taylor | 'Got a light?' | Roundhouse"
+        }
+      ]
+    },
+    {
+      "id": "1027",
+      "name": "F for Fake (film screening and performance)",
+      "startDate": "2024-08-26T19:00Z",
+      "endDate": "2024-08-26T23:00Z",
+      "venueId": "1018",
+      "categoryId": "1003",
+      "subcategoryIds": ["1010", "1014"],
+      "about": "Doozy Magazine presents 'F for Fake': an evening of performance, art, and film in homage to the great 'F for Fake' by Orson Welles at The Cube Microplex.\n\nFeaturing:\n\nThe Great Baldini (Performance)\nOrson Welles' 'F for Fake' (Film)\nArt Exhibition (All over)\n\nFor artist submissions head to... https://forms.gle/GEeVNkGCRmMMNunx9\n\n---\n\nThe Great Baldini (‘Emperor of Illusion’, ‘Prince of Prestidigitation’, and\n‘Maharajah of Mystery’) is a magical legend, a music hall relict and an old\nschool theatrical performer. Baldini is a Magic Circle member and awardwinning member of Bristol Society of Magic and Wessex Magical Association.\n\nBaldini is also the head of the shadowy and sinister ILLUSIONATI - a group\nof elite magicians influencing the world through the use of magical dark\narts. In “Dirty Tricks” he reveals (and demonstrates) how the ILLUSIONATI\nsell their magical services to the highest bidder, laundering money, rigging\nelections and supporting both the KGB and the CIA in nefarious activities.\nThe next wholly (im)plausible (magical) conspiracy theory for the Internet.\nImagine Tommy Cooper meets Blofeld.\n\n“Incredible” (Front Row, BBC Radio 4)\n“Wonderful, a joy” (Pick of the Week, BBC Radio 4)\n“Charming, engaging and charismatic. A pleasure.” (FringeReview)\n“A seasoned professional, excellent command of the stage.” (Broadway Baby)\n\n---\n\n'F for Fake'\n\nDirector: Orson Welles Cast: Orson Welles, Oja Kodar, Elmyr de Hory, Clifford Irving, François Reichenbach France-Iran-West Germany 1975 | Colour | 88mins | Cert: PG\n\nTrickery. Deceit. Magic. In F for Fake, a free-form sort-of documentary by Orson Welles, the legendary filmmaker (and self-described charlatan) gleefully re-engages with the central preoccupation of his career: the tenuous lines between illusion and truth, art and lies.\n\nBeginning with portraits of the world-renowned art forger Elmyr de Hory and his equally devious biographer, Clifford Irving, Welles embarks on a dizzying journey that simultaneously exposes and revels in fakery and fakers of all stripes—not the least of whom is Welles himself.\n\nCharming and inventive, F for Fake is both an inspired prank and a clever examination of the essential duplicity of cinema.\n\n---\n\nAbout Doozy:\n\nWe are a grassroots arts organisation aiming to offer a space for artists to exhibit and sell their work in a unique setting blending absurdist theatre, exhibition, immersive art, music, and performance into one space. We also produce zine to accompany our events filled with other interesting bits of forgery, art, and insight.\n\nAny questions about the show please contact doozymagazinee@gmail.com\n\nHope to see you there!\nKids welcome (finish time around 10PM)",
+      "image": "https://www.headfirstbristol.co.uk/images/events/1128/e112882_i211180_s4.jpg",
+      "credit": "https://www.headfirstbristol.co.uk/whats-on/the-cube/fri-18-oct-f-for-fake-film-screening-and-performance--112882#e112882",
+      "saved": false,
+      "tickets": [
+        {
+          "name": "Free entry",
+          "price": 0
+        }
+      ],
+      "media": [
+        {
+          "src": "https://www.headfirstbristol.co.uk/images/events/1128/e112882_i211182_s4.jpg"
+        },
+        {
+          "src": "https://www.headfirstbristol.co.uk/images/events/1128/e112882_i211181_s5.jpg"
+        },
+        {
+          "src": "https://www.headfirstbristol.co.uk/images/events/1128/e112882_i212505_s3.jpg"
+        },
+        {
+          "src": "https://www.youtube.com/watch?v=qUAwgt2Z-3Y",
+          "alt": "F for Fake 1973 Trailer | Documentary | Orson Welles"
+        }
+      ]
+    },
+    {
+      "id": "1028",
+      "name": "Past Works Recycling Plant",
+      "startDate": "2024-08-27T19:00Z",
+      "endDate": "2024-08-27T22:30Z",
+      "venueId": "1018",
+      "categoryId": "1003",
+      "subcategoryIds": ["1003", "1011", "1014"],
+      "about": "Past Works Recycling Plant is a mixed-bill night of contemporary performance curated by artist duo Emergency Chorus.\n\nIn contrast to the more commonly found 'scratch night' for testing new work, Past Works Recycling Plant invites artists to instead 'recycle' old work. Expect reworked and remixed material, whirlwind retrospectives, undocumented gems, discarded ideas, or the very first work an artist made 10, 20, 30 years ago.\n\nPast Works Recycling Plant is a celebration of the ways that artists change and remain constant; an invitation to time-travel, making room for the unseen, the almost-forgotten, the stolen, the scribblings-in-the-margins, the what-was-was-there-all-along. We say: out with the new, and in with the old!\n\nLine-up includes:\nACTION HERO\nBUOYS BUOYS BUOYS\nANIA VAREZ\nANDREW NEIL HAYES\nEMERGENCY CHORUS\n\nThe Cube Microplex\n£10 standard / £7.50 open concessions (+£1 OTD)\n\nACTION HERO\n\nGemma Paintin & James Stenhouse have been working together under the moniker Action Hero since 2005. Using this name, they collaborate to create performances, installations, social practice, audio work and more. Independence is at the heart of the company’s ethos, alongside collaboration, a commitment to artist-led spaces and methodologies, and a belief in the power of art and creativity to give shape to the human experience. As well as extensive international touring to both critical and popular acclaim, the company has received grants, fellowships, commissions and residencies worldwide. They have published two books and contributed to several more. Action Hero are Forest Fringe associate artists and members of artist collectives Residence and The Brunswick Club.\n\nhttps://actionhero.org.uk/Home\n\nANIA VAREZ\n\nAnia Varez (they/them) is a Venezuelan dance artist based in Bristol. Their work lives somewhere in between the mediums of dance, community development, live art and writing. These days, they are interested in: ways of generating joy, of passing time, of being together, of creating change, of expanding our collective stories of migration, queerness and being alive today. On an ongoing journey to understand what a truly collaborative and inclusive practice might be, you're likely to find them working with many different people, often with folks who have never been in creative spaces before. Ania's work has been showcased internationally and in the UK, including SPILL Festival, Seoul Marginal Theatre Festival, Taipei Contemporary Arts Centre and Robert Howard Theatre. They are a proud member of Interval, an artist collective based in Bristol.\n\nhttps://www.aniavarez.com/\n\nANDREW NEIL HAYES\n\nAndrew Neil Hayes makes videos that are performances and performances that are videos; usually involving himself and / or a suit, live projection, earth, mud, dirt, sweat, tears. Based in Bristol, his work has been shown at festivals and galleries worldwide. He is also an active member of the local music scene, best known as leader of the psychedelic jazz not jazz band Run Logan Run.\n\nwww.andrewneilhayes.com\n\nBUOYS BUOYS BUOYS\n\nBuoys Buoys Buoys is a folklorist and multidisciplinary artist working between Swansea & Bristol. Producing performance, sculpture, and installation, they use their practice to engage communities in the retelling of Celtic folktales through absurd storytelling and public play, exploring themes of Queer masculinity, contemporary ritual magic, and working class Welsh folk culture.\n\nOver the last 2 years Buoys Buoys Buoys has performed and exhibited at Soho Theatre, Bristol Museum, Elysium Gallery (Swansea), Theatr y Sherman (Cardiff), and The Edinburgh Fringe Festival (2022, 2023), with upcoming projects at ArtHouse Jersey, Chapter Art Centre (Cardiff), Kit Form Gallery (Bristol), and Mission Gallery (Swansea).\n\nhttps://buoysbuoysbuoys.com/\n\nEMERGENCY CHORUS\n\nEmergency Chorus is Ben Kulvichit (he/him) and Clara Potter-Sweet (they/she). They make performances which straddle experimental theatre, live art and dance, often colliding disparate source materials to create collages of text, choreography, music and image. The work is ambiguous, playful, fragile, strange, appealing and troublesome. Recently, they have made a dance piece which predicts the future, a choir of town criers, and an improvised preposition salad.\n\nhttps://emergencychorus.com/\n\nAccessibility:\nThe Cube is an historic building with many steps required to access and get around the building, so unfortunately it is not accessible for wheelchair users. Please contact cubeadmin@cubecinema.com for any questions regarding accessibility.",
+      "image": "https://www.headfirstbristol.co.uk/images/events/1133/e113302_i212460_s4.jpg",
+      "credit": "https://www.headfirstbristol.co.uk/whats-on/the-cube/wed-18-sep-past-works-recycling-plant-113302#e113302",
+      "saved": false,
+      "tickets": [
+        {
+          "name": "Free entry",
+          "price": 0
+        }
+      ],
+      "media": [
+        {
+          "src": "https://www.headfirstbristol.co.uk/images/events/1133/e113302_i212461_s5.jpg"
+        }
+      ]
+    },
+    {
+      "id": "1029",
+      "name": "QUEER LIFE DRAWING",
+      "startDate": "2024-08-27T18:00Z",
+      "endDate": "2024-08-27T20:00Z",
+      "venueId": "1018",
+      "categoryId": "1003",
+      "subcategoryIds": ["1001", "1009", "1015"],
+      "about": "Queer Life Drawing at Cafe Kino - by queer folk for queer folk!\n\n- A cosy & creative queer space <3 run by queer facilitators & models\n- A range of 2-30minute poses (generally: short poses –break– long poses)\n– Different model every week\n- Basic materials provided: paper, charcoal, erasers etc.\n- Drawing guidance and tips happily available on request from Ruby\n\nEvery Wednesday 6.30-8pm\nPlease arrive a little early so we can start drawing at 6.30pm\n\n£6/10 tickets (low income/general). Choose a ticket price that feels comfortable for you, and please let us know if cost is a barrier to you coming!\n\nThe venue is the basement of cafe kino, with access via one flight of stairs, there is capacity for 27 attendees to be seated or at an easel. Please feel free to get in touch via the contact link below if you have any access requirements of questions about the space. :)\n\nMore sessions, tickets, contact & feedback: https://linktr.ee/rscottgeddes",
+      "image": "https://www.headfirstbristol.co.uk/images/events/1144/e114429_i215393_s5.jpg",
+      "credit": "https://www.headfirstbristol.co.uk/whats-on/cafe-kino/wed-18-sep-queer-life-drawing-114429#e114429",
+      "saved": false,
+      "tickets": [
+        {
+          "name": "Low income",
+          "price": 6
+        },
+        {
+          "name": "General admission",
+          "price": 10
+        }
+      ],
+      "media": [
+        {
+          "src": "https://www.headfirstbristol.co.uk/images/events/1144/e114429_i215394_s5.jpg"
+        },
+        {
+          "src": "https://www.headfirstbristol.co.uk/images/events/1144/e114429_i215395_s5.jpg"
+        }
+      ]
+    },
+    {
+      "id": "1030",
+      "name": "Reefer Madness (1936)",
+      "startDate": "2024-08-28T19:00Z",
+      "endDate": "2024-08-28T22:00Z",
+      "venueId": "1019",
+      "categoryId": "1003",
+      "subcategoryIds": ["1010"],
+      "ageLimit": 18,
+      "about": "Be Kind Rewind Bristol Cinema Club is proud to present one of the greatest cult films of all time, REEFER MADNESS!\n\nThe film theatrically dramatises the stark dangers of the most frightful assassin of our youth, the devils lettuce, MARIJUANA.\n\nOriginally produced with the title Tell Your Children, the film serves as a riotous cautionary tale when one decides to tangle with the Demon Weed. Moral corruption, emotional disturbances, unstoppable laughter, murder, even insanity—these are just some of the dire consequences of a group of high school friends lured into the dark world of cannabis!\n\nIf one participates in the combustion and inhalation of herbal remedies we recommend doing so before the screening. Such delights can enhance the viewers experience.\n\nPlease note: Due to the shorter runtime, this film will start at a later time of 8:30 PM",
+      "image": "https://www.headfirstbristol.co.uk/images/events/1134/e113402_i212649_s4.jpg",
+      "credit": "https://www.headfirstbristol.co.uk/whats-on/ill-repute/thu-19-sep-reefer-madness-1936--113402#e113402",
+      "saved": false,
+      "tickets": [
+        {
+          "name": "Free entry",
+          "price": 0
+        }
+      ],
+      "media": [
+        {
+          "src": "https://www.headfirstbristol.co.uk/images/events/1134/e113402_i212645_s4.jpg"
+        },
+        {
+          "src": "https://www.headfirstbristol.co.uk/images/events/1134/e113402_i212646_s5.jpg"
+        },
+        {
+          "src": "https://www.headfirstbristol.co.uk/images/events/1134/e113402_i212651_s3.jpg"
+        }
+      ]
+    },
+    {
+      "id": "1031",
+      "name": "OnlyGrans",
+      "startDate": "2024-08-28T19:30Z",
+      "endDate": "2024-08-28T21:00Z",
+      "venueId": "1020",
+      "categoryId": "1003",
+      "subcategoryIds": ["1003", "1005"],
+      "ageLimit": 16,
+      "about": "Introducing Geri, the old lady who bakes the best shortbread but distrusts \"the gays“ because \"that kind of thing just isn’t for her, love”. Join her as she searches for love by downloading Tinder and navigating the minefield that is online dating. From “explicit pictures” to “Hot MILFS” Geri sees it all and realises that her previous ideas about what love is and who ought to be allowed to love whom, need to be updated. It’s a coming-of-age show… but not as you know it! With its roots in clown, OnlyGrans is an excellent example of how comedy can be used to make serious issues accessible.",
+      "image": "https://www.headfirstbristol.co.uk/images/events/1133/e113304_i212450_s4.jpg",
+      "credit": "https://www.headfirstbristol.co.uk/whats-on/loco-klub/thu-19-sep-onlygrans-113304#e113304",
+      "saved": false,
+      "tickets": [
+        {
+          "name": "Early bird",
+          "price": 10
+        },
+        {
+          "name": "General release",
+          "price": 12
+        }
+      ],
+      "media": [
+        {
+          "src": "https://www.headfirstbristol.co.uk/images/events/1133/e113304_i212452_s4.jpg",
+          "alt": "See Do Eat Review"
+        },
+        {
+          "src": "https://www.headfirstbristol.co.uk/images/events/1133/e113304_i212454_s4.jpg"
+        },
+        {
+          "src": "https://www.youtube.com/watch?v=tiI8f3dp5pw",
+          "alt": "OnlyGrans Show Trailer"
         }
       ]
     }
