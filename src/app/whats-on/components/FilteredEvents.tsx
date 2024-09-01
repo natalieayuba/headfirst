@@ -1,4 +1,5 @@
 'use client';
+import { Button } from '@/app/components/buttons/Button';
 import EventCard from '@/app/components/EventCard';
 import Loader from '@/app/components/Loader';
 import type { EventProps, VenueProps } from '@/db/schema';
@@ -15,6 +16,8 @@ interface FilteredEventsProps {
 
 const FilteredEvents = ({ events, venues }: FilteredEventsProps) => {
   const [filteredEvents, setFilteredEvents] = useState(events);
+  const [loadedEvents, setLoadedEvents] = useState<EventProps[]>([]);
+  const maxLoadedEvents = 24;
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -52,40 +55,69 @@ const FilteredEvents = ({ events, venues }: FilteredEventsProps) => {
     );
   }, [searchParams, events]);
 
+  useEffect(() => {
+    if (filteredEvents.length > maxLoadedEvents) {
+      setLoadedEvents(filteredEvents.slice(0, maxLoadedEvents));
+    } else {
+      setLoadedEvents(filteredEvents);
+    }
+  }, [filteredEvents]);
+
+  const loadMore = () => {
+    setLoadedEvents([
+      ...loadedEvents,
+      ...filteredEvents.slice(
+        loadedEvents.length,
+        loadedEvents.length + maxLoadedEvents
+      ),
+    ]);
+  };
+
   return (
     <>
       {loading && <Loader />}
-      <div className='content-container pt-2'>
+      <div className='content-container pt-2 mb-10'>
         <div className='flex justify-between'>
           <p className='secondary-text'>
             {filteredEvents.length > 0
-              ? `${filteredEvents.length} events`
+              ? `${filteredEvents.length} ${
+                  filteredEvents.length === 1 ? 'event' : 'events'
+                }`
               : 'No events found'}
           </p>
-          <button
-            type='button'
-            className='text-sm link'
-            onClick={() => {
-              if (searchParams.size > 0) {
-                loadPage(clearFilters);
-              }
-            }}
-          >
-            Clear all filters
-          </button>
+          {searchParams.size > 0 && (
+            <button
+              type='button'
+              className='text-sm link disabled:opacity-30'
+              onClick={() => loadPage(clearFilters)}
+            >
+              Clear all filters
+            </button>
+          )}
         </div>
-        <div className='grid md:grid-cols-4 gap-4 md:gap-8 mt-5'>
-          {filteredEvents.length > 0 &&
-            filteredEvents.map((event) => (
+        <div className='grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xs:gap-8 mt-5 xs:mt-6 mb-6'>
+          {loadedEvents.length > 0 &&
+            loadedEvents.map((event) => (
               <EventCard
                 key={event.name}
                 event={event}
                 venues={venues}
                 cardSize=''
-                imageSize='w-24 md:w-full'
-                horizontal={windowWidth < 768}
+                imageSize='w-24 xs:w-full'
+                horizontal={windowWidth < 420}
               />
             ))}
+        </div>
+        <div className='flex justify-center'>
+          <Button
+            alt
+            onClick={loadMore}
+            className={
+              loadedEvents.length === filteredEvents.length ? 'hidden' : ''
+            }
+          >
+            Load more
+          </Button>
         </div>
       </div>
     </>

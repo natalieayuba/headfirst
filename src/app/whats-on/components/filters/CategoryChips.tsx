@@ -15,6 +15,7 @@ const CategoryChips = ({ categories }: { categories: CategoryProps[] }) => {
   const [subcategories, setSubcategories] = useState<SubcategoryProps[]>(
     category ? category.subcategories : []
   );
+  const fadedContainerRef = useRef<HTMLDivElement>(null);
   const subcategoriesRef = useRef<HTMLDivElement>(null);
 
   const updateCategoryParam = (id: string) => {
@@ -50,7 +51,10 @@ const CategoryChips = ({ categories }: { categories: CategoryProps[] }) => {
   }, [searchParams]);
 
   return (
-    <div className='flex gap-2 flex-col'>
+    <div
+      ref={fadedContainerRef}
+      className='flex gap-2 flex-col md:content-container relative md:fade-overflow-edge-left md:fade-overflow-edge-right'
+    >
       <div className='filter-chip-scroll relative z-[2]'>
         {categories.map(({ id, name }) => (
           <FilterChip
@@ -64,10 +68,27 @@ const CategoryChips = ({ categories }: { categories: CategoryProps[] }) => {
         ))}
       </div>
       <div
-        className={`filter-chip-scroll relative transition-all duration-200 ${
+        className={`filter-chip-scroll transition-all duration-200 mb-2 ${
           subcategories.length > 0 ? '' : '-translate-y-10 opacity-0'
         }`}
         ref={subcategoriesRef}
+        onScroll={(e) => {
+          if (e.currentTarget.clientWidth < e.currentTarget.scrollWidth) {
+            if (e.currentTarget.scrollLeft === 0) {
+              fadedContainerRef.current?.classList.remove('before:opacity-100');
+            } else {
+              fadedContainerRef.current?.classList.add('before:opacity-100');
+            }
+            if (
+              e.currentTarget.scrollLeft ===
+              e.currentTarget.scrollWidth - e.currentTarget.clientWidth
+            ) {
+              fadedContainerRef.current?.classList.add('after:opacity-0');
+            } else {
+              fadedContainerRef.current?.classList.remove('after:opacity-0');
+            }
+          }
+        }}
       >
         {subcategories
           .toSorted((a, b) => a.name.localeCompare(b.name))

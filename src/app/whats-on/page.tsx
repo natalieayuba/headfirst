@@ -15,7 +15,7 @@ const WhatsOn = async () => {
   return (
     <div className='mt-16'>
       <Header search={<Search />} />
-      <h1 className='text-4xl content-container pt-6 pb-2'>
+      <h1 className='text-4xl content-container pt-6 md:pt-8 pb-2'>
         What&apos;s on in Bristol
       </h1>
       <div className='flex flex-col gap-2'>

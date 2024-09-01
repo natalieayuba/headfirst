@@ -92,7 +92,7 @@ input[type='search']::-webkit-search-results-decoration {
   }
 
   .filter-chip {
-    @apply bg-night px-3 h-8 w-fit flex items-center gap-1.5 rounded-full transition-opacity duration-150 flex-shrink-0;
+    @apply bg-night px-3 h-8 w-fit flex items-center gap-1.5 rounded-full transition-opacity duration-150 flex-shrink-0 [&_*]:cursor-pointer;
   }
 
   .filter-chip-selected {
@@ -130,6 +130,14 @@ input[type='search']::-webkit-search-results-decoration {
   .hovered-img {
     @apply md:group-hover:scale-[104%] transition duration-200 ease-out;
   }
+
+  .fade-overflow-edge-right {
+    @apply after:content-[""] after:h-8 after:w-[40px] after:absolute after:bottom-2 after:right-12 after:bg-gradient-to-r after:from-transparent after:to-dark-night after:z-10 after:transition-opacity after:duration-150;
+  }
+
+  .fade-overflow-edge-left {
+    @apply before:content-[""] before:h-8 before:w-[40px] before:absolute before:bottom-2 before:left-12 before:bg-gradient-to-l before:from-transparent before:to-dark-night before:opacity-0 before:z-10 before:transition-opacity before:duration-150;
+  }
 }
 
 @layer component {
@@ -138,7 +146,7 @@ input[type='search']::-webkit-search-results-decoration {
   }
 
   .filter-chip-scroll {
-    @apply flex gap-2 overflow-y-scroll content-container;
+    @apply flex gap-2 overflow-y-scroll px-6 md:px-0 hide-scrollbar;
   }
 }
 

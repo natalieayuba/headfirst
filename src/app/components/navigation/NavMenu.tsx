@@ -1,6 +1,5 @@
 'use client';
 import { Squash as Hamburger } from 'hamburger-react';
-import type { NavLinksProps } from './NavLinks';
 import useLightbox from '@/hooks/useLightbox';
 import { navLinks } from '../../../../config';
 import Lightbox from '@/app/components/Lightbox';
@@ -8,7 +7,7 @@ import Divider from '@/app/components/Divider';
 import Link from '../Link';
 
 interface NavListProps {
-  links: NavLinksProps[];
+  links: any[];
   close: () => void;
 }
 
@@ -35,7 +34,7 @@ const NavMenu = () => {
     ?.links!;
 
   return (
-    <div className='lg:hidden'>
+    <div className='md:hidden'>
       <Lightbox
         ref={lightboxRef}
         className={`transition-left duration-300 z-0 ${

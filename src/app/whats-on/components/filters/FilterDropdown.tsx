@@ -27,7 +27,7 @@ const FiltersDropdown = ({
   useEffect(closeDropdown, [selected]);
 
   return (
-    <div>
+    <div className='xs:relative'>
       <button
         ref={triggerRef}
         className={`filter-chip ${
@@ -51,11 +51,11 @@ const FiltersDropdown = ({
         <>
           <div
             ref={popoverRef}
-            className='z-[11] mt-2 bg-night rounded-xl absolute p-6 left-6 right-6'
+            className='z-[11] mt-2 bg-night rounded-xl absolute p-6 left-6 right-6 xs:w-80 xs:left-0'
           >
             {children}
           </div>
-          <div className='bg-dark-night bg-opacity-50 transition-opacity duration-150 fixed z-10 h-screen w-screen top-0 left-0'></div>
+          <div className='bg-dark-night bg-opacity-80 transition-opacity duration-150 fixed z-10 h-screen w-screen top-0 left-0'></div>
         </>
       )}
     </div>

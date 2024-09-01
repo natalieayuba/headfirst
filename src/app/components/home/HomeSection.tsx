@@ -13,7 +13,7 @@ const HomeSection = ({
   children,
   rightDiv,
 }: HomeSectionProps) => (
-  <div className='flex flex-col gap-4 md:gap-7 my-16 md:my-32 relative'>
+  <div className='flex flex-col gap-4 md:gap-7 my-16 md:my-40 relative'>
     <header className='content-container flex justify-between items-end'>
       <div>
         <h2>{heading}</h2>

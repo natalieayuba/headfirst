@@ -20,7 +20,7 @@ const AppAd = () => {
     <div className='bg-lilac pt-16 px-8 text-night text-center overflow-hidden'>
       <div className='content-container h-[480px] flex md:gap-10 flex-col md:flex-row md:justify-between'>
         <div className='flex-1 md:h-full md:-mt-10 flex flex-col justify-center'>
-          <h2 className='font-medium mb-4 text-xl md:text-3xl leading-6'>
+          <h2 className='font-medium mb-4 md:mb-6 text-xl md:text-3xl leading-6'>
             Get tailored recommendations with the Headfirst mobile app
           </h2>
           <div className='flex justify-center gap-3'>

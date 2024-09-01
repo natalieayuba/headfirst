@@ -36,6 +36,9 @@ const config: Config = {
         maskIn: `maskIn ${animationDurations.default}ms ease-out backwards`,
         heartbeat: `heartbeat 200ms ease-in`,
       },
+      screens: {
+        xs: '420px', // => @media (min-width: 420px) { ... }
+      },
     },
   },
   plugins: [],
