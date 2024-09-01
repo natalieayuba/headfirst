@@ -2,11 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { Baloo_2, Londrina_Solid } from 'next/font/google';
 import { colors, description, name, tagline } from '../../config';
-import Header from './components/Header';
 import Footer from './components/Footer';
-import Search from './components/search/Search';
-import { Suspense } from 'react';
-import Loader from './components/Loader';
 
 export const metadata: Metadata = {
   title: `${name} | ${tagline}`,
@@ -15,6 +11,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: colors['dark-night'],
+  colorScheme: 'dark',
   interactiveWidget: 'resizes-content',
 };
 

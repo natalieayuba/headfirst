@@ -1,7 +1,7 @@
 'use server';
-import type { CategoryProps, EventProps, VenueProps } from '../data/data';
+import type { CategoryProps, EventProps, VenueProps } from './schema';
 
-const baseUrl = 'http://localhost:30301';
+const baseUrl = 'http://localhost:3030';
 
 export const getCategories = async () => {
   const data = await fetch(`${baseUrl}/categories`);
@@ -16,8 +16,6 @@ export const getVenues = async () => {
 export const getEvents = async () => {
   const data = await fetch(`${baseUrl}/events`);
   const events = (await data.json()) as EventProps[];
-
-  events.sort(sortDateAsc);
 
   const diff =
     Math.ceil(+new Date() - +new Date(events[0].startDate)) /
@@ -41,8 +39,9 @@ export const getEvents = async () => {
     return event;
   });
 
+  events.sort((a: EventProps, b: EventProps) =>
+    a.startDate.localeCompare(b.startDate)
+  );
+
   return events;
 };
-
-export const sortDateAsc = (a: EventProps, b: EventProps) =>
-  +new Date(a.startDate) - +new Date(b.startDate);

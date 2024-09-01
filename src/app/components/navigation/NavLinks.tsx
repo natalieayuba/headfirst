@@ -1,24 +1,15 @@
-import Link from 'next/link';
 import { MdExpandMore } from 'react-icons/md';
 import { navLinks } from '../../../../config';
-
-export interface NavLinksProps {
-  url?: string;
-  name: string;
-}
+import Link from '../Link';
 
 const NavLinks = () => (
   <div className='hidden lg:flex'>
-    <ul className={`font-medium flex gap-10`}>
+    <ul className={`font-medium flex gap-6 items-center mt-1 mr-1`}>
       {navLinks.map(({ url, name }) => (
-        <li key={name} className={'relative'}>
-          {url ? (
-            <Link href={url}>{name}</Link>
-          ) : (
-            <button>
-              {name}
-              <MdExpandMore className='ml-1 inline' size={24} />
-            </button>
+        <li key={name} className='flex items-center gap-0.5'>
+          <Link href={url ?? '#'}>{name}</Link>
+          {name === 'My account' && (
+            <MdExpandMore className='inline' size={20} />
           )}
         </li>
       ))}

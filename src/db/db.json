@@ -96,6 +96,26 @@
         {
           "id": "1023",
           "name": "Gospel"
+        },
+        {
+          "id": "1024",
+          "name": "Psychedelic"
+        },
+        {
+          "id": "1025",
+          "name": "Spoken word"
+        },
+        {
+          "id": "1026",
+          "name": "Experimental"
+        },
+        {
+          "id": "1027",
+          "name": "Electronic"
+        },
+        {
+          "id": "1028",
+          "name": "Cumbia"
         }
       ]
     },
@@ -368,28 +388,35 @@
       "name": "Basement 45",
       "address": "Avon, 8 Frogmore St, Bristol BS1 5NA",
       "googleMapsLink": "https://www.google.com/maps?rlz=1C1ONGR_en-GBGB1086GB1086&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg80gEIMTM0NGowajeoAgCwAgA&um=1&ie=UTF-8&fb=1&gl=uk&sa=X&geocode=KZGJwUbXjXFIMSs5Te4dPuAL&daddr=Avon,+8+Frogmore+St,+Bristol+BS1+5NA"
+    },
+    {
+      "id": "1017",
+      "name": "Bristol Folk House",
+      "address": "40a Park St, Bristol BS1 5JG",
+      "googleMapsLink": "https://www.google.com/maps/dir//Bristol+Folk+House/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x48718dd753647339:0x7d79013bb4763a69?sa=X&ved=1t:3061&ictx=111"
+    },
+    {
+      "id": "1018",
+      "name": "The Cube",
+      "address": "The Cube, Dove St South, Bristol BS2 8NQ",
+      "googleMapsLink": "https://www.google.com/maps?sca_esv=9e19fdb118b43033&sca_upv=1&rlz=1C1ONGR_en-GBGB1086GB1086&output=search&q=the+cube+bristol+venue&source=lnms&fbs=AEQNm0Aa4sjWe7Rqy32pFwRj0UkWd8nbOJfsBGGB5IQQO6L3J3ppPdoHI1O-XvbXbpNjYYzWzi3ktijPMXxgEx0JuC82CgMco6f-xpqzUTRu1f7cOAGK_wuctSX-FscOOtg8xTiVSOnRa92w31oxgvPF8JRzYqH3wZaJuVosKHCuEAVU0Fxj8WU94-iFvMAmDAI9C2qzcwsX&entry=mc&ved=1t:200715&ictx=111"
     }
   ],
   "events": [
     {
       "id": "1001",
       "name": "A Long Strange Dream: Batu (All Night)",
-      "startDate": "2024-08-23T22:00",
-      "endDate": "2024-08-24T03:00",
+      "startDate": "2024-08-23T22:00Z",
+      "endDate": "2024-08-24T03:00Z",
       "venueId": "1001",
       "categoryId": "1002",
-      "subcategoryIds": [
-        "1001",
-        "1003",
-        "1004",
-        "1005",
-        "1006"
-      ],
+      "subcategoryIds": ["1001", "1003", "1004", "1005", "1006"],
       "about": "Batu is back at Strange Brew for his annual all nighter. Firmly Rooted will provide sound and local legend Roo will provide lighting. The Strange Brew backroom is gonna be popping for this all night extravaganza. Batu will provide his unique style of genre hopping, dubby sonics and trippers over a 5.5 hours. Grab a ticket early!",
       "image": "https://headfirstbristol.co.uk/images/events/1124/e112407_i209742_s4.jpg",
       "credit": "https://headfirstbristol.co.uk/whats-on/strange-brew/sat-24-aug-a-long-strange-dream-batu-all-night--112407#e112407",
       "saved": false,
       "ageLimit": 18,
+      "editorsPick": true,
       "tickets": [
         {
           "name": "Early bird",
@@ -417,14 +444,11 @@
     {
       "id": "1002",
       "name": "Melodies International: Mafalda, Theo Terev, Seiji",
-      "startDate": "2024-08-23T22:30",
-      "endDate": "2024-08-23T04:00",
+      "startDate": "2024-08-23T22:30Z",
+      "endDate": "2024-08-23T04:00Z",
       "venueId": "1001",
       "categoryId": "1002",
-      "subcategoryIds": [
-        "1001",
-        "1002"
-      ],
+      "subcategoryIds": ["1001", "1002"],
       "about": "Melodies International presents\nMafalda, Theo Terev & Seiji Ono\nSat 31 Aug\n22:30 - 04:00\n\nExcited to announce the Melodies International label will be joining us this August for a summer hit of the finest Disco, House and soulful shakers. Melodies will be represented by label manager Seiji Ono and Parisian digger Theo Terev of the La Mamies collective plus vibrant eclecticism from Portuguese selector Mafalda\n\nFounded in 2015 by Floating Points, Melodies has been dedicated to re-issuing special uncovered sounds from across the world… check that back catalogue!\n\nMore recently, the label has launched a series of artist and DJ curated 12\" reissue mini compilations called Melodies Record Club in collaboration with Four Tet, Ben UFO and Hunee bringing beautiful music to new audiences across generations.",
       "image": "https://headfirstbristol.co.uk/images/events/1133/e113366_i212585_s4.jpg",
       "credit": "https://headfirstbristol.co.uk/whats-on/strange-brew/sat-31-aug-melodies-international-mafalda-theo-terev-seiji-113366#e113366",
@@ -454,20 +478,18 @@
     {
       "id": "1003",
       "name": "Disco Isn't Dead: System Olympia & DJ October",
-      "startDate": "2024-08-23T22:00",
-      "endDate": "2024-08-24T04:00",
-      "lastEntry": "2024-08-24T02:00",
+      "startDate": "2024-08-23T22:00Z",
+      "endDate": "2024-08-24T04:00Z",
+      "lastEntry": "2024-08-24T02:00Z",
       "ageLimit": 18,
       "venueId": "1012",
       "categoryId": "1002",
-      "subcategoryIds": [
-        "1001",
-        "1002"
-      ],
+      "subcategoryIds": ["1001", "1002"],
       "about": "Seeing out the summer in sizzling style with an masterclass in sultry, sleazy and jacking sounds from the disco-sphere and beyond as two maestros of the dancefloor step into The Red Church for an Sunday service like no other..\n\nSystem Olympia\nWith one stiletto planted firmly in the bathhouse and the other stepping out of a vintage Mercedes, System Olympia oozes style with a selection to die for and unique universe in which she spins her sound. Spanning disco, house, boogie, italo, soul, jazz and rare grooves - all with a distinctive System Olympia touch. A prolific producer alongside her DJ ventures, reworking hiphop classics into sultry soulful numbers, dusty downtempo house cuts and melancholic italo for those eyes-closed dancefloor moments. In short, you better not miss this..\n\nDJ October\nA bona-fide icon of the booth with bags deeper than the Mariana Trench - we've secured a very special set which will see October trip through the sound of NYC's queer 80s disco to pumping italo synth lines, dirty house jackers and plenty of left turns and surprise selections... A truly genre defying and decade spanning DJ, strap in.\n\nBurly Chassis\nParadisco's resident weirdo-disco selector, warming up the sound system with tripped out balearic sounds, punk-funk edits, technicolour disco shimmer and no-wave dancefloor frenzy.\n\nWe're going extra intimate for this one, tickets in advance HIGHLY recommended.",
       "image": "https://headfirstbristol.co.uk/images/events/1127/e112769_i212528_s4.jpg",
       "credit": "https://headfirstbristol.co.uk/whats-on/red-church/sun-25-aug-disco-isn-t-dead-system-olympia-dj-october-112769#e112769",
       "saved": false,
+      "editorsPick": true,
       "tickets": [
         {
           "name": "First release",
@@ -508,17 +530,13 @@
     {
       "id": "1004",
       "name": "VINYL DESTINATION 11 - Autumn Stomp",
-      "startDate": "2024-08-24T14:00",
-      "endDate": "2024-08-24T22:00",
-      "lastEntry": "2024-08-24T21:00",
+      "startDate": "2024-08-24T14:00Z",
+      "endDate": "2024-08-24T22:00Z",
+      "lastEntry": "2024-08-24T21:00Z",
       "ageLimit": 18,
       "venueId": "1011",
       "categoryId": "1002",
-      "subcategoryIds": [
-        "1001",
-        "1003",
-        "1011"
-      ],
+      "subcategoryIds": ["1001", "1003", "1011"],
       "about": "Our yearly techno edged outdoor event, expect old skool rave vibes, old skool hardcore/jungle/techno\nD.A.V.E The Drummer\nJerome Hill\nDj Twisted\nRelentless\nDestroyer\nTerminatrix\nDj Crisp\nMiss Mayhem\nMagpie\nPierot the acid clown\nLittle Martyn\nRascal\nDJ 31770\nHosts\nBuzz\n\nVINYL ONLY EVENT: OLDS SKOOL/HARDCORE/JUNGLE/TECHNO\n\nDARE TO CLUB: BS20RF TICKETS: HEADFIRST",
       "image": "https://headfirstbristol.co.uk/images/events/1001/e100104_i192406_s4.jpg",
       "credit": "https://headfirstbristol.co.uk/whats-on/dare2/sat-21-sep-vinyl-destination-11-autumn-stomp-100104#e100104",
@@ -543,7 +561,7 @@
           "alt": "DJ Twisted, Bristol, Uk"
         },
         {
-          "src": "https://www.youtube.com/watch?v=PiIzY-5_rK0&embeds_referring_euri=https%3A%2F%2Fwww.headfirstbristol.co.uk%2F&source_ve_path=MjM4NTE",
+          "src": "https://www.youtube.com/watch?v=PiIzY-5_rK0&embeds_referring_euri=https%3A%2F%2Fheadfirstbristol.co.uk%2F&source_ve_path=MjM4NTE",
           "alt": "Dave the drummer-one night in hackney"
         }
       ],
@@ -554,15 +572,13 @@
     {
       "id": "1005",
       "name": "Pub Sessions: Just People",
-      "startDate": "2024-08-24T21:00",
-      "endDate": "2024-08-25T02:00",
-      "lastEntry": "2024-08-24T23:00",
+      "startDate": "2024-08-24T21:00Z",
+      "endDate": "2024-08-25T02:00Z",
+      "lastEntry": "2024-08-24T23:00Z",
       "ageLimit": 18,
       "venueId": "1014",
       "categoryId": "1002",
-      "subcategoryIds": [
-        "1004"
-      ],
+      "subcategoryIds": ["1004"],
       "about": "The Full Moon & Attic Bar: Pub Sessions!\n\nReturning to take over the intimate Full Moon pub is local party starters Just People. Known for their UKG, Breaks & Bassy takeovers we can guarantee this pub session will have some spice to it!\n\n18+\n\nLast Entry 11pm\n\nTickets from £6\n\nFollow us on socials for announcements & updates:\nhttps://www.instagram.com/thefullmoonandatticbar/",
       "image": "https://headfirstbristol.co.uk/images/events/1117/e111796_i207986_s5.jpg",
       "credit": "https://headfirstbristol.co.uk/whats-on/the-attic-bar/fri-23-aug-pub-sessions-just-people-111796#e111796",
@@ -577,17 +593,13 @@
     {
       "id": "1006",
       "name": "Young Echo Sound w/ DAKN",
-      "startDate": "2024-08-24T23:00",
-      "endDate": "2024-08-25T03:00",
-      "lastEntry": "2024-08-25T02:00",
+      "startDate": "2024-08-24T23:00Z",
+      "endDate": "2024-08-25T03:00Z",
+      "lastEntry": "2024-08-25T02:00Z",
       "ageLimit": 18,
       "venueId": "1003",
       "categoryId": "1002",
-      "subcategoryIds": [
-        "1011",
-        "1012",
-        "1013"
-      ],
+      "subcategoryIds": ["1011", "1012", "1013"],
       "about": "Young Echo Sound returns to Exchange this September 26th with special guests and the crew!\n\nLine up\n\nDAKN x BKV INDUSTRIAL (LIVE!)\nOSSIA\nANINA\nGUEST\nBOGUES\nINTEL MERCENARY\nO$VMV$M\n\n£5 - 11PM - 3AM\n\nALL PROFITS WILL BE DONATED TO PALESTINE RED CRESCENT SOCIETY https://www.palestinercs.org/en/\n\nClubnights at Exchange are strictly 18+ adults only.",
       "image": "https://headfirstbristol.co.uk/images/events/1137/e113749_i213916_s5.jpg",
       "credit": "https://headfirstbristol.co.uk/whats-on/exchange/thu-26-sep-young-echo-sound-w-dakn-113749#e113749",
@@ -628,17 +640,13 @@
     {
       "id": "1007",
       "name": "Void Radio: Joe Koshin B2B Chez",
-      "startDate": "2024-08-24T23:00",
-      "endDate": "2024-08-25T03:00",
-      "lastEntry": "2024-08-25T02:00",
+      "startDate": "2024-08-24T23:00Z",
+      "endDate": "2024-08-25T03:00Z",
+      "lastEntry": "2024-08-25T02:00Z",
       "ageLimit": 18,
       "venueId": "1015",
       "categoryId": "1002",
-      "subcategoryIds": [
-        "1001",
-        "1004",
-        "1014"
-      ],
+      "subcategoryIds": ["1001", "1004", "1014"],
       "about": "Broadcasting worldwide from their home of Bristol; Void Radio brings you sounds of the underground alongside an array of alternative programming.\nWe welcome them to Lakota with a headline appearance from Joe Koshin.\nJoe Koshin’s diverse and high-energy productions have established him as a notable name in the UK’s dance music scene. Since relocating from London to Bristol, Koshin has positioned himself on a roster of renowned dance-centric labels including Time Is Now, EC2A, and Gimme A Break. An adept solo producer in his own right, Koshin is a keen collaborator and has delivered notable works with Denham Audio and Bristol trailblazer SSSLIP. A brace of recent vinyl releases on Hardline (previous host to Interplanetary Criminal, Main Phase) and Pakistani-based label Jugaar has gained Koshin club and radio support from Madam X, Emerald, Borai, Tom Ravenscroft, Sicaria Sound & more.\nSupport from Void Radio residents and friends Lolli, Fern and Say Nuffin.",
       "image": "https://headfirstbristol.co.uk/images/events/1136/e113657_i213338_s3.jpg",
       "credit": "https://headfirstbristol.co.uk/whats-on/lakota/fri-23-aug-void-radio-joe-koshin-b2b-chez-113657#e113657",
@@ -660,20 +668,18 @@
     {
       "id": "1008",
       "name": "Wide Eyes: Longeez",
-      "startDate": "2024-08-24T23:00",
-      "endDate": "2024-08-25T03:00",
-      "lastEntry": "2024-08-25T02:00",
+      "startDate": "2024-08-24T23:00Z",
+      "endDate": "2024-08-25T03:00Z",
+      "lastEntry": "2024-08-25T02:00Z",
       "ageLimit": 18,
       "venueId": "1015",
       "categoryId": "1002",
-      "subcategoryIds": [
-        "1001",
-        "1004"
-      ],
+      "subcategoryIds": ["1001", "1004"],
       "about": "Longeez has been a mainstay in the Bristol music scene for years. After dominating the UKG scene, with releases on highly regarded labels such as EC2A, he transcended into the world of hard groove and techno where he is already a highly regarded household name. Longeez sets are high-energy and unpredictable, but one thing is a guarantee...he'll have your feet stomping.\nSupport from local regulars Dashy, Styli, and Hywel Gregory.\nSee you in the dance.",
       "image": "https://headfirstbristol.co.uk/images/events/1131/e113123_i211878_s3.jpg",
       "credit": "https://headfirstbristol.co.uk/whats-on/lakota/fri-23-aug-wide-eyes-longeez-113123#e113123",
       "saved": false,
+      "editorsPick": true,
       "tickets": [
         {
           "name": "Free entry before 11PM",
@@ -691,16 +697,13 @@
     {
       "id": "1009",
       "name": "Wide Eyes: Majistrate",
-      "startDate": "2024-08-24T23:00",
-      "endDate": "2024-08-25T03:00",
-      "lastEntry": "2024-08-25T02:00",
+      "startDate": "2024-08-24T23:00Z",
+      "endDate": "2024-08-25T03:00Z",
+      "lastEntry": "2024-08-25T02:00Z",
       "ageLimit": 18,
       "venueId": "1015",
       "categoryId": "1002",
-      "subcategoryIds": [
-        "1015",
-        "1011"
-      ],
+      "subcategoryIds": ["1015", "1011"],
       "about": "Majistrate aka Ian Jordan is a jump-up D&B producer and DJ from Kent, who has been DJing since 1989 and producing since 1994. Since his first 12” release, Open Circuit, Majistrate went on to have over 10 releases on the classic jungle label and established himself as one of the most in demand artists in drum and bass.\n\nFast forward to 2024, Majistrate is now firmly established on the jump-up scene, and is signed to LowDownDeep, one of the most prestigious and highly regarded jump-up labels in the game.\nWith a killer support lineup in tow feat. ACP, Bisco, Chlocaine and Avie, this is shaping up to be a naughty one.\nEarplugs advised.",
       "image": "https://headfirstbristol.co.uk/images/events/1136/e113656_i213332_s3.jpg",
       "credit": "https://headfirstbristol.co.uk/whats-on/lakota/fri-30-aug-wide-eyes-majistrate-113656#e113656",
@@ -722,17 +725,13 @@
     {
       "id": "1010",
       "name": "Sober Club Night: Nicky Blackmarket | Dazee",
-      "startDate": "2024-08-24T17:00",
-      "endDate": "2024-08-24T21:00",
-      "lastEntry": "2024-08-25T20:30",
+      "startDate": "2024-08-24T17:00Z",
+      "endDate": "2024-08-24T21:00Z",
+      "lastEntry": "2024-08-25T20:30Z",
       "ageLimit": 18,
       "venueId": "1016",
       "categoryId": "1002",
-      "subcategoryIds": [
-        "1004",
-        "1015",
-        "1011"
-      ],
+      "subcategoryIds": ["1004", "1015", "1011"],
       "about": "~ Nicky Blackmarket ~\nAfter the huge success of our first sober club night In January, we’ve only got Nicky Blackmarket back again!\n\nNicky started DJing in the 1980s when he was 14 and is regarded as one of the pivotal figures in the early jungle/drum and bass scene. He also founded independent dance music record store Blackmarket Records (now known as BM-Soho).\n\nHe’s been playing drum and bass all over the world for the past two decades and we are over the moon to have him back to support our night again.\n\n~ DJ Dazee ~\nDrum and bass Dj, producer, label owner and broadcaster, Dazee champions a jungle-jump-up hybrid style characterised by the warmth of her “Bristol Sound” roots. Resident for one of the UKs largest dnb brands, Run and a regular player at major events such as Glastonbury, Hospitality, Love Saves The Day and Westfest, Dazee has relentlessly pursued her jungle campaign on airwaves and dance floors across the globe for three decades.\n\nHer fluid and musical DJ style with signature rolling bass, stepper style breaks and sample-based motivs have kept her in demand with fitness brands and world class stages alike and in addition to managing her label, Dazee has an ever-growing catalogue of her own productions and colabs.\n\n~ MC Joe Peng ~\nJoe Peng is not only a legend from the dawn of rave and the Tape Pack era, he is lead vocalist and founder member of Laidblak, Bristol's most loved roots band. Known for their vibing mixture of reggae, dub and hip hop, they have continued to grace the biggest stages including major festivals such as Reggae land for two decades.\n\nJoe has a regular drive time radio show on SWU fm \"playing all that is good in underground muzik\" and outside of Laidblak he host's DJ sets for Bunjy and Feel The Reel, with several appearances at this year's Glastonbury. Always true to his roots in the sound system movement, Joe continues to work with Firmly Rooted. Kaotik Cartel and Roots soup.\n\nJoe frequently steps up for Ruffneck Ting performances and his inimitable musical style, phenomenal lyrics and witty banter always captivate crowds\nLaid Blak https://open.spotify.com/artist/3QM7x03GglGPjt0Ori7JAK\n\n~ JEZELDER ~\nBristol based JEZELDER has played at various venues and events across Bristol including Basement45, Thekla, Lost Horizon, Attic Bar, Trinity, The Plough and is the resident of Fight Klub Central. She has also graced the decks at parties as far reaching as Mexico, Norway, and the iconic Ministry of Sound in London.\n\nJEZELDER’s style is an eclectic blend of old and new owing to her vast knowledge of dnb. She takes the listener on a musical journey through the realms of liquid, rollers and dancefloor. Not one to be pigeonholed, she is also a multi genre DJ with an array of musical tastes from garage, to Afrobeats, to dancehall.\n\n~ Anonymous Dub Sound ~\nAnonymous has been playing reggae music since the 1980’s, also chatting lyrics on the mic. Anonymous Dub Sound was established in 2014 so young, but old in their roots. They play all genres of reggae music, even soul, funk, R & B and hip hop. You can listen to Anonymous on BCFM 93.2fm every Wednesday 9 – 10pm.\n\nHe's also one of our resident Sober Spaces DJs and we massively appreciate his support for what we do!",
       "image": "https://headfirstbristol.co.uk/images/events/1120/e112095_i210594_s4.jpg",
       "credit": "https://headfirstbristol.co.uk/whats-on/basement-45/sat-31-aug-sober-club-night-nicky-blackmarket-dazee-112095#e112095",
@@ -762,7 +761,378 @@
       }
     },
     {
-      "id": "2d46"
+      "id": "1011",
+      "name": "Ladye + Support",
+      "startDate": "2024-08-26T19:00Z",
+      "endDate": "2024-08-26T22:00Z",
+      "lastEntry": "2024-08-26T19:30Z",
+      "ageLimit": 18,
+      "venueId": "1007",
+      "categoryId": "1001",
+      "subcategoryIds": ["1014", "1001", "1009"],
+      "about": "Alpaca Presents:\nLadye\n+ Support\n•———•———•———•\nLadye are an indie rock three piece from Bristol. Drawing inspiration from Wolf Alice, The Cranberries and Alvvays, their sound is a fusion of nostalgic dream-pop that blends seamlessly into energetic shoegaze. Following the release of their debut EP ‘Cloud Leather’, Ladye have released a further three singles in 2024, recorded and produced in Bristol.\n•———•———•———•\nStreet Art are a four-piece indie rock band who blend elements of punk, indie and blues to create an exciting, fun and lively sound. Formed in late 2022 by Ben and Jake, their audacious and intense performances have earnt them praise wherever they have played.\n•———•———•———•\nDigsby are a Bristol indie band, mixing classic 60s/70s song writing, alt country, blues, and rock, all tied together with Laurel Canyon infused harmonies. Digsby blends all of these influences with a mutual obsession with The Beatles to create ‘odd pop’ with killer choruses.",
+      "image": "https://headfirstbristol.co.uk/images/events/1112/e111288_i206614_s5.jpg",
+      "credit": "https://headfirstbristol.co.uk/whats-on/the-old-england-pub/wed-4-sep-ladye-support-111288#e111288",
+      "saved": false,
+      "editorsPick": true,
+      "media": [
+        {
+          "src": "https://headfirstbristol.co.uk/images/events/1112/e111288_i210114_s3.jpg",
+          "alt": "Street Art"
+        }
+      ],
+      "socials": {
+        "spotify": "https://open.spotify.com/artist/3vxhCxhxsGkAGShIl85uhL?go=1&sp_cid=9f066e2cddf5118f6bfbbc9923034356&utm_source=embed_player_p&utm_medium=desktop&nd=1&dlsi=ed921685b8224749"
+      },
+      "tickets": [
+        {
+          "name": "Free entry",
+          "price": 0
+        }
+      ]
+    },
+    {
+      "id": "1012",
+      "name": "Portrait Of + Support",
+      "startDate": "2024-08-24T19:30Z",
+      "endDate": "2024-08-24T22:00Z",
+      "lastEntry": "2024-08-24T20:00Z",
+      "ageLimit": 18,
+      "venueId": "1007",
+      "categoryId": "1001",
+      "subcategoryIds": ["1009"],
+      "about": "Alpaca Presents\nPortrait Of\n+ Grubbing (Big Pigeon), Dogs Dont Die\n•———•———•———•\n\nFormed in early 2020, Portrait Of developed their sound and style during a very strange era indeed. With an eclectic range of influences, from the 90’s underground scene, to modern post-punk bands such as Deerhunter and Ought, to Talking Heads, Portrait Of deliver a unique mix of angular melodies and hazy sonic textures – at times spooky, other times propulsive, always somewhere odd.\n•———•———•———•\nDOGS DONT DIE is a four way collective fronted by singer songwriter Thom, with multi-instrumentalists Fin and Alex on bass and guitar, backed by the spine of the band, Gus on drums.\n\nBy blending the sonic sounds of jazz and psychedelic rock DOGS DON’T DIE explore existential themes of love and individualism with a soulful yet moody, melancholic tone.",
+      "image": "https://headfirstbristol.co.uk/images/events/1132/e113221_i212208_s5.jpg",
+      "credit": "https://headfirstbristol.co.uk/whats-on/the-old-england-pub/thu-5-sep-portrait-of-support-113221#e113221",
+      "saved": false,
+      "media": [
+        {
+          "src": "https://headfirstbristol.co.uk/images/events/1132/e113221_i212209_s4.jpg",
+          "alt": "DOGS DONT DIE"
+        }
+      ],
+      "socials": {
+        "spotify": "https://open.spotify.com/artist/6PbbxRyMwb1veawXajKDPE?go=1&sp_cid=be395cf9d98ccbd10c61396b53530d75&utm_source=embed_player_p&utm_medium=desktop&nd=1&dlsi=80064d43cce1440c"
+      },
+      "tickets": [
+        {
+          "name": "Free entry",
+          "price": 0
+        }
+      ]
+    },
+    {
+      "id": "1013",
+      "name": "The Jam Jar Presents: Sahra Halgan + Blind Yeo",
+      "startDate": "2024-08-24T19:30Z",
+      "endDate": "2024-08-24T23:00Z",
+      "lastEntry": "2024-08-24T20:00Z",
+      "ageLimit": 14,
+      "venueId": "1005",
+      "categoryId": "1001",
+      "subcategoryIds": ["1005", "1007"],
+      "about": "The Jam Jar is proud to present singer and social activist Sahra Halgan from Somaliland.\n\nSahra’s band weave an enchanting blend of music with nods to tuareg, ethio-jazz and afrobeat, underpinning her unique and warm vocals with serious groovability.\n\nJoin us for a truly special night of uplifting vibes and bring your dancing shoes.\n\nThe Jam Jar Presents\nSahra Halgan\n+ support from Blind Yeo\nFriday 6th September\nAt The Jam Jar, Bristol\nDoors Open 7.30pm\n\nSahra Halgan is an artist from Somaliland, a country in the Horn of Africa that has been independent since 1991, but as yet unrecognised by the international community. She earned the name 'Halgan' - The Fighter - in the 1980's when she was involved in the terrible war against the dictatorship. This afforded her admiration - but it is her music that has made her an icon. Uplifting yet reverent, it is music filled with soul and courage and love. Her music encapsulates the hope and strength of her community and has become deeply embedded in the heart of Somaliland.\n\nExiled to France, she started her group in Lyon with Aymeric Krol, Maël Salètes and Régis Monte. This ensemble gave the principles behind the music embodiment, allowing it to move people through their bodies - in other words it's music to dance to, with nods to afrobeat, tuareg and ethio-jazz. Her third album is the fruit of a search to elevate this important voice, expand it's sonic landscape and share it with a wider audience. It's called ‘Hiddo Dhawr’ (‘Preserve Culture’), which is also the name of the cultural centre that Sahra founded in 2013 in Hargeisa.\n\nEntry requirements: 14+, any under 18s accompanied by 21+ adult 1:1 ratio",
+      "image": "https://headfirstbristol.co.uk/images/events/1032/e103264_i183905_s4.jpg",
+      "credit": "https://headfirstbristol.co.uk/whats-on/jam-jar/fri-6-sep-the-jam-jar-presents-sahra-halgan-blind-yeo-103264#e103264",
+      "saved": false,
+      "editorsPick": true,
+      "media": [
+        {
+          "src": "https://headfirstbristol.co.uk/images/events/1032/e103264_i183906_s4.jpg",
+          "alt": "Sahra Halgan + Blind Yeo"
+        },
+        {
+          "src": "https://www.youtube.com/watch?v=raCGkbeIqOQ",
+          "alt": "Sahra Halgan Trio - Kiidhaba@laGrange"
+        },
+        {
+          "src": "https://www.youtube.com/watch?v=JsaTTVt6BKA",
+          "alt": "SAHRA HALGAN | SANADYOHOW BOQRANI | Available NOW!!"
+        }
+      ],
+      "socials": {
+        "spotify": "https://open.spotify.com/artist/74NGmYBBsKUpWRcxcc370c?go=1&sp_cid=c3051d7b5f0d946b3f0f2d7263c71b6d&utm_source=embed_player_p&utm_medium=desktop&nd=1&dlsi=1a3825cf6b4a4052",
+        "bandcamp": "https://sahrahalgan.bandcamp.com/album/waa-dardaaran-3?from=embed"
+      },
+      "tickets": [
+        {
+          "name": "Early bird",
+          "price": 7.5
+        },
+        {
+          "name": "First release",
+          "price": 10
+        },
+        {
+          "name": "Second release",
+          "price": 12.5
+        }
+      ]
+    },
+    {
+      "id": "1014",
+      "name": "Brooks Williams & Aaron Catlow",
+      "startDate": "2024-08-25T19:00Z",
+      "endDate": "2024-08-25T22:00Z",
+      "lastEntry": "2024-08-25T20:00Z",
+      "venueId": "1017",
+      "categoryId": "1001",
+      "subcategoryIds": ["1010", "1011", "1016"],
+      "about": "Ear Trumpet Presents. Brooks Williams & Aaron Catlow Seated Show at Bristol Folk House, 40a Park St, BS1 5JG - All Ages (Under 18s to be accompanied by a responsible adult)\n\nDoors 7:00pm, Show 8:00pm\n\nBrooks Williams & Aaron Catlow create joyous and virtuosic music that not only tugs at the heart-strings but also gets you up on your feet. AmericanaUK writes, “how such a complete and sensational sound can come from just two voices and instruments is awe-inspiring.”\n\nA year on from their debut tour, the two have literally been wowing audiences at venues and festivals like St David’s Hall, Lichfield Guildhall, Folk In A Field Festival, Cumberland Arms, Ely Festival, The Folk House and The Atkinson, to name but a few.\n\nInspired by the response to their shows, Brooks Williams and Aaron Catlow have been back in the studio. This time with Josh Clark (Kate Rusby) at Get Real Audio. Alongside Jon Short (John Martyn Project) on double bass, they have created Greens And Blues, a vibrant collection of songs, some penned by Williams and others by Gillian Welch, Shirley Collins, Molly Tuttle, Rab Noakes and Sierra Ferrell, among others.\n\nThe playing on Greens And Blues has a spontaneity that reflects the hours and hours they have spent onstage in front of audiences. It’s a potent combination. Free and rooted all at once.\n\nOne of the eleven tracks on Greens And Blues is Dooley’s Farm (Molly Tuttle) about a farmer who is particularly adept at growing a very popular (but illegal) crop. The Williams/Catlow arrangement is dark and spooky, complete with sliding double bass lines and guitar arpeggios. Another is Wild Wild Wild (Brooks Williams), a description of a music venue Williams played in the earliest days of his career, that swings with reckless abandon, much like the venue itself. Gillian Welch’s Red Clay Halo gets a fertile reading from Brooks and Aaron, complete with nimble guitar picking, fiddle double-bowing and Aaron’s whistling!\n\nThroughout the recording, the interplay between Williams’ guitar and Catlow’s fiddle is out-of-this-world. Take Anniesland, one of Brooks’ songs. The fiddle kicks it off with a folky-old-timey riff. You think you know where it’s going. Then the guitar snakes its way into the middle of that with bluesy double-stops that turns the song on its head. The riff is so deep it sticks with you long after the song is over. On the late-great Rab Noakes’ Little Way Up, a previously unrecorded song from the Noakes’ back catalogue, guitar and fiddle go full-on country, doubling the melody in a way that would make the Tennessee Three proud.\n\nWith three albums under their belt, Ghost Owl in 2021 (nominated “Instrumental Album Of The Year” by Fatea) and Ready For The Times in 2022 (“a cracker,” says Living Tradition), and Greens And Blues in 2024, Brooks Williams and Aaron Catlow are moving deeper into their sound. There is literally no one else on the scene playing this kind of music. You see fiddle and guitar and you think you know what to expect, but Williams and Catlow deliver something completely different. They are a one-off. After virtually every gig they get asked to return for a future engagement.\n\nAaron Catlow is half of the Bristol-based duo Hawes And Catlow, with guitarist-singer Kit Hawes. He is also the fiddler in UK festival favourite Sheelanagig. Catlow's other credits including playing with Grammy Award-nominated Yola, Mad Dog Mcrea and Afro Celt Sound System.\n\nCambridge UK-based, Georgia US-born, Brooks Williams has a long-standing solo career in both North America and the UK and is also known for his collaborations with the likes of Dan Walsh, Sloan Wainwright, Hans Theessink, Boo Hewerdine, Guy Davis and Rab Noakes, among others. He is named one of WUMB-FM Boston's Top 100 All-Time Artists. Fatea refers to him as “one of those select few 'how on earth does he do it?!' artists.\"\n\nNot only are Brooks Williams and Aaron Catlow masters of their respective instruments, but the music they create, says Folk Radio UK, is “a thing of beauty!”\n\n“The audience loved every minute and afterwards begged them to return to the stage.... ” (Big Wheel Blues Club, Isle Of Man)\n\n\"One of the best nights ever. Great songs, great fun and wonderful musicianship. Do not hesitate. Go and see Brooks and Aaron while you can. You will have the best time.\" (Grateful Fred’s, The Atkinson, Southport)\n\n\"An outstanding performance of sublime quality, entertaining and beautifully paced. Two musicians at the top of their game.\"(RAFA Club, Cleethorpes)\n\neartrumpet\n\nEntry requirements: no age restrictions (under 18s to be accompanied by an adult over 21yrs, 1:1 ratio)",
+      "image": "https://headfirstbristol.co.uk/images/events/1053/e105346_i189723_s5.jpg",
+      "credit": "https://headfirstbristol.co.uk/whats-on/the-folk-house/fri-6-sep-brooks-williams-aaron-catlow-105346#e105346",
+      "saved": false,
+      "media": [
+        {
+          "src": "https://www.youtube.com/watch?v=XtSaZ6QHZjE",
+          "alt": "Brooks Williams And Aaron Catlow - Rock Me (Sister Rosetta Tharpe cover)"
+        },
+        {
+          "src": "https://www.youtube.com/watch?v=cvxk-tNRMcU",
+          "alt": "Brooks Williams & Aaron Catlow - Jump That Train"
+        },
+        {
+          "src": "https://www.youtube.com/watch?v=iqZMJVwFsDE",
+          "alt": "Brooks Williams And Aaron Catlow - Sweet Greens and Blues (Shirley Collins Cover)"
+        }
+      ],
+      "socials": {
+        "spotify": "https://open.spotify.com/album/4DjYeyjOE8iwuDSEZ1AOtt?go=1&sp_cid=5cf434acacaa76fa10412cd8ea264750&utm_source=embed_player_p&utm_medium=desktop&nd=1&dlsi=68dba998c8a9463d"
+      },
+      "tickets": [
+        {
+          "name": "General release",
+          "price": 15
+        },
+        {
+          "name": "Low income",
+          "price": 12
+        }
+      ]
+    },
+    {
+      "id": "1015",
+      "name": "KARMA SHEEN + DACTYL TERRA",
+      "startDate": "2024-08-25T19:00Z",
+      "endDate": "2024-08-25T22:00Z",
+      "lastEntry": "2024-08-25T19:30Z",
+      "venueId": "1008",
+      "ageLimit": 18,
+      "categoryId": "1001",
+      "subcategoryIds": ["1024", "1009"],
+      "about": "Hailing from cosmopolitan London, the music of Karma Sheen merges Hindustani Classical, fuzzy 60s Rock à la Jimi Hendrix and Sufi inspired lyricism, deeply rooted in cultural heritage. Spearheaded by Sameer Khan, who's formally trained by a 600-year-old lineage of musicians from modern-day Pakistan, this group of multi-instrumentalists aims to bring timeless tradition to new realms.\n\nBy daring to embrace the Hindustani format while drinking from retro aesthetics and resignifying it all with the avant-gardism of neo-psych, they create something both recognizable and new.\n\nSet to release their debut album in 2023, the group became known for their captivating performances fuelled by a plethora of electrified folk instruments, and increasingly gained space in the live circuit, supporting established acts such as Witch, Os Mutantes Dur Dur Band and Sarathy Korwar.\n━━━━━━━━━━━━━━━━━━━━━━\n18+ event.\nPresented by Gravy Train & BLG.\n━━━━━━━━━━━━━━━━━━━━━━\nGravy Train events • www.gravytrainbristol.co.uk\nBLG events • www.linktr.ee/BLGPromotions\n",
+      "image": "https://headfirstbristol.co.uk/images/events/1094/e109439_i201701_s5.jpg",
+      "credit": "https://headfirstbristol.co.uk/whats-on/the-lanes/sat-7-sep-karma-sheen-dactyl-terra-109439#e109439",
+      "saved": false,
+      "editorsPick": true,
+      "media": [
+        {
+          "src": "https://www.youtube.com/watch?v=wypBFKeTJDQ",
+          "alt": "Karma Sheen Live at Brighten the Corners Ipswich"
+        },
+        {
+          "src": "https://www.youtube.com/watch?v=A8zAIWvnH00",
+          "alt": "Karma Sheen - Sameer's Sunflowers (Live at Karma Studios London for NTS)"
+        },
+        {
+          "src": "https://www.youtube.com/watch?v=8U6lL9Uijj8",
+          "alt": "Karma Sheen at The Lexington London May 3rd 2024 'Mian Ki Jive'"
+        }
+      ],
+      "socials": {
+        "instagram": "https://www.instagram.com/karma_sheen",
+        "spotify": "https://open.spotify.com/artist/5jKjC91GYS58L8hhnDiC4j?go=1&sp_cid=37e55e70cae8f9b0cc2b3805fbacda89&utm_source=embed_player_p&utm_medium=desktop&nd=1&dlsi=daa16a69ebbf4c6c"
+      },
+      "tickets": [
+        {
+          "name": "Free entry",
+          "price": 0
+        },
+        {
+          "name": "General admission",
+          "price": 5
+        }
+      ]
+    },
+    {
+      "id": "1016",
+      "name": "Acts of Resistance",
+      "startDate": "2024-08-26T19:30Z",
+      "endDate": "2024-08-25T22:30Z",
+      "lastEntry": "2024-08-25T20:00Z",
+      "venueId": "1018",
+      "categoryId": "1001",
+      "subcategoryIds": ["1016", "1009", "1025"],
+      "about": "Presented by the Bristol Radical History Group, Acts of Resistance is an opportunity to time-travel through radical history. This new project “Avant-Folk Punk-Opera is the new project of Steve Lake, of anarcho-/post punk band Zounds,[ https://en.wikipedia.org/wiki/Zounds ] rocking since the late 1970s.\n\nActs Of Resistance is a performance of songs, verse and prose commemorating and celebrating 1,000 years of protest and dissent by the commoners of England. Original songs and stories are merged with adaptations of traditional material and found stories to weave a continuous thread that links working people’s struggle across the generations. Hear the voices of history from below such as The Diggers, William Blake, and King Ludd.\n\nActs of Resistance features a redoubtable trio made up of Steve Lake (self-described “chief show off” with legendary anarcho-punk band Zounds, [https://zoundsonline.co.uk/ ] first appearing on Crass Records and nexus for all kinds of musical troublemakers), Bristolian Emo-folkster Aether Valentine, and Carl Phillip Louis (“folk-punk free-jazz mandolinist and singer/shouter of anarcho-romance poetry”).\n\nAfter the performance, Pete Webb of BRHG and DIY music publisher PC-Press will facilitate a question-and-answer session with Steve Lake of Zounds, an opportunity which should not be passed up lightly. As well as tours and friendships with Crass and The Poison Girls, Zounds were among the original wave of anarcho-punk bands, particularly The Mob, Astronauts, Blythe Power and the Poison Girls, all bands that regularly played West Country benefit gigs and free festivals during the late 1970s and early 1980s. From the outset Zounds lyrics have been political without being predictably didactic. They are also unnervingly melodic for fans of hardcore punk, featuring accessible rhythms and beats that gave them wide appeal beyond the punk scene, with danceable favourite as “Subvert” even having a distinctly ska rhythm.\n\nHistory is dead! Long live history… let’s make some more! Set your controls for the heart of the Microplex!",
+      "image": "https://headfirstbristol.co.uk/images/events/1107/e110718_i205012_s5.jpg",
+      "credit": "https://headfirstbristol.co.uk/whats-on/the-cube/sat-7-sep-acts-of-resistance-110718#e110718",
+      "saved": false,
+      "tickets": [
+        {
+          "name": "General release",
+          "price": 7
+        },
+        {
+          "name": "Concessions/Low waged",
+          "price": 5
+        }
+      ]
+    },
+    {
+      "id": "1017",
+      "name": "PLANTOID + SURFACE AIR",
+      "startDate": "2024-08-27T19:30Z",
+      "endDate": "2024-08-27T23:00Z",
+      "lastEntry": "2024-08-25T20:00Z",
+      "venueId": "1008",
+      "categoryId": "1001",
+      "subcategoryIds": ["1026", "1009", "1024", "1017"],
+      "about": "PLANTOID • www.instagram.com/plantoidworld\n\nMusically, Plantoid’s cauldron harnesses multiple subgenres at once to concoct a sort of primordial soup, the molecules of which are built as much from progressive rock as they are jazz, fusion, folk, and even a bit of ‘70s hard rock for good measure. The band began as the brainchild of Chloe and Tom Coyne, who met while pursuing music courses at Lincoln College in their teens. Quickly united by a passion for eclectic psychedelic rock, and far-out, emotionally charged songwriting, they formed the band Mangö and started gigging around town with drummer Louis Bradshaw, who Tom had been friends with since secondary school.\n\nAfter making a name for themselves locally, the three relocated to Brighton and recruited bassist Bernardo Larisch. Now a four-piece, and renamed Plantoid, the band were ready to dig even deeper into their shared influences, ranging from Miles Davis to Todd Rundgren, to Jeff Buckley, all the way around to the more acute experimental fare that gives Plantoid their razor-sharp edge. \n\n━━━━━━━━━━━━━━━━━━━━━━\nSURFACE AIR • www.instagram.com/surfaceairband\n\nFrom the splintering bone ashes of prog, punk and the sallow remains of no-wave springs a rare bird of apocryphal breed. SURFACE AIR is a newly formed Bristol-based three piece and features Kilian Lee (WINDSHAKE) on guitar and vocals, Oliver Cocup (Lawi Anywar, My Octopus Mind) on drums and Arthur Harrison-Ward (Captain Gas, Dog Daughter) on bass. Immediate musical influences include King Crimson, METZ and St. Vincent. Initial aims are to create a body of work for live performance and imminent recording\n\n━━━━━━━━━━━━━━━━━━━━━━\n18+ event.\nPresented by Gravy Train & BLG.\n━━━━━━━━━━━━━━━━━━━━━━\nGravy Train events • www.gravytrainbristol.co.uk\nBLG events • www.linktr.ee/BLGPromotions",
+      "image": "https://headfirstbristol.co.uk/images/events/1107/e110718_i205012_s5.jpg",
+      "credit": "https://headfirstbristol.co.uk/whats-on/the-cube/sat-7-sep-acts-of-resistance-110718#e110718",
+      "saved": false,
+      "editorsPick": true,
+      "socials": {
+        "instagram": "https://www.instagram.com/plantoidworld",
+        "spotify": "https://open.spotify.com/artist/1vrdaOj47E8sKFcc1Ekoxd?go=1&sp_cid=f032b410243dd4e10291c64c45eae8dd&utm_source=embed_player_p&utm_medium=desktop",
+        "bandcamp": "https://plantoidworld.bandcamp.com/album/mang?from=embed"
+      },
+      "media": [
+        {
+          "src": "https://www.youtube.com/watch?v=R-b0rkP47uo",
+          "alt": "Plantoid - Modulator (Official Video)"
+        },
+        {
+          "src": "https://www.youtube.com/watch?v=ej0p3nbfYfM",
+          "alt": "Plantoid - Dog's Life (Official Video)"
+        },
+        {
+          "src": "https://www.youtube.com/watch?v=X7q7TbgJymo",
+          "alt": "Plantoid - Pressure (Official Video)"
+        }
+      ],
+      "tickets": [
+        {
+          "name": "Free entry",
+          "price": 0
+        },
+        {
+          "name": "General admission",
+          "price": 5
+        }
+      ]
+    },
+    {
+      "id": "1018",
+      "name": "Bethany Ley X Alfie Dwyer Audio Visual EP release",
+      "startDate": "2024-08-27T19:00Z",
+      "endDate": "2024-08-27T22:00Z",
+      "venueId": "1001",
+      "categoryId": "1001",
+      "subcategoryIds": ["1027", "1008"],
+      "ageLimit": 14,
+      "about": "Bethany Ley (formerly known as STANLÆY) is an artist based in Bristol.\n\nKnown for their versatility as a producer, composer and vocalist. Their sonic world circulates intricate arrangements informed by Bethany’s eclectic musical background as both a classical instrumentalist, and an avid producer, creating “sublime twilight electronica” (Music is My Sanctuary).\n\nTheir long awaited Debut EP ‘Sundial’ was released on 24th May and has received support from BBC Bristol and BBC Radio 6.\n\nBethany Ley and visual artist Alfie Dwyer will be performing Sundial as a unique Audio-Visual live show for this tour. Alfie Dwyer is an artist and filmmaker that makes short & surreal animations influenced by lucid dreaming and explorations of space & time inside these worlds. He recently worked with Bethany Ley to create artwork for the ‘Sundial’ EP, and the animation for their single ‘Back to Body’. This animation was inspired by ideas surrounding reincarnation, and inter-dimensional perspectives that see humans across multiple interlinking life-lines.\n\nPlease note this is a standing event, accessible seating is available.\n\nAbout Trinity Presents:\nThis is part of Trinity Presents - our in-house programme of music and performance, bringing world-class artists and emerging talent to inner-city audiences.\n\nEntry requirements: 14+, any under 18s accompanied by 21+ adult 1:1 ratio",
+      "image": "https://headfirstbristol.co.uk/images/events/1122/e112284_i209374_s4.jpg",
+      "credit": "https://headfirstbristol.co.uk/whats-on/strange-brew/fri-13-sep-bethany-ley-x-alfie-dwyer-audio-visual-ep-release-112284#e112284",
+      "saved": false,
+      "socials": {
+        "spotify": "https://open.spotify.com/artist/22LyTxfk7ObxBCM5Q8jU74?go=1&sp_cid=757587dd891d5f8b56b7b3bed9d1bdbb&utm_source=embed_player_p&utm_medium=desktop"
+      },
+      "tickets": [
+        {
+          "name": "Early bird",
+          "price": 6
+        },
+        {
+          "name": "Final release",
+          "price": 9
+        },
+        {
+          "name": "Second release",
+          "price": 12
+        }
+      ]
+    },
+    {
+      "id": "1019",
+      "name": "FLIP TOP HEAD + EX AGENT + PAPER CROWNS",
+      "startDate": "2024-08-28T19:00Z",
+      "endDate": "2024-08-28T22:00Z",
+      "lastEntry": "2024-08-28T19:30Z",
+      "venueId": "1008",
+      "categoryId": "1001",
+      "subcategoryIds": ["1015", "1009", "1026", "1017"],
+      "ageLimit": 18,
+      "about": "FLIP TOP HEAD • www.instagram.com/flipt0phead\nEX AGENT • www.instagram.com/exagentband\nPAPER CROWNS • www.instagram.com/papercrownsmusic\n━━━━━━━━━━━━━━━━━━━━━━\nBewitchingly melancholic, Flip Top Head present a chimera of scintillating, poetic grit and haunting vocals into post-rock soundscapes. The six piece are laying down a marker on the alternative scene for effortlessly fusing emphatic, cult-like live performances with layers of harmony and experimental instrumentation.\n━━━━━━━━━━━━━━━━━━━━━━\n18+ event.\nPresented by Gravy Train & BLG.\n━━━━━━━━━━━━━━━━━━━━━━\nGravy Train events • www.gravytrainbristol.co.uk\nBLG events • www.linktr.ee/BLGPromotions",
+      "image": "https://headfirstbristol.co.uk/images/events/1115/e111572_i212314_s5.jpg",
+      "credit": "https://headfirstbristol.co.uk/whats-on/the-lanes/tue-17-sep-flip-top-head-ex-agent-paper-crowns-111572#e111572",
+      "saved": false,
+      "socials": {
+        "instagram": "https://www.instagram.com/flipt0phead",
+        "spotify": "https://open.spotify.com/artist/3wvfYm6zG9B5o7eGY5zcLu?go=1&sp_cid=7bcba5ff2f185232e9d7ded5dad3da17&utm_source=embed_player_p&utm_medium=desktop"
+      },
+      "media": [
+        {
+          "src": "https://www.youtube.com/watch?v=-jQf0g7i1jo",
+          "alt": "Flip Top Head - Alfred Street (Official Video)"
+        }
+      ],
+      "tickets": [
+        {
+          "name": "Free entry",
+          "price": 0
+        },
+        {
+          "name": "General admission",
+          "price": 5
+        }
+      ]
+    },
+    {
+      "id": "1020",
+      "name": "La Bomba presents the FLAMMER DANCE BAND",
+      "startDate": "2024-08-28T21:00Z",
+      "endDate": "2024-08-29T02:00Z",
+      "venueId": "1005",
+      "categoryId": "1001",
+      "subcategoryIds": ["1028", "1005", "1007", "1022"],
+      "ageLimit": 18,
+      "about": "FLAMMER DANCE BAND (Oslo, Norway.)\n\nFlammer Dance Band is a 7 piece Norwegian psychedelic funk extravaganza energized by the funky sounds of West Africa in the 70´s. Hypnotic rhythms, Bouncing bass, vibrating synths, dancing guitars and spiritual sax trips. A raw, impulsive and ever-changing live experience!\n\n“It doesn’t get much better than Flammer Dance Band for authentic Afrobeat fire and jammed out psychedelic funk. Deep and physical magic by a group of incredible musicians, so intuitive and natural, sounding like the Flammer crew tapped into some rich cosmic funk flow and channeled its timeless and universal energy.” – The Sun Lounge\n\nIn a world where music often strives for polish, Flammer offers an authentic journey back to the organic roots of funk.\n\nFlammer offers an unfiltered live experience, marked by unexpected moments, improvisation and an electric atmosphere. If you're seeking a night of hypnotic rhythms, and trippy grooves that will move your soul, don't miss the opportunity to boogie with this Norwegian outfit!\n\nWith support from La Bomba DJs, John Stapleton and Boom Operator until late.\n\nThe Jam Jar\nFriday 20th September\n£12/£15\n9pm-2am\n​",
+      "image": "https://headfirstbristol.co.uk/images/events/1067/e106760_i193417_s4.jpg",
+      "credit": "https://headfirstbristol.co.uk/whats-on/jam-jar/fri-20-sep-la-bomba-presents-the-flammer-dance-band-106760#e106760",
+      "saved": false,
+      "editorsPick": true,
+      "socials": {
+        "spotify": "https://open.spotify.com/artist/0M2maCJx5UrjKSWGHQmqOF?go=1&sp_cid=bf0c3feb8dec777a8492002e891e094f&utm_source=embed_player_p&utm_medium=desktop"
+      },
+      "media": [
+        {
+          "src": "https://headfirstbristol.co.uk/images/events/1067/e106760_i193418_s4.jpg",
+          "alt": "Flammer Dance Band"
+        },
+        {
+          "src": "https://headfirstbristol.co.uk/images/events/1067/e106760_i193419_s3.jpg",
+          "alt": "Flammer Dance Band"
+        },
+        {
+          "src": "https://www.youtube.com/watch?v=LiPgzcd_emg",
+          "alt": "Flammer Dance Band - Dansesko"
+        },
+        {
+          "src": "https://www.youtube.com/watch?v=oakZdqf-dnc",
+          "alt": "Flammer Dance Band - Mer"
+        }
+      ],
+      "tickets": [
+        {
+          "name": "Early bird",
+          "price": 12
+        },
+        {
+          "name": "General release",
+          "price": 15
+        }
+      ]
     }
   ]
 }

@@ -23,9 +23,9 @@ const Header = ({ search }: { search: JSX.Element }) => {
 
   return (
     <header
-      className={`z-10 fixed w-full flex flex-col justify-between transition-all duration-200 ease-out margin-x-outer bg-dark-night h-16 ${
+      className={`z-10 fixed w-full flex flex-col justify-between transition-all duration-200 ease-out margin-x-outer bg-dark-night h-16 md:h-20 ${
         pathname === '/' && prevScrollY < 300 ? 'bg-opacity-0 ' : ''
-      } ${visible ? 'top-0' : '-top-16'}`}
+      } ${visible ? 'top-0' : '-top-20'}`}
     >
       <nav className='flex justify-between h-full items-center transition-all duration-300 margin'>
         <Link href='/' className='h-full py-3'>
@@ -38,8 +38,8 @@ const Header = ({ search }: { search: JSX.Element }) => {
           />
         </Link>
         <div className='flex'>
-          {search}
           <NavLinks />
+          {search}
           <NavMenu />
         </div>
       </nav>

@@ -27,16 +27,16 @@ const Footer = () => {
   ];
 
   return (
-    <footer className='bg-night margin-x-outer text-sm'>
-      <div className='pt-16'>
+    <footer className='bg-night text-sm'>
+      <div className='pt-16 content-container flex flex-col gap-y-8 md:flex-row items-start justify-between flex-wrap'>
         <Image
           src='/logo.svg'
           alt='Headfirst logo'
           width='0'
           height='0'
-          className='w-20 h-auto'
+          className='w-20 h-auto inline-block'
         />
-        <div className='my-6'>
+        <div className='inline-flex gap-x-32 flex-col sm:flex-row'>
           {footerLinks.map(({ heading, links }) => (
             <div key={heading} className='mb-6'>
               <h3 className='text-white text-opacity-60 mb-4'>{heading}</h3>
@@ -54,7 +54,7 @@ const Footer = () => {
         </div>
       </div>
       <Divider />
-      <div className='pb-10 flex flex-col gap-3'>
+      <div className='pb-10 content-container flex flex-col md:flex-row gap-3'>
         <p className='text-white text-opacity-60'>© 2024 Headfirst Bristol</p>
         <ul className='flex flex-wrap gap-x-4'>
           {legalLinks.map((link) => (

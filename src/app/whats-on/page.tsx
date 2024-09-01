@@ -3,7 +3,7 @@ import DateDropdown from './components/filters/DateDropdown';
 import FilteredEvents from './components/FilteredEvents';
 import CategoryChips from './components/filters/CategoryChips';
 import PriceDropdown from './components/filters/PriceDropdown';
-import { getCategories, getEvents, getVenues } from '@/utils/db';
+import { getCategories, getEvents, getVenues } from '@/db/queries';
 import Header from '../components/Header';
 import Search from '../components/search/Search';
 

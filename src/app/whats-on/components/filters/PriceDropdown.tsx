@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Dropdown from './FilterDropdown';
 import { Button } from '../../../components/buttons/Button';
 import { getMaxPrice } from '@/utils/formatting';
-import { type EventProps, type TicketProps } from '../../../../data/data';
+import { type EventProps, type TicketProps } from '../../../../db/schema';
 import Slider from '@mui/material/Slider';
 import { colors } from '../../../../../config';
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';

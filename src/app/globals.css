@@ -50,6 +50,13 @@ input[type='search']::-webkit-search-results-decoration {
   text-decoration: none;
 }
 
+.grabbing * {
+  cursor: move !important;
+  cursor: -webkit-grabbing !important;
+  cursor: -moz-grabbing !important;
+  cursor: grabbing !important;
+}
+
 @layer base {
   h1 {
     @apply mb-2;
@@ -57,6 +64,18 @@ input[type='search']::-webkit-search-results-decoration {
 
   h2 {
     @apply text-2xl lg:text-4xl leading-none mb-2;
+  }
+
+  /* ::-webkit-scrollbar {
+    @apply w-3 bg-night;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    @apply bg-indigo-900 rounded;
+  } */
+
+  .content-container {
+    @apply px-6 md:px-12 md:max-w-6xl mx-auto w-full;
   }
 
   .overflow-y-scroll {
@@ -69,7 +88,7 @@ input[type='search']::-webkit-search-results-decoration {
   }
 
   .heading-lg {
-    @apply font-heading-lg leading-[0.85] uppercase text-5xl;
+    @apply font-heading-lg text-heading-lg leading-[0.85] uppercase;
   }
 
   .filter-chip {
@@ -106,6 +125,10 @@ input[type='search']::-webkit-search-results-decoration {
 
   .button {
     @apply min-w-32 w-fit px-4 py-[14px] font-semibold rounded text-dark-night enabled:hover:opacity-80 disabled:opacity-30 transition-opacity duration-200;
+  }
+
+  .hovered-img {
+    @apply md:group-hover:scale-105 transition duration-200 ease-out;
   }
 }
 
@@ -147,5 +170,13 @@ input[type='search']::-webkit-search-results-decoration {
 
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
+  }
+
+  .slider::-webkit-scrollbar {
+    @apply h-2 bg-dark-night;
+  }
+
+  .slider::-webkit-scrollbar-thumb {
+    @apply bg-night rounded;
   }
 }

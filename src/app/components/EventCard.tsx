@@ -1,6 +1,6 @@
 import NextImage from 'next/image';
 import React from 'react';
-import { type EventProps, type VenueProps } from '../../data/data';
+import { type EventProps, type VenueProps } from '../../db/schema';
 import {
   appendClassName,
   formatDate,
@@ -43,9 +43,8 @@ export const Image = ({
       fill
       alt={alt}
       sizes='100%'
-      className={`object-cover${
-        animated ? ' md:group-hover:scale-105 duration-200 ease-out' : ''
-      }`}
+      draggable={false}
+      className={`object-cover${animated ? ' hovered-img' : ''}`}
     />
   </div>
 );
@@ -96,10 +95,11 @@ const EventCard = ({
   return (
     <Link
       className={`group flex relative${appendClassName(cardSize)} ${
-        horizontal ? 'gap-3' : 'flex-col gap-2'
+        horizontal ? 'gap-3' : 'flex-col gap-2 md:gap-2.5'
       }`}
       href={`/event/${formatEventUrl(event.id, event.name)}`}
       onSelect={onSelect}
+      draggable={false}
     >
       <Image
         src={event.image}
@@ -120,7 +120,7 @@ const EventCard = ({
           className={
             horizontal
               ? ''
-              : 'absolute top-1 right-1 bg-night p-1.5 bg-opacity-80 rounded-full'
+              : 'absolute top-1 md:top-2 right-1 md:right-2 bg-night p-1.5 bg-opacity-80 rounded-full'
           }
           size={15}
         />
