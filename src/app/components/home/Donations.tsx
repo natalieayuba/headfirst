@@ -6,23 +6,34 @@ import { colors } from '../../../../config';
 
 const Donations = () => (
   <HomeSection heading='Join us in supporting local causes'>
-    <div className='px-6'>
-      <div className='w-full h-auto aspect-[1.9] bg-night text-lilac rounded-lg flex flex-col p-6 gap-3 items-center justify-center mb-6'>
-        <Icon name='clap' size={32} fill={colors.lilac} />
-        <p className='heading-lg'>
-          <span className='font-sans font-extrabold text-3xl'>£</span>
+    <div className='content-container sm:flex sm:gap-8'>
+      <div className='w-full w-max-md md:flex-1 h-auto aspect-[1.9] bg-night text-lilac rounded-lg flex flex-col p-6 gap-3 md:gap-4 items-center justify-center mb-6'>
+        <Icon
+          name='clap'
+          fill={colors.lilac}
+          size='currentSize'
+          className='w-8 h-auto md:w-10'
+        />
+        <p className='heading-lg sm:text-7xl lg:text-heading-lg'>
+          <span className='font-sans font-extrabold text-3xl md:text-5xl'>
+            £
+          </span>
           14,177.50
         </p>
-        <p className='text-white text-opacity-60 -mt-2'>
+        <p className='text-white text-opacity-60 -mt-2 md:text-lg'>
           raised from ticket sales
         </p>
       </div>
-      <p>
+      <p className='md:max-w-sm'>
         Headfirst is a not-for-profit-orientated, local business. 100% of
         booking fees are donated directly to local causes in Bristol.
         <Hyperlink href='#' className='block mt-4'>
           Read more
-          <Icon name='arrow-right' size={14} className='ml-2 inline-block' />
+          <Icon
+            name='arrow-right'
+            size={14}
+            className='ml-2 inline-block md:'
+          />
         </Hyperlink>
       </p>
     </div>
