@@ -16,20 +16,22 @@ const Lightbox = forwardRef<HTMLDivElement, LightboxProps>(
         className
       )}`}
     >
-      <nav className='flex justify-between h-16 px-6'>
-        {onBack && (
-          <button onClick={onBack}>
-            <Icon name='angle-left' />
-          </button>
-        )}
-        {onClose && (
-          <button onClick={onClose} className='ml-auto'>
-            <Icon name='close' />
-          </button>
-        )}
-      </nav>
-      <div className='px-6 mb-6' ref={ref}>
-        {children}
+      <div className='md:max-w-xl md:mx-auto'>
+        <nav className='flex justify-between h-16 px-6'>
+          {onBack && (
+            <button onClick={onBack}>
+              <Icon name='angle-left' />
+            </button>
+          )}
+          {onClose && (
+            <button onClick={onClose} className='ml-auto'>
+              <Icon name='close' />
+            </button>
+          )}
+        </nav>
+        <div className='px-6 mb-6' ref={ref}>
+          {children}
+        </div>
       </div>
     </div>
   )

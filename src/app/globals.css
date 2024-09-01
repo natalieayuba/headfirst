@@ -187,4 +187,12 @@ input[type='search']::-webkit-search-results-decoration {
   .slider::-webkit-scrollbar-thumb {
     @apply bg-night rounded;
   }
+
+  .search-content::-webkit-scrollbar {
+    @apply w-3 bg-night rounded-r-lg;
+  }
+
+  .search-content::-webkit-scrollbar-thumb {
+    @apply bg-lilac bg-opacity-20 hover:bg-opacity-35 rounded-lg;
+  }
 }

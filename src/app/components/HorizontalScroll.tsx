@@ -23,9 +23,7 @@ const HorizontalScroll = forwardRef<
     {...rest}
   >
     {list.map((item, index) => (
-      <li key={`${item.name}${index}`} className='flex-1'>
-        {card(item)}
-      </li>
+      <li key={`${item.name}${index}`}>{card(item)}</li>
     ))}
   </ol>
 ));

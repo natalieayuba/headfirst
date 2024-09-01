@@ -1,13 +1,9 @@
-import {
-  type CategoryProps,
-  type EventProps,
-  type VenueProps,
-} from '@/data/data';
 import React from 'react';
 import Icon from '../Icon';
 import useViewportHeight from '@/hooks/useViewportHeight';
 import Link from '../Link';
 import EventCard from '../EventCard';
+import type { CategoryProps, EventProps, VenueProps } from '@/db/schema';
 
 interface SearchResultsProps {
   events: EventProps[];
@@ -31,7 +27,7 @@ const SearchResults = ({
 
   return (
     <div
-      className='my-4 p-5 bg-night rounded-lg overflow-scroll transition-all duration-200'
+      className='my-4 p-5 bg-night rounded-lg search-content overflow-scroll overflow-x-auto transition-all duration-200'
       onMouseDown={(e) => e.preventDefault()}
       style={{
         maxHeight:
@@ -54,7 +50,7 @@ const SearchResults = ({
                 showPrice={false}
                 showTime={false}
                 showSaved={false}
-                imageSize='h-14'
+                imageSize='h-14 w-14'
                 horizontal
                 narrow
               />

@@ -3,14 +3,10 @@ import React, { useEffect, useRef, useState, type ChangeEvent } from 'react';
 import Lightbox from '../Lightbox';
 import useLightbox from '@/hooks/useLightbox';
 import Icon from '../Icon';
-import {
-  type CategoryProps,
-  type EventProps,
-  type VenueProps,
-} from '@/data/data';
 import SearchResults from './SearchResults';
 import useClickOutside from '@/hooks/useClickOutside';
 import Input from '../Input';
+import type { CategoryProps, EventProps, VenueProps } from '@/db/schema';
 
 export type SearchResults = (EventProps | CategoryProps)[];
 
@@ -59,6 +55,7 @@ const SearchLightbox = ({ categories, venues, events }: SearchProps) => {
       </button>
       {isOpen && (
         <Lightbox ref={lightboxRef} onClose={closeSearch}>
+          <div></div>
           <Input
             id='search'
             type='search'

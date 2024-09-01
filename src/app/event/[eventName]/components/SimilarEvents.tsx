@@ -25,9 +25,10 @@ const SimilarEvents = ({ event, events, venues }: SimilarEventsProps) => {
     <div className='py-10'>
       <h2 className='content-container mb-5'>Other events you might like</h2>
       <HorizontalScroll
+        className='md:grid md:grid-cols-5 md:gap-4'
         list={similarEvents}
         card={(event) => (
-          <EventCard venues={venues} event={event} cardSize='w-36 md:w-56' />
+          <EventCard venues={venues} event={event} cardSize='w-36 md:w-full' />
         )}
       />
     </div>
