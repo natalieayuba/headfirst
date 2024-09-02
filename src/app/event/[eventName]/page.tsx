@@ -8,13 +8,14 @@ import Media from '@/app/event/[eventName]/components/media/Media';
 import Breadcrumbs from '@/app/event/[eventName]/components/Breadcrumbs';
 import Details from '@/app/event/[eventName]/components/Details';
 import About from '@/app/event/[eventName]/components/About';
-import Venue from '@/app/event/[eventName]/components/Venue';
 import SimilarEvents from '@/app/event/[eventName]/components/SimilarEvents';
 import Divider from '@/app/components/Divider';
 import { getCategories, getEvents, getVenues } from '@/db/queries';
 import Checkout from './components/checkout/Checkout';
 import Header from '@/app/components/Header';
 import Search from '@/app/components/search/Search';
+import Socials from './components/Socials';
+import Venue from './components/Venue';
 
 const Event = async ({ params }: { params: { eventName: string } }) => {
   const events = await getEvents();
@@ -34,23 +35,27 @@ const Event = async ({ params }: { params: { eventName: string } }) => {
     <div className='pt-16'>
       <Header search={<Search />} />
       <Breadcrumbs categoryId={event.categoryId} categories={categories} />
-      <div className='content-container pt-4 md:pt-6 md:flex md:gap-12'>
-        <div className='w-full md:w-auto md:h-[400px] aspect-square relative'>
-          <Image
-            src={event.image}
-            alt={`${event.name} image`}
-            fill
-            sizes='100%'
-            className='object-cover rounded-lg'
-          />
+      <div className='content-container pt-4 md:pt-6 md:flex md:gap-12 relative'>
+        <div className='w-full md:flex-1 md:min-w-64 md:max-w-[400px] h-auto'>
+          <div className='w-full relative aspect-square'>
+            <Image
+              src={event.media[0].src}
+              alt={`${event.name} image`}
+              fill
+              sizes='100%'
+              className='object-cover rounded-lg'
+            />
+          </div>
+          {event.media && <Media event={event} />}
+          {event.socials && <Socials socials={event.socials} />}
         </div>
-        <div className='flex-1 mb-6 md:mb-12'>
+        <div className='w-full md:flex-1 mb-6 md:mb-12'>
           <div className='mt-5 mb-2 md:mt-0'>
-            <div className='flex gap-3 mt-2 ml-3 float-right'>
+            <div className='flex gap-3 mt-2 md:mt-3 ml-3.5 mb-1 float-right'>
               <SaveButton event={event} />
               <ShareButton />
             </div>
-            <h1 className='text-4xl md:text-5xl md:mb-4 font-medium'>
+            <h1 className='text-4xl md:text-6xl mb-4 font-medium'>
               {event.name}
             </h1>
           </div>
@@ -58,7 +63,6 @@ const Event = async ({ params }: { params: { eventName: string } }) => {
           <Divider className='w-28 mx-auto' />
           <About about={event.about} />
           <Venue venueId={event.venueId} venues={venues} />
-          {event.media && <Media media={event.media} />}
         </div>
       </div>
       <Checkout event={event} venues={venues} />

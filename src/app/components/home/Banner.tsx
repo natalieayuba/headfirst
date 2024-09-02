@@ -4,7 +4,7 @@ import { ButtonLink } from '@/app/components/buttons/Button';
 
 const Banner = () => {
   const lines = () => {
-    const words = tagline.split(' ');
+    const words = `${tagline}.`.split(' ');
     const lines = [];
     const numLines = 3,
       numWords = 2;

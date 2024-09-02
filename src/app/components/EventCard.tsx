@@ -102,7 +102,7 @@ const EventCard = ({
       draggable={false}
     >
       <Image
-        src={event.image}
+        src={event.media[0].src}
         alt={`${event.name} image`}
         imageSize={imageSize}
         animated

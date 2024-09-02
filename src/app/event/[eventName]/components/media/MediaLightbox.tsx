@@ -3,17 +3,17 @@ import Lightbox from '../../../../components/Lightbox';
 import HorizontalScroll from '../../../../components/HorizontalScroll';
 import MediaThumbnail from './MediaThumbnail';
 import MediaSwiper from './MediaSwiper';
-import type { MediaProps } from '@/db/schema';
+import type { EventProps } from '@/db/schema';
 
 interface MediaLightboxProps {
-  media: MediaProps[];
+  event: EventProps;
   selectedIndex: number;
   setSelectedIndex: (index: number) => void;
   onClose: () => void;
 }
 
 const MediaLightbox = forwardRef<HTMLDivElement, MediaLightboxProps>(
-  ({ media, selectedIndex, setSelectedIndex, onClose }, lightboxRef) => {
+  ({ event, selectedIndex, setSelectedIndex, onClose }, lightboxRef) => {
     const scrollerRef = useRef<HTMLOListElement>(null);
     const thumbnailRef = useRef<HTMLDivElement>(null);
 
@@ -43,31 +43,35 @@ const MediaLightbox = forwardRef<HTMLDivElement, MediaLightboxProps>(
           <p className='text-center'>
             {selectedIndex + 1}
             {' of '}
-            {media.length}
+            {event.media.length}
           </p>
           <MediaSwiper
-            media={media}
+            media={event.media}
             selectedIndex={selectedIndex}
             setSelectedIndex={setSelectedIndex}
           />
-          <p className='text-center mb-12'>{media[selectedIndex]?.alt}</p>
+          <p className='text-center mb-12'>{event.media[selectedIndex]?.alt}</p>
           <HorizontalScroll
             ref={scrollerRef}
-            className='scroll-smooth justify-center mb-6 md:mb-12'
-            list={media}
+            className='px-12 w-screen scroll-smooth justify-center mb-6 md:mb-12'
+            list={event.media}
             card={(item) => (
               <MediaThumbnail
+                event={event}
                 ref={
-                  media.findIndex((medium) => medium === item) === selectedIndex
+                  event.media.findIndex((medium) => medium === item) ===
+                  selectedIndex
                     ? thumbnailRef
                     : null
                 }
                 medium={item}
                 onClick={() =>
-                  setSelectedIndex(media.findIndex((medium) => medium === item))
+                  setSelectedIndex(
+                    event.media.findIndex((medium) => medium === item)
+                  )
                 }
                 className={
-                  item === media[selectedIndex]
+                  item === event.media[selectedIndex]
                     ? 'border-2 border-lilac'
                     : 'opacity-50'
                 }

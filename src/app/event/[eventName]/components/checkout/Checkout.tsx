@@ -1,7 +1,7 @@
 'use client';
 import { Button } from '@/app/components/buttons/Button';
 import useLightbox from '@/hooks/useLightbox';
-import { formatPriceRange } from '@/utils/formatting';
+import { formatDate, formatPriceRange } from '@/utils/formatting';
 import React from 'react';
 import CheckoutLightbox from './CheckoutLightbox';
 import useLoader from '@/hooks/useLoader';
@@ -22,7 +22,13 @@ const Checkout = ({
     <>
       {loading && <Loader />}
       <div className='bg-night sticky bottom-0'>
-        <div className='content-container py-4 flex justify-between items-center'>
+        <div className='content-container py-4 flex justify-between items-center gap-6 md:justify-end'>
+          <div className='hidden md:block mr-auto'>
+            <p>{event.name}</p>
+            <p className='secondary-text'>
+              {formatDate(event.startDate, true)}
+            </p>
+          </div>
           <p className='text-2xl font-medium'>
             {formatPriceRange(event.tickets)}
           </p>

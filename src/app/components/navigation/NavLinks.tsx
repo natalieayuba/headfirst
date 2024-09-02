@@ -4,7 +4,7 @@ import Link from '../Link';
 
 const NavLinks = () => (
   <div className='hidden md:flex'>
-    <ul className={`font-medium flex gap-6 items-center mt-1 mr-1`}>
+    <ul className={`font-medium flex gap-10 items-center mt-1 mr-1`}>
       {navLinks.map(({ url, name }) => (
         <li key={name} className='flex items-center gap-0.5'>
           <Link href={url ?? '#'}>{name}</Link>

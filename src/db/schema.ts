@@ -24,13 +24,13 @@ export interface TicketProps {
 
 export interface SocialsProps {
   instagram?: string;
-  facebook?: string;
   spotify?: string;
   bandcamp?: string;
 }
+
 export interface MediaProps {
   src: string;
-  alt: string;
+  alt?: string;
 }
 
 export interface EventProps {
@@ -43,12 +43,11 @@ export interface EventProps {
   subcategoryIds: string[];
   about: string;
   credit: string;
-  image: string;
   saved: boolean;
   tickets: TicketProps[];
   ageLimit?: number;
   lastEntry?: string;
-  media?: MediaProps[];
+  media: MediaProps[];
   socials?: SocialsProps;
   editorsPick?: boolean;
 }
