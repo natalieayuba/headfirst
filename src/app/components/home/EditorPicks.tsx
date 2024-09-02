@@ -14,18 +14,13 @@ interface EditorPicksProps {
 const EditorPicks = ({ events, venues }: EditorPicksProps) => {
   const sliderRef = useRef<HTMLOListElement>(null);
   const [scrollLeft, setScrollLeft] = useState(0);
-  const [maxScrollWidth, setMaxScrollWidth] = useState(0);
   const editorsPicks = events.filter(({ editorsPick }) => editorsPick === true);
   const [click, setClick] = useState(false);
   const [startX, setStartX] = useState(0);
   const [cursor, setCursor] = useState('pointer');
 
-  const handleScroll = (e: UIEvent) => {
-    const maxScrollLeft =
-      e.currentTarget.scrollWidth - e.currentTarget.clientWidth;
-    setMaxScrollWidth(maxScrollLeft);
+  const handleScroll = (e: UIEvent) =>
     setScrollLeft(e.currentTarget.scrollLeft);
-  };
 
   const handleDrag = (e: MouseEvent) => {
     if (click) {

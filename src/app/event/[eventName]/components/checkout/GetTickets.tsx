@@ -1,7 +1,7 @@
 import React from 'react';
 import Tickets from './Tickets';
 import Donate from './Donate';
-import type { TicketProps } from '@/data/data';
+import type { TicketProps } from '@/db/schema';
 
 const GetTickets = ({
   tickets,
@@ -15,14 +15,14 @@ const GetTickets = ({
   setDonation: (donation: number) => void;
 }) => {
   return (
-    <>
+    <div>
       <Tickets
         tickets={tickets}
         ticketCount={ticketCount}
         setTicketCount={setTicketCount}
       />
       <Donate setDonation={setDonation} />
-    </>
+    </div>
   );
 };
 

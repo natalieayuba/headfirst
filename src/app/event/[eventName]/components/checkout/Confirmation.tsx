@@ -1,7 +1,7 @@
 import { Button } from '@/app/components/buttons/Button';
 import Divider from '@/app/components/Divider';
 import { Image } from '@/app/components/EventCard';
-import type { EventProps, VenueProps } from '@/data/data';
+import type { EventProps, VenueProps } from '@/db/schema';
 import { formatDate } from '@/utils/formatting';
 import React from 'react';
 
@@ -13,13 +13,19 @@ const Confirmation = ({
   venues: VenueProps[];
 }) => (
   <div
-    className='flex flex-col gap-7 items-center text-center'
+    className='flex flex-col gap-7 items-center text-center md:pt-12 max-w-lg mx-auto'
     style={{ height: 'calc(100dvh - 100px)' }}
   >
-    <Image src={event.image} alt={`${event.name} image`} imageSize='w-28' />
+    <Image
+      src={event.media[0].src}
+      alt={`${event.name} image`}
+      imageSize='w-28 md:w-36'
+    />
     <div>
-      <h2 className='text-3xl'>
-        <span className='block text-2xl'>You&apos;re going to</span>
+      <h2 className='text-3xl md:text-5xl md:my-2'>
+        <span className='block text-2xl md:text-3xl md:mb-1'>
+          You&apos;re going to
+        </span>
         {event.name}
       </h2>
       <p className='mt-1'>{formatDate(event.startDate, true)}</p>

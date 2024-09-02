@@ -44,7 +44,7 @@ const Payment = ({
         <HyperLink href='/'>Sign out</HyperLink>
       </p>
       <CheckoutSection heading='Payment method'>
-        <ul>
+        <ul className='min-w-[340px]'>
           {options.map(({ icon, title, subtitle, isDefault }, index) => (
             <li key={title} className='list-divider'>
               <PaymentOption

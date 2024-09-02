@@ -1,8 +1,8 @@
 import Icon from '@/app/components/Icon';
 import React from 'react';
 import CheckoutSection from './CheckoutSection';
-import type { TicketProps } from '@/data/data';
 import { formatPrice } from '@/utils/formatting';
+import type { TicketProps } from '@/db/schema';
 
 const Stepper = ({
   icon,

@@ -10,6 +10,7 @@ interface SimilarEventsProps {
 }
 
 const SimilarEvents = ({ event, events, venues }: SimilarEventsProps) => {
+  const max = 5;
   const similarEvents = events
     .filter(
       ({ id, categoryId, subcategoryIds }) =>
@@ -19,7 +20,18 @@ const SimilarEvents = ({ event, events, venues }: SimilarEventsProps) => {
           event.subcategoryIds?.includes(subcategory)
         )
     )
-    .slice(0, 5);
+    .slice(0, max);
+
+  if (similarEvents.length < max) {
+    similarEvents.push(
+      ...events
+        .filter(({ id }) => !similarEvents.some((event) => event.id === id))
+        .filter(({ categoryId }) => categoryId === '1003')
+        .sort(() => 0.5 - Math.random())
+        .slice(0, max - similarEvents.length)
+    );
+    similarEvents.sort((a, b) => a.startDate.localeCompare(b.startDate));
+  }
 
   return (
     <div className='py-10 md:py-12'>

@@ -9,11 +9,16 @@ const Socials = ({ socials }: { socials: SocialsProps }) => {
     <div className='flex gap-3'>
       {Object.keys(socials).map((social) => (
         <Link
-          href='#'
+          href={socials[social as keyof SocialsProps] ?? '#'}
           title={capitaliseFirstLetter(social)}
           className='hover:opacity-90 transition-opacity duration-200'
+          target='_blank'
         >
-          <Icon name={social} size={32} fill='white' />
+          <Icon
+            name={social}
+            size={32}
+            fill={social === 'instagram' ? 'none' : 'white'}
+          />
         </Link>
       ))}
     </div>

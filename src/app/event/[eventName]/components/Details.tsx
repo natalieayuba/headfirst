@@ -1,6 +1,10 @@
 import React from 'react';
 import Icon from '../../../components/Icon';
-import { formatDateRange, timeFormat } from '@/utils/formatting';
+import {
+  capitaliseFirstLetter,
+  formatDateRange,
+  timeFormat,
+} from '@/utils/formatting';
 import type { CategoryProps, EventProps, VenueProps } from '@/db/schema';
 
 interface DetailsProps {
@@ -10,6 +14,11 @@ interface DetailsProps {
 }
 
 const Details = ({ event, venues, categories }: DetailsProps) => {
+  const ageLimit = event.ageLimit ? `${event.ageLimit}+ event` : '';
+  const lastEntry = event.lastEntry
+    ? `last entry ${timeFormat(event.lastEntry)}`
+    : '';
+
   const details = [
     {
       icon: 'clock',
@@ -32,9 +41,12 @@ const Details = ({ event, venues, categories }: DetailsProps) => {
     },
     {
       icon: 'info',
-      text: `${event.ageLimit ? `${event.ageLimit}+ event` : ''}${
-        event.lastEntry ? `, last entry ${timeFormat(event.lastEntry)}` : ''
-      }`,
+      text:
+        ageLimit && lastEntry
+          ? `${ageLimit}, ${lastEntry}`
+          : ageLimit
+          ? ageLimit
+          : capitaliseFirstLetter(lastEntry),
     },
   ];
 

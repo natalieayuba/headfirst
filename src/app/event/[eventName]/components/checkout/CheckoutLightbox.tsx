@@ -152,51 +152,54 @@ const CheckoutLightbox = ({
       <Lightbox
         onClose={closeLightbox}
         onBack={step === 1 ? () => setStep((step) => step - 1) : undefined}
+        maxWidth='md:max-w-4xl'
       >
-        <div className='flex gap-6 flex-col flex-1'>
+        <div className='max-w-sm sm:max-w-full mx-auto'>
           {step < 2 && (
             <EventCard
               event={event}
               venues={venues}
               cardSize='min-h-14'
-              imageSize='w-14'
+              imageSize='w-16'
               showSaved={false}
               showPrice={false}
               horizontal
               narrow
             />
           )}
-          {steps[step].content}
-          {step < 2 && (
-            <div>
-              {step === 1 && (
-                <div>
-                  <h2 className='mb-2'>Order Summary</h2>
-                  {orderSummary.map(({ text, price }) => (
-                    <div key={text} className='flex justify-between'>
-                      <p>{text}</p>
-                      <p>£{price.toFixed(2)}</p>
-                    </div>
-                  ))}
-                </div>
-              )}
-              <Total total={total} />
-              <p className='secondary-text'>{steps[step].footerContent}</p>
-              <Button
-                className='w-full mt-4'
-                onClick={() => {
-                  if (step === 1) {
-                    loadPage(() => setStep((step) => step + 1));
-                  } else {
-                    setStep((step) => step + 1);
-                  }
-                }}
-                disabled={steps[step].buttonDisabled}
-              >
-                {steps[step].buttonText}
-              </Button>
-            </div>
-          )}
+          <div className='sm:flex gap-12'>
+            {steps[step].content}{' '}
+            {step < 2 && (
+              <div className='mt-6'>
+                {step === 1 && (
+                  <div>
+                    <h2 className='mb-2'>Order Summary</h2>
+                    {orderSummary.map(({ text, price }) => (
+                      <div key={text} className='flex justify-between'>
+                        <p>{text}</p>
+                        <p>£{price.toFixed(2)}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+                <Total total={total} />
+                <p className='secondary-text'>{steps[step].footerContent}</p>
+                <Button
+                  className='w-full mt-4'
+                  onClick={() => {
+                    if (step === 1) {
+                      loadPage(() => setStep((step) => step + 1));
+                    } else {
+                      setStep((step) => step + 1);
+                    }
+                  }}
+                  disabled={steps[step].buttonDisabled}
+                >
+                  {steps[step].buttonText}
+                </Button>
+              </div>
+            )}
+          </div>
         </div>
       </Lightbox>
     </>

@@ -46,8 +46,10 @@ const Event = async ({ params }: { params: { eventName: string } }) => {
               className='object-cover rounded-lg'
             />
           </div>
-          {event.media && <Media event={event} />}
-          {event.socials && <Socials socials={event.socials} />}
+          <div className='hidden md:block'>
+            {event.media && <Media event={event} />}
+            {event.socials && <Socials socials={event.socials} />}
+          </div>
         </div>
         <div className='w-full md:flex-1 mb-6 md:mb-12'>
           <div className='mt-5 mb-2 md:mt-0'>
@@ -60,7 +62,7 @@ const Event = async ({ params }: { params: { eventName: string } }) => {
             </h1>
           </div>
           <Details event={event} categories={categories} venues={venues} />
-          <Divider className='w-28 mx-auto' />
+          <Divider className='w-24 md:w-36 mx-auto ' />
           <About about={event.about} />
           <Venue venueId={event.venueId} venues={venues} />
         </div>
