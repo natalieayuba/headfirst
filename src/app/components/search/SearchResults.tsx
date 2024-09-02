@@ -51,6 +51,7 @@ const SearchResults = ({
                 showTime={false}
                 showSaved={false}
                 imageSize='h-14 w-14'
+                animated={false}
                 horizontal
                 narrow
               />

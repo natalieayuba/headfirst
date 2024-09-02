@@ -26,7 +26,7 @@ const SliderArrow = ({
       const slider = (sliderRef as RefObject<HTMLElement>)?.current!;
       setMaxScrollLeft(slider.scrollWidth - slider.clientWidth);
     }
-  }, []);
+  }, [sliderRef]);
 
   const handleClick = () => {
     const slider = (sliderRef as RefObject<HTMLElement>).current!;
@@ -43,7 +43,7 @@ const SliderArrow = ({
 
   return (
     <button
-      className='transition-opacity duration-150 disabled:opacity-30'
+      className='transition-all duration-150 disabled:opacity-30 enabled:hover:scale-[115%]'
       onClick={handleClick}
       disabled={disabled}
       {...rest}

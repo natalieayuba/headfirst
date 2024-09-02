@@ -25,7 +25,7 @@ const AppAd = () => {
           </h2>
           <div className='flex justify-center gap-3'>
             {badges.map(({ image, link, alt }) => (
-              <Link key={alt} href={link}>
+              <Link key={alt} href={link} className='default-hover'>
                 <Image
                   src={image}
                   alt={alt}

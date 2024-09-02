@@ -29,13 +29,15 @@ const Footer = () => {
   return (
     <footer className='bg-night text-sm'>
       <div className='pt-16 content-container flex flex-col gap-y-8 md:flex-row items-start justify-between flex-wrap'>
-        <Image
-          src='/logo.svg'
-          alt='Headfirst logo'
-          width='0'
-          height='0'
-          className='w-20 h-auto inline-block'
-        />
+        <Link href='/'>
+          <Image
+            src='/logo.svg'
+            alt='Headfirst Bristol logo'
+            width='0'
+            height='0'
+            className='w-20 h-auto'
+          />
+        </Link>
         <div className='inline-flex gap-x-32 flex-col sm:flex-row'>
           {footerLinks.map(({ heading, links }) => (
             <div key={heading} className='mb-6'>
@@ -43,7 +45,10 @@ const Footer = () => {
               <ul className='flex flex-col gap-4'>
                 {links.map((link) => (
                   <li key={link}>
-                    <Link href={link === 'Find an event' ? '/whats-on' : '#'}>
+                    <Link
+                      className='default-hover'
+                      href={link === 'Find an event' ? '/whats-on' : '#'}
+                    >
                       {link}
                     </Link>
                   </li>
@@ -59,7 +64,9 @@ const Footer = () => {
         <ul className='flex flex-wrap gap-x-4'>
           {legalLinks.map((link) => (
             <li key={link}>
-              <Link href='#'>{link}</Link>
+              <Link href='#' className='default-hover'>
+                {link}
+              </Link>
             </li>
           ))}
         </ul>

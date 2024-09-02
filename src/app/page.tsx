@@ -1,6 +1,6 @@
 import React from 'react';
 import Banner from '@/app/components/home/Banner';
-import PopularCategories from '@/app/components/home/PopularCategories';
+import Categories from '@/app/components/home/Categories';
 import EditorPicks from '@/app/components/home/EditorPicks';
 import Donations from '@/app/components/home/Donations';
 import AppAd from '@/app/components/home/AppAd';
@@ -18,7 +18,7 @@ const Home = async () => {
       <Header search={<Search />} />
       <main>
         <Banner />
-        <PopularCategories categories={categories} />
+        <Categories categories={categories} />
         <EditorPicks events={events} venues={venues} />
         <Donations />
         <AppAd />

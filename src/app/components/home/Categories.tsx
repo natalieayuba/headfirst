@@ -24,9 +24,9 @@ const CategoryCard = ({ category }: { category: CategoryProps }) => (
   </Link>
 );
 
-const PopularCategories = ({ categories }: { categories: CategoryProps[] }) => {
+const Categories = ({ categories }: { categories: CategoryProps[] }) => {
   return (
-    <HomeSection heading='Popular categories'>
+    <HomeSection heading='Categories'>
       <HorizontalScroll
         className='md:grid md:grid-flow-col md:grid-cols-4 md:w-full'
         list={categories}
@@ -36,4 +36,4 @@ const PopularCategories = ({ categories }: { categories: CategoryProps[] }) => {
   );
 };
 
-export default PopularCategories;
+export default Categories;

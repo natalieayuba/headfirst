@@ -2,17 +2,15 @@
 import React, { useState, type MouseEvent } from 'react';
 import Icon from '../Icon';
 import { colors } from '../../../../config';
-import type { EventProps } from '@/db/schema';
 import { appendClassName } from '@/utils/formatting';
 
 interface SaveButtonProps {
-  event: EventProps;
   className?: string;
   size?: number;
 }
 
-const SaveButton = ({ event, className, size }: SaveButtonProps) => {
-  const [saved, setSaved] = useState(event.saved);
+const SaveButton = ({ className, size }: SaveButtonProps) => {
+  const [saved, setSaved] = useState(false);
 
   const handleClick = (e: MouseEvent) => {
     e.preventDefault();
@@ -22,9 +20,7 @@ const SaveButton = ({ event, className, size }: SaveButtonProps) => {
 
   return (
     <button
-      className={`group transition-all duration-200 hover:bg-opacity-100${appendClassName(
-        className
-      )}`}
+      className={`circle-button${appendClassName(className)}`}
       onClick={handleClick}
     >
       <Icon

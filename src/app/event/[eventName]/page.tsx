@@ -45,22 +45,20 @@ const Event = async ({ params }: { params: { eventName: string } }) => {
               sizes='100%'
               className='object-cover rounded-lg'
             />
+            <div className='absolute bottom-2.5 right-2.5 flex gap-1'>
+              <SaveButton className='circle-button-event' size={18} />
+              <ShareButton />
+            </div>
           </div>
           <div className='hidden md:block'>
             {event.media && <Media event={event} />}
             {event.socials && <Socials socials={event.socials} />}
           </div>
         </div>
-        <div className='w-full md:flex-1 mb-6 md:mb-12'>
-          <div className='mt-5 mb-2 md:mt-0'>
-            <div className='flex gap-3 mt-2 md:mt-3 ml-3.5 mb-1 float-right'>
-              <SaveButton event={event} />
-              <ShareButton />
-            </div>
-            <h1 className='text-4xl md:text-6xl mb-4 font-medium'>
-              {event.name}
-            </h1>
-          </div>
+        <div className='w-full md:flex-1 mt-5 mb-6 md:-mt-1 md:mb-12'>
+          <h1 className='text-4xl md:text-6xl mb-3 font-medium'>
+            {event.name}
+          </h1>
           <Details event={event} categories={categories} venues={venues} />
           <Divider className='w-24 md:w-36 mx-auto ' />
           <About about={event.about} />

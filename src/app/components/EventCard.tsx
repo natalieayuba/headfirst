@@ -21,6 +21,7 @@ interface EventCardProps {
   showSaved?: boolean;
   showPrice?: boolean;
   onSelect?: () => void;
+  animated?: boolean;
 }
 
 interface ImageProps extends Partial<EventCardProps> {
@@ -90,6 +91,7 @@ const EventCard = ({
   showSaved = true,
   showPrice = true,
   showTime = true,
+  animated = true,
 }: EventCardProps) => {
   const venue = venues?.find(({ id }) => id === event.venueId);
   return (
@@ -105,7 +107,7 @@ const EventCard = ({
         src={event.media[0].src}
         alt={`${event.name} image`}
         imageSize={imageSize}
-        animated
+        animated={animated}
       />
       <Content
         event={event}
@@ -116,11 +118,10 @@ const EventCard = ({
       />
       {showSaved && (
         <SaveButton
-          event={event}
           className={
             horizontal
-              ? ''
-              : 'absolute top-1 md:top-2 right-1 md:right-2 bg-night p-1.5 bg-opacity-80 rounded-full'
+              ? 'relative [&&]:bg-opacity-0 [&&]:p-0'
+              : 'absolute top-1 md:top-2 right-1 md:right-2'
           }
           size={15}
         />

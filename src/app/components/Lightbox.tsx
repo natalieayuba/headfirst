@@ -24,13 +24,13 @@ const Lightbox = forwardRef<HTMLDivElement, LightboxProps>(
           </button>
         )}
         {onClose && (
-          <button onClick={onClose} className='ml-auto'>
+          <button onClick={onClose} className='ml-auto default-hover'>
             <Icon name='close' />
           </button>
         )}
       </nav>
       <div
-        className={`px-6 mb-6 md:mx-auto${appendClassName(maxWidth)}`}
+        className={`px-4 mb-6 md:mx-auto${appendClassName(maxWidth)}`}
         ref={ref}
       >
         {children}

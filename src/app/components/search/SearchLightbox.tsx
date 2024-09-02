@@ -50,7 +50,7 @@ const SearchLightbox = ({ categories, venues, events }: SearchProps) => {
 
   return (
     <div className='flex'>
-      <button onClick={openLightbox} className='pl-4'>
+      <button onClick={openLightbox} className='pl-6 default-hover'>
         <Icon name='search' />
       </button>
       {isOpen && (
