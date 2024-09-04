@@ -13,6 +13,7 @@ import Link from './Link';
 interface EventCardProps {
   event: EventProps;
   venues: VenueProps[];
+  className?: string;
   imageSize?: string;
   cardSize?: string;
   horizontal?: boolean;
@@ -83,6 +84,7 @@ const Content = ({
 const EventCard = ({
   event,
   venues,
+  className,
   imageSize,
   cardSize,
   horizontal,
@@ -96,7 +98,9 @@ const EventCard = ({
   const venue = venues?.find(({ id }) => id === event.venueId);
   return (
     <Link
-      className={`group flex relative${appendClassName(cardSize)} ${
+      className={`group flex relative${appendClassName(
+        className
+      )}${appendClassName(cardSize)} ${
         horizontal ? 'gap-3' : 'flex-col gap-2 md:gap-2.5'
       }`}
       href={`/event/${formatEventUrl(event.id, event.name)}`}

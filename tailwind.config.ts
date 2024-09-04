@@ -29,12 +29,27 @@ const config: Config = {
           '0%': { transform: 'scale(1.2)' },
           '100%': { transform: 'scale(1)' },
         },
+        bounceIn: {
+          '0%': {
+            opacity: '0',
+            transform: 'scale(.3) translateY(100%) rotate(-20deg)',
+          },
+          '50%': {
+            opacity: '1',
+            transform: 'scale(1.02) translateY(0px)',
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'scale(1) translateY(0) rotate(0)',
+          },
+        },
       },
       animation: {
         fadeIn: `fadeIn ${animationDurations.banner}ms ease-in-out`,
         fadeOut: `fadeIn ${animationDurations.banner}ms ease-in-out reverse backwards`,
         maskIn: `maskIn ${animationDurations.default}ms ease-out backwards`,
         heartbeat: `heartbeat 200ms ease-in`,
+        bounceIn: `bounceIn 1000ms ease forwards`,
       },
       screens: {
         xs: '420px', // => @media (min-width: 420px) { ... }
