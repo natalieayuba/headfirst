@@ -45,6 +45,7 @@ const AppAd = () => {
             width={0}
             height={0}
             sizes='100vw'
+            priority
             className='w-96 h-auto relative top-12 left-1/2 -translate-x-[45%]'
           />
         </div>

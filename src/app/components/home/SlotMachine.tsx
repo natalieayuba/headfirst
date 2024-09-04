@@ -1,19 +1,20 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Button } from '../buttons/Button';
 
 const SlotMachine = () => {
-  const [donation, setDonation] = useState(14177.5);
+  const [amount, setAmount] = useState(14177.5);
+  const [height, setHeight] = useState(0);
+  const [visible, setVisible] = useState(false);
 
   const formattedDonation = () => {
     let pound = '0';
     let pence = '0';
     let tmpNums = '';
 
-    if (donation % 1 !== 0) {
-      const decimalNumber = String(donation.toFixed(2)).split('.');
+    if (amount % 1 !== 0) {
+      const decimalNumber = String(amount.toFixed(2)).split('.');
       (pound = decimalNumber[0]), (pence = decimalNumber[1]);
     } else {
-      pound = String(donation);
+      pound = String(amount);
     }
 
     tmpNums += pound;
@@ -22,17 +23,65 @@ const SlotMachine = () => {
   };
 
   const [numbers, setNumbers] = useState<number[]>(formattedDonation());
-  const ref = useRef<(HTMLDivElement | null)[]>([]);
+  const ref = useRef<(HTMLSpanElement | null)[]>([]);
   const slots = new Array(formattedDonation().length).fill([
     ...Array(10).keys(),
   ]);
 
-  const handleClick = () => {
-    if (donation) {
-      setDonation(Math.round((donation + 0.01) * 100) / 100);
-      setNumbers(formattedDonation());
+  useEffect(() => {
+    const addToDonation = () => {
+      if (amount) {
+        setAmount(Math.round((amount + 0.79) * 100) / 100);
+        setNumbers(formattedDonation());
+      }
+    };
+    const interval = setInterval(() => {
+      addToDonation();
+    }, 300000);
+
+    return () => clearInterval(interval);
+  });
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (ref.current) {
+        const rect = ref.current[0]?.parentElement?.getBoundingClientRect()!;
+        const visible =
+          rect.top >= 0 &&
+          rect.left >= 0 &&
+          rect.bottom <=
+            (window.innerHeight || document.documentElement.clientHeight) &&
+          rect.right <=
+            (window.innerWidth || document.documentElement.clientWidth);
+        setVisible(visible);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (ref.current) {
+      const span = ref.current[0]?.children[0] as HTMLElement;
+      setHeight(span.offsetHeight);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    if (ref.current && visible) {
+      ref.current.forEach((div, index) => {
+        if (div) {
+          const span = Array.from(div.children).find((child) =>
+            child.textContent?.includes(String(numbers[index]))
+          ) as HTMLSpanElement;
+          ref.current[index]!.scrollTo({ top: span.offsetTop });
+        }
+      });
+    }
+  }, [numbers, visible]);
 
   const decimalPosition = (array: number[]) => array.length - 2;
   const isCommaPosition = (index: number, array: number[]) =>
@@ -40,49 +89,30 @@ const SlotMachine = () => {
     index > 0 &&
     index < decimalPosition(array);
 
-  useEffect(() => {
-    if (ref.current) {
-      ref.current.forEach((div, index) => {
-        if (div) {
-          const span = Array.from(div.children).find((child) =>
-            child.textContent?.includes(String(numbers[index]))
-          ) as HTMLElement;
-          ref.current[index]!.scrollTop = span.offsetTop + 10;
-          console.log(ref.current[index]!.scrollTop);
-        }
-      });
-    }
-  }, [numbers]);
-
   return (
     <div>
-      <p className='text-7xl font-bold flex items-end'>
-        <span className='flex items-end relative top-3'>
-          £
-          {slots.map((col, index) => {
-            return (
-              <>
-                {isCommaPosition(index, slots) && <span>,</span>}
-                {index === decimalPosition(slots) && <span>.</span>}
-                <div
-                  ref={(el) => (ref.current[index] = el as any)}
-                  className='inline-flex flex-col-reverse h-12 relative mb-4 overflow-hidden snap-mandatory scroll-smooth'
-                >
-                  {col.map((n: number) => (
-                    <span
-                      key={n}
-                      className='w-11 flex-1 flex items-center justify-center text-center relative snap-center -mb-3.5'
-                    >
-                      {n}
-                    </span>
-                  ))}
-                </div>
-              </>
-            );
-          })}
-        </span>
+      <p className='font-heading-lg text-6xl font-bold text-lilac flex items-end'>
+        <span className='font-sans font-extrabold text-3xl mr-px mb-px'>£</span>
+        {slots.map((col, index, array) => {
+          return (
+            <>
+              {isCommaPosition(index, array) && <span>,</span>}
+              {index === decimalPosition(array) && <span>.</span>}
+              <span
+                ref={(el) => (ref.current[index] = el as any)}
+                className='inline-flex flex-col-reverse relative overflow-hidden snap-mandatory scroll-smooth'
+                style={{ height }}
+              >
+                {col.map((n: number) => (
+                  <span key={n} className='inline-block text-center'>
+                    {n}
+                  </span>
+                ))}
+              </span>
+            </>
+          );
+        })}
       </p>
-      <Button onClick={handleClick}>add 1p</Button>
     </div>
   );
 };
