@@ -57,7 +57,7 @@ const SearchLightbox = ({ categories, venues, events }: SearchProps) => {
         <Lightbox
           ref={lightboxRef}
           onClose={closeSearch}
-          maxWidth='md:max-w-[600px]'
+          maxWidth='md:max-w-[500px]'
         >
           <div></div>
           <Input

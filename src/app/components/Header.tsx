@@ -22,7 +22,7 @@ const Header = ({ search }: { search: JSX.Element }) => {
   });
   return (
     <header
-      className={`z-10 fixed w-full flex flex-col justify-between top-0 transition-all duration-200 ease-out px-4 md:px-12 bg-dark-night h-16 md:h-20 ${
+      className={`z-10 fixed w-full flex flex-col justify-between transition-all duration-200 ease-out px-4 md:px-12 bg-dark-night h-16 md:h-20 ${
         pathname === '/' && prevScrollY < 300 ? 'bg-opacity-0 ' : ''
       } ${visible ? 'top-0' : '-top-16 md:-top-20'}`}
     >

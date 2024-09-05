@@ -2,7 +2,7 @@
 import useElementVisible from '@/hooks/useElementVisible';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, type RefObject } from 'react';
 
 const AppAd = () => {
   const imgRef = useRef<HTMLDivElement>(null);
@@ -31,7 +31,7 @@ const AppAd = () => {
       <div className='content-container h-[480px] flex md:gap-10 flex-col md:flex-row md:justify-between'>
         <div className='flex-1 md:h-full md:-mt-10 flex flex-col justify-center'>
           <h2
-            ref={observedRef}
+            ref={observedRef as RefObject<HTMLHeadingElement>}
             className='font-medium mb-4 md:mb-6 text-xl md:text-3xl leading-6'
           >
             Get tailored recommendations with the Headfirst mobile app
@@ -53,8 +53,7 @@ const AppAd = () => {
         </div>
         <div
           ref={imgRef}
-          style={{ animationDelay: '400ms' }}
-          className='opacity-0 scale-0 translate-y-full -rotate-12'
+          className='opacity-0 scale-0 translate-y-full -rotate-12 animation-delay-400 md:animation-delay-300'
         >
           <Image
             src='/headfirst-app-mock.png'

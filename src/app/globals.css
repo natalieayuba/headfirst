@@ -154,6 +154,10 @@ input[type='search']::-webkit-search-results-decoration {
   .filter-chip-scroll {
     @apply flex gap-2 overflow-y-scroll px-4 md:px-0 hide-scrollbar;
   }
+
+  .search-item {
+    @apply px-3 py-2 transition-colors duration-75 rounded-lg hover:bg-opacity-20 hover:bg-dark-night;
+  }
 }
 
 @layer component {
@@ -206,5 +210,13 @@ input[type='search']::-webkit-search-results-decoration {
 
   .search-content::-webkit-scrollbar-thumb {
     @apply bg-lilac bg-opacity-20 hover:bg-opacity-35 rounded-lg;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
   }
 }
