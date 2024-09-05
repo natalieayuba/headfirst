@@ -25,7 +25,7 @@ const Media = ({ event }: { event: EventProps }) => {
       <HorizontalScroll
         list={event.media.slice(1)}
         className='px-0 grid grid-flow-col grid-cols-4'
-        card={(medium) => (
+        renderItem={(medium) => (
           <MediaThumbnail
             event={event}
             medium={medium}

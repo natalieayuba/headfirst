@@ -49,7 +49,7 @@ const config: Config = {
         fadeOut: `fadeIn ${animationDurations.banner}ms ease-in-out reverse backwards`,
         maskIn: `maskIn ${animationDurations.default}ms ease-out backwards`,
         heartbeat: `heartbeat 200ms ease-in`,
-        bounceIn: `bounceIn 1000ms ease forwards`,
+        bounceIn: `bounceIn 900ms ease forwards`,
       },
       screens: {
         xs: '420px', // => @media (min-width: 420px) { ... }

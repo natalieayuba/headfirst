@@ -57,7 +57,7 @@ const MediaLightbox = forwardRef<HTMLDivElement, MediaLightboxProps>(
             ref={scrollerRef}
             className='scroll-smooth justify-center mb-6 md:mb-12'
             list={event.media}
-            card={(item) => (
+            renderItem={(item) => (
               <MediaThumbnail
                 event={event}
                 ref={

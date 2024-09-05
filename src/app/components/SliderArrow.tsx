@@ -1,39 +1,32 @@
-import {
-  useEffect,
-  useState,
-  type ComponentProps,
-  type ForwardedRef,
-  type RefObject,
-} from 'react';
+import { type ComponentProps, type RefObject } from 'react';
 import Icon from './Icon';
 
 interface SliderArrowProps {
-  direction: 'right' | 'left';
-  sliderRef: ForwardedRef<HTMLElement>;
+  direction: string;
+  sliderRef: RefObject<HTMLOListElement>;
   scrollLeft: number;
+  maxScrollLeft: number;
 }
 
 const SliderArrow = ({
   direction,
   sliderRef,
   scrollLeft,
+  maxScrollLeft,
   ...rest
 }: SliderArrowProps & ComponentProps<'button'>) => {
-  const [maxScrollLeft, setMaxScrollLeft] = useState(0);
-
-  useEffect(() => {
-    if ((sliderRef as RefObject<HTMLElement>)?.current) {
-      const slider = (sliderRef as RefObject<HTMLElement>)?.current!;
-      setMaxScrollLeft(slider.scrollWidth - slider.clientWidth);
-    }
-  }, [sliderRef]);
-
   const handleClick = () => {
-    const slider = (sliderRef as RefObject<HTMLElement>).current!;
+    const slider = sliderRef.current!;
     if (direction === 'right') {
-      slider.scrollLeft += slider.clientWidth;
+      slider.scroll({
+        left: slider.scrollLeft + slider.clientWidth,
+        behavior: 'smooth',
+      });
     } else if (direction === 'left') {
-      slider.scrollLeft -= slider.clientWidth;
+      slider.scroll({
+        left: slider.scrollLeft - slider.clientWidth,
+        behavior: 'smooth',
+      });
     }
   };
 
@@ -52,4 +45,5 @@ const SliderArrow = ({
     </button>
   );
 };
+
 export default SliderArrow;

@@ -54,7 +54,7 @@ const AppAd = () => {
         </div>
         <div
           ref={imgRef}
-          style={{ animationDelay: '200ms' }}
+          style={{ animationDelay: '400ms' }}
           className='opacity-0 scale-0 translate-y-full -rotate-12'
         >
           <Image

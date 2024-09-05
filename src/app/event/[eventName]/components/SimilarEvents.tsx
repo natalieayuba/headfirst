@@ -41,7 +41,7 @@ const SimilarEvents = ({ event, events, venues }: SimilarEventsProps) => {
       <HorizontalScroll
         className='md:grid md:grid-cols-5 md:gap-4'
         list={similarEvents}
-        card={(event) => (
+        renderItem={(event) => (
           <EventCard venues={venues} event={event} cardSize='w-36 md:w-full' />
         )}
       />

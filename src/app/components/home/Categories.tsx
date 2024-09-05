@@ -30,7 +30,7 @@ const Categories = ({ categories }: { categories: CategoryProps[] }) => {
       <HorizontalScroll
         className='md:grid md:grid-flow-col md:grid-cols-4 md:w-full'
         list={categories}
-        card={(category) => <CategoryCard category={category} />}
+        renderItem={(category) => <CategoryCard category={category} />}
       />
     </HomeSection>
   );

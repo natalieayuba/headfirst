@@ -7,14 +7,14 @@ import React, {
 
 interface HorizontalScrollProps {
   list: any[];
-  card: (item: any) => ReactElement;
+  renderItem: (item: any) => ReactElement;
   className?: string;
 }
 
 const HorizontalScroll = forwardRef<
   HTMLOListElement,
   HorizontalScrollProps & ComponentProps<'ol'>
->(({ list, card, className, ...rest }, ref) => (
+>(({ list, renderItem, className, ...rest }, ref) => (
   <ol
     ref={ref}
     className={`flex overflow-y-hidden overflow-x-auto gap-4 md:gap-6 content-container hide-scrollbar${appendClassName(
@@ -23,7 +23,7 @@ const HorizontalScroll = forwardRef<
     {...rest}
   >
     {list.map((item, index) => (
-      <li key={`${item.name}${index}`}>{card(item)}</li>
+      <li key={`${item.name}${index}`}>{renderItem(item)}</li>
     ))}
   </ol>
 ));

@@ -1,5 +1,6 @@
+'use client';
 import NextImage from 'next/image';
-import React from 'react';
+import React, { useRef } from 'react';
 import { type EventProps, type VenueProps } from '../../db/schema';
 import {
   appendClassName,
@@ -96,6 +97,7 @@ const EventCard = ({
   animated = true,
 }: EventCardProps) => {
   const venue = venues?.find(({ id }) => id === event.venueId);
+  const xRef = useRef({ xBefore: 0, xAfter: 0 });
   return (
     <Link
       className={`group flex relative${appendClassName(
@@ -106,6 +108,18 @@ const EventCard = ({
       href={`/event/${formatEventUrl(event.id, event.name)}`}
       onSelect={onSelect}
       draggable={false}
+      onClick={(e) => {
+        if (xRef.current.xBefore !== xRef.current.xAfter) e.preventDefault();
+      }}
+      onMouseDown={(e) =>
+        (xRef.current.xBefore = e.currentTarget.getBoundingClientRect().x)
+      }
+      onMouseUp={(e) =>
+        (xRef.current.xAfter = e.currentTarget.getBoundingClientRect().x)
+      }
+      onMouseLeave={(e) =>
+        (xRef.current.xAfter = e.currentTarget.getBoundingClientRect().x)
+      }
     >
       <Image
         src={event.media[0].src}
