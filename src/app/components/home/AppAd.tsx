@@ -6,8 +6,7 @@ import React, { useEffect, useRef } from 'react';
 
 const AppAd = () => {
   const imgRef = useRef<HTMLDivElement>(null);
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const { visible } = useElementVisible(headingRef);
+  const { visible, observedRef } = useElementVisible();
   const badges = [
     {
       image: '/download-on-the-app-store.svg',
@@ -32,7 +31,7 @@ const AppAd = () => {
       <div className='content-container h-[480px] flex md:gap-10 flex-col md:flex-row md:justify-between'>
         <div className='flex-1 md:h-full md:-mt-10 flex flex-col justify-center'>
           <h2
-            ref={headingRef}
+            ref={observedRef}
             className='font-medium mb-4 md:mb-6 text-xl md:text-3xl leading-6'
           >
             Get tailored recommendations with the Headfirst mobile app

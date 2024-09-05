@@ -5,6 +5,7 @@ import HorizontalScroll from '../HorizontalScroll';
 import EventCard from '../EventCard';
 import type { EventProps, VenueProps } from '@/db/schema';
 import useHorizontalScroll from '@/hooks/useHorizontalScroll';
+import useElementVisible from '@/hooks/useElementVisible';
 
 interface EditorPicksProps {
   events: EventProps[];
@@ -15,6 +16,7 @@ const EditorPicks = ({ events, venues }: EditorPicksProps) => {
   const { sliderRef, handleScroll, SliderArrows, handleDragStart, cursor } =
     useHorizontalScroll();
   const editorsPicks = events.filter(({ editorsPick }) => editorsPick === true);
+  const { visible } = useElementVisible(sliderRef);
 
   return (
     <HomeSection
@@ -35,12 +37,18 @@ const EditorPicks = ({ events, venues }: EditorPicksProps) => {
             ? ' [&_a]:cursor-grabbing'
             : ''
         }`}
-        renderItem={(event) => (
+        renderItem={(event, index) => (
           <EventCard
             venues={venues}
             event={event}
             showTime={false}
             cardSize='w-36 md:w-56'
+            className={`opacity-0${visible ? ' animate-fadeIn' : ''}`}
+            style={{
+              animationDelay: `${75 * index + 1}ms`,
+              animationFillMode: 'forwards',
+              animationDuration: '200ms',
+            }}
           />
         )}
       />

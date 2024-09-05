@@ -96,7 +96,7 @@ input[type='search']::-webkit-search-results-decoration {
   }
 
   .filter-chip {
-    @apply bg-night px-3 h-8 w-fit flex items-center gap-1.5 rounded-full transition-opacity duration-150 flex-shrink-0 [&_*]:cursor-pointer;
+    @apply bg-night px-3 h-8 [&&]:w-fit flex items-center gap-1.5 rounded-full transition-all duration-150 flex-shrink-0 [&_*]:cursor-pointer select-none;
   }
 
   .filter-chip-selected {
@@ -150,15 +150,15 @@ input[type='search']::-webkit-search-results-decoration {
   .circle-button-event {
     @apply size-10 flex items-center justify-center;
   }
+
+  .filter-chip-scroll {
+    @apply flex gap-2 overflow-y-scroll px-4 md:px-0 hide-scrollbar;
+  }
 }
 
 @layer component {
   .secondary-text {
     @apply text-white text-opacity-60 text-sm leading-[125%];
-  }
-
-  .filter-chip-scroll {
-    @apply flex gap-2 overflow-y-scroll px-4 md:px-0 hide-scrollbar;
   }
 }
 

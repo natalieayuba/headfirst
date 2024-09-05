@@ -33,9 +33,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
+    <html lang='en' className='h-full'>
       <body
-        className={`${baloo_2.className} ${londrina_solid.variable} bg-dark-night text-white text-opacity-90 leading-tight`}
+        className={`${baloo_2.className} ${londrina_solid.variable} bg-dark-night text-white text-opacity-90 leading-tight flex flex-col h-full`}
       >
         {children}
         <Footer />

@@ -79,11 +79,8 @@ const FilteredEvents = ({ events, venues }: FilteredEventsProps) => {
       <div className='content-container pt-2 mb-10'>
         <div className='flex justify-between'>
           <p className='secondary-text'>
-            {filteredEvents.length > 0
-              ? `${filteredEvents.length} ${
-                  filteredEvents.length === 1 ? 'event' : 'events'
-                }`
-              : 'No events found'}
+            {filteredEvents.length}
+            {filteredEvents.length === 1 ? ' event' : ' events'}
           </p>
           {searchParams.size > 0 && (
             <button
@@ -95,9 +92,9 @@ const FilteredEvents = ({ events, venues }: FilteredEventsProps) => {
             </button>
           )}
         </div>
-        <div className='grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xs:gap-8 mt-5 xs:mt-6 mb-6'>
-          {loadedEvents.length > 0 &&
-            loadedEvents.map((event) => (
+        {loadedEvents.length > 0 ? (
+          <div className='grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xs:gap-8 mt-5 xs:mt-6 mb-6'>
+            {loadedEvents.map((event) => (
               <EventCard
                 key={event.name}
                 event={event}
@@ -106,8 +103,14 @@ const FilteredEvents = ({ events, venues }: FilteredEventsProps) => {
                 imageSize='w-24 xs:w-full'
                 horizontal={windowWidth < 420}
               />
-            ))}
-        </div>
+            ))}{' '}
+          </div>
+        ) : (
+          <p className='mt-6 text-white text-opacity-60'>
+            No events found. Please adjust your filters.
+          </p>
+        )}
+
         <div className='flex justify-center'>
           <Button
             alt

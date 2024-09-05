@@ -27,7 +27,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className='bg-night text-sm'>
+    <footer className='bg-night text-sm mt-auto'>
       <div className='pt-16 content-container flex flex-col gap-y-8 md:flex-row items-start justify-between flex-wrap'>
         <Link href='/'>
           <Image

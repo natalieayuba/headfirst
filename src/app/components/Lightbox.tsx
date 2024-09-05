@@ -24,7 +24,11 @@ const Lightbox = forwardRef<HTMLDivElement, LightboxProps>(
           </button>
         )}
         {onClose && (
-          <button onClick={onClose} className='ml-auto default-hover'>
+          <button
+            onClick={onClose}
+            className='ml-auto default-hover'
+            title='Close'
+          >
             <Icon name='close' />
           </button>
         )}

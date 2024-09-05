@@ -1,30 +1,31 @@
-import { useEffect, useState, type RefObject } from 'react';
+import { useEffect, useRef, useState, type RefObject } from 'react';
 
-const useElementVisible = (ref: RefObject<HTMLElement>) => {
+const useElementVisible = (ref?: RefObject<Element>) => {
+  let observedRef = useRef<Element>(null);
   const [visible, setVisible] = useState(false);
 
+  if (ref) {
+    observedRef = ref;
+  }
+
   useEffect(() => {
-    const handleScroll = () => {
-      if (ref.current) {
-        const rect = ref.current.getBoundingClientRect()!;
-        const visible =
-          rect.top >= 0 &&
-          rect.left >= 0 &&
-          rect.bottom <=
-            (window.innerHeight || document.documentElement.clientHeight) &&
-          rect.right <=
-            (window.innerWidth || document.documentElement.clientWidth);
-        setVisible(visible);
-      }
-    };
+    if (observedRef.current) {
+      const observed = observedRef.current;
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisible(true);
+            observer.disconnect();
+          }
+        });
+      });
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-
-    return () => window.removeEventListener('scroll', handleScroll);
+      observer.observe(observed);
+      return () => observer.unobserve(observed);
+    }
   });
 
-  return { visible };
+  return { observedRef, visible };
 };
 
 export default useElementVisible;

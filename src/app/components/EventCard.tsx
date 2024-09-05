@@ -1,6 +1,7 @@
 'use client';
 import NextImage from 'next/image';
 import React, { useRef } from 'react';
+import NextLink from 'next/link';
 import { type EventProps, type VenueProps } from '../../db/schema';
 import {
   appendClassName,
@@ -95,11 +96,13 @@ const EventCard = ({
   showPrice = true,
   showTime = true,
   animated = true,
-}: EventCardProps) => {
+  ...rest
+}: EventCardProps & Partial<Parameters<typeof NextLink>[0]>) => {
   const venue = venues?.find(({ id }) => id === event.venueId);
   const xRef = useRef({ xBefore: 0, xAfter: 0 });
   return (
     <Link
+      {...rest}
       className={`group flex relative${appendClassName(
         className
       )}${appendClassName(cardSize)} ${

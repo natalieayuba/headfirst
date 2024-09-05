@@ -30,7 +30,7 @@ const FilterChip = ({
             : 'hover:filter-chip-hovered'
         }`}
       >
-        <label htmlFor={text}>
+        <label htmlFor={text} className='text-nowrap'>
           <input
             type='radio'
             id={text}

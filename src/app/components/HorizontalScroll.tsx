@@ -7,7 +7,7 @@ import React, {
 
 interface HorizontalScrollProps {
   list: any[];
-  renderItem: (item: any) => ReactElement;
+  renderItem: (item: any, index: number) => ReactElement;
   className?: string;
 }
 
@@ -23,7 +23,7 @@ const HorizontalScroll = forwardRef<
     {...rest}
   >
     {list.map((item, index) => (
-      <li key={`${item.name}${index}`}>{renderItem(item)}</li>
+      <li key={`${item.name}${index}`}>{renderItem(item, index)}</li>
     ))}
   </ol>
 ));
