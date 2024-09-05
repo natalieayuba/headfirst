@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import useElementVisible from '@/hooks/useElementVisible';
+import React, { useEffect, useRef, useState, type RefObject } from 'react';
 
 const SlotMachine = () => {
   const [amount, setAmount] = useState(14177.5);
   const [height, setHeight] = useState(0);
-  const [visible, setVisible] = useState(false);
+  const { visible, observedRef } = useElementVisible();
 
   const formattedDonation = () => {
     let pound = '0';
@@ -43,27 +44,6 @@ const SlotMachine = () => {
   });
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (ref.current) {
-        const rect = ref.current[0]?.parentElement?.getBoundingClientRect()!;
-        const visible =
-          rect.top >= 0 &&
-          rect.left >= 0 &&
-          rect.bottom <=
-            (window.innerHeight || document.documentElement.clientHeight) &&
-          rect.right <=
-            (window.innerWidth || document.documentElement.clientWidth);
-        setVisible(visible);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
     if (ref.current) {
       const span = ref.current[0]?.children[0] as HTMLElement;
       setHeight(span.offsetHeight);
@@ -90,12 +70,12 @@ const SlotMachine = () => {
     index < decimalPosition(array);
 
   return (
-    <div>
+    <div ref={observedRef as RefObject<HTMLDivElement>}>
       <p className='font-heading-lg text-6xl font-bold text-lilac flex items-end'>
         <span className='font-sans font-extrabold text-3xl mr-px mb-px'>£</span>
         {slots.map((col, index, array) => {
           return (
-            <>
+            <React.Fragment key={index}>
               {isCommaPosition(index, array) && <span>,</span>}
               {index === decimalPosition(array) && <span>.</span>}
               <span
@@ -109,7 +89,7 @@ const SlotMachine = () => {
                   </span>
                 ))}
               </span>
-            </>
+            </React.Fragment>
           );
         })}
       </p>
