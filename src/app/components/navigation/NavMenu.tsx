@@ -11,18 +11,6 @@ interface NavListProps {
   close: () => void;
 }
 
-const NavList = ({ links, close }: NavListProps) => (
-  <ul className={`font-medium text-lg`}>
-    {links.map(({ name, url }) => (
-      <li key={name}>
-        <Link href={url ?? '#'} className='block py-2 w-fit' onSelect={close}>
-          {name}
-        </Link>
-      </li>
-    ))}
-  </ul>
-);
-
 const NavMenu = () => {
   const { isOpen, closeLightbox, openLightbox, lightboxRef } = useLightbox();
 
@@ -32,6 +20,18 @@ const NavMenu = () => {
 
   const accountLinks = navLinks.find(({ name }) => name === 'My account')
     ?.links!;
+
+  const NavList = ({ links, close }: NavListProps) => (
+    <ul className={`font-medium text-lg`}>
+      {links.map(({ name, url }) => (
+        <li key={name}>
+          <Link href={url ?? '#'} className='block py-2 w-fit' onSelect={close}>
+            {name}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
 
   return (
     <div className='md:hidden'>
@@ -47,9 +47,7 @@ const NavMenu = () => {
         <NavList links={accountLinks} close={closeLightbox} />
       </Lightbox>
       <div
-        className={`relative -mr-2 hover:scale-110 transition-all duration-150${
-          isOpen ? ' z-20' : ''
-        }`}
+        className={`relative -mr-2 default-hover${isOpen ? ' z-20' : ''}`}
         title={`${isOpen ? 'Close' : 'Open'} menu`}
       >
         <Hamburger
