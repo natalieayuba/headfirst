@@ -1,11 +1,14 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
 import { Baloo_2, Londrina_Solid } from 'next/font/google';
-import { colors, description, name, tagline } from '../../config';
+import { colors, description, name } from '../../config';
 import Footer from './components/Footer';
 
 export const metadata: Metadata = {
-  title: `${name} | ${tagline}`,
+  title: {
+    template: `%s | ${name}`,
+    default: `${name} | ${description}`,
+  },
   description,
 };
 

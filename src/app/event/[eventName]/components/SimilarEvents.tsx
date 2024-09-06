@@ -1,7 +1,9 @@
+'use client';
 import React from 'react';
 import HorizontalScroll from '../../../components/HorizontalScroll';
 import EventCard from '../../../components/EventCard';
 import type { EventProps, VenueProps } from '@/db/schema';
+import useLocalStorage from '@/hooks/useLocalStorage';
 
 interface SimilarEventsProps {
   event: EventProps;
@@ -10,6 +12,7 @@ interface SimilarEventsProps {
 }
 
 const SimilarEvents = ({ event, events, venues }: SimilarEventsProps) => {
+  const [savedEvents, updateSavedEvents] = useLocalStorage('savedEvents', []);
   const max = 5;
   const similarEvents = events
     .filter(
@@ -42,7 +45,13 @@ const SimilarEvents = ({ event, events, venues }: SimilarEventsProps) => {
         className='md:grid md:grid-cols-5 md:gap-4'
         list={similarEvents}
         renderItem={(event) => (
-          <EventCard venues={venues} event={event} cardSize='w-36 md:w-full' />
+          <EventCard
+            savedEvents={savedEvents}
+            updateSavedEvents={updateSavedEvents}
+            venues={venues}
+            event={event}
+            cardSize='w-36 md:w-full'
+          />
         )}
       />
     </div>

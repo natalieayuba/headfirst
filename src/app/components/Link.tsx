@@ -7,14 +7,12 @@ import Loader from './Loader';
 
 interface LinkProps {
   onSelect?: () => void;
-  external?: boolean;
 }
 
 const Link = ({
   href,
   children,
   replace,
-  external,
   onSelect,
   ...rest
 }: LinkProps & Parameters<typeof NextLink>[0]) => {
@@ -47,7 +45,6 @@ const Link = ({
       <NextLink
         href={href}
         onClick={(e) => loadPage(onClick, afterClick, e)}
-        target={external ? '_blank' : ''}
         {...rest}
       >
         {children}

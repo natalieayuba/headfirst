@@ -58,8 +58,11 @@ export const formatPriceRange = (tickets: TicketProps[]) => {
   )}`;
 };
 
-export const capitaliseFirstLetter = (text: string) =>
-  text.charAt(0).toUpperCase() + text.slice(1);
+export const toSentenceCase = (text: string) =>
+  text
+    .split(' ')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
 
 export const formatEventUrl = (id: string, name: string) =>
   toUrl(`${name}-${id}`);

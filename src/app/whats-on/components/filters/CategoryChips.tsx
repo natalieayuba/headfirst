@@ -10,8 +10,6 @@ const CategoryChips = ({ categories }: { categories: CategoryProps[] }) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
-  const { sliderRef, handleScroll, SliderArrows, handleDragStart, cursor } =
-    useHorizontalScroll();
 
   const category = categories.find(
     ({ id }) => id === searchParams.get('categoryId')?.toString()
@@ -19,7 +17,15 @@ const CategoryChips = ({ categories }: { categories: CategoryProps[] }) => {
   const [subcategories, setSubcategories] = useState<SubcategoryProps[]>(
     category ? category.subcategories : []
   );
-  const fadedContainerRef = useRef<HTMLDivElement>(null);
+  const {
+    sliderRef,
+    handleScroll,
+    SliderArrowLeft,
+    SliderArrowRight,
+    handleDragStart,
+    cursor,
+    maxScrollLeft,
+  } = useHorizontalScroll(subcategories);
 
   const updateCategoryParam = (id: string) => {
     const params = new URLSearchParams(searchParams);
@@ -55,19 +61,22 @@ const CategoryChips = ({ categories }: { categories: CategoryProps[] }) => {
 
   const scroll = (e: UIEvent) => {
     handleScroll();
-    if (e.currentTarget.clientWidth < e.currentTarget.scrollWidth) {
-      if (e.currentTarget.scrollLeft === 0) {
-        fadedContainerRef.current?.classList.remove('before:opacity-100');
+    if (
+      sliderRef.current &&
+      sliderRef.current.clientWidth < sliderRef.current.scrollWidth
+    ) {
+      if (sliderRef.current.scrollLeft === 0) {
+        sliderRef.current.classList.remove('before:opacity-100');
       } else {
-        fadedContainerRef.current?.classList.add('before:opacity-100');
+        sliderRef.current.classList.add('before:opacity-100');
       }
       if (
-        e.currentTarget.scrollLeft ===
-        e.currentTarget.scrollWidth - e.currentTarget.clientWidth
+        sliderRef.current.scrollLeft ===
+        sliderRef.current.scrollWidth - sliderRef.current.clientWidth
       ) {
-        fadedContainerRef.current?.classList.add('after:opacity-0');
+        sliderRef.current.classList.add('after:opacity-0');
       } else {
-        fadedContainerRef.current?.classList.remove('after:opacity-0');
+        sliderRef.current.classList.remove('after:opacity-0');
       }
     }
   };
@@ -87,34 +96,41 @@ const CategoryChips = ({ categories }: { categories: CategoryProps[] }) => {
         ))}
       </div>
 
-      <div className='flex w-full'>
-        <div
-          className='md:fade-overflow-edge-left md:fade-overflow-edge-right w-full flex-1'
-          ref={fadedContainerRef}
-        >
-          <HorizontalScroll
-            ref={sliderRef}
-            onMouseDown={handleDragStart}
-            list={subcategories.toSorted((a, b) =>
-              a.name.localeCompare(b.name)
-            )}
-            className={`[&&]:filter-chip-scroll mb-2 [&&]:flex-1 transition-transform duration-200 ${
-              subcategories.length > 0 ? '' : '-translate-y-10 opacity-0'
-            }`}
-            renderItem={(item) => (
-              <FilterChip
-                key={item.id}
-                text={item.name}
-                value={item.id}
-                name='subcategory'
-                selected={searchParams.get('subcategoryId')?.toString() ?? ''}
-                setSelected={updateSubcategoryParam}
-              />
-            )}
-            onScroll={scroll}
-          />
-          <div className='ml-auto'>{SliderArrows}</div>
-        </div>
+      <div className='flex w-full flex-1 '>
+        {sliderRef.current?.scrollLeft! > 0 && (
+          <div className='absolute left-2 md:fade-overflow-edge-left h-8 z-10'>
+            {SliderArrowLeft}
+          </div>
+        )}
+        <HorizontalScroll
+          ref={sliderRef}
+          onMouseDown={handleDragStart}
+          list={subcategories.toSorted((a, b) => a.name.localeCompare(b.name))}
+          className={`relative [&&]:filter-chip-scroll mb-2 [&&]:flex-1 transition-transform duration-200 ${
+            cursor === 'grab'
+              ? ' [&_label]:cursor-grab'
+              : cursor === 'grabbing'
+              ? ' [&_label]:cursor-grabbing'
+              : ''
+          } ${subcategories.length > 0 ? '' : '-translate-y-10 opacity-0'}`}
+          renderItem={(item) => (
+            <FilterChip
+              key={item.id}
+              text={item.name}
+              value={item.id}
+              name='subcategory'
+              selected={searchParams.get('subcategoryId')?.toString() ?? ''}
+              setSelected={updateSubcategoryParam}
+            />
+          )}
+          onScroll={scroll}
+        />
+        {sliderRef.current?.clientWidth! !== sliderRef.current?.scrollWidth! &&
+          sliderRef.current?.scrollLeft! !== maxScrollLeft && (
+            <div className='absolute right-2 md:fade-overflow-edge-right h-8 z-10'>
+              {SliderArrowRight}
+            </div>
+          )}
       </div>
     </div>
   );

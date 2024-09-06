@@ -3,6 +3,7 @@ import Link from '../Link';
 
 interface ButtonProps {
   alt?: boolean;
+  external?: boolean;
 }
 
 const styling = (alt?: boolean, className?: string) =>
@@ -21,11 +22,21 @@ const Button = ({
 const ButtonLink = ({
   alt,
   className,
+  external,
   ...rest
-}: ButtonProps & ComponentProps<typeof Link>) => (
-  <Link className={styling(alt, className)} href={rest.href}>
-    {rest.children}
-  </Link>
-);
-
+}: ButtonProps & ComponentProps<typeof Link>) =>
+  external ? (
+    <a
+      target='_blank'
+      className={styling(alt, className)}
+      href={rest.href.toString()}
+      rel='noopener noreferrer'
+    >
+      {rest.children}
+    </a>
+  ) : (
+    <Link className={styling(alt, className)} href={rest.href}>
+      {rest.children}
+    </Link>
+  );
 export { Button, ButtonLink };

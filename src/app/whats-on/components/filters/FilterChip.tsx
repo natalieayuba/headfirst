@@ -1,5 +1,6 @@
 import Icon from '@/app/components/Icon';
 import Loader from '@/app/components/Loader';
+import useAllowDrag from '@/hooks/useAllowDrag';
 import useLoader from '@/hooks/useLoader';
 import React from 'react';
 
@@ -19,29 +20,34 @@ const FilterChip = ({
   setSelected,
 }: FilterChipProps) => {
   const { loading, loadPage } = useLoader();
+  const { handleClick, handleMouseDown, handleMouseLeave, handleMouseUp } =
+    useAllowDrag();
   return (
     <>
       {loading && <Loader />}
-      <div
+      <label
         key={text}
-        className={`filter-chip ${
+        className={`filter-chip text-nowrap cursor-pointer ${
           selected === value
             ? 'filter-chip-selected'
             : 'hover:filter-chip-hovered'
         }`}
+        htmlFor={text}
+        onClick={handleClick}
+        onMouseDown={handleMouseDown}
+        onMouseLeave={handleMouseLeave}
+        onMouseUp={handleMouseUp}
       >
-        <label htmlFor={text} className='text-nowrap'>
-          <input
-            type='radio'
-            id={text}
-            name={name}
-            className='hidden'
-            value={value}
-            checked={value === selected}
-            onChange={(e) => loadPage(() => setSelected(e.target.value))}
-          />
-          {text}
-        </label>
+        <input
+          type='radio'
+          id={text}
+          name={name}
+          className='hidden'
+          value={value}
+          checked={value === selected}
+          onChange={(e) => loadPage(() => setSelected(e.target.value))}
+        />
+        {text}
         {value === selected && (
           <button
             type='button'
@@ -51,7 +57,7 @@ const FilterChip = ({
             <Icon name='close' size={12} />
           </button>
         )}
-      </div>
+      </label>
     </>
   );
 };

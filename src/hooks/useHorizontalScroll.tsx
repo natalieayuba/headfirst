@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import useWindowWidth from './useWindowWidth';
 import SliderArrow from '@/app/components/SliderArrow';
 
-const useHorizontalScroll = () => {
+const useHorizontalScroll = (scrollList?: any[]) => {
   const sliderRef = useRef<HTMLOListElement>(null);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [maxScrollLeft, setMaxScrollLeft] = useState(0);
@@ -14,18 +14,21 @@ const useHorizontalScroll = () => {
 
   const handleScroll = () => setScrollLeft(sliderRef.current!.scrollLeft);
 
-  const SliderArrows = (
-    <div className='hidden md:block'>
-      {['left', 'right'].map((direction) => (
-        <SliderArrow
-          key={direction}
-          direction={direction}
-          sliderRef={sliderRef}
-          scrollLeft={scrollLeft}
-          maxScrollLeft={maxScrollLeft}
-        />
-      ))}
-    </div>
+  const SliderArrowLeft = (
+    <SliderArrow
+      direction='left'
+      sliderRef={sliderRef}
+      scrollLeft={scrollLeft}
+      maxScrollLeft={maxScrollLeft}
+    />
+  );
+  const SliderArrowRight = (
+    <SliderArrow
+      direction='right'
+      sliderRef={sliderRef}
+      scrollLeft={scrollLeft}
+      maxScrollLeft={maxScrollLeft}
+    />
   );
 
   useEffect(() => {
@@ -34,7 +37,7 @@ const useHorizontalScroll = () => {
         sliderRef.current.scrollWidth - sliderRef.current.clientWidth
       );
     }
-  }, [windowWidth]);
+  }, [windowWidth, scrollList]);
 
   useEffect(() => {
     const handleDrag = (e: MouseEvent) => {
@@ -75,7 +78,15 @@ const useHorizontalScroll = () => {
     }
   }, [cursor]);
 
-  return { sliderRef, handleScroll, SliderArrows, handleDragStart, cursor };
+  return {
+    sliderRef,
+    handleScroll,
+    SliderArrowLeft,
+    SliderArrowRight,
+    handleDragStart,
+    cursor,
+    maxScrollLeft,
+  };
 };
 
 export default useHorizontalScroll;

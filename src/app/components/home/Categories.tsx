@@ -30,7 +30,7 @@ const Categories = ({ categories }: { categories: CategoryProps[] }) => {
         alt={`${category.name} background image`}
       />
       <div className='bg-gradient-to-b from-transparent to-dark-night to-[115%] w-full h-full absolute'></div>
-      <h3 className='px-5 py-2.5 absolute bottom-0 md:text-lg md:px-6'>
+      <h3 className='px-5 py-3 absolute bottom-0 md:text-lg md:px-6 [&&]:leading-5'>
         {category.name}
       </h3>
     </Link>

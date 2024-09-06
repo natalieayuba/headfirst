@@ -1,21 +1,32 @@
 'use client';
-import React, { useState, type MouseEvent } from 'react';
+import React, { type MouseEvent } from 'react';
 import Icon from '../Icon';
 import { colors } from '../../../../config';
 import { appendClassName } from '@/utils/formatting';
 
 interface SaveButtonProps {
+  eventId: string;
   className?: string;
   size?: number;
+  savedEvents: string[];
+  updateSavedEvents: (updatedEvents: string[]) => void;
 }
 
-const SaveButton = ({ className, size }: SaveButtonProps) => {
-  const [saved, setSaved] = useState(false);
-
+const SaveButton = ({
+  savedEvents,
+  updateSavedEvents,
+  eventId,
+  className,
+  size,
+}: SaveButtonProps) => {
   const handleClick = (e: MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setSaved(!saved);
+    updateSavedEvents(
+      savedEvents.includes(eventId)
+        ? savedEvents.filter((id: string) => id !== eventId)
+        : [...savedEvents, eventId]
+    );
   };
 
   return (
@@ -26,8 +37,10 @@ const SaveButton = ({ className, size }: SaveButtonProps) => {
       <Icon
         size={size}
         name='heart'
-        fill={saved ? colors.lilac : 'none'}
-        className={saved ? 'text-lilac animate-heartbeat' : ''}
+        fill={savedEvents.includes(eventId) ? colors.lilac : 'none'}
+        className={
+          savedEvents.includes(eventId) ? 'text-lilac animate-heartbeat' : ''
+        }
       />
     </button>
   );

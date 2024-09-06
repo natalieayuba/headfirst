@@ -1,7 +1,7 @@
 import React from 'react';
 import Icon from '../../../components/Icon';
 import {
-  capitaliseFirstLetter,
+  toSentenceCase,
   formatDateRange,
   timeFormat,
 } from '@/utils/formatting';
@@ -46,7 +46,7 @@ const Details = ({ event, venues, categories }: DetailsProps) => {
           ? `${ageLimit}, ${lastEntry}`
           : ageLimit
           ? ageLimit
-          : capitaliseFirstLetter(lastEntry),
+          : toSentenceCase(lastEntry),
     },
   ];
 
@@ -55,12 +55,8 @@ const Details = ({ event, venues, categories }: DetailsProps) => {
       {details.map(
         ({ icon, text }) =>
           text && (
-            <li key={text} className='mb-1'>
-              <Icon
-                name={icon}
-                size={16}
-                className='text-white text-opacity-40 inline-block mr-3'
-              />
+            <li key={text} className='mb-2'>
+              <Icon name={icon} size={18} className='inline-block mr-3' />
               {text}
             </li>
           )

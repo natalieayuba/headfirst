@@ -4,6 +4,7 @@ import EventCard from '@/app/components/EventCard';
 import Loader from '@/app/components/Loader';
 import type { EventProps, VenueProps } from '@/db/schema';
 import useLoader from '@/hooks/useLoader';
+import useLocalStorage from '@/hooks/useLocalStorage';
 import useWindowWidth from '@/hooks/useWindowWidth';
 import { formatDate } from '@/utils/formatting';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
@@ -23,6 +24,7 @@ const FilteredEvents = ({ events, venues }: FilteredEventsProps) => {
   const searchParams = useSearchParams();
   const { loading, loadPage } = useLoader();
   const { windowWidth } = useWindowWidth();
+  const [savedEvents, updateSavedEvents] = useLocalStorage('savedEvents', []);
 
   const clearFilters = () => {
     const params = new URLSearchParams(searchParams);
@@ -99,11 +101,12 @@ const FilteredEvents = ({ events, venues }: FilteredEventsProps) => {
                 key={event.name}
                 event={event}
                 venues={venues}
-                cardSize=''
+                savedEvents={savedEvents}
+                updateSavedEvents={updateSavedEvents}
                 imageSize='w-24 xs:w-full'
                 horizontal={windowWidth < 420}
               />
-            ))}{' '}
+            ))}
           </div>
         ) : (
           <p className='mt-6 text-white text-opacity-60'>

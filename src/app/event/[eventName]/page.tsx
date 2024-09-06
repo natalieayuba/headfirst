@@ -1,9 +1,7 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { formatEventUrl } from '@/utils/formatting';
+import { formatDate, formatEventUrl, toSentenceCase } from '@/utils/formatting';
 import Image from 'next/image';
-import SaveButton from '@/app/components/buttons/SaveButton';
-import ShareButton from '@/app/components/buttons/ShareButton';
 import Media from '@/app/event/[eventName]/components/media/Media';
 import Breadcrumbs from '@/app/event/[eventName]/components/Breadcrumbs';
 import Details from '@/app/event/[eventName]/components/Details';
@@ -16,8 +14,33 @@ import Header from '@/app/components/Header';
 import Search from '@/app/components/search/Search';
 import Socials from './components/Socials';
 import Venue from './components/Venue';
+import CTAButtons from './components/CTAButtons';
+import type { Metadata } from 'next';
 
-const Event = async ({ params }: { params: { eventName: string } }) => {
+interface EventProps {
+  params: { eventName: string };
+}
+
+export async function generateMetadata({
+  params,
+}: EventProps): Promise<Metadata> {
+  const events = await getEvents();
+  const venues = await getVenues();
+  const categories = await getCategories();
+  const event = events.find(
+    ({ id, name }) =>
+      formatEventUrl(id, name) === decodeURIComponent(params.eventName)
+  );
+  const venue = venues.find(({ id }) => event?.venueId === id);
+  const category = categories.find(({ id }) => event?.categoryId === id);
+  return {
+    title: `${event?.name} Tickets | ${formatDate(event?.startDate!)} at ${
+      venue?.name
+    } | ${toSentenceCase(category?.name!)} in Bristol`,
+  };
+}
+
+const Event = async ({ params }: EventProps) => {
   const events = await getEvents();
   const venues = await getVenues();
   const categories = await getCategories();
@@ -45,10 +68,7 @@ const Event = async ({ params }: { params: { eventName: string } }) => {
               sizes='100%'
               className='object-cover rounded-lg'
             />
-            <div className='absolute bottom-2.5 right-2.5 flex gap-1'>
-              <SaveButton className='circle-button-event' size={18} />
-              <ShareButton />
-            </div>
+            <CTAButtons eventId={event.id} />
           </div>
           <div className='hidden md:block'>
             {event.media && <Media event={event} />}

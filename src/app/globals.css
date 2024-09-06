@@ -136,11 +136,11 @@ input[type='search']::-webkit-search-results-decoration {
   }
 
   .fade-overflow-edge-right {
-    @apply after:content-[""] after:h-8 after:w-[40px] after:absolute after:bottom-2 after:right-12 after:bg-gradient-to-r after:from-transparent after:to-dark-night after:z-10 after:transition-opacity after:duration-150;
+    @apply before:content-[""] before:inline-block before:h-full before:w-[50px] before:bg-gradient-to-r before:from-transparent before:to-dark-night;
   }
 
   .fade-overflow-edge-left {
-    @apply before:content-[""] before:h-8 before:w-[40px] before:absolute before:bottom-2 before:left-12 before:bg-gradient-to-l before:from-transparent before:to-dark-night before:opacity-0 before:z-10 before:transition-opacity before:duration-150;
+    @apply after:content-[""] after:inline-block after:h-full after:w-[50px] after:bg-gradient-to-l after:from-transparent after:to-dark-night after:to-80%;
   }
 
   .circle-button {

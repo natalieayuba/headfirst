@@ -1,6 +1,6 @@
 import Icon from '@/app/components/Icon';
 import type { SocialsProps } from '@/db/schema';
-import { capitaliseFirstLetter } from '@/utils/formatting';
+import { toSentenceCase } from '@/utils/formatting';
 import Link from 'next/link';
 import React from 'react';
 
@@ -9,8 +9,9 @@ const Socials = ({ socials }: { socials: SocialsProps }) => {
     <div className='flex gap-3'>
       {Object.keys(socials).map((social) => (
         <Link
+          key={social}
           href={socials[social as keyof SocialsProps] ?? '#'}
-          title={capitaliseFirstLetter(social)}
+          title={toSentenceCase(social)}
           className='hover:opacity-90 transition-opacity duration-200'
           target='_blank'
         >

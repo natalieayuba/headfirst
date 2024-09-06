@@ -1,35 +1,14 @@
 'use client';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 
 const About = ({ about }: { about: string }) => {
   const [readMore, setReadMore] = useState(false);
   const maxLength = 1000;
-  const urlRegex = /(https?\:\/\/)?(www\.)?[^\s]+\.[^\s]+/g;
-  const aboutRef = useRef<HTMLParagraphElement>(null);
-
-  const replacer = (matched: string) => {
-    let withProtocol = matched;
-    if (!withProtocol.startsWith('http')) {
-      withProtocol = 'http://' + matched;
-    }
-    const newStr = `<a class="link" href="${withProtocol}">${matched}</a>`;
-
-    return newStr;
-  };
-
-  const aboutWithLinks = about.replaceAll(urlRegex, replacer);
-
-  useEffect(() => {
-    if (aboutRef.current) {
-      aboutRef.current.innerHTML = aboutWithLinks;
-    }
-  }, []);
 
   return (
     <div>
       <h2 className='mb-4'>About this event</h2>
       <p
-        ref={aboutRef}
         className={`text-white text-opacity-60 whitespace-pre-wrap break-words${
           readMore
             ? ''

@@ -6,6 +6,7 @@ import EventCard from '../EventCard';
 import type { EventProps, VenueProps } from '@/db/schema';
 import useHorizontalScroll from '@/hooks/useHorizontalScroll';
 import useElementVisible from '@/hooks/useElementVisible';
+import useLocalStorage from '@/hooks/useLocalStorage';
 
 interface EditorPicksProps {
   events: EventProps[];
@@ -13,16 +14,28 @@ interface EditorPicksProps {
 }
 
 const EditorPicks = ({ events, venues }: EditorPicksProps) => {
-  const { sliderRef, handleScroll, SliderArrows, handleDragStart, cursor } =
-    useHorizontalScroll();
+  const {
+    sliderRef,
+    handleScroll,
+    SliderArrowLeft,
+    SliderArrowRight,
+    handleDragStart,
+    cursor,
+  } = useHorizontalScroll();
   const editorsPicks = events.filter(({ editorsPick }) => editorsPick === true);
   const { visible } = useElementVisible(sliderRef);
+  const [savedEvents, updateSavedEvents] = useLocalStorage('savedEvents', []);
 
   return (
     <HomeSection
       heading="Our editors' top picks"
       caption='Explore the best gigs and nights out in Bristol, curated by our editorial team.'
-      rightDiv={SliderArrows}
+      rightDiv={
+        <div className='hidden md:block'>
+          {SliderArrowLeft}
+          {SliderArrowRight}
+        </div>
+      }
     >
       <HorizontalScroll
         id='slider'
@@ -42,6 +55,8 @@ const EditorPicks = ({ events, venues }: EditorPicksProps) => {
             venues={venues}
             event={event}
             showTime={false}
+            savedEvents={savedEvents}
+            updateSavedEvents={updateSavedEvents}
             cardSize='w-36 md:w-56'
             className={`opacity-0${visible ? ' animate-fadeIn' : ''}`}
             style={{

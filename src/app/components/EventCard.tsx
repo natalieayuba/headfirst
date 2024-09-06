@@ -11,6 +11,7 @@ import {
 } from '@/utils/formatting';
 import SaveButton from './buttons/SaveButton';
 import Link from './Link';
+import useAllowDrag from '@/hooks/useAllowDrag';
 
 interface EventCardProps {
   event: EventProps;
@@ -25,6 +26,8 @@ interface EventCardProps {
   showPrice?: boolean;
   onSelect?: () => void;
   animated?: boolean;
+  savedEvents?: string[];
+  updateSavedEvents?: (updatedEvents: string[]) => void;
 }
 
 interface ImageProps extends Partial<EventCardProps> {
@@ -96,10 +99,13 @@ const EventCard = ({
   showPrice = true,
   showTime = true,
   animated = true,
+  savedEvents,
+  updateSavedEvents,
   ...rest
 }: EventCardProps & Partial<Parameters<typeof NextLink>[0]>) => {
   const venue = venues?.find(({ id }) => id === event.venueId);
-  const xRef = useRef({ xBefore: 0, xAfter: 0 });
+  const { handleClick, handleMouseDown, handleMouseLeave, handleMouseUp } =
+    useAllowDrag();
   return (
     <Link
       {...rest}
@@ -111,18 +117,10 @@ const EventCard = ({
       href={`/event/${formatEventUrl(event.id, event.name)}`}
       onSelect={onSelect}
       draggable={false}
-      onClick={(e) => {
-        if (xRef.current.xBefore !== xRef.current.xAfter) e.preventDefault();
-      }}
-      onMouseDown={(e) =>
-        (xRef.current.xBefore = e.currentTarget.getBoundingClientRect().x)
-      }
-      onMouseUp={(e) =>
-        (xRef.current.xAfter = e.currentTarget.getBoundingClientRect().x)
-      }
-      onMouseLeave={(e) =>
-        (xRef.current.xAfter = e.currentTarget.getBoundingClientRect().x)
-      }
+      onClick={handleClick}
+      onMouseDown={handleMouseDown}
+      onMouseLeave={handleMouseLeave}
+      onMouseUp={handleMouseUp}
     >
       <Image
         src={event.media[0].src}
@@ -139,6 +137,9 @@ const EventCard = ({
       />
       {showSaved && (
         <SaveButton
+          savedEvents={savedEvents!}
+          updateSavedEvents={updateSavedEvents!}
+          eventId={event.id}
           className={
             horizontal
               ? 'relative [&&]:bg-opacity-0 [&&]:p-0'
