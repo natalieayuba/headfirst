@@ -8,7 +8,7 @@ const useLightbox = () => {
   const closeLightbox = () => setIsOpen(false);
 
   useEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : 'auto';
+    document.body.style.overflowY = isOpen ? 'hidden' : 'auto';
     document.body.style.touchAction = isOpen ? 'none' : 'auto';
   }, [isOpen]);
 

@@ -8,10 +8,15 @@ const useHorizontalScroll = (scrollList?: any[]) => {
   const [scrollLeft, setScrollLeft] = useState(0);
   const [maxScrollLeft, setMaxScrollLeft] = useState(0);
   const [mouseDown, setMouseDown] = useState(false);
-  const mousePos = useRef({ startX: 0, scrollLeft: 0 });
+  const mousePos = useRef({
+    startX: 0,
+    scrollLeft: 0,
+    distance: 0,
+    elastic: false,
+  });
   const [cursor, setCursor] = useState('auto');
   const { windowWidth } = useWindowWidth();
-
+  const delta = 0.25;
   const handleScroll = () => setScrollLeft(sliderRef.current!.scrollLeft);
 
   const SliderArrowLeft = (
@@ -39,19 +44,47 @@ const useHorizontalScroll = (scrollList?: any[]) => {
     }
   }, [windowWidth, scrollList]);
 
+  const handleDragStart = (e: React.MouseEvent) => {
+    if (sliderRef.current) {
+      mousePos.current.startX = e.clientX;
+      mousePos.current.scrollLeft = sliderRef.current.scrollLeft;
+      setMouseDown(true);
+      setCursor('grab');
+      sliderRef.current.style.transition = '';
+    }
+  };
+
   useEffect(() => {
     const handleDrag = (e: MouseEvent) => {
       if (mouseDown && sliderRef.current) {
         e.preventDefault();
         setCursor('grabbing');
+        mousePos.current.distance = e.clientX - mousePos.current.startX;
+        const leftBoundary = sliderRef.current.scrollLeft === 0;
+        const rightBoundary =
+          sliderRef.current.scrollLeft ===
+          sliderRef.current.scrollWidth - sliderRef.current.clientWidth;
+        mousePos.current.elastic = leftBoundary || rightBoundary;
         sliderRef.current.scrollLeft =
-          mousePos.current.scrollLeft - (e.clientX - mousePos.current.startX);
+          mousePos.current.scrollLeft - mousePos.current.distance;
+        if (mousePos.current.elastic) {
+          sliderRef.current.style.transition = 'transform 700ms ease-out';
+          sliderRef.current.style.transform = `translate(${
+            mousePos.current.distance * delta
+          }px)`;
+        }
       }
     };
 
     const handleDragEnd = () => {
       setMouseDown(false);
       setCursor('auto');
+      if (sliderRef.current) {
+        if (mousePos.current.elastic) {
+          sliderRef.current.style.transition = 'transform 300ms';
+          sliderRef.current.style.transform = 'translate(0px)';
+        }
+      }
     };
 
     window.addEventListener('mousemove', handleDrag);
@@ -61,16 +94,6 @@ const useHorizontalScroll = (scrollList?: any[]) => {
       window.removeEventListener('mouseup', handleDragEnd);
     };
   });
-
-  const handleDragStart = (e: React.MouseEvent) => {
-    if (!sliderRef.current) return;
-    mousePos.current = {
-      startX: e.clientX,
-      scrollLeft: sliderRef.current.scrollLeft,
-    };
-    setMouseDown(true);
-    setCursor('grab');
-  };
 
   useEffect(() => {
     if (cursor) {
