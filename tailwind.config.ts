@@ -57,5 +57,9 @@ const config: Config = {
     },
   },
   plugins: [],
+  screens: {
+    touch: { raw: 'hover: none' },
+    hover: { raw: 'hover: hover' },
+  },
 };
 export default config;

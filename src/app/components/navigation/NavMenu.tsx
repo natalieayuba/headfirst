@@ -38,7 +38,7 @@ const NavMenu = () => {
       <Lightbox
         ref={lightboxRef}
         className={`transition-left duration-300 z-0 ${
-          isOpen ? 'left-0' : 'left-full'
+          isOpen ? 'left-0' : 'left-[110%]'
         }`}
       >
         <NavList links={mainLinks} close={closeLightbox} />

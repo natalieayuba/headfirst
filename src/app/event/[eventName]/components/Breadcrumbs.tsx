@@ -35,7 +35,9 @@ const Breadcrumbs = ({ categoryId, categories }: BreadcrumbsProps) => {
                 : 'text-lilac'
             }`}
           >
-            <Link href={url}>{name}</Link>
+            <Link href={url} className='default-hover'>
+              {name}
+            </Link>
             {index !== breadcrumbs.length - 1 && (
               <Icon
                 size={12}

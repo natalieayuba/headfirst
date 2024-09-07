@@ -16,6 +16,7 @@ import Socials from './components/Socials';
 import Venue from './components/Venue';
 import CTAButtons from './components/CTAButtons';
 import type { Metadata } from 'next';
+import HostCard from './HostCard';
 
 interface EventProps {
   params: { eventName: string };
@@ -58,7 +59,7 @@ const Event = async ({ params }: EventProps) => {
     <div className='pt-16'>
       <Header search={<Search />} />
       <Breadcrumbs categoryId={event.categoryId} categories={categories} />
-      <div className='content-container pt-4 md:pt-6 md:flex md:gap-12 relative'>
+      <div className='content-container pt-4 md:flex md:gap-12 relative'>
         <div className='w-full md:flex-1 md:min-w-64 md:max-w-[400px] h-auto'>
           <div className='w-full relative aspect-square'>
             <Image
@@ -75,12 +76,13 @@ const Event = async ({ params }: EventProps) => {
             {event.socials && <Socials socials={event.socials} />}
           </div>
         </div>
-        <div className='w-full md:flex-1 mt-5 mb-6 md:-mt-1 md:mb-12'>
-          <h1 className='text-4xl md:text-6xl mb-3 font-medium'>
+        <div className='w-full md:flex-1 mt-8 mb-12 md:-mt-1 md:mb-12'>
+          <h1 className='text-4xl md:text-6xl mb-6 font-medium'>
             {event.name}
           </h1>
           <Details event={event} categories={categories} venues={venues} />
-          <Divider className='w-24 md:w-36 mx-auto ' />
+          {/* <Divider className='w-24 md:w-36 mx-auto ' /> */}
+          <HostCard />
           <About about={event.about} />
           <Venue venueId={event.venueId} venues={venues} />
         </div>

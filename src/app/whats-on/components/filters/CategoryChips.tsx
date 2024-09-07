@@ -10,6 +10,7 @@ const CategoryChips = ({ categories }: { categories: CategoryProps[] }) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
+  const categoriesRef = useRef<HTMLDivElement>(null);
 
   const category = categories.find(
     ({ id }) => id === searchParams.get('categoryId')?.toString()
@@ -54,36 +55,15 @@ const CategoryChips = ({ categories }: { categories: CategoryProps[] }) => {
   };
 
   useEffect(() => {
-    if (!searchParams.has('categoryId')) {
+    if (!searchParams.has('categoryId') && categoriesRef.current) {
       setSubcategories([]);
+      categoriesRef.current.scrollLeft = 0;
     }
   }, [searchParams]);
 
-  const scroll = (e: UIEvent) => {
-    handleScroll();
-    if (
-      sliderRef.current &&
-      sliderRef.current.clientWidth < sliderRef.current.scrollWidth
-    ) {
-      if (sliderRef.current.scrollLeft === 0) {
-        sliderRef.current.classList.remove('before:opacity-100');
-      } else {
-        sliderRef.current.classList.add('before:opacity-100');
-      }
-      if (
-        sliderRef.current.scrollLeft ===
-        sliderRef.current.scrollWidth - sliderRef.current.clientWidth
-      ) {
-        sliderRef.current.classList.add('after:opacity-0');
-      } else {
-        sliderRef.current.classList.remove('after:opacity-0');
-      }
-    }
-  };
-
   return (
     <div className='flex gap-2 flex-col md:content-container relative '>
-      <div className='filter-chip-scroll relative z-[2]'>
+      <div className='filter-chip-scroll relative z-[2]' ref={categoriesRef}>
         {categories.map(({ id, name }) => (
           <FilterChip
             key={id}
@@ -96,9 +76,9 @@ const CategoryChips = ({ categories }: { categories: CategoryProps[] }) => {
         ))}
       </div>
 
-      <div className='flex w-full flex-1 '>
-        {sliderRef.current?.scrollLeft! > 0 && (
-          <div className='absolute left-2 md:fade-overflow-edge-left h-8 z-10'>
+      <div className='relative'>
+        {sliderRef.current && sliderRef.current.scrollLeft > 0 && (
+          <div className='hidden md:block absolute -left-8 md:fade-overflow-edge-left h-8 z-10'>
             {SliderArrowLeft}
           </div>
         )}
@@ -106,13 +86,13 @@ const CategoryChips = ({ categories }: { categories: CategoryProps[] }) => {
           ref={sliderRef}
           onMouseDown={handleDragStart}
           list={subcategories.toSorted((a, b) => a.name.localeCompare(b.name))}
-          className={`relative [&&]:filter-chip-scroll mb-2 [&&]:flex-1 transition-transform duration-200 ${
+          className={`[&&]:filter-chip-scroll mb-2 transition-transform duration-200 ${
             cursor === 'grab'
               ? ' [&_label]:cursor-grab'
               : cursor === 'grabbing'
               ? ' [&_label]:cursor-grabbing'
               : ''
-          } ${subcategories.length > 0 ? '' : '-translate-y-10 opacity-0'}`}
+          } ${subcategories.length > 0 ? '' : ' -translate-y-10 opacity-0'}`}
           renderItem={(item) => (
             <FilterChip
               key={item.id}
@@ -123,14 +103,13 @@ const CategoryChips = ({ categories }: { categories: CategoryProps[] }) => {
               setSelected={updateSubcategoryParam}
             />
           )}
-          onScroll={scroll}
+          onScroll={handleScroll}
         />
-        {sliderRef.current?.clientWidth! !== sliderRef.current?.scrollWidth! &&
-          sliderRef.current?.scrollLeft! !== maxScrollLeft && (
-            <div className='absolute right-2 md:fade-overflow-edge-right h-8 z-10'>
-              {SliderArrowRight}
-            </div>
-          )}
+        {sliderRef.current && sliderRef.current.scrollLeft < maxScrollLeft && (
+          <div className='hidden md:block absolute -right-8 top-0 md:fade-overflow-edge-right h-8 z-10'>
+            {SliderArrowRight}
+          </div>
+        )}
       </div>
     </div>
   );

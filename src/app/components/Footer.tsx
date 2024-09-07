@@ -2,6 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 import Divider from './Divider';
 import Link from './Link';
+import Icon from './Icon';
 
 const Footer = () => {
   const legalLinks = [
@@ -59,8 +60,7 @@ const Footer = () => {
         </div>
       </div>
       <Divider />
-      <div className='pb-10 content-container flex flex-col md:flex-row gap-3'>
-        <p className='text-white text-opacity-60'>© 2024 Headfirst Bristol</p>
+      <div className='pb-8 content-container flex flex-wrap justify-between gap-3'>
         <ul className='flex flex-wrap gap-x-4'>
           {legalLinks.map((link) => (
             <li key={link}>
@@ -70,6 +70,23 @@ const Footer = () => {
             </li>
           ))}
         </ul>
+        <p className='text-white text-opacity-60'>
+          <Icon
+            name='sparkle'
+            className='inline-block mr-1.5'
+            fill='white'
+            size={14}
+          />
+          Conceptual design and development by{' '}
+          <a
+            href='https://natalieayuba.github.io/'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='text-white'
+          >
+            Natalie Ayuba
+          </a>
+        </p>
       </div>
     </footer>
   );

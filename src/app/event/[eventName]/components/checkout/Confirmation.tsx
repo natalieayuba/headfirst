@@ -5,13 +5,12 @@ import type { EventProps, VenueProps } from '@/db/schema';
 import { formatDate } from '@/utils/formatting';
 import React from 'react';
 
-const Confirmation = ({
-  event,
-  venues,
-}: {
+interface ConfirmationProps {
   event: EventProps;
   venues: VenueProps[];
-}) => (
+}
+
+const Confirmation = ({ event, venues }: ConfirmationProps) => (
   <div
     className='flex flex-col gap-7 items-center text-center md:pt-12 max-w-lg mx-auto'
     style={{ height: 'calc(100dvh - 100px)' }}

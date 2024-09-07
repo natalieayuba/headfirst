@@ -51,12 +51,12 @@ const Details = ({ event, venues, categories }: DetailsProps) => {
   ];
 
   return (
-    <ul className='clear-right'>
+    <ul>
       {details.map(
         ({ icon, text }) =>
           text && (
-            <li key={text} className='mb-2'>
-              <Icon name={icon} size={18} className='inline-block mr-3' />
+            <li key={text} className='mb-3'>
+              <Icon name={icon} size={18} className='inline-block mr-4' />
               {text}
             </li>
           )

@@ -21,10 +21,13 @@ import {
   FiMinusCircle,
   FiCreditCard,
   FiInstagram,
+  FiUser,
+  FiMusic,
 } from 'react-icons/fi';
-import { PiHandsClapping } from 'react-icons/pi';
+import { PiHandsClapping, PiSparkle } from 'react-icons/pi';
 import { TbCurrencyPound } from 'react-icons/tb';
 import { FaCcVisa, FaSpotify, FaBandcamp } from 'react-icons/fa';
+import { VscSparkle } from 'react-icons/vsc';
 
 interface IconProps {
   name: string;
@@ -60,6 +63,9 @@ const Icon = ({ name, size, className, fill }: IconProps) => {
     instagram: <FiInstagram />,
     bandcamp: <FaBandcamp />,
     spotify: <FaSpotify />,
+    sparkle: <PiSparkle />,
+    user: <FiUser />,
+    music: <FiMusic />,
   };
 
   const icon = icons[name as keyof IconType];

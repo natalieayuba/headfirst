@@ -2,7 +2,7 @@
 import { Button } from '@/app/components/buttons/Button';
 import useLightbox from '@/hooks/useLightbox';
 import { formatDate, formatPriceRange } from '@/utils/formatting';
-import React from 'react';
+import React, { useState } from 'react';
 import CheckoutLightbox from './CheckoutLightbox';
 import useLoader from '@/hooks/useLoader';
 import Loader from '@/app/components/Loader';
@@ -17,6 +17,7 @@ const Checkout = ({
 }) => {
   const { isOpen, openLightbox, closeLightbox } = useLightbox();
   const { loading, loadPage } = useLoader();
+  const [going, setGoing] = useState(false);
 
   return (
     <>
@@ -30,9 +31,11 @@ const Checkout = ({
             </p>
           </div>
           <p className='text-2xl font-medium'>
-            {formatPriceRange(event.tickets)}
+            {going ? "You're going!" : formatPriceRange(event.tickets)}
           </p>
-          <Button onClick={() => loadPage(openLightbox)}>Get tickets</Button>
+          <Button onClick={() => loadPage(openLightbox)}>
+            Get {going ? 'more' : ''} tickets
+          </Button>
         </div>
       </div>
       {isOpen && (
@@ -40,6 +43,7 @@ const Checkout = ({
           event={event}
           venues={venues}
           closeLightbox={closeLightbox}
+          setGoing={setGoing}
         />
       )}
     </>

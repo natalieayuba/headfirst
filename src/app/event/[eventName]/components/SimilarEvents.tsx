@@ -28,7 +28,10 @@ const SimilarEvents = ({ event, events, venues }: SimilarEventsProps) => {
   if (similarEvents.length < max) {
     similarEvents.push(
       ...events
-        .filter(({ id }) => !similarEvents.some((event) => event.id === id))
+        .filter(
+          ({ id }) =>
+            id !== event.id && !similarEvents.some((event) => event.id === id)
+        )
         .filter(({ categoryId }) => categoryId === '1003')
         .sort(() => 0.5 - Math.random())
         .slice(0, max - similarEvents.length)

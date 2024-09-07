@@ -70,25 +70,16 @@ input[type='search']::-webkit-search-results-decoration {
     @apply transition-opacity duration-200 hover:opacity-80;
   }
 
-  /* ::-webkit-scrollbar {
-    @apply w-3 bg-night;
-  }
-
-  body::-webkit-scrollbar-thumb {
-    @apply bg-indigo-900 rounded;
-  } */
-
   .content-container {
     @apply px-4 md:px-12 md:max-w-6xl mx-auto w-full;
   }
 
   .overflow-y-scroll {
-    -ms-overflow-style: none; /* Internet Explorer 10+ */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
-
   .overflow-y-scroll {
-    display: none; /* Safari and Chrome */
+    display: none;
   }
 
   .heading-lg {
@@ -144,7 +135,7 @@ input[type='search']::-webkit-search-results-decoration {
   }
 
   .circle-button {
-    @apply bg-night p-1.5 rounded-full transition-all duration-200 bg-opacity-85 hover:bg-opacity-100;
+    @apply bg-night p-1.5 rounded-full transition-all duration-200 bg-opacity-90 hover:bg-opacity-100;
   }
 
   .circle-button-event {

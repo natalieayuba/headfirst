@@ -9,7 +9,7 @@ interface VenueSectionProps {
 }
 
 const Venue = ({ venueId, venues }: VenueSectionProps) => (
-  <div className='mt-8 md:mt-12'>
+  <div className='mt-10 md:mt-12'>
     <h2 className='mb-4'>Venue</h2>
     <div>
       <p>{venues.find(({ id }) => id === venueId)?.name}</p>

@@ -3,7 +3,7 @@ import Icon from './Icon';
 
 interface SliderArrowProps {
   direction: string;
-  sliderRef: RefObject<HTMLOListElement>;
+  sliderRef: RefObject<HTMLElement>;
   scrollLeft: number;
   maxScrollLeft: number;
 }

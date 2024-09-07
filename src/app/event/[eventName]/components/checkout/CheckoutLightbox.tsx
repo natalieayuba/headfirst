@@ -31,6 +31,13 @@ export const cardDetailsDefault = {
   default: false,
 };
 
+interface CheckoutLightboxProps {
+  event: EventProps;
+  venues: VenueProps[];
+  setGoing: (purchaseComplete: boolean) => void;
+  closeLightbox: () => void;
+}
+
 const Total = ({ total }: { total: number }) => (
   <div className='flex justify-between text-xl font-medium'>
     <p>Total</p>
@@ -41,12 +48,9 @@ const Total = ({ total }: { total: number }) => (
 const CheckoutLightbox = ({
   event,
   venues,
+  setGoing,
   closeLightbox,
-}: {
-  event: EventProps;
-  venues: VenueProps[];
-  closeLightbox: () => void;
-}) => {
+}: CheckoutLightboxProps) => {
   const bookingFee = 0.8;
   const [total, setTotal] = useState(0);
   const [orderSummary, setOrderSummary] = useState<
@@ -144,6 +148,7 @@ const CheckoutLightbox = ({
       summary.push({ text: 'Booking fee', price: bookingFee });
       setOrderSummary(summary);
     }
+    setGoing(step === 2);
   }, [step]);
 
   return (

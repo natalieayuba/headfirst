@@ -4,19 +4,13 @@ import useWindowWidth from './useWindowWidth';
 import SliderArrow from '@/app/components/SliderArrow';
 
 const useHorizontalScroll = (scrollList?: any[]) => {
-  const sliderRef = useRef<HTMLOListElement>(null);
+  const sliderRef = useRef<HTMLElement>(null);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [maxScrollLeft, setMaxScrollLeft] = useState(0);
   const [mouseDown, setMouseDown] = useState(false);
-  const mousePos = useRef({
-    startX: 0,
-    scrollLeft: 0,
-    distance: 0,
-    elastic: false,
-  });
+  const mousePos = useRef({ startX: 0, scrollLeft: 0 });
   const [cursor, setCursor] = useState('auto');
   const { windowWidth } = useWindowWidth();
-  const delta = 0.25;
   const handleScroll = () => setScrollLeft(sliderRef.current!.scrollLeft);
 
   const SliderArrowLeft = (
@@ -59,32 +53,19 @@ const useHorizontalScroll = (scrollList?: any[]) => {
       if (mouseDown && sliderRef.current) {
         e.preventDefault();
         setCursor('grabbing');
-        mousePos.current.distance = e.clientX - mousePos.current.startX;
-        const leftBoundary = sliderRef.current.scrollLeft === 0;
-        const rightBoundary =
-          sliderRef.current.scrollLeft ===
-          sliderRef.current.scrollWidth - sliderRef.current.clientWidth;
-        mousePos.current.elastic = leftBoundary || rightBoundary;
         sliderRef.current.scrollLeft =
-          mousePos.current.scrollLeft - mousePos.current.distance;
-        if (mousePos.current.elastic) {
-          sliderRef.current.style.transition = 'transform 700ms ease-out';
-          sliderRef.current.style.transform = `translate(${
-            mousePos.current.distance * delta
-          }px)`;
-        }
+          mousePos.current.scrollLeft - (e.clientX - mousePos.current.startX);
+        console.log(
+          sliderRef.current.scrollLeft,
+
+          sliderRef.current.scrollWidth - sliderRef.current.clientWidth
+        );
       }
     };
 
     const handleDragEnd = () => {
       setMouseDown(false);
       setCursor('auto');
-      if (sliderRef.current) {
-        if (mousePos.current.elastic) {
-          sliderRef.current.style.transition = 'transform 300ms';
-          sliderRef.current.style.transform = 'translate(0px)';
-        }
-      }
     };
 
     window.addEventListener('mousemove', handleDrag);

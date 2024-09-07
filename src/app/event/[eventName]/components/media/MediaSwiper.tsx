@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState, type UIEvent } from 'react';
+import React, { useEffect, useState, type RefObject } from 'react';
 import { isVideo } from './MediaThumbnail';
 import Image from 'next/image';
 import type { MediaProps } from '@/db/schema';
-import SliderArrow from '@/app/components/SliderArrow';
+import useHorizontalScroll from '@/hooks/useHorizontalScroll';
 
 interface MediaSwiperProps {
   media: MediaProps[];
@@ -15,64 +15,63 @@ const MediaSwiper = ({
   selectedIndex,
   setSelectedIndex,
 }: MediaSwiperProps) => {
-  const ref = useRef<HTMLDivElement>(null);
+  const { sliderRef, handleScroll, SliderArrowLeft, SliderArrowRight } =
+    useHorizontalScroll();
   const margin = 24;
   const resolution = 16 / 9;
-  const [scrollLeft, setScrollLeft] = useState(0);
-  const [videoSize, setVideoSize] = useState([
-    window.innerWidth - margin * 2,
-    window.innerWidth / resolution,
-  ]);
+  const [videoSize, setVideoSize] = useState<number[]>([]);
 
   useEffect(() => {
-    if (isVideo(media[selectedIndex]!)) {
+    if (isVideo(media[selectedIndex]!) && sliderRef.current) {
+      const swiperContainer = sliderRef.current.children[1] as HTMLElement;
       const updateSize = () =>
         setVideoSize([
-          window.innerWidth - margin * 2,
-          window.innerWidth / resolution,
+          swiperContainer.clientWidth - margin * 2,
+          (swiperContainer.clientWidth - margin * 2) / resolution,
         ]);
       window.addEventListener('resize', updateSize);
+      updateSize();
       return () => window.removeEventListener('resize', updateSize);
     }
-  }, [media, resolution, selectedIndex]);
+  });
 
-  const handleScroll = (e: UIEvent) => {
-    const swiper = e.target as HTMLDivElement;
+  const scroll = () => {
+    handleScroll();
     if (
-      swiper.scrollLeft === 0 ||
-      swiper.scrollLeft % swiper.clientWidth === 0
+      sliderRef.current &&
+      (sliderRef.current.scrollLeft === 0 ||
+        sliderRef.current.scrollLeft % sliderRef.current.clientWidth === 0)
     ) {
-      setSelectedIndex(swiper.scrollLeft / swiper.clientWidth);
+      setSelectedIndex(
+        sliderRef.current.scrollLeft / sliderRef.current.clientWidth
+      );
     }
-    setScrollLeft(swiper.scrollLeft);
   };
 
   useEffect(() => {
-    if (ref.current) {
-      if (selectedIndex * ref.current.clientWidth !== ref.current.scrollLeft) {
-        ref.current.scroll(selectedIndex * ref.current.clientWidth, 0);
+    if (sliderRef.current) {
+      if (
+        selectedIndex * sliderRef.current.clientWidth !==
+        sliderRef.current.scrollLeft
+      ) {
+        sliderRef.current.scroll(
+          selectedIndex * sliderRef.current.clientWidth,
+          0
+        );
       }
     }
   }, [selectedIndex]);
 
   return (
     <div
-      ref={ref}
-      className='-mx-6 flex flex-1 items-center snap-x snap-mandatory scroll-smooth overflow-x-scroll md:overflow-hidden'
-      onScroll={handleScroll}
+      ref={sliderRef as RefObject<HTMLDivElement>}
+      className='-mx-6 flex flex-1 items-center snap-x snap-mandatory overflow-x-scroll md:overflow-hidden'
+      onScroll={scroll}
     >
-      <div className='hidden md:flex w-[900px] left-1/2 -translate-x-1/2 justify-between absolute z-10 '>
-        <SliderArrow direction='left' sliderRef={ref} scrollLeft={scrollLeft} />
-        <SliderArrow
-          direction='right'
-          sliderRef={ref}
-          scrollLeft={scrollLeft}
-        />
-      </div>
       {media.map((medium) => (
         <div
           key={medium.src}
-          className='w-screen md:w-full h-full flex items-center p-6 md:p-12 snap-center'
+          className='w-screen md:w-full h-full flex items-center p-6 md:p-12 snap-center z-10'
         >
           {isVideo(medium) ? (
             <iframe
@@ -97,6 +96,10 @@ const MediaSwiper = ({
           )}
         </div>
       ))}
+      <div className='hidden md:flex w-[900px] left-1/2 -translate-x-1/2 justify-between absolute'>
+        {SliderArrowLeft}
+        {SliderArrowRight}
+      </div>
     </div>
   );
 };
