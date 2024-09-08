@@ -15,7 +15,7 @@ const Input = forwardRef<
   const [isFocused, setIsFocused] = useState(false);
   return (
     <div
-      className={`bg-night relative rounded-md border border-20 flex h-12 items-center px-4 transition-all duration-150 focus-within:border-opacity-60 max-w-full${appendClassName(
+      className={`bg-night relative rounded-md border border-20 mt-2 flex h-12 items-center px-4 transition-all duration-150 focus-within:border-opacity-60 max-w-full${appendClassName(
         rest.className
       )}`}
     >
@@ -23,10 +23,10 @@ const Input = forwardRef<
       {label && (
         <label
           htmlFor={rest.id}
-          className={`absolute font-medium text-lilac text-opacity-60 transition-all duration-200${
+          className={`absolute font-medium text-lilac text-opacity-60 transition-all duration-200 ${
             isFocused || rest.value !== ''
-              ? ' -translate-y-6 -translate-x-1 px-0.5 bg-night text-sm'
-              : ''
+              ? '-translate-y-6 -translate-x-1 px-0.5 leading-none bg-night text-sm cursor-default'
+              : 'cursor-text'
           }`}
         >
           {label}

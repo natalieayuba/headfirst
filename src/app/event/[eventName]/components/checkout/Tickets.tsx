@@ -1,74 +1,85 @@
 import Icon from '@/app/components/Icon';
-import React from 'react';
+import React, { useEffect } from 'react';
 import CheckoutSection from './CheckoutSection';
 import { formatPrice } from '@/utils/formatting';
-import type { TicketProps } from '@/db/schema';
+import type { GetTicketsProps } from './GetTickets';
 
-const Stepper = ({
-  icon,
-  onClick,
-  disabled,
-}: {
-  icon: string;
-  onClick: () => void;
-  disabled: boolean;
-}) => (
-  <button
-    className='text-lilac disabled:opacity-30'
-    onClick={onClick}
-    disabled={disabled}
-  >
-    <Icon name={icon} />
-  </button>
-);
+interface StepperProps {
+  type: 'plus' | 'minus';
+  index: number;
+}
 
 const Tickets = ({
   tickets,
-  ticketCount,
-  setTicketCount,
-}: {
-  tickets: TicketProps[];
-  ticketCount: number[];
-  setTicketCount: (count: number[]) => void;
-}) => {
-  const handleStep = (index: number, icon: string) => {
-    const step =
-      icon === 'plus' ? ticketCount[index] + 1 : ticketCount[index] - 1;
-    const updatedCount = ticketCount.map((count, i) =>
-      i === index ? step : count
+  orderSummary,
+  updateOrder,
+  disableButton,
+}: GetTicketsProps) => {
+  const min = 0,
+    max = 10;
+
+  const Stepper = ({ type, index }: StepperProps) => {
+    const handleStep = (type: StepperProps['type']) => {
+      let quantity =
+        orderSummary.find(({ item }) => item === tickets![index].name)
+          ?.quantity ?? min;
+      quantity += type === 'minus' ? -1 : 1;
+      updateOrder(
+        'ticket',
+        tickets![index].name,
+        tickets![index].price,
+        quantity
+      );
+    };
+
+    return (
+      <button
+        className='text-lilac disabled:opacity-30 default-hover'
+        onClick={() => handleStep(type)}
+        disabled={
+          (type === 'minus' &&
+            !orderSummary.some(({ item }) => item === tickets![index].name)) ||
+          orderSummary.find(({ item }) => item === tickets![index].name)
+            ?.quantity === min ||
+          (type === 'plus' &&
+            orderSummary.find(({ item }) => item === tickets![index].name)
+              ?.quantity === max)
+        }
+      >
+        <Icon name={type} />
+      </button>
     );
-    setTicketCount(updatedCount);
   };
+  useEffect(() => {
+    disableButton!(!orderSummary.some(({ type }) => type === 'ticket'));
+  }, [orderSummary, disableButton]);
 
   return (
     <CheckoutSection heading='Tickets'>
       <ol>
-        {tickets.map((ticket, index) => (
-          <li
-            key={ticket.name}
-            className='flex justify-between py-3 list-divider'
-          >
-            <div>
-              <p>{ticket.name}</p>
-              <p className='font-medium text-lg leading-none'>
-                {formatPrice(ticket.price)}
-              </p>
-            </div>
-            <div className='flex items-center w-20 justify-between'>
-              <Stepper
-                icon='minus'
-                onClick={() => handleStep(index, 'minus')}
-                disabled={ticketCount[index] === 0}
-              />
-              <span>{ticketCount[index]}</span>
-              <Stepper
-                icon='plus'
-                onClick={() => handleStep(index, 'plus')}
-                disabled={ticketCount[index] === 10}
-              />
-            </div>
-          </li>
-        ))}
+        {tickets!.map((ticket, index) => {
+          return (
+            <li
+              key={ticket.name}
+              className='flex justify-between py-3 list-divider'
+            >
+              <div>
+                <p>{ticket.name}</p>
+                <p className='font-medium text-xl leading-none'>
+                  {formatPrice(ticket.price)}
+                </p>
+              </div>
+              <div className='flex items-center w-20 justify-between'>
+                <Stepper type='minus' index={index} />
+                <span>
+                  {orderSummary.find(({ item }) => item === ticket.name)
+                    ?.quantity ?? min}
+                </span>
+                <Stepper type='plus' index={index} />
+              </div>
+            </li>
+          );
+        })}
       </ol>
     </CheckoutSection>
   );

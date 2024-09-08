@@ -103,7 +103,7 @@ input[type='search']::-webkit-search-results-decoration {
   }
 
   .radio-button {
-    @apply invisible relative after:content-[""] after:visible after:absolute after:w-3 after:h-3 after:rounded-full after:border-2 after:border-night after:outline after:outline-1 after:outline-lilac;
+    @apply invisible relative after:content-[""] after:visible after:absolute after:size-3 after:rounded-full after:border-2 after:border-night after:outline after:outline-1 after:outline-lilac cursor-pointer after:transition-all after:duration-100 hover:after:bg-lilac hover:after:bg-opacity-15;
   }
 
   .radio-button:checked {
@@ -111,11 +111,11 @@ input[type='search']::-webkit-search-results-decoration {
   }
 
   .checkbox {
-    @apply invisible relative after:content-[""] after:visible after:absolute after:top-1 after:w-3 after:h-3 after:rounded-sm after:border after:border-lilac;
+    @apply invisible relative font-bold after:content-[""] after:visible after:absolute after:top-0 after:size-3.5 after:rounded-sm after:border after:border-lilac;
   }
 
   .checkbox:checked {
-    @apply after:bg-lilac before:content-['✓'] before:text-dark-night before:visible before:absolute before:w-3 before:h-3 before:z-10 before:top-[1px] before:left-[1px];
+    @apply after:bg-lilac before:content-['✓'] before:text-dark-night before:visible before:absolute before:w-3 before:h-3 before:z-10 before:left-0.5;
   }
 
   .button {

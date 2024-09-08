@@ -7,7 +7,6 @@ import Breadcrumbs from '@/app/event/[eventName]/components/Breadcrumbs';
 import Details from '@/app/event/[eventName]/components/Details';
 import About from '@/app/event/[eventName]/components/About';
 import SimilarEvents from '@/app/event/[eventName]/components/SimilarEvents';
-import Divider from '@/app/components/Divider';
 import { getCategories, getEvents, getVenues } from '@/db/queries';
 import Checkout from './components/checkout/Checkout';
 import Header from '@/app/components/Header';

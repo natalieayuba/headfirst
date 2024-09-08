@@ -18,7 +18,7 @@ const PaymentOption = ({
   handleChange,
 }: PaymentOptionProps) => (
   <label
-    className='flex gap-4 py-3 items-center'
+    className='flex gap-4 py-3 items-center cursor-pointer'
     htmlFor={title.toLowerCase().replace(' ', '-')}
   >
     <input

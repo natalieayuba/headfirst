@@ -10,26 +10,7 @@ import useLoader from '@/hooks/useLoader';
 import Loader from '@/app/components/Loader';
 import EventCard from '@/app/components/EventCard';
 import type { EventProps, VenueProps } from '@/db/schema';
-
-export interface NewCardDetails {
-  name: string;
-  cardNumber: string;
-  expiryDate: string;
-  securityCode: string;
-  postcode: string;
-  save: boolean;
-  default: boolean;
-}
-
-export const cardDetailsDefault = {
-  name: '',
-  cardNumber: '',
-  expiryDate: '',
-  securityCode: '',
-  postcode: '',
-  save: false,
-  default: false,
-};
+import OrderSummary from './OrderSummary';
 
 interface CheckoutLightboxProps {
   event: EventProps;
@@ -38,12 +19,12 @@ interface CheckoutLightboxProps {
   closeLightbox: () => void;
 }
 
-const Total = ({ total }: { total: number }) => (
-  <div className='flex justify-between text-xl font-medium'>
-    <p>Total</p>
-    <p>£{total > 0 ? total.toFixed(2) : total}</p>
-  </div>
-);
+export interface OrderProps {
+  type: 'ticket' | 'selectedDonation' | 'customDonation' | 'fee';
+  item: string;
+  quantity: number;
+  price: number;
+}
 
 const CheckoutLightbox = ({
   event,
@@ -51,49 +32,55 @@ const CheckoutLightbox = ({
   setGoing,
   closeLightbox,
 }: CheckoutLightboxProps) => {
-  const bookingFee = 0.8;
-  const [total, setTotal] = useState(0);
-  const [orderSummary, setOrderSummary] = useState<
-    { text: string; price: number }[]
-  >([]);
+  const [orderSummary, setOrderSummary] = useState<OrderProps[]>([]);
   const [step, setStep] = useState(0);
-  const [ticketCount, setTicketCount] = useState<number[]>(
-    event.tickets.map(() => 0)
-  );
-  const [donation, setDonation] = useState(0);
-  const [selectedPaymentOption, setSelectedPaymentOption] = useState(-1);
-  const [newCardDetails, setNewCardDetails] = useState(cardDetailsDefault);
+  const [buttonDisabled, setButtonDisabled] = useState(true);
   const { loading, loadPage } = useLoader();
+
+  const updateOrder = (
+    type: OrderProps['type'],
+    item: string,
+    price: number,
+    quantity = 1
+  ) =>
+    setOrderSummary(
+      orderSummary.some((order) => order.item === item)
+        ? (type === 'ticket' && quantity === 0) ||
+          (type.includes('Donation') && price === 0)
+          ? orderSummary.filter((order) => order.item !== item)
+          : orderSummary.map((order) =>
+              order.item === item
+                ? order.type.includes('Donation')
+                  ? { ...order, price }
+                  : { ...order, quantity }
+                : order
+            )
+        : [...orderSummary, { type, item, price, quantity }]
+    );
+
+  const disableButton = (disabled: boolean) => setButtonDisabled(disabled);
 
   const steps = [
     {
       content: (
         <GetTickets
           tickets={event.tickets}
-          ticketCount={ticketCount}
-          setTicketCount={(count) => setTicketCount(count)}
-          setDonation={(donation) => setDonation(donation)}
+          orderSummary={orderSummary}
+          updateOrder={updateOrder}
+          disableButton={disableButton}
         />
       ),
       footerContent: (
         <>
-          Total price includes a booking fee of 80p per ticket which will be
-          donated to local causes. <HyperLink href='#'>Find out more</HyperLink>
-          .
+          Total includes a booking fee of 85p per ticket which will be donated
+          to local causes.
+          <HyperLink href='#'> Find out more.</HyperLink>
         </>
       ),
       buttonText: 'Checkout',
-      buttonDisabled: !ticketCount.some((count) => count > 0),
     },
     {
-      content: (
-        <Payment
-          selectedPaymentOption={selectedPaymentOption}
-          setSelectedPaymentOption={setSelectedPaymentOption}
-          newCardDetails={newCardDetails}
-          setNewCardDetails={(details) => setNewCardDetails(details)}
-        />
-      ),
+      content: <Payment disableButton={disableButton} />,
       footerContent: (
         <>
           <Checkbox
@@ -110,46 +97,14 @@ const CheckoutLightbox = ({
         </>
       ),
       buttonText: 'Purchase tickets',
-      buttonDisabled:
-        selectedPaymentOption === -1 ||
-        (selectedPaymentOption === 1 &&
-          newCardDetails &&
-          Object.values(newCardDetails).some((value) => value === '')),
-    },
-    {
-      content: <Confirmation event={event} venues={venues} />,
     },
   ];
 
   useEffect(() => {
-    let total: number = 0;
-    event.tickets.forEach(
-      ({ price }, index) => (total += price * ticketCount[index])
-    );
-    total = total > 0 ? total + bookingFee : total;
-    total += donation;
-    setTotal(total);
-  }, [event.tickets, ticketCount, donation]);
-
-  useEffect(() => {
-    if (step === 1) {
-      const summary = [];
-      event.tickets.forEach(({ name, price }, index) => {
-        if (ticketCount[index] > 0) {
-          summary.push({
-            text: `${ticketCount[index]}x ${name}`,
-            price: price * ticketCount[index],
-          });
-        }
-      });
-      if (donation) {
-        summary.push({ text: 'Donation', price: donation });
-      }
-      summary.push({ text: 'Booking fee', price: bookingFee });
-      setOrderSummary(summary);
+    if (step === 2) {
+      setGoing(true);
     }
-    setGoing(step === 2);
-  }, [step]);
+  }, [step, setGoing]);
 
   return (
     <>
@@ -160,51 +115,45 @@ const CheckoutLightbox = ({
         maxWidth='md:max-w-4xl'
       >
         <div className='max-w-sm sm:max-w-full mx-auto'>
-          {step < 2 && (
-            <EventCard
-              event={event}
-              venues={venues}
-              cardSize='min-h-14'
-              imageSize='w-16'
-              showSaved={false}
-              showPrice={false}
-              horizontal
-              narrow
-            />
-          )}
-          <div className='sm:flex gap-12'>
-            {steps[step].content}{' '}
-            {step < 2 && (
-              <div className='mt-6'>
-                {step === 1 && (
-                  <div>
-                    <h2 className='mb-2'>Order Summary</h2>
-                    {orderSummary.map(({ text, price }) => (
-                      <div key={text} className='flex justify-between'>
-                        <p>{text}</p>
-                        <p>£{price.toFixed(2)}</p>
-                      </div>
-                    ))}
-                  </div>
-                )}
-                <Total total={total} />
-                <p className='secondary-text'>{steps[step].footerContent}</p>
-                <Button
-                  className='w-full mt-4'
-                  onClick={() => {
-                    if (step === 1) {
-                      loadPage(() => setStep((step) => step + 1));
-                    } else {
-                      setStep((step) => step + 1);
-                    }
-                  }}
-                  disabled={steps[step].buttonDisabled}
-                >
-                  {steps[step].buttonText}
-                </Button>
+          {step < 2 ? (
+            <>
+              <EventCard
+                event={event}
+                venues={venues}
+                cardSize='min-h-14'
+                imageSize='w-16'
+                showSaved={false}
+                showPrice={false}
+                animated={false}
+                horizontal
+                narrow
+              />
+              <div className='sm:flex gap-12'>
+                {steps[step].content}
+                <div className='mt-6 flex-1'>
+                  <OrderSummary orderSummary={orderSummary} />
+                  <p className='secondary-text mt-1'>
+                    {steps[step].footerContent}
+                  </p>
+                  <Button
+                    className='w-full mt-4'
+                    onClick={() => {
+                      if (step === 1) {
+                        loadPage(() => setStep((step) => step + 1));
+                      } else {
+                        setStep((step) => step + 1);
+                      }
+                    }}
+                    disabled={buttonDisabled}
+                  >
+                    {steps[step].buttonText}
+                  </Button>
+                </div>
               </div>
-            )}
-          </div>
+            </>
+          ) : (
+            <Confirmation event={event} venues={venues} />
+          )}
         </div>
       </Lightbox>
     </>

@@ -13,12 +13,7 @@ const Checkbox = ({
   checked,
   onChange,
 }: CheckboxProps & ComponentProps<'input'>) => (
-  <label
-    htmlFor={id}
-    className={`text-white text-opacity-60 flex gap-4${appendClassName(
-      className
-    )}`}
-  >
+  <label htmlFor={id} className={`flex gap-4${appendClassName(className)}`}>
     <input
       className='checkbox'
       type='checkbox'

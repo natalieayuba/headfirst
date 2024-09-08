@@ -11,7 +11,9 @@ interface HyperLinkProps {
 const HyperLink = ({ href, className, children }: HyperLinkProps) => (
   <Link
     href={href}
-    className={`text-lilac w-fit font-medium${appendClassName(className)}`}
+    className={`text-lilac w-fit font-medium default-hover${appendClassName(
+      className
+    )}`}
   >
     {children}
   </Link>

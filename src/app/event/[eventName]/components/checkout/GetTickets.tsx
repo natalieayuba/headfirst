@@ -2,28 +2,35 @@ import React from 'react';
 import Tickets from './Tickets';
 import Donate from './Donate';
 import type { TicketProps } from '@/db/schema';
+import type { OrderProps } from './CheckoutLightbox';
+
+export interface GetTicketsProps {
+  tickets?: TicketProps[];
+  orderSummary: OrderProps[];
+  updateOrder: (
+    type: OrderProps['type'],
+    item: string,
+    price: number,
+    quantity?: number
+  ) => void;
+  disableButton?: (disabled: boolean) => void;
+}
 
 const GetTickets = ({
   tickets,
-  ticketCount,
-  setTicketCount,
-  setDonation,
-}: {
-  tickets: TicketProps[];
-  ticketCount: number[];
-  setTicketCount: (count: number[]) => void;
-  setDonation: (donation: number) => void;
-}) => {
-  return (
-    <div>
-      <Tickets
-        tickets={tickets}
-        ticketCount={ticketCount}
-        setTicketCount={setTicketCount}
-      />
-      <Donate setDonation={setDonation} />
-    </div>
-  );
-};
+  orderSummary,
+  updateOrder,
+  disableButton,
+}: GetTicketsProps) => (
+  <div className='flex-1'>
+    <Tickets
+      tickets={tickets}
+      orderSummary={orderSummary}
+      updateOrder={updateOrder}
+      disableButton={disableButton}
+    />
+    <Donate updateOrder={updateOrder} orderSummary={orderSummary} />
+  </div>
+);
 
 export default GetTickets;

@@ -2,22 +2,33 @@ import React, { useState, type ChangeEvent } from 'react';
 import CheckoutSection from './CheckoutSection';
 import { formatPrice } from '@/utils/formatting';
 import Input from '@/app/components/Input';
+import Icon from '@/app/components/Icon';
+import type { GetTicketsProps } from './GetTickets';
 
-const Donate = ({ setDonation }: { setDonation: (pound: number) => void }) => {
-  const [selectedDonation, setSelectedDonation] = useState(0);
-  const [customDonation, setCustomDonation] = useState('');
+const Donate = ({ updateOrder, orderSummary }: GetTicketsProps) => {
+  const [selectedDonation, setSelectedDonation] = useState(
+    orderSummary.find(({ type }) => type === 'selectedDonation')?.price ?? 0
+  );
+  const [customDonation, setCustomDonation] = useState(
+    orderSummary.some(({ type }) => type === 'customDonation')
+      ? String(
+          orderSummary.find(({ type }) => type === 'customDonation')?.price
+        )
+      : ''
+  );
 
   const handleClick = (pound: number) => {
-    setSelectedDonation(pound === selectedDonation ? 0 : pound);
-    setDonation(pound === selectedDonation ? 0 : pound);
+    const value = pound === selectedDonation ? 0 : pound;
+    setSelectedDonation(value);
     setCustomDonation('');
+    updateOrder('selectedDonation', 'Donation', value);
   };
 
   const handleChange = (e: ChangeEvent) => {
     const value = (e.target as HTMLInputElement).value;
     setSelectedDonation(0);
     setCustomDonation(value);
-    setDonation(Number(value));
+    updateOrder('customDonation', 'Donation', Number(value));
   };
 
   return (
@@ -26,18 +37,25 @@ const Donate = ({ setDonation }: { setDonation: (pound: number) => void }) => {
         Your donation will help PRSC continue their programme of homeless
         support, community arts & activism.
       </p>
-      <div className='flex gap-2'>
+      <div className='flex gap-2 my-3'>
         {[1, 3, 5].map((pound) => (
           <button
             key={pound}
-            className={`border font-medium border-lilac rounded flex-1 px-3 py-1.5 ${
+            className={`relative border border-lilac border-opacity-20 rounded flex-1 px-3 py-2 transition-colors duration-100 ${
               selectedDonation === pound
-                ? 'bg-lilac text-dark-night'
-                : 'text-lilac'
+                ? 'bg-lilac text-dark-night font-medium'
+                : 'text-lilac hover:bg-lilac hover:bg-opacity-15'
             }`}
             onClick={() => handleClick(pound)}
           >
             {formatPrice(pound)}
+            {selectedDonation === pound && (
+              <Icon
+                name='close'
+                size='14'
+                className='opacity-40 hover:opacity-60 absolute right-1.5 top-1/2 -translate-y-1/2'
+              />
+            )}
           </button>
         ))}
       </div>
@@ -45,7 +63,10 @@ const Donate = ({ setDonation }: { setDonation: (pound: number) => void }) => {
         id='custom-donation'
         type='currency'
         onChange={handleChange}
-        clearInput={() => setCustomDonation('')}
+        clearInput={() => {
+          setCustomDonation('');
+          updateOrder('customDonation', 'Donation', 0);
+        }}
         value={customDonation}
         label='Custom donation'
         className={`mt-2 ${

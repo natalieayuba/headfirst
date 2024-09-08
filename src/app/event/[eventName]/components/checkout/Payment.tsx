@@ -1,22 +1,27 @@
 import HyperLink from '@/app/components/Hyperlink';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import CheckoutSection from './CheckoutSection';
 import NewCardForm from './NewCardForm';
 import PaymentOption from './PaymentOption';
 import Icon from '@/app/components/Icon';
-import { cardDetailsDefault, type NewCardDetails } from './CheckoutLightbox';
 
-const Payment = ({
-  selectedPaymentOption,
-  setSelectedPaymentOption,
-  newCardDetails,
-  setNewCardDetails,
-}: {
-  selectedPaymentOption: number;
-  setSelectedPaymentOption: (index: number) => void;
-  newCardDetails: NewCardDetails;
-  setNewCardDetails: (details: NewCardDetails) => void;
-}) => {
+interface PaymentProps {
+  disableButton: (disabled: boolean) => void;
+}
+
+const Payment = ({ disableButton }: PaymentProps) => {
+  const cardDetailsDefault = {
+    name: '',
+    cardNumber: '',
+    expiryDate: '',
+    securityCode: '',
+    postcode: '',
+    save: false,
+    default: false,
+  };
+  const [selectedPaymentOption, setSelectedPaymentOption] = useState(-1);
+  const [newCardDetails, setNewCardDetails] = useState(cardDetailsDefault);
+
   const options = [
     {
       title: 'Card ending in 6159',
@@ -31,20 +36,28 @@ const Payment = ({
   ];
 
   useEffect(() => {
+    disableButton(
+      selectedPaymentOption === -1 ||
+        (selectedPaymentOption === 1 &&
+          Object.values(newCardDetails).some((value) => value === ''))
+    );
+  }, [disableButton, newCardDetails, selectedPaymentOption]);
+
+  useEffect(() => {
     if (selectedPaymentOption !== 1) {
       setNewCardDetails(cardDetailsDefault);
     }
-  }, [selectedPaymentOption]);
+  }, [selectedPaymentOption, setNewCardDetails]);
 
   return (
-    <div className='flex flex-col gap-5'>
-      <p className='secondary-text'>
+    <div className='flex-1'>
+      <p className='secondary-text mt-6'>
         Signed in as{' '}
         <span className='text-white text-opacity-90'>John Doe</span>. Not you?{' '}
         <HyperLink href='/'>Sign out</HyperLink>
       </p>
-      <CheckoutSection heading='Payment method'>
-        <ul className='min-w-[340px]'>
+      <CheckoutSection heading='Payment method' className='[&&]:mt-4'>
+        <ul>
           {options.map(({ icon, title, subtitle, isDefault }, index) => (
             <li key={title} className='list-divider'>
               <PaymentOption
