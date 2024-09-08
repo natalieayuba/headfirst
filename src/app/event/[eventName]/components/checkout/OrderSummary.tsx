@@ -28,7 +28,12 @@ const OrderSummary = ({ orderSummary }: { orderSummary: OrderProps[] }) => {
                 order={{
                   type: 'fee',
                   item: 'Booking fee',
-                  price: bookingFee,
+                  price:
+                    bookingFee *
+                    orderSummary.reduce(
+                      (a, b) => (b.type === 'ticket' ? a + b.quantity : 0),
+                      0
+                    ),
                   quantity: 1,
                 }}
               />
@@ -42,9 +47,11 @@ const OrderSummary = ({ orderSummary }: { orderSummary: OrderProps[] }) => {
           {orderSummary.length > 0
             ? (
                 orderSummary.reduce((a, b) => a + b.price * b.quantity, 0) +
-                (orderSummary.some(({ type }) => type === 'ticket')
-                  ? bookingFee
-                  : 0)
+                bookingFee *
+                  orderSummary.reduce(
+                    (a, b) => (b.type === 'ticket' ? a + b.quantity : 0),
+                    0
+                  )
               ).toFixed(2)
             : 0}
         </p>

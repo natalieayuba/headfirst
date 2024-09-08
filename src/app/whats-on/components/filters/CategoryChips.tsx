@@ -1,5 +1,11 @@
 'use client';
-import React, { useEffect, useRef, useState, type UIEvent } from 'react';
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  type RefObject,
+  type UIEvent,
+} from 'react';
 import FilterChip from './FilterChip';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import type { CategoryProps, SubcategoryProps } from '@/db/schema';
@@ -83,7 +89,7 @@ const CategoryChips = ({ categories }: { categories: CategoryProps[] }) => {
           </div>
         )}
         <HorizontalScroll
-          ref={sliderRef}
+          ref={sliderRef as RefObject<HTMLOListElement>}
           onMouseDown={handleDragStart}
           list={subcategories.toSorted((a, b) => a.name.localeCompare(b.name))}
           className={`[&&]:filter-chip-scroll mb-2 transition-transform duration-200 ${
@@ -106,7 +112,7 @@ const CategoryChips = ({ categories }: { categories: CategoryProps[] }) => {
           onScroll={handleScroll}
         />
         {sliderRef.current && sliderRef.current.scrollLeft < maxScrollLeft && (
-          <div className='hidden md:block absolute -right-8 top-0 md:fade-overflow-edge-right h-8 z-10'>
+          <div className='hidden md:block absolute -right-8 top-0 md:fade-overflow-edge-right h-8 z-[2]'>
             {SliderArrowRight}
           </div>
         )}

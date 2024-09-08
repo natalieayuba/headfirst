@@ -10,6 +10,10 @@ export const metadata: Metadata = {
     default: `${name} | ${description}`,
   },
   description,
+  other: {
+    'apple-itunes-app':
+      'app-id=444081524, app-argument=https://apple.co/4gemecV',
+  },
 };
 
 export const viewport: Viewport = {

@@ -75,8 +75,8 @@ const Event = async ({ params }: EventProps) => {
             {event.socials && <Socials socials={event.socials} />}
           </div>
         </div>
-        <div className='w-full md:flex-1 mt-8 mb-12 md:-mt-1 md:mb-12'>
-          <h1 className='text-4xl md:text-6xl mb-6 font-medium'>
+        <div className='w-full md:flex-1 mt-6 mb-12 md:-mt-1 md:mb-12'>
+          <h1 className='text-4xl md:text-6xl mb-4 font-medium'>
             {event.name}
           </h1>
           <Details event={event} categories={categories} venues={venues} />

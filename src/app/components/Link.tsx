@@ -1,7 +1,7 @@
 'use client';
 import NextLink from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import React from 'react';
+import React, { type MouseEvent } from 'react';
 import useLoader from '@/hooks/useLoader';
 import Loader from './Loader';
 
@@ -13,6 +13,7 @@ const Link = ({
   href,
   children,
   replace,
+  onClick,
   onSelect,
   ...rest
 }: LinkProps & Parameters<typeof NextLink>[0]) => {
@@ -20,7 +21,10 @@ const Link = ({
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const onClick = () => {
+  const handleClick = (e: MouseEvent) => {
+    if (onClick) {
+      onClick(e as MouseEvent<HTMLAnchorElement>);
+    }
     const url = href.toString();
     if (pathname !== url && `${pathname}?${searchParams}` !== url) {
       if (replace) {
@@ -44,7 +48,7 @@ const Link = ({
       {loading && <Loader />}
       <NextLink
         href={href}
-        onClick={(e) => loadPage(onClick, afterClick, e)}
+        onClick={(e) => loadPage(handleClick, afterClick, e)}
         {...rest}
       >
         {children}

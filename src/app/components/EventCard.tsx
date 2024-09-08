@@ -1,6 +1,6 @@
 'use client';
 import NextImage from 'next/image';
-import React, { useRef } from 'react';
+import React from 'react';
 import NextLink from 'next/link';
 import { type EventProps, type VenueProps } from '../../db/schema';
 import {

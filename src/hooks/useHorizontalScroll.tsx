@@ -55,11 +55,6 @@ const useHorizontalScroll = (scrollList?: any[]) => {
         setCursor('grabbing');
         sliderRef.current.scrollLeft =
           mousePos.current.scrollLeft - (e.clientX - mousePos.current.startX);
-        console.log(
-          sliderRef.current.scrollLeft,
-
-          sliderRef.current.scrollWidth - sliderRef.current.clientWidth
-        );
       }
     };
 

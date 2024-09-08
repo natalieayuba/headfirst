@@ -88,12 +88,10 @@ const CheckoutLightbox = ({
             id='get-emails'
             className='border-y border-lilac border-opacity-20 py-4 my-4'
           />
-          <p>
-            By purchasing, you are agreeing to Headfirst&apos;s{' '}
-            <HyperLink href='#'>Terms & Conditions</HyperLink>
-            {' and '}
-            <HyperLink href='#'>Privacy Policy</HyperLink>.
-          </p>
+          By purchasing, you are agreeing to Headfirst&apos;s{' '}
+          <HyperLink href='#'>Terms & Conditions</HyperLink>
+          {' and '}
+          <HyperLink href='#'>Privacy Policy</HyperLink>.
         </>
       ),
       buttonText: 'Purchase tickets',
@@ -122,6 +120,7 @@ const CheckoutLightbox = ({
                 venues={venues}
                 cardSize='min-h-14'
                 imageSize='w-16'
+                className='cursor-default'
                 showSaved={false}
                 showPrice={false}
                 animated={false}
