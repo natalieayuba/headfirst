@@ -56,7 +56,11 @@ const Details = ({ event, venues, categories }: DetailsProps) => {
         ({ icon, text }) =>
           text && (
             <li key={text} className='mb-1.5'>
-              <Icon name={icon} size={18} className='inline-block mr-4' />
+              <Icon
+                name={icon}
+                size={18}
+                className='inline-block mr-3 text-white opacity-60'
+              />
               {text}
             </li>
           )

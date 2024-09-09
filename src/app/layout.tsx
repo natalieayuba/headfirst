@@ -3,6 +3,8 @@ import './globals.css';
 import { Baloo_2, Londrina_Solid } from 'next/font/google';
 import { colors, description, name } from '../../config';
 import Footer from './components/Footer';
+import Header from './components/Header';
+import Search from './components/search/Search';
 
 export const metadata: Metadata = {
   title: {
@@ -34,19 +36,20 @@ const londrina_solid = Londrina_Solid({
   display: 'swap',
 });
 
-export default function RootLayout({
+const RootLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
-  return (
-    <html lang='en' className='h-full'>
-      <body
-        className={`${baloo_2.className} ${londrina_solid.variable} bg-dark-night text-white text-opacity-90 leading-tight flex flex-col h-full overflow-x-hidden`}
-      >
-        {children}
-        <Footer />
-      </body>
-    </html>
-  );
-}
+}>) => (
+  <html lang='en' className='h-full'>
+    <body
+      className={`${baloo_2.className} ${londrina_solid.variable} bg-dark-night text-white text-opacity-90 leading-tight flex flex-col h-full overflow-x-hidden`}
+    >
+      <Header search={<Search />} />
+      {children}
+      <Footer />
+    </body>
+  </html>
+);
+
+export default RootLayout;

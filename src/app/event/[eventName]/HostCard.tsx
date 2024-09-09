@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 
 const HostCard = () => (
-  <div className='bg-night rounded-lg w-full md:w-96 py-4 px-5 mt-8 mb-12 flex gap-4 items-center'>
+  <div className='bg-night rounded-lg w-full md:w-96 py-4 px-6 mt-8 mb-12 flex gap-4 items-center'>
     <Image
       src='/pp.svg'
       alt='Host profile picture'

@@ -57,23 +57,20 @@ const Tickets = ({
   return (
     <CheckoutSection heading='Tickets'>
       <ol>
-        {tickets!.map((ticket, index) => {
+        {tickets!.map(({ name, price }, index) => {
           return (
-            <li
-              key={ticket.name}
-              className='flex justify-between py-3 list-divider'
-            >
+            <li key={name} className='flex justify-between py-3 list-divider'>
               <div>
-                <p>{ticket.name}</p>
+                <p>{name}</p>
                 <p className='font-medium text-xl leading-none'>
-                  {formatPrice(ticket.price)}
+                  {price === 0 ? 'Free' : formatPrice(price)}
                 </p>
               </div>
               <div className='flex items-center w-20 justify-between'>
                 <Stepper type='minus' index={index} />
                 <span>
-                  {orderSummary.find(({ item }) => item === ticket.name)
-                    ?.quantity ?? min}
+                  {orderSummary.find(({ item }) => item === name)?.quantity ??
+                    min}
                 </span>
                 <Stepper type='plus' index={index} />
               </div>

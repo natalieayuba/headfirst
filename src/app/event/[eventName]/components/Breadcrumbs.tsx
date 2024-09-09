@@ -24,8 +24,8 @@ const Breadcrumbs = ({ categoryId, categories }: BreadcrumbsProps) => {
   ];
 
   return (
-    <nav>
-      <ul className='pt-1 md:pt-8 content-container'>
+    <nav className='mb-5'>
+      <ul className='content-container'>
         {breadcrumbs.map(({ name, url }, index) => (
           <li
             key={name}

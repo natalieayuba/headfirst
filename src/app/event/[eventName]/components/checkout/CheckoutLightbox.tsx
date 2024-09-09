@@ -70,13 +70,6 @@ const CheckoutLightbox = ({
           disableButton={disableButton}
         />
       ),
-      footerContent: (
-        <>
-          Total includes a booking fee of 85p per ticket which will be donated
-          to local causes.
-          <HyperLink href='#'> Find out more.</HyperLink>
-        </>
-      ),
       buttonText: 'Checkout',
     },
     {
@@ -127,10 +120,10 @@ const CheckoutLightbox = ({
                 horizontal
                 narrow
               />
-              <div className='sm:flex gap-12'>
+              <div className='sm:flex gap-16'>
                 {steps[step].content}
                 <div className='mt-6 flex-1'>
-                  <OrderSummary orderSummary={orderSummary} />
+                  <OrderSummary orderSummary={orderSummary} step={step} />
                   <p className='secondary-text mt-1'>
                     {steps[step].footerContent}
                   </p>

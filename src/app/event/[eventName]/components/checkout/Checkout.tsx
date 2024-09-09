@@ -23,7 +23,7 @@ const Checkout = ({
     <>
       {loading && <Loader />}
       <div className='bg-night sticky bottom-0'>
-        <div className='content-container py-4 flex justify-between items-center gap-6 md:justify-end'>
+        <div className='content-container py-4 px-6 flex justify-between items-center gap-6 md:justify-end'>
           <div className='hidden md:block mr-auto'>
             <p>{event.name}</p>
             <p className='secondary-text'>

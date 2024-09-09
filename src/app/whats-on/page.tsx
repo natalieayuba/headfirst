@@ -9,6 +9,7 @@ import Search from '../components/search/Search';
 import type { Metadata } from 'next';
 import type { CategoryProps, SubcategoryProps } from '@/db/schema';
 import { toSentenceCase } from '@/utils/formatting';
+import Main from '../components/Main';
 
 interface Props {
   searchParams: { [key: string]: string | string[] | undefined };
@@ -56,9 +57,9 @@ const WhatsOn = async ({ searchParams }: Props) => {
   )!;
 
   return (
-    <div className='mt-16'>
+    <Main>
       <Header search={<Search />} />
-      <h1 className='text-4xl content-container pt-6 md:pt-8 pb-2'>
+      <h1 className='text-4xl content-container pb-2'>
         {getTitle(category, subcategory)}
       </h1>
       <div className='flex flex-col gap-2'>
@@ -69,7 +70,7 @@ const WhatsOn = async ({ searchParams }: Props) => {
         <CategoryChips categories={categories} />
       </div>
       <FilteredEvents events={events} venues={venues} />
-    </div>
+    </Main>
   );
 };
 

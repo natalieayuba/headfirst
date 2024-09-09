@@ -17,7 +17,7 @@ const Lightbox = forwardRef<HTMLDivElement, LightboxProps>(
         className
       )}`}
     >
-      <nav className='flex justify-between h-16 px-4'>
+      <nav className='flex justify-between h-12 md:h-16 px-4'>
         {onBack && (
           <button onClick={onBack}>
             <Icon name='angle-left' />

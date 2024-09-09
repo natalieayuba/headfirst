@@ -9,13 +9,12 @@ import About from '@/app/event/[eventName]/components/About';
 import SimilarEvents from '@/app/event/[eventName]/components/SimilarEvents';
 import { getCategories, getEvents, getVenues } from '@/db/queries';
 import Checkout from './components/checkout/Checkout';
-import Header from '@/app/components/Header';
-import Search from '@/app/components/search/Search';
 import Socials from './components/Socials';
 import Venue from './components/Venue';
 import CTAButtons from './components/CTAButtons';
 import type { Metadata } from 'next';
 import HostCard from './HostCard';
+import Main from '@/app/components/Main';
 
 interface EventProps {
   params: { eventName: string };
@@ -55,10 +54,9 @@ const Event = async ({ params }: EventProps) => {
   }
 
   return (
-    <div className='pt-16'>
-      <Header search={<Search />} />
+    <Main>
       <Breadcrumbs categoryId={event.categoryId} categories={categories} />
-      <div className='content-container pt-4 md:flex md:gap-12 relative'>
+      <div className='content-container md:flex md:gap-12 relative'>
         <div className='w-full md:flex-1 md:min-w-64 md:max-w-[400px] h-auto'>
           <div className='w-full relative aspect-square'>
             <Image
@@ -75,12 +73,11 @@ const Event = async ({ params }: EventProps) => {
             {event.socials && <Socials socials={event.socials} />}
           </div>
         </div>
-        <div className='w-full md:flex-1 mt-6 mb-12 md:-mt-1 md:mb-12'>
+        <div className='w-full md:flex-1 mt-7 mb-12 md:-mt-1 md:mb-12'>
           <h1 className='text-4xl md:text-6xl mb-4 font-medium'>
             {event.name}
           </h1>
           <Details event={event} categories={categories} venues={venues} />
-          {/* <Divider className='w-24 md:w-36 mx-auto ' /> */}
           <HostCard />
           <About about={event.about} />
           <Venue venueId={event.venueId} venues={venues} />
@@ -88,7 +85,7 @@ const Event = async ({ params }: EventProps) => {
       </div>
       <Checkout event={event} venues={venues} />
       <SimilarEvents venues={venues} event={event} events={events} />
-    </div>
+    </Main>
   );
 };
 

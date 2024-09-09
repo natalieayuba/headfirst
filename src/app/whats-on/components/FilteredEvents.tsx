@@ -78,7 +78,7 @@ const FilteredEvents = ({ events, venues }: FilteredEventsProps) => {
   return (
     <>
       {loading && <Loader />}
-      <div className='content-container pt-2 mb-10'>
+      <div className='content-container pt-2 mb-12 md:mb-24'>
         <div className='flex justify-between'>
           <p className='secondary-text'>
             {filteredEvents.length}
@@ -95,7 +95,7 @@ const FilteredEvents = ({ events, venues }: FilteredEventsProps) => {
           )}
         </div>
         {loadedEvents.length > 0 ? (
-          <div className='grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xs:gap-8 mt-5 xs:mt-6 mb-6'>
+          <div className='grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xs:gap-8 mt-5 xs:mt-6 mb-8'>
             {loadedEvents.map((event) => (
               <EventCard
                 key={event.name}

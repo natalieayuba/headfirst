@@ -40,7 +40,7 @@ const SimilarEvents = ({ event, events, venues }: SimilarEventsProps) => {
   }
 
   return (
-    <div className='py-10 md:py-12'>
+    <div className='py-10 md:py-12 mb-4'>
       <h2 className='content-container mb-5 md:mb-6'>
         Other events you might like
       </h2>
