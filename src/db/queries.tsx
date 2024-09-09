@@ -1,5 +1,10 @@
 'use server';
-import type { CategoryProps, EventProps, VenueProps } from './schema';
+import type {
+  CategoryProps,
+  EventProps,
+  PromoterProps,
+  VenueProps,
+} from './schema';
 
 const baseUrl = 'http://localhost:3030';
 
@@ -11,6 +16,11 @@ export const getCategories = async () => {
 export const getVenues = async () => {
   const data = await fetch(`${baseUrl}/venues`);
   return (await data.json()) as VenueProps[];
+};
+
+export const getPromoters = async () => {
+  const data = await fetch(`${baseUrl}/promoters`);
+  return (await data.json()) as PromoterProps[];
 };
 
 export const getEvents = async () => {

@@ -9,11 +9,11 @@ import type { CategoryProps, EventProps, VenueProps } from '@/db/schema';
 
 interface DetailsProps {
   event: EventProps;
-  venues: VenueProps[];
-  categories: CategoryProps[];
+  venue: VenueProps;
+  category: CategoryProps;
 }
 
-const Details = ({ event, venues, categories }: DetailsProps) => {
+const Details = ({ event, venue, category }: DetailsProps) => {
   const ageLimit = event.ageLimit ? `${event.ageLimit}+ event` : '';
   const lastEntry = event.lastEntry
     ? `last entry ${timeFormat(event.lastEntry)}`
@@ -26,16 +26,14 @@ const Details = ({ event, venues, categories }: DetailsProps) => {
     },
     {
       icon: 'location',
-      text: venues.find(({ id }) => id === event.venueId)?.name,
+      text: venue.name,
     },
     {
       icon: 'tag',
       text: event.subcategoryIds
         .map(
           (subcategoryId) =>
-            categories
-              ?.find(({ id }) => id === event.categoryId)
-              ?.subcategories.find(({ id }) => id === subcategoryId)?.name
+            category.subcategories.find(({ id }) => id === subcategoryId)?.name
         )
         .join(', '),
     },

@@ -7,10 +7,10 @@ import React from 'react';
 
 interface ConfirmationProps {
   event: EventProps;
-  venues: VenueProps[];
+  venue: VenueProps;
 }
 
-const Confirmation = ({ event, venues }: ConfirmationProps) => (
+const Confirmation = ({ event, venue }: ConfirmationProps) => (
   <div
     className='flex flex-col gap-7 items-center text-center md:pt-12 max-w-lg mx-auto'
     style={{ height: 'calc(100dvh - 100px)' }}
@@ -28,7 +28,7 @@ const Confirmation = ({ event, venues }: ConfirmationProps) => (
         {event.name}
       </h2>
       <p className='mt-1'>{formatDate(event.startDate, true)}</p>
-      <p>{venues.find(({ id }) => id === event.venueId)?.name}</p>
+      <p>{venue.name}</p>
     </div>
     <Divider className='w-32 [&&]:m-0' />
     <p className='font-light'>

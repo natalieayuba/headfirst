@@ -7,14 +7,19 @@ import Breadcrumbs from '@/app/event/[eventName]/components/Breadcrumbs';
 import Details from '@/app/event/[eventName]/components/Details';
 import About from '@/app/event/[eventName]/components/About';
 import SimilarEvents from '@/app/event/[eventName]/components/SimilarEvents';
-import { getCategories, getEvents, getVenues } from '@/db/queries';
+import {
+  getCategories,
+  getEvents,
+  getPromoters,
+  getVenues,
+} from '@/db/queries';
 import Checkout from './components/checkout/Checkout';
 import Socials from './components/Socials';
 import Venue from './components/Venue';
 import CTAButtons from './components/CTAButtons';
 import type { Metadata } from 'next';
-import HostCard from './HostCard';
 import Main from '@/app/components/Main';
+import PromoterCard from './PromoterCard';
 
 interface EventProps {
   params: { eventName: string };
@@ -23,15 +28,19 @@ interface EventProps {
 export async function generateMetadata({
   params,
 }: EventProps): Promise<Metadata> {
-  const events = await getEvents();
-  const venues = await getVenues();
-  const categories = await getCategories();
-  const event = events.find(
-    ({ id, name }) =>
-      formatEventUrl(id, name) === decodeURIComponent(params.eventName)
+  const event = await getEvents().then((events) =>
+    events.find(
+      ({ id, name }) =>
+        formatEventUrl(id, name) === decodeURIComponent(params.eventName)
+    )
   );
-  const venue = venues.find(({ id }) => event?.venueId === id);
-  const category = categories.find(({ id }) => event?.categoryId === id);
+  const venue = await getVenues().then((venues) =>
+    venues.find(({ id }) => event?.venueId === id)
+  );
+  const category = await getCategories().then((categories) =>
+    categories.find(({ id }) => event?.categoryId === id)
+  );
+
   return {
     title: `${event?.name} Tickets | ${formatDate(event?.startDate!)} at ${
       venue?.name
@@ -41,21 +50,25 @@ export async function generateMetadata({
 
 const Event = async ({ params }: EventProps) => {
   const events = await getEvents();
-  const venues = await getVenues();
-  const categories = await getCategories();
-
   const event = events.find(
     ({ id, name }) =>
       formatEventUrl(id, name) === decodeURIComponent(params.eventName)
   );
-
   if (!event) {
     notFound();
   }
+  const venues = await getVenues();
+  const venue = venues.find(({ id }) => id === event?.venueId)!;
+  const category = await getCategories().then(
+    (categories) => categories.find(({ id }) => id === event?.categoryId)!
+  );
+  const promoter = await getPromoters().then(
+    (promoters) => promoters.find(({ id }) => id === event?.promoterId)!
+  );
 
   return (
     <Main>
-      <Breadcrumbs categoryId={event.categoryId} categories={categories} />
+      <Breadcrumbs category={category} />
       <div className='content-container md:flex md:gap-12 relative'>
         <div className='w-full md:flex-1 md:min-w-64 md:max-w-[400px] h-auto'>
           <div className='w-full relative aspect-square'>
@@ -77,14 +90,14 @@ const Event = async ({ params }: EventProps) => {
           <h1 className='text-4xl md:text-6xl mb-4 font-medium'>
             {event.name}
           </h1>
-          <Details event={event} categories={categories} venues={venues} />
-          <HostCard />
+          <Details event={event} category={category} venue={venue} />
+          <PromoterCard promoter={promoter} />
           <About about={event.about} />
-          <Venue venueId={event.venueId} venues={venues} />
+          <Venue venue={venue} />
         </div>
       </div>
-      <Checkout event={event} venues={venues} />
-      <SimilarEvents venues={venues} event={event} events={events} />
+      <Checkout event={event} venue={venue} promoter={promoter} />
+      <SimilarEvents event={event} events={events} venues={venues} />
     </Main>
   );
 };

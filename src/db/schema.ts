@@ -33,6 +33,12 @@ export interface MediaProps {
   alt?: string;
 }
 
+export interface PromoterProps {
+  id: string;
+  name: string;
+  avatar?: string;
+}
+
 export interface EventProps {
   id: string;
   name: string;
@@ -40,6 +46,7 @@ export interface EventProps {
   endDate: string;
   venueId: string;
   categoryId: string;
+  promoterId: string;
   subcategoryIds: string[];
   about: string;
   credit: string;

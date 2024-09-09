@@ -9,12 +9,13 @@ import Confirmation from './Confirmation';
 import useLoader from '@/hooks/useLoader';
 import Loader from '@/app/components/Loader';
 import EventCard from '@/app/components/EventCard';
-import type { EventProps, VenueProps } from '@/db/schema';
+import type { EventProps, PromoterProps, VenueProps } from '@/db/schema';
 import OrderSummary from './OrderSummary';
 
 interface CheckoutLightboxProps {
   event: EventProps;
-  venues: VenueProps[];
+  venue: VenueProps;
+  promoter: PromoterProps;
   setGoing: (purchaseComplete: boolean) => void;
   closeLightbox: () => void;
 }
@@ -28,7 +29,8 @@ export interface OrderProps {
 
 const CheckoutLightbox = ({
   event,
-  venues,
+  venue,
+  promoter,
   setGoing,
   closeLightbox,
 }: CheckoutLightboxProps) => {
@@ -77,7 +79,7 @@ const CheckoutLightbox = ({
       footerContent: (
         <>
           <Checkbox
-            label='Receive emails from the event organisers about future events'
+            label={`Receive emails from ${promoter.name} about future events`}
             id='get-emails'
             className='border-y border-lilac border-opacity-20 py-4 my-4'
           />
@@ -110,7 +112,7 @@ const CheckoutLightbox = ({
             <>
               <EventCard
                 event={event}
-                venues={venues}
+                venue={venue}
                 cardSize='min-h-14'
                 imageSize='w-16'
                 className='cursor-default'
@@ -144,7 +146,7 @@ const CheckoutLightbox = ({
               </div>
             </>
           ) : (
-            <Confirmation event={event} venues={venues} />
+            <Confirmation event={event} venue={venue} />
           )}
         </div>
       </Lightbox>

@@ -15,7 +15,7 @@ import useAllowDrag from '@/hooks/useAllowDrag';
 
 interface EventCardProps {
   event: EventProps;
-  venues: VenueProps[];
+  venue: VenueProps;
   className?: string;
   imageSize?: string;
   cardSize?: string;
@@ -88,7 +88,7 @@ const Content = ({
 
 const EventCard = ({
   event,
-  venues,
+  venue,
   className,
   imageSize,
   cardSize,
@@ -103,7 +103,6 @@ const EventCard = ({
   updateSavedEvents,
   ...rest
 }: EventCardProps & Partial<Parameters<typeof NextLink>[0]>) => {
-  const venue = venues?.find(({ id }) => id === event.venueId);
   const { handleClick, handleMouseDown, handleMouseLeave, handleMouseUp } =
     useAllowDrag();
   return (
@@ -130,7 +129,7 @@ const EventCard = ({
       />
       <Content
         event={event}
-        venue={venue!}
+        venue={venue}
         showTime={showTime}
         showPrice={showPrice}
         narrow={narrow}

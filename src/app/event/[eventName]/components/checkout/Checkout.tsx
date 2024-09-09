@@ -6,15 +6,15 @@ import React, { useState } from 'react';
 import CheckoutLightbox from './CheckoutLightbox';
 import useLoader from '@/hooks/useLoader';
 import Loader from '@/app/components/Loader';
-import type { EventProps, VenueProps } from '@/db/schema';
+import type { EventProps, PromoterProps, VenueProps } from '@/db/schema';
 
-const Checkout = ({
-  event,
-  venues,
-}: {
+interface CheckoutProps {
   event: EventProps;
-  venues: VenueProps[];
-}) => {
+  venue: VenueProps;
+  promoter: PromoterProps;
+}
+
+const Checkout = ({ event, venue, promoter }: CheckoutProps) => {
   const { isOpen, openLightbox, closeLightbox } = useLightbox();
   const { loading, loadPage } = useLoader();
   const [going, setGoing] = useState(false);
@@ -41,7 +41,8 @@ const Checkout = ({
       {isOpen && (
         <CheckoutLightbox
           event={event}
-          venues={venues}
+          venue={venue}
+          promoter={promoter}
           closeLightbox={closeLightbox}
           setGoing={setGoing}
         />

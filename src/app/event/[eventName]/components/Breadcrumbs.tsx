@@ -3,11 +3,7 @@ import Icon from '../../../components/Icon';
 import Link from '@/app/components/Link';
 import type { CategoryProps } from '@/db/schema';
 
-interface BreadcrumbsProps {
-  categoryId: string;
-  categories: CategoryProps[];
-}
-const Breadcrumbs = ({ categoryId, categories }: BreadcrumbsProps) => {
+const Breadcrumbs = ({ category }: { category: CategoryProps }) => {
   const breadcrumbs = [
     {
       name: 'Home',
@@ -18,8 +14,8 @@ const Breadcrumbs = ({ categoryId, categories }: BreadcrumbsProps) => {
       url: '/whats-on',
     },
     {
-      name: categories.find(({ id }) => id === categoryId)?.name,
-      url: `/whats-on?categoryId=${categoryId}`,
+      name: category.name,
+      url: `/whats-on?categoryId=${category.id}`,
     },
   ];
 

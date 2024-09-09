@@ -51,7 +51,7 @@ const SimilarEvents = ({ event, events, venues }: SimilarEventsProps) => {
           <EventCard
             savedEvents={savedEvents}
             updateSavedEvents={updateSavedEvents}
-            venues={venues}
+            venue={venues.find(({ id }) => id === event.venueId)!}
             event={event}
             cardSize='w-36 md:w-full'
           />
