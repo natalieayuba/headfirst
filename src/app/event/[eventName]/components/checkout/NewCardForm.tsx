@@ -1,7 +1,7 @@
 import Input from '@/app/components/Input';
 import React, { useState, type ChangeEvent, type KeyboardEvent } from 'react';
-import type { NewCardDetails } from './CheckoutLightbox';
 import Checkbox from '@/app/components/Checkbox';
+import type { NewCardDetails } from './Payment';
 
 const NewCardForm = ({
   newCardDetails,
@@ -123,7 +123,7 @@ const NewCardForm = ({
         <Checkbox
           label='Save card for future purchases'
           id='save-card'
-          checked={String(saveCardChecked)}
+          checked={saveCardChecked}
           onChange={() => setSaveCardChecked(!saveCardChecked)}
         />
         {saveCardChecked && (

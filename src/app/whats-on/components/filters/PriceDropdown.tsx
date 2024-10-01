@@ -67,9 +67,14 @@ const PriceDropdown = ({ events }: { events: EventProps[] }) => {
 
   useEffect(() => {
     if (!searchParams.has('priceFrom')) {
-      setPrice([min, max()]);
+      const getMax = () => {
+        const allTickets: TicketProps[] = [];
+        events.forEach((event) => allTickets.push(...event.tickets));
+        return getMaxPrice(allTickets);
+      };
+      setPrice([min, getMax()]);
     }
-  }, [searchParams]);
+  }, [searchParams, events]);
 
   return (
     <>

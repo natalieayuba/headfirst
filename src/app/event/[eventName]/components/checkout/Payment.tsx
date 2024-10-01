@@ -5,22 +5,22 @@ import NewCardForm from './NewCardForm';
 import PaymentOption from './PaymentOption';
 import Icon from '@/app/components/Icon';
 
-interface PaymentProps {
-  disableButton: (disabled: boolean) => void;
+export interface NewCardDetails {
+  name?: string;
+  cardNumber?: string;
+  expiryDate?: string;
+  securityCode?: string;
+  postcode?: string;
+  save?: boolean;
 }
 
-const Payment = ({ disableButton }: PaymentProps) => {
-  const cardDetailsDefault = {
-    name: '',
-    cardNumber: '',
-    expiryDate: '',
-    securityCode: '',
-    postcode: '',
-    save: false,
-    default: false,
-  };
+const Payment = ({
+  disableButton,
+}: {
+  disableButton: (disabled: boolean) => void;
+}) => {
   const [selectedPaymentOption, setSelectedPaymentOption] = useState(-1);
-  const [newCardDetails, setNewCardDetails] = useState(cardDetailsDefault);
+  const [newCardDetails, setNewCardDetails] = useState<NewCardDetails>({});
 
   const options = [
     {
@@ -45,7 +45,7 @@ const Payment = ({ disableButton }: PaymentProps) => {
 
   useEffect(() => {
     if (selectedPaymentOption !== 1) {
-      setNewCardDetails(cardDetailsDefault);
+      setNewCardDetails({});
     }
   }, [selectedPaymentOption, setNewCardDetails]);
 

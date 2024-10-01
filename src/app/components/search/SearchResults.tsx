@@ -45,7 +45,7 @@ const SearchResults = ({
               <EventCard
                 key={result.name + result.id}
                 event={result as EventProps}
-                venues={venues}
+                venue={venues.find(({ id }) => result.id === id) as VenueProps}
                 onSelect={closeSearch}
                 showPrice={false}
                 showTime={false}

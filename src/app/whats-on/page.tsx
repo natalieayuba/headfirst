@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import DateDropdown from './components/filters/DateDropdown';
 import FilteredEvents from './components/FilteredEvents';
 import CategoryChips from './components/filters/CategoryChips';

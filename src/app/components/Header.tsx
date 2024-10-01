@@ -20,6 +20,7 @@ const Header = ({ search }: { search: JSX.Element }) => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   });
+
   return (
     <header
       className={`z-10 fixed w-full flex flex-col justify-between transition-all duration-200 ease-out px-4 md:px-12 bg-dark-night h-16 md:h-20 ${

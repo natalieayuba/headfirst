@@ -60,7 +60,7 @@ const MediaSwiper = ({
         );
       }
     }
-  }, [selectedIndex]);
+  }, [selectedIndex, sliderRef]);
 
   return (
     <div

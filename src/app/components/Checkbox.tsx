@@ -1,26 +1,14 @@
 import { appendClassName } from '@/utils/formatting';
 import React, { type ComponentProps } from 'react';
 
-interface CheckboxProps {
-  label: string;
-  checked?: string;
-}
-
 const Checkbox = ({
   label,
   id,
   className,
-  checked,
-  onChange,
-}: CheckboxProps & ComponentProps<'input'>) => (
+  ...rest
+}: { label: string } & ComponentProps<'input'>) => (
   <label htmlFor={id} className={`flex gap-4${appendClassName(className)}`}>
-    <input
-      className='checkbox'
-      type='checkbox'
-      id={id}
-      onChange={onChange}
-      value={checked}
-    />
+    <input className='checkbox' type='checkbox' id={id} {...rest} />
     {label}
   </label>
 );
