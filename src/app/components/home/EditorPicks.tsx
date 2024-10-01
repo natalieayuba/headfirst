@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { type RefObject } from 'react';
 import HomeSection from './HomeSection';
 import HorizontalScroll from '../HorizontalScroll';
 import EventCard from '../EventCard';
@@ -31,7 +31,7 @@ const EditorPicks = ({ events, venues }: EditorPicksProps) => {
       heading="Our editors' top picks"
       caption='Explore the best gigs and nights out in Bristol, curated by our editorial team.'
       rightDiv={
-        <div className='hidden md:block'>
+        <div className='hidden xs:flex'>
           {SliderArrowLeft}
           {SliderArrowRight}
         </div>
@@ -39,7 +39,7 @@ const EditorPicks = ({ events, venues }: EditorPicksProps) => {
     >
       <HorizontalScroll
         id='slider'
-        ref={sliderRef}
+        ref={sliderRef as RefObject<HTMLOListElement>}
         list={editorsPicks}
         onScroll={handleScroll}
         onMouseDown={handleDragStart}
@@ -52,7 +52,7 @@ const EditorPicks = ({ events, venues }: EditorPicksProps) => {
         }`}
         renderItem={(event, index) => (
           <EventCard
-            venues={venues}
+            venue={venues.find(({ id }) => id === event.venueId)!}
             event={event}
             showTime={false}
             savedEvents={savedEvents}

@@ -23,11 +23,11 @@ import {
   FiInstagram,
   FiUser,
   FiMusic,
+  FiMaximize2,
 } from 'react-icons/fi';
 import { PiHandsClapping, PiSparkle } from 'react-icons/pi';
 import { TbCurrencyPound } from 'react-icons/tb';
 import { FaCcVisa, FaSpotify, FaBandcamp } from 'react-icons/fa';
-import { VscSparkle } from 'react-icons/vsc';
 
 interface IconProps {
   name: string;
@@ -66,6 +66,7 @@ const Icon = ({ name, size, className, fill }: IconProps) => {
     sparkle: <PiSparkle />,
     user: <FiUser />,
     music: <FiMusic />,
+    expand: <FiMaximize2 />,
   };
 
   const icon = icons[name as keyof IconType];

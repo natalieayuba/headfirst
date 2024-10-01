@@ -243,7 +243,7 @@
     },
     {
       "id": "1004",
-      "name": "Socials & hobbies",
+      "name": "Socials",
       "image": "https://images.pexels.com/photos/8111364/pexels-photo-8111364.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       "subcategories": [
         {
@@ -268,7 +268,7 @@
         },
         {
           "id": "1006",
-          "name": "Board games"
+          "name": "Board game"
         }
       ]
     }

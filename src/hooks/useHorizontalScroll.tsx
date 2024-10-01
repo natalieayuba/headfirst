@@ -4,7 +4,7 @@ import useWindowWidth from './useWindowWidth';
 import SliderArrow from '@/app/components/SliderArrow';
 
 const useHorizontalScroll = (scrollList?: any[]) => {
-  const sliderRef = useRef<HTMLElement>(null);
+  const sliderRef = useRef<HTMLOListElement | HTMLDivElement>(null);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [maxScrollLeft, setMaxScrollLeft] = useState(0);
   const [mouseDown, setMouseDown] = useState(false);

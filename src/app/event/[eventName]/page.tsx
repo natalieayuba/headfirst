@@ -1,7 +1,6 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 import { formatDate, formatEventUrl, toSentenceCase } from '@/utils/formatting';
-import Image from 'next/image';
 import Media from '@/app/event/[eventName]/components/media/Media';
 import Breadcrumbs from '@/app/event/[eventName]/components/Breadcrumbs';
 import Details from '@/app/event/[eventName]/components/Details';
@@ -14,12 +13,10 @@ import {
   getVenues,
 } from '@/db/queries';
 import Checkout from './components/checkout/Checkout';
-import Socials from './components/Socials';
 import Venue from './components/Venue';
-import CTAButtons from './components/CTAButtons';
 import type { Metadata } from 'next';
 import Main from '@/app/components/Main';
-import PromoterCard from './PromoterCard';
+import PromoterCard from './components/PromoterCard';
 
 interface EventProps {
   params: { eventName: string };
@@ -70,22 +67,7 @@ const Event = async ({ params }: EventProps) => {
     <Main>
       <Breadcrumbs category={category} />
       <div className='content-container md:flex md:gap-12 relative'>
-        <div className='w-full md:flex-1 md:min-w-64 md:max-w-[400px] h-auto'>
-          <div className='w-full relative aspect-square'>
-            <Image
-              src={event.media[0].src}
-              alt={`${event.name} image`}
-              fill
-              sizes='100%'
-              className='object-cover rounded-lg'
-            />
-            <CTAButtons eventId={event.id} />
-          </div>
-          <div className='hidden md:block'>
-            {event.media && <Media event={event} />}
-            {event.socials && <Socials socials={event.socials} />}
-          </div>
-        </div>
+        <Media event={event} />
         <div className='w-full md:flex-1 mt-7 mb-12 md:-mt-1 md:mb-12'>
           <h1 className='text-4xl md:text-6xl mb-4 font-medium'>
             {event.name}

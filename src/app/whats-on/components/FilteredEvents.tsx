@@ -100,7 +100,7 @@ const FilteredEvents = ({ events, venues }: FilteredEventsProps) => {
               <EventCard
                 key={event.name}
                 event={event}
-                venues={venues}
+                venue={venues.find(({ id }) => id === event.venueId)!}
                 savedEvents={savedEvents}
                 updateSavedEvents={updateSavedEvents}
                 imageSize='w-24 xs:w-full'

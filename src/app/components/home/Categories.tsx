@@ -6,9 +6,18 @@ import HorizontalScroll from '../HorizontalScroll';
 import Link from '../Link';
 import type { CategoryProps } from '@/db/schema';
 import useElementVisible from '@/hooks/useElementVisible';
+import useHorizontalScroll from '@/hooks/useHorizontalScroll';
 
 const Categories = ({ categories }: { categories: CategoryProps[] }) => {
   const { visible, observedRef } = useElementVisible();
+  const {
+    sliderRef,
+    handleScroll,
+    SliderArrowLeft,
+    SliderArrowRight,
+    handleDragStart,
+    cursor,
+  } = useHorizontalScroll();
 
   const CategoryCard = ({ category }: { category: CategoryProps }) => (
     <Link
@@ -37,9 +46,19 @@ const Categories = ({ categories }: { categories: CategoryProps[] }) => {
   );
 
   return (
-    <HomeSection heading='Categories'>
+    <HomeSection
+      ref={observedRef as RefObject<HTMLDivElement>}
+      heading='Categories'
+      rightDiv={
+        <div className='hidden xs:flex'>
+          {SliderArrowLeft}
+          {SliderArrowRight}
+        </div>
+      }
+    >
       <HorizontalScroll
-        ref={observedRef as RefObject<HTMLOListElement>}
+        ref={sliderRef as RefObject<HTMLOListElement>}
+        onScroll={handleScroll}
         className='md:grid md:grid-flow-col md:grid-cols-4 md:w-full'
         list={categories}
         renderItem={(category) => <CategoryCard category={category} />}
