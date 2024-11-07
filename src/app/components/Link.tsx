@@ -1,7 +1,7 @@
 'use client';
 import NextLink from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import React, { type MouseEvent } from 'react';
+import React, { Suspense, type MouseEvent } from 'react';
 import useLoader from '@/hooks/useLoader';
 import Loader from './Loader';
 
@@ -46,13 +46,15 @@ const Link = ({
   return (
     <>
       {loading && <Loader />}
-      <NextLink
-        href={href}
-        onClick={(e) => loadPage(handleClick, afterClick, e)}
-        {...rest}
-      >
-        {children}
-      </NextLink>
+      <Suspense>
+        <NextLink
+          href={href}
+          onClick={(e) => loadPage(handleClick, afterClick, e)}
+          {...rest}
+        >
+          {children}
+        </NextLink>
+      </Suspense>
     </>
   );
 };

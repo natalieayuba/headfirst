@@ -24,6 +24,7 @@ import {
   FiUser,
   FiMusic,
   FiMaximize2,
+  FiMenu,
 } from 'react-icons/fi';
 import { PiHandsClapping, PiSparkle } from 'react-icons/pi';
 import { TbCurrencyPound } from 'react-icons/tb';
@@ -67,6 +68,7 @@ const Icon = ({ name, size, className, fill }: IconProps) => {
     user: <FiUser />,
     music: <FiMusic />,
     expand: <FiMaximize2 />,
+    menu: <FiMenu />,
   };
 
   const icon = icons[name as keyof IconType];

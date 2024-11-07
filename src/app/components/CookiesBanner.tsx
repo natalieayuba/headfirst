@@ -1,6 +1,6 @@
 import React from 'react';
 import HyperLink from './Hyperlink';
-import { Button } from './buttons/Button';
+import Button from './buttons/Button';
 
 const CookiesBanner = ({ onClose }: { onClose: () => void }) => (
   <div
@@ -16,10 +16,10 @@ const CookiesBanner = ({ onClose }: { onClose: () => void }) => (
     </div>
     <div className='flex gap-3 flex-col [&_button]:w-full [&_button]:h-fit xs:flex-row [&_button]:xs:w-fit '>
       <Button onClick={onClose}>Accept all</Button>
-      <Button alt onClick={onClose}>
+      <Button isSecondary onClick={onClose}>
         Reject all
       </Button>
-      <Button alt>Customise</Button>
+      <Button isSecondary>Customise</Button>
     </div>
   </div>
 );

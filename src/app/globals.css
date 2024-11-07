@@ -71,7 +71,7 @@ input[type='search']::-webkit-search-results-decoration {
   }
 
   .content-container {
-    @apply px-4 md:px-12 md:max-w-6xl mx-auto w-full;
+    @apply margin-x-outer md:max-w-6xl mx-auto w-full;
   }
 
   .overflow-y-scroll {
@@ -118,10 +118,6 @@ input[type='search']::-webkit-search-results-decoration {
     @apply after:bg-lilac before:content-['✓'] before:text-dark-night before:visible before:absolute before:w-3 before:h-3 before:z-10 before:left-0.5;
   }
 
-  .button {
-    @apply min-w-32 w-fit px-4 py-[14px] font-semibold rounded text-dark-night hover:opacity-85 disabled:opacity-30 disabled:hover:opacity-30 transition-opacity duration-200;
-  }
-
   .hovered-img {
     @apply md:group-hover:scale-105 transition duration-200 ease-out;
   }
@@ -159,7 +155,7 @@ input[type='search']::-webkit-search-results-decoration {
 
 @layer utilities {
   .margin-x-outer {
-    @apply px-6 lg:px-12;
+    @apply px-4 md:px-6 lg:px-12;
   }
 
   .black-and-white {

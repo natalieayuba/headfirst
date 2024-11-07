@@ -8,8 +8,8 @@ const config: Config = {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    colors,
     extend: {
-      colors,
       fontSize: {
         'heading-lg': 'clamp(52px, 14vw, 96px)',
       },

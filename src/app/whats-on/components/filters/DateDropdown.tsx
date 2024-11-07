@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import Dropdown from './FilterDropdown';
 import Calendar from 'react-calendar';
 import { formatDate, formatDateParam } from '@/utils/formatting';
@@ -77,41 +77,45 @@ const DateDropdown = () => {
   return (
     <>
       {loading && <Loader />}
-      <Dropdown
-        title='Date'
-        icon='calendar'
-        selected={
-          selectedDate ? formatDate((selectedDate as Date).toDateString()) : ''
-        }
-      >
-        <Calendar
-          onChange={(e) => loadPage(() => onChange(e))}
-          value={selectedDate}
-          next2Label={null}
-          prev2Label={null}
-          minDate={minDate}
-          nextLabel={nextLabel}
-          prevLabel={prevLabel}
-          minDetail='month'
-          tileClassName={({ date, activeStartDate }) =>
-            `${
-              disabled(date)
-                ? 'opacity-30 '
-                : notInMonth(date, activeStartDate)
-                ? 'opacity-30 hover:bg-lilac hover:bg-opacity-30 '
-                : isSelectedDate(date)
-                ? 'bg-lilac text-dark-night font-medium '
-                : isToday(date)
-                ? 'border-2 border-lilac hover:bg-lilac hover:bg-opacity-30 '
-                : 'hover:bg-lilac hover:bg-opacity-30 '
-            }rounded-full aspect-square`
+      <Suspense>
+        <Dropdown
+          title='Date'
+          icon='calendar'
+          selected={
+            selectedDate
+              ? formatDate((selectedDate as Date).toDateString())
+              : ''
           }
-          activeStartDate={activeStartDate}
-          onActiveStartDateChange={({ activeStartDate }) => {
-            setActiveStartDate(activeStartDate as Date);
-          }}
-        />
-      </Dropdown>
+        >
+          <Calendar
+            onChange={(e) => loadPage(() => onChange(e))}
+            value={selectedDate}
+            next2Label={null}
+            prev2Label={null}
+            minDate={minDate}
+            nextLabel={nextLabel}
+            prevLabel={prevLabel}
+            minDetail='month'
+            tileClassName={({ date, activeStartDate }) =>
+              `${
+                disabled(date)
+                  ? 'opacity-30 '
+                  : notInMonth(date, activeStartDate)
+                  ? 'opacity-30 hover:bg-lilac hover:bg-opacity-30 '
+                  : isSelectedDate(date)
+                  ? 'bg-lilac text-dark-night font-medium '
+                  : isToday(date)
+                  ? 'border-2 border-lilac hover:bg-lilac hover:bg-opacity-30 '
+                  : 'hover:bg-lilac hover:bg-opacity-30 '
+              }rounded-full aspect-square`
+            }
+            activeStartDate={activeStartDate}
+            onActiveStartDateChange={({ activeStartDate }) => {
+              setActiveStartDate(activeStartDate as Date);
+            }}
+          />
+        </Dropdown>
+      </Suspense>
     </>
   );
 };

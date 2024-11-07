@@ -21,11 +21,11 @@ const Donations = () => (
           raised from ticket sales
         </p>
       </div>
-      <p className='md:max-w-sm md:mr-[10%] md:text-lg md:leading-snug'>
+      <p className='md:max-w-sm md:mr-[10%] md:text-lg leading-[130%]'>
         Headfirst is a not-for-profit-orientated, local business. 100% of
         booking fees are donated directly to local causes in Bristol.
         <Hyperlink href='#' className='block mt-4 default-hover'>
-          Read more
+          Learn more
           <Icon
             name='arrow-right'
             size={14}

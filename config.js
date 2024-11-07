@@ -7,39 +7,29 @@ module.exports = {
     lilac: '#BA9CFF',
     night: '#1E1B28',
     'dark-night': '#0E0C12',
+    white: '#fff',
+    transparent: 'transparent',
   },
-  navLinks: [
-    {
-      name: 'Browse events',
-      url: '/whats-on',
-    },
-    {
-      name: 'About',
-    },
-    {
-      name: 'Donations',
-    },
-    {
-      name: 'Help',
-    },
-    {
-      name: 'My account',
-      links: [
-        {
-          name: 'Tickets',
-        },
-        {
-          name: 'Saved',
-        },
-        {
-          name: 'Settings',
-        },
-        {
-          name: 'Sign out',
-        },
-      ],
-    },
-  ],
+  navLinks: {
+    browse: [
+      {
+        text: "What's on",
+        url: '/whats-on',
+      },
+      {
+        text: 'Venues',
+      },
+    ],
+    user: [
+      {
+        text: 'Ticket your event',
+      },
+      {
+        text: 'My account',
+        links: [],
+      },
+    ],
+  },
   animationDurations: {
     banner: 500,
     default: 200,

@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import Dropdown from './FilterDropdown';
 import { Button } from '../../../components/buttons/Button';
 import { getMaxPrice } from '@/utils/formatting';
@@ -79,47 +79,49 @@ const PriceDropdown = ({ events }: { events: EventProps[] }) => {
   return (
     <>
       {loading && <Loader />}
-      <Dropdown
-        title='Price'
-        icon='pound'
-        selected={
-          searchParams.has('priceFrom')
-            ? `${formatPrice([
-                searchParams.get('priceFrom')!,
-                searchParams.get('priceTo')!,
-              ])}`
-            : ''
-        }
-      >
-        <Slider
-          value={price}
-          min={min}
-          max={max()}
-          onChange={handleChange}
-          valueLabelDisplay='off'
-          disableSwap
-          sx={{
-            color: colors.lilac,
-            '& .MuiSlider-thumb': {
-              '&:hover, &.Mui-focusVisible': {
-                boxShadow: 'none',
-              },
-              '&.Mui-active': {
-                boxShadow: 'none',
-              },
-            },
-          }}
-        />
-        <Button
-          alt
-          className='w-full'
-          onClick={() => loadPage(handleClick)}
-          disabled={price[0] === min && price[1] === max()}
+      <Suspense>
+        <Dropdown
+          title='Price'
+          icon='pound'
+          selected={
+            searchParams.has('priceFrom')
+              ? `${formatPrice([
+                  searchParams.get('priceFrom')!,
+                  searchParams.get('priceTo')!,
+                ])}`
+              : ''
+          }
         >
-          Show prices between
-          <span className='block text-xl'>{formatPrice(price)}</span>
-        </Button>
-      </Dropdown>
+          <Slider
+            value={price}
+            min={min}
+            max={max()}
+            onChange={handleChange}
+            valueLabelDisplay='off'
+            disableSwap
+            sx={{
+              color: colors.lilac,
+              '& .MuiSlider-thumb': {
+                '&:hover, &.Mui-focusVisible': {
+                  boxShadow: 'none',
+                },
+                '&.Mui-active': {
+                  boxShadow: 'none',
+                },
+              },
+            }}
+          />
+          <Button
+            alt
+            className='w-full'
+            onClick={() => loadPage(handleClick)}
+            disabled={price[0] === min && price[1] === max()}
+          >
+            Show prices between
+            <span className='block text-xl'>{formatPrice(price)}</span>
+          </Button>
+        </Dropdown>
+      </Suspense>
     </>
   );
 };

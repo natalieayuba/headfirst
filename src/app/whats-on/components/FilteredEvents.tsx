@@ -8,7 +8,7 @@ import useLocalStorage from '@/hooks/useLocalStorage';
 import useWindowWidth from '@/hooks/useWindowWidth';
 import { formatDate } from '@/utils/formatting';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 
 interface FilteredEventsProps {
   events: EventProps[];
@@ -78,54 +78,56 @@ const FilteredEvents = ({ events, venues }: FilteredEventsProps) => {
   return (
     <>
       {loading && <Loader />}
-      <div className='content-container pt-2 mb-12 md:mb-24'>
-        <div className='flex justify-between'>
-          <p className='secondary-text'>
-            {filteredEvents.length}
-            {filteredEvents.length === 1 ? ' event' : ' events'}
-          </p>
-          {searchParams.size > 0 && (
-            <button
-              type='button'
-              className='text-sm link disabled:opacity-30'
-              onClick={() => loadPage(clearFilters)}
-            >
-              Clear all filters
-            </button>
-          )}
-        </div>
-        {loadedEvents.length > 0 ? (
-          <div className='grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xs:gap-8 mt-5 xs:mt-6 mb-8'>
-            {loadedEvents.map((event) => (
-              <EventCard
-                key={event.name}
-                event={event}
-                venue={venues.find(({ id }) => id === event.venueId)!}
-                savedEvents={savedEvents}
-                updateSavedEvents={updateSavedEvents}
-                imageSize='w-24 xs:w-full'
-                horizontal={windowWidth < 420}
-              />
-            ))}
+      <Suspense>
+        <div className='content-container pt-2 mb-12 md:mb-24'>
+          <div className='flex justify-between'>
+            <p className='secondary-text'>
+              {filteredEvents.length}
+              {filteredEvents.length === 1 ? ' event' : ' events'}
+            </p>
+            {searchParams.size > 0 && (
+              <button
+                type='button'
+                className='text-sm link disabled:opacity-30'
+                onClick={() => loadPage(clearFilters)}
+              >
+                Clear all filters
+              </button>
+            )}
           </div>
-        ) : (
-          <p className='mt-6 text-white text-opacity-60'>
-            No events found. Please adjust your filters.
-          </p>
-        )}
+          {loadedEvents.length > 0 ? (
+            <div className='grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 xs:gap-8 mt-5 xs:mt-6 mb-8'>
+              {loadedEvents.map((event) => (
+                <EventCard
+                  key={event.name}
+                  event={event}
+                  venue={venues.find(({ id }) => id === event.venueId)!}
+                  savedEvents={savedEvents}
+                  updateSavedEvents={updateSavedEvents}
+                  imageSize='w-24 xs:w-full'
+                  horizontal={windowWidth < 420}
+                />
+              ))}
+            </div>
+          ) : (
+            <p className='mt-6 text-white text-opacity-60'>
+              No events found. Please adjust your filters.
+            </p>
+          )}
 
-        <div className='flex justify-center'>
-          <Button
-            alt
-            onClick={loadMore}
-            className={
-              loadedEvents.length === filteredEvents.length ? 'hidden' : ''
-            }
-          >
-            Load more
-          </Button>
+          <div className='flex justify-center'>
+            <Button
+              alt
+              onClick={loadMore}
+              className={
+                loadedEvents.length === filteredEvents.length ? 'hidden' : ''
+              }
+            >
+              Load more
+            </Button>
+          </div>
         </div>
-      </div>
+      </Suspense>
     </>
   );
 };
