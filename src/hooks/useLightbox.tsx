@@ -10,6 +10,9 @@ const useLightbox = () => {
   useEffect(() => {
     document.body.style.overflowY = isOpen ? 'hidden' : 'auto';
     document.body.style.touchAction = isOpen ? 'none' : 'auto';
+    document
+      .querySelectorAll('video')
+      .forEach((video) => (isOpen ? video.pause() : video.play()));
   }, [isOpen]);
 
   return { isOpen, openLightbox, closeLightbox, lightboxRef };

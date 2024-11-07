@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import NavMenu from '@/app/components/navigation/NavMenu';
+import NavMenu from './NavMenu';
 import { usePathname } from 'next/navigation';
 import Link from './Link';
 import { useEffect, useState } from 'react';
@@ -51,7 +51,7 @@ const Header = ({ search }: { search: JSX.Element }) => {
         ${visible ? 'top-0' : '-top-16 md:-top-20'}`}
     >
       <nav className='flex justify-between items-center size-full'>
-        <div className='flex gap-6 md:gap-8 items-center'>
+        <div className='flex gap-4 md:gap-8 items-center'>
           <NavMenu />
           <Link href='/'>
             <Image
