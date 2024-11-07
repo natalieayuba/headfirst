@@ -70,8 +70,11 @@ input[type='search']::-webkit-search-results-decoration {
     @apply transition-opacity duration-200 hover:opacity-80;
   }
 
+  .container-max-w {
+    @apply w-full md:max-w-7xl mx-auto;
+  }
   .content-container {
-    @apply margin-x-outer md:max-w-6xl mx-auto w-full;
+    @apply container-mx container-max-w;
   }
 
   .overflow-y-scroll {
@@ -154,7 +157,7 @@ input[type='search']::-webkit-search-results-decoration {
 }
 
 @layer utilities {
-  .margin-x-outer {
+  .container-mx {
     @apply px-4 md:px-6 lg:px-12;
   }
 

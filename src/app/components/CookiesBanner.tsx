@@ -16,10 +16,10 @@ const CookiesBanner = ({ onClose }: { onClose: () => void }) => (
     </div>
     <div className='flex gap-3 flex-col [&_button]:w-full [&_button]:h-fit xs:flex-row [&_button]:xs:w-fit '>
       <Button onClick={onClose}>Accept all</Button>
-      <Button isSecondary onClick={onClose}>
+      <Button style='secondary' onClick={onClose}>
         Reject all
       </Button>
-      <Button isSecondary>Customise</Button>
+      <Button style='secondary'>Customise</Button>
     </div>
   </div>
 );

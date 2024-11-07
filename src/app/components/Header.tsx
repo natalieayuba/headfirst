@@ -45,7 +45,7 @@ const Header = ({ search }: { search: JSX.Element }) => {
 
   return (
     <header
-      className={`z-10 fixed w-full transition-all duration-200 ease-out margin-x-outer bg-dark-night h-16 md:h-20 ${
+      className={`z-10 fixed w-full transition-all duration-200 ease-out container-mx bg-dark-night h-16 md:h-20 ${
         pathname === '/' && prevScrollY < 30 ? ' bg-opacity-0 ' : ''
       } 
         ${visible ? 'top-0' : '-top-16 md:-top-20'}`}

@@ -3,7 +3,7 @@ import Link from '../Link';
 import { appendClassName } from '@/utils/formatting';
 
 interface BaseProps {
-  isSecondary?: boolean;
+  style?: 'primary' | 'secondary' | 'tertiary';
   className?: string;
   onClick?: () => void;
   children: ReactNode;
@@ -19,7 +19,7 @@ interface LinkButtonProps extends BaseProps {
 }
 
 const Button = ({
-  isSecondary,
+  style = 'primary',
   className,
   onClick,
   children,
@@ -28,8 +28,12 @@ const Button = ({
   const Wrapper = rest.href ? (rest.external ? 'a' : Link) : 'button';
   return (
     <Wrapper
-      className={`min-w-28 px-4 h-12 flex items-center font-semibold rounded text-dark-night enabled:hover:opacity-85 disabled:opacity-30 transition-opacity duration-200 ${
-        isSecondary ? 'bg-white' : 'bg-lilac'
+      className={`min-w-28 px-4 h-12 flex items-center justify-center font-semibold rounded text-dark-night enabled:hover:opacity-85 disabled:opacity-30 transition-opacity duration-200 ${
+        style === 'primary'
+          ? 'bg-lilac'
+          : style === 'secondary'
+          ? 'bg-white'
+          : 'bg-transparent border text-white'
       }${appendClassName(className)}`}
       href={rest.href as string}
       {...(Wrapper === 'button' && { type: 'button' })}
