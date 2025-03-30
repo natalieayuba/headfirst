@@ -34,6 +34,7 @@ const Tickets = ({
 
     return (
       <button
+        type='button'
         className='text-lilac disabled:opacity-30 default-hover'
         onClick={() => handleStep(type)}
         disabled={

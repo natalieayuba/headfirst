@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Banner from '@/app/components/home/Banner';
 import Categories from '@/app/components/home/Categories';
 import EditorPicks from '@/app/components/home/EditorPicks';
@@ -13,7 +13,7 @@ const Home = async () => {
   const categories = await getCategories();
 
   return (
-    <Main className='[&&]:pt-0 pb-20 flex flex-col gap-20'>
+    <Main className='[&&]:pt-0 pb-20 flex flex-col gap-24'>
       <Banner />
       <Categories categories={categories} />
       <EditorPicks events={events} venues={venues} />

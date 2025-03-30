@@ -1,7 +1,7 @@
 'use client';
 import NextImage from 'next/image';
 import React from 'react';
-import NextLink from 'next/link';
+import Link from 'next/link';
 import { type EventProps, type VenueProps } from '../../db/schema';
 import {
   appendClassName,
@@ -10,7 +10,6 @@ import {
   formatPriceRange,
 } from '@/utils/formatting';
 import SaveButton from './buttons/SaveButton';
-import Link from './Link';
 import useAllowDrag from '@/hooks/useAllowDrag';
 
 interface EventCardProps {
@@ -41,7 +40,7 @@ export const Image = ({
   imageSize,
 }: ImageProps & Parameters<typeof NextImage>[0]) => (
   <div
-    className={`aspect-square h-auto relative overflow-hidden rounded-lg${appendClassName(
+    className={`aspect-square relative overflow-hidden rounded-lg${appendClassName(
       imageSize
     )}`}
   >
@@ -102,7 +101,7 @@ const EventCard = ({
   savedEvents,
   updateSavedEvents,
   ...rest
-}: EventCardProps & Partial<Parameters<typeof NextLink>[0]>) => {
+}: EventCardProps & Partial<Parameters<typeof Link>[0]>) => {
   const { handleClick, handleMouseDown, handleMouseLeave, handleMouseUp } =
     useAllowDrag();
   return (

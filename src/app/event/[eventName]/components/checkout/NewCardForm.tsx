@@ -1,5 +1,5 @@
 import Input from '@/app/components/Input';
-import React, { useState, type ChangeEvent, type KeyboardEvent } from 'react';
+import React, { useState, type KeyboardEvent } from 'react';
 import Checkbox from '@/app/components/Checkbox';
 import type { NewCardDetails } from './Payment';
 
@@ -11,12 +11,6 @@ const NewCardForm = ({
   setNewCardDetails: (details: NewCardDetails) => void;
 }) => {
   const [saveCardChecked, setSaveCardChecked] = useState(false);
-
-  const handleClear = (key: string) =>
-    setNewCardDetails({ ...newCardDetails, [key]: '' });
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>, key: string) =>
-    setNewCardDetails({ ...newCardDetails, [key]: e.target.value });
 
   const validateCardNumber = (e: KeyboardEvent) => {
     let target = e.target as HTMLInputElement;
@@ -42,94 +36,118 @@ const NewCardForm = ({
     }
   };
 
+  const fields = [
+    {
+      id: 'name',
+      label: 'Name on card',
+      placeholder: 'John Doe',
+      value: newCardDetails.name,
+      autoComplete: 'cc-name',
+      autoFocus: true,
+      minLength: 3,
+      maxLength: 100,
+    },
+    {
+      id: 'card-number',
+      label: 'Card number',
+      placeholder: '1234 1234 1234 1234',
+      inputMode: 'numeric',
+      value: newCardDetails.cardNumber,
+      autoComplete: 'cc-number',
+      onKeyDown: validateCardNumber,
+    },
+    [
+      {
+        id: 'expiry-date',
+        label: 'Expiry date',
+        placeholder: 'MM/YY',
+        inputMode: 'numeric',
+        value: newCardDetails.expiryDate,
+        onKeyUp: validateExpiryDate,
+        className: 'w-1/2 rounded-r-none',
+        maxLength: 5,
+        autoComplete: 'cc-exp',
+      },
+      {
+        id: 'security-code',
+        label: 'Security code',
+        placeholder: 'CVC',
+        inputMode: 'numeric',
+        value: newCardDetails.securityCode,
+        className: 'w-1/2 rounded-l-none',
+        maxLength: 3,
+        autoComplete: 'cc-csc',
+      },
+    ],
+    {
+      id: 'postcode',
+      label: 'Postcode',
+      placeholder: 'AB12 CD3',
+      value: newCardDetails.postcode,
+      maxLength: 9,
+      autoComplete: 'postal-code',
+    },
+  ];
+
   return (
     <div className='flex flex-col gap-4 py-1'>
-      <Input
-        type='text'
-        label='Name on card'
-        placeholder='John Doe'
-        id='name'
-        value={newCardDetails.name}
-        clearInput={() => handleClear('name')}
-        onChange={(e) => handleChange(e, 'name')}
-        autoComplete='cc-name'
-        autoCorrect='off'
-        spellCheck={false}
-        autoFocus
-        tabIndex={0}
-      />
-      <Input
-        type='text'
-        label='Card number'
-        id='card-number'
-        placeholder='1234 1234 1234 1234'
-        inputMode='numeric'
-        value={newCardDetails.cardNumber}
-        clearInput={() => handleClear('cardNumber')}
-        onChange={(e) => handleChange(e, 'cardNumber')}
-        onKeyDown={validateCardNumber}
-        autoCorrect='off'
-        spellCheck={false}
-        autoComplete='cc-number'
-        tabIndex={0}
-      />
-      <div className='flex'>
-        <Input
-          type='text'
-          label='Expiry date'
-          placeholder='MM/YY'
-          id='expiry-date'
-          inputMode='numeric'
-          value={newCardDetails.expiryDate}
-          onChange={(e) => handleChange(e, 'expiryDate')}
-          onKeyUp={validateExpiryDate}
-          className='w-1/2 rounded-r-none'
-          maxLength={5}
-          autoComplete='cc-exp'
-          autoCorrect='off'
-          spellCheck={false}
-          tabIndex={0}
-        />
-        <Input
-          type='text'
-          label='Security code'
-          placeholder='CVC'
-          id='security-code'
-          inputMode='numeric'
-          value={newCardDetails.securityCode}
-          onChange={(e) => handleChange(e, 'securityCode')}
-          className='w-1/2 rounded-l-none'
-          maxLength={3}
-          autoComplete='cc-csc'
-          autoCorrect='off'
-          spellCheck={false}
-          tabIndex={0}
-        />
-      </div>
-      <Input
-        type='text'
-        label='Postcode'
-        placeholder='AB12 CD3'
-        id='postcode'
-        value={newCardDetails.postcode}
-        onChange={(e) => handleChange(e, 'postcode')}
-        maxLength={9}
-        autoComplete='postal-code'
-        autoCorrect='off'
-        spellCheck={false}
-        tabIndex={0}
-      />
-      <div className='flex flex-col gap-1'>
-        <Checkbox
-          label='Save card for future purchases'
-          id='save-card'
-          checked={saveCardChecked}
-          onChange={() => setSaveCardChecked(!saveCardChecked)}
-        />
-        {saveCardChecked && (
-          <Checkbox label='Set as default' id='set-as-default' />
-        )}
-      </div>
+      {fields.map((field, index) => {
+        const Field = ({ field }: { field: any }) => (
+          <Input
+            type='text'
+            label={field.label}
+            placeholder={field.placeholder}
+            id={field.id}
+            value={field.value}
+            minLength={field.minLength}
+            maxLength={field.maxLength}
+            clearInput={() => {
+              setNewCardDetails({ ...newCardDetails, [field.id]: '' });
+              console.log(field.id);
+            }}
+            // onChange={(e) =>
+            //   setNewCardDetails({
+            //     ...newCardDetails,
+            //     [field.id]: e.target.value,
+            //   })
+            // }
+            autoComplete={field.autoComplete}
+            className={field.className}
+            autoCorrect='off'
+            spellCheck='false'
+            required
+          />
+        );
+
+        return Array.isArray(field) ? (
+          <div className='flex' key={index}>
+            {field.map((subField) => (
+              <Field key={subField.id} field={subField} />
+            ))}
+          </div>
+        ) : (
+          <Field field={field} key={index} />
+        );
+      })}
+
+      <fieldset className='flex flex-col gap-1'>
+        <legend className='hidden'>Save options</legend>
+        <ul>
+          <li>
+            <Checkbox
+              label='Save card for future purchases'
+              id='save-card'
+              checked={saveCardChecked}
+              onChange={() => setSaveCardChecked(!saveCardChecked)}
+            />
+          </li>
+          {saveCardChecked && (
+            <li>
+              <Checkbox label='Set as default' id='set-as-default' />
+            </li>
+          )}
+        </ul>
+      </fieldset>
     </div>
   );
 };

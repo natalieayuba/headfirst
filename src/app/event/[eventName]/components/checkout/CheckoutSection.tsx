@@ -12,14 +12,14 @@ const CheckoutSection = ({
   children,
   className,
 }: CheckoutSectionProps) => (
-  <div
-    className={`bg-night rounded-lg mt-6 h-fit flex-1${appendClassName(
+  <section
+    className={`bg-night rounded-lg mt-6 h-fit flex-1 p-4 ${appendClassName(
       className
     )}`}
   >
-    <h2 className='p-4 pb-0 text-xl mb-0'>{heading}</h2>
-    <div className='p-4 pt-0'>{children}</div>
-  </div>
+    <h2 className='text-xl mb-0'>{heading}</h2>
+    <div>{children}</div>
+  </section>
 );
 
 export default CheckoutSection;

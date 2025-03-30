@@ -63,7 +63,7 @@ input[type='search']::-webkit-search-results-decoration {
   }
 
   h2 {
-    @apply text-2xl lg:text-4xl leading-none mb-2;
+    @apply text-2xl lg:text-3xl leading-none mb-2;
   }
 
   .default-hover {
@@ -81,6 +81,7 @@ input[type='search']::-webkit-search-results-decoration {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
   .overflow-y-scroll {
     display: none;
   }
@@ -122,7 +123,7 @@ input[type='search']::-webkit-search-results-decoration {
   }
 
   .hovered-img {
-    @apply md:group-hover:scale-105 transition duration-200 ease-out;
+    @apply md:group-hover:scale-110 transition duration-200 ease-out;
   }
 
   .fade-overflow-edge-right {
@@ -147,6 +148,12 @@ input[type='search']::-webkit-search-results-decoration {
 
   .search-item {
     @apply px-3 py-2 transition-colors duration-75 rounded-lg hover:bg-opacity-20 hover:bg-dark-night;
+  }
+
+  @keyframes line {
+    to {
+      stroke-dashoffset: 0;
+    }
   }
 }
 

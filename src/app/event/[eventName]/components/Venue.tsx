@@ -11,7 +11,7 @@ const Venue = ({ venue }: { venue: VenueProps }) => (
       <p className='secondary-text'>{venue.address}</p>
     </div>
     <Button
-      isSecondary
+      style='secondary'
       className='mt-4 flex gap-2 items-center'
       href={venue.googleMapsLink!}
       external

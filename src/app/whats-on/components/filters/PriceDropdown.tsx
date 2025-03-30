@@ -1,20 +1,17 @@
 'use client';
 import React, { Suspense, useEffect, useState } from 'react';
 import Dropdown from './FilterDropdown';
-import { Button } from '../../../components/buttons/Button';
+import Button from '../../../components/buttons/Button';
 import { getMaxPrice } from '@/utils/formatting';
 import { type EventProps, type TicketProps } from '../../../../db/schema';
 import Slider from '@mui/material/Slider';
 import { colors } from '../../../../../config';
 import { usePathname, useSearchParams, useRouter } from 'next/navigation';
-import useLoader from '@/hooks/useLoader';
-import Loader from '@/app/components/Loader';
 
 const PriceDropdown = ({ events }: { events: EventProps[] }) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
-  const { loading, loadPage } = useLoader();
 
   const min = 0;
   const minDistance = 5;
@@ -77,52 +74,52 @@ const PriceDropdown = ({ events }: { events: EventProps[] }) => {
   }, [searchParams, events]);
 
   return (
-    <>
-      {loading && <Loader />}
-      <Suspense>
-        <Dropdown
-          title='Price'
-          icon='pound'
-          selected={
-            searchParams.has('priceFrom')
-              ? `${formatPrice([
-                  searchParams.get('priceFrom')!,
-                  searchParams.get('priceTo')!,
-                ])}`
-              : ''
-          }
-        >
-          <Slider
-            value={price}
-            min={min}
-            max={max()}
-            onChange={handleChange}
-            valueLabelDisplay='off'
-            disableSwap
-            sx={{
-              color: colors.lilac,
-              '& .MuiSlider-thumb': {
-                '&:hover, &.Mui-focusVisible': {
-                  boxShadow: 'none',
-                },
-                '&.Mui-active': {
-                  boxShadow: 'none',
-                },
+    <Suspense>
+      <Dropdown
+        title='Price'
+        icon='pound'
+        selected={
+          searchParams.has('priceFrom')
+            ? `${formatPrice([
+                searchParams.get('priceFrom')!,
+                searchParams.get('priceTo')!,
+              ])}`
+            : ''
+        }
+      >
+        <Slider
+          value={price}
+          min={min}
+          max={max()}
+          onChange={handleChange}
+          valueLabelDisplay='off'
+          disableSwap
+          id='slider'
+          sx={{
+            color: colors.lilac,
+            '& .MuiSlider-thumb': {
+              '&:hover, &.Mui-focusVisible': {
+                boxShadow: 'none',
               },
-            }}
-          />
-          <Button
-            alt
-            className='w-full'
-            onClick={() => loadPage(handleClick)}
-            disabled={price[0] === min && price[1] === max()}
-          >
-            Show prices between
-            <span className='block text-xl'>{formatPrice(price)}</span>
-          </Button>
-        </Dropdown>
-      </Suspense>
-    </>
+              '&.Mui-active': {
+                boxShadow: 'none',
+              },
+            },
+          }}
+        />
+        <Button
+          type='secondary'
+          className='w-full flex-col [&&]:h-fit p-3'
+          onClick={handleClick}
+          disabled={price[0] === min && price[1] === max()}
+        >
+          Show prices between
+          <output htmlFor='slider' className='block text-xl'>
+            {formatPrice(price)}
+          </output>
+        </Button>
+      </Dropdown>
+    </Suspense>
   );
 };
 

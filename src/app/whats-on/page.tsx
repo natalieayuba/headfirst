@@ -1,11 +1,9 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import DateDropdown from './components/filters/DateDropdown';
 import FilteredEvents from './components/FilteredEvents';
 import CategoryChips from './components/filters/CategoryChips';
 import PriceDropdown from './components/filters/PriceDropdown';
 import { getCategories, getEvents, getVenues } from '@/db/queries';
-import Header from '../components/Header';
-import Search from '../components/search/Search';
 import type { Metadata } from 'next';
 import type { CategoryProps, SubcategoryProps } from '@/db/schema';
 import { toSentenceCase } from '@/utils/formatting';
@@ -23,7 +21,7 @@ const getTitle = (category: CategoryProps, subcategory: SubcategoryProps) => {
     }
     title += toSentenceCase(category.name);
   } else {
-    title += "What's on";
+    title += "What's On";
   }
   return (title += ' in Bristol');
 };
@@ -58,7 +56,6 @@ const WhatsOn = async ({ searchParams }: Props) => {
 
   return (
     <Main>
-      <Header search={<Search />} />
       <h1 className='text-4xl content-container pb-2'>
         {getTitle(category, subcategory)}
       </h1>

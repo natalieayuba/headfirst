@@ -1,4 +1,4 @@
-import { Button } from '@/app/components/buttons/Button';
+import Button from '@/app/components/buttons/Button';
 import Divider from '@/app/components/Divider';
 import { Image } from '@/app/components/EventCard';
 import type { EventProps, VenueProps } from '@/db/schema';

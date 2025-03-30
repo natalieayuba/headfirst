@@ -18,6 +18,7 @@ const Donate = ({ updateOrder, orderSummary }: GetTicketsProps) => {
   );
 
   const handleClick = (pound: number) => {
+    console.log('focus');
     const value = pound === selectedDonation ? 0 : pound;
     setSelectedDonation(value);
     setCustomDonation('');
@@ -37,31 +38,42 @@ const Donate = ({ updateOrder, orderSummary }: GetTicketsProps) => {
         Your donation will help PRSC continue their programme of homeless
         support, community arts & activism.
       </p>
-      <div className='flex gap-2 my-3'>
-        {[1, 3, 5].map((pound) => (
-          <button
-            key={pound}
-            className={`relative border border-lilac border-opacity-20 rounded flex-1 px-3 py-2 transition-colors duration-100 ${
-              selectedDonation === pound
-                ? 'bg-lilac text-dark-night font-medium'
-                : 'text-lilac hover:bg-lilac hover:bg-opacity-15'
-            }`}
-            onClick={() => handleClick(pound)}
-          >
-            {formatPrice(pound)}
-            {selectedDonation === pound && (
-              <Icon
-                name='close'
-                size='14'
-                className='opacity-40 hover:opacity-60 absolute right-1.5 top-1/2 -translate-y-1/2'
-              />
-            )}
-          </button>
-        ))}
-      </div>
+      <fieldset>
+        <legend className='hidden'>Select a donation</legend>
+        <ul className='flex gap-2 my-3'>
+          {[1, 3, 5].map((pound) => (
+            <li key={pound} className='flex-1'>
+              <label
+                htmlFor={`donation-${pound}`}
+                className='relative flex cursor-pointer justify-center items-center border border-lilac border-opacity-20 rounded px-3 w-full py-2 transition-colors duration-50 text-lilac hover:bg-lilac has-[:checked]:bg-lilac has-[:checked]:text-dark-night has-[:checked]:font-medium has-[:checked]:bg-opacity-100 hover:bg-opacity-15'
+              >
+                <input
+                  aria-label={`£${pound} donation`}
+                  type='checkbox'
+                  id={`donation-${pound}`}
+                  name='selected-donation'
+                  className='appearance-none w-0 peer'
+                  onClick={() => handleClick(pound)}
+                  checked={selectedDonation === pound}
+                />
+                {formatPrice(pound)}
+                <Icon
+                  name='close'
+                  size={14}
+                  className='opacity-40 hover:opacity-60 absolute right-2 hidden peer-checked:block'
+                />
+              </label>
+            </li>
+          ))}
+        </ul>
+      </fieldset>
       <Input
         id='custom-donation'
-        type='currency'
+        type='number'
+        inputMode='decimal'
+        step='0.01'
+        min={0.01}
+        placeholder='00.00'
         onChange={handleChange}
         clearInput={() => {
           setCustomDonation('');
@@ -69,11 +81,7 @@ const Donate = ({ updateOrder, orderSummary }: GetTicketsProps) => {
         }}
         value={customDonation}
         label='Custom donation'
-        className={`mt-2 ${
-          customDonation === ''
-            ? 'focus-within:before:content-["£"]'
-            : 'before:content-["£"]'
-        }`}
+        className='mt-2 before:content-["£"]'
       />
     </CheckoutSection>
   );

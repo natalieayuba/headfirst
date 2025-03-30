@@ -1,9 +1,7 @@
 'use client';
-import { Button } from '@/app/components/buttons/Button';
+import Button from '@/app/components/buttons/Button';
 import EventCard from '@/app/components/EventCard';
-import Loader from '@/app/components/Loader';
 import type { EventProps, VenueProps } from '@/db/schema';
-import useLoader from '@/hooks/useLoader';
 import useLocalStorage from '@/hooks/useLocalStorage';
 import useWindowWidth from '@/hooks/useWindowWidth';
 import { formatDate } from '@/utils/formatting';
@@ -22,7 +20,6 @@ const FilteredEvents = ({ events, venues }: FilteredEventsProps) => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const { loading, loadPage } = useLoader();
   const { windowWidth } = useWindowWidth();
   const [savedEvents, updateSavedEvents] = useLocalStorage('savedEvents', []);
 
@@ -77,7 +74,6 @@ const FilteredEvents = ({ events, venues }: FilteredEventsProps) => {
 
   return (
     <>
-      {loading && <Loader />}
       <Suspense>
         <div className='content-container pt-2 mb-12 md:mb-24'>
           <div className='flex justify-between'>
@@ -89,7 +85,7 @@ const FilteredEvents = ({ events, venues }: FilteredEventsProps) => {
               <button
                 type='button'
                 className='text-sm link disabled:opacity-30'
-                onClick={() => loadPage(clearFilters)}
+                onClick={clearFilters}
               >
                 Clear all filters
               </button>
@@ -117,7 +113,7 @@ const FilteredEvents = ({ events, venues }: FilteredEventsProps) => {
 
           <div className='flex justify-center'>
             <Button
-              alt
+              type='secondary'
               onClick={loadMore}
               className={
                 loadedEvents.length === filteredEvents.length ? 'hidden' : ''

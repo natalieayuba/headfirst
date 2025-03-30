@@ -1,4 +1,4 @@
-import { Button } from '@/app/components/buttons/Button';
+import Button from '@/app/components/buttons/Button';
 import Lightbox from '@/app/components/Lightbox';
 import React, { useEffect, useState } from 'react';
 import GetTickets from './GetTickets';
@@ -7,7 +7,6 @@ import HyperLink from '@/app/components/Hyperlink';
 import Checkbox from '@/app/components/Checkbox';
 import Confirmation from './Confirmation';
 import useLoader from '@/hooks/useLoader';
-import Loader from '@/app/components/Loader';
 import EventCard from '@/app/components/EventCard';
 import type { EventProps, PromoterProps, VenueProps } from '@/db/schema';
 import OrderSummary from './OrderSummary';
@@ -100,57 +99,54 @@ const CheckoutLightbox = ({
   }, [step, setGoing]);
 
   return (
-    <>
-      {loading && <Loader />}
-      <Lightbox
-        onClose={closeLightbox}
-        onBack={step === 1 ? () => setStep((step) => step - 1) : undefined}
-        maxWidth='md:max-w-4xl'
-      >
-        <div className='max-w-sm sm:max-w-full mx-auto'>
-          {step < 2 ? (
-            <>
-              <EventCard
-                event={event}
-                venue={venue}
-                cardSize='min-h-14'
-                imageSize='w-16'
-                className='cursor-default'
-                showSaved={false}
-                showPrice={false}
-                animated={false}
-                horizontal
-                narrow
-              />
-              <div className='sm:flex gap-16'>
-                {steps[step].content}
-                <div className='mt-6 flex-1'>
-                  <OrderSummary orderSummary={orderSummary} step={step} />
-                  <p className='secondary-text mt-1'>
-                    {steps[step].footerContent}
-                  </p>
-                  <Button
-                    className='w-full mt-4'
-                    onClick={() => {
-                      if (step === 1) {
-                        loadPage(() => setStep((step) => step + 1));
-                      } else {
-                        setStep((step) => step + 1);
-                      }
-                    }}
-                    disabled={buttonDisabled}
-                  >
-                    {steps[step].buttonText}
-                  </Button>
-                </div>
-              </div>
-            </>
-          ) : (
-            <Confirmation event={event} venue={venue} />
-          )}
-        </div>
-      </Lightbox>
-    </>
+    <Lightbox
+      onClose={closeLightbox}
+      onBack={step === 1 ? () => setStep((step) => step - 1) : undefined}
+      maxWidth='md:max-w-4xl'
+    >
+      <div className='max-w-sm sm:max-w-full mx-auto'>
+        {step < 2 ? (
+          <>
+            <EventCard
+              event={event}
+              venue={venue}
+              cardSize='min-h-14'
+              imageSize='w-16'
+              className='cursor-default'
+              showSaved={false}
+              showPrice={false}
+              animated={false}
+              horizontal
+              narrow
+            />
+            <form className='sm:flex gap-16'>
+              {steps[step].content}
+              <section className='mt-6 flex-1'>
+                <OrderSummary orderSummary={orderSummary} step={step} />
+                <p className='secondary-text mt-1'>
+                  {steps[step].footerContent}
+                </p>
+                <Button
+                  className='w-full mt-4'
+                  onClick={() => {
+                    if (step === 1) {
+                      loadPage(() => setStep((step) => step + 1));
+                    } else {
+                      setStep((step) => step + 1);
+                    }
+                  }}
+                  disabled={buttonDisabled}
+                >
+                  {steps[step].buttonText}
+                </Button>
+              </section>
+            </form>
+          </>
+        ) : (
+          <Confirmation event={event} venue={venue} />
+        )}
+      </div>
+    </Lightbox>
   );
 };
 

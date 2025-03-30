@@ -1,48 +1,71 @@
+'use client';
 import React, { type ReactNode } from 'react';
-import Link from '../Link';
-import { appendClassName } from '@/utils/formatting';
+import Link from 'next/link';
+import { colors } from '../../../../config';
 
-interface BaseProps {
-  style?: 'primary' | 'secondary' | 'tertiary';
+export interface ButtonBaseProps {
+  type?: 'primary' | 'secondary' | 'tertiary';
   className?: string;
   onClick?: () => void;
   children: ReactNode;
+  disabled?: boolean;
+  animate?: boolean;
 }
 
-interface ButtonProps extends BaseProps {
+interface ButtonProps extends ButtonBaseProps {
   href?: never;
   external?: never;
 }
-interface LinkButtonProps extends BaseProps {
+interface LinkButtonProps extends ButtonBaseProps {
   href?: string;
   external?: boolean;
 }
 
 const Button = ({
-  style = 'primary',
+  type = 'primary',
   className,
   onClick,
   children,
+  disabled,
+  animate = true,
   ...rest
 }: ButtonProps | LinkButtonProps) => {
-  const Wrapper = rest.href ? (rest.external ? 'a' : Link) : 'button';
+  const ButtonWrapper = rest.href ? (rest.external ? 'a' : Link) : 'button';
+
   return (
-    <Wrapper
-      className={`min-w-28 px-4 h-12 flex items-center justify-center font-semibold rounded text-dark-night enabled:hover:opacity-85 disabled:opacity-30 transition-opacity duration-200 ${
-        style === 'primary'
-          ? 'bg-lilac'
-          : style === 'secondary'
-          ? 'bg-white'
-          : 'bg-transparent border text-white'
-      }${appendClassName(className)}`}
-      href={rest.href as string}
-      {...(Wrapper === 'button' && { type: 'button' })}
-      {...(rest.href &&
-        rest.external && { target: '_blank', rel: 'noopener noreferrer' })}
-      {...rest}
-    >
-      {children}
-    </Wrapper>
+    <div className={`group relative w-fit ${className || ''}`}>
+      {animate && (
+        <svg
+          viewBox='0 0 130 53'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+          preserveAspectRatio='none'
+          className='hidden md:block group-hover:group-[:not(:active)]:w-[110%] group-hover:group-[:not(:active)]:h-[120%] group-hover:group-[:not(:active)]:-left-3 group-active:-left-2 group-active:top-1.5 size-full left-0 z-0 absolute transition-all duration-100 ease-out top-0'
+        >
+          <path
+            d='M16.2862 42.2717C16.7125 41.5614 16.4821 40.64 15.7717 40.2138C15.0614 39.7875 14.14 40.0179 13.7138 40.7283L16.2862 42.2717ZM2.9993 9.5L1.77874 8.62809L1.77873 8.62811L2.9993 9.5ZM120.997 49.9117L120.822 48.4219C120.62 48.4457 120.425 48.5102 120.249 48.6117L120.997 49.9117ZM6.99989 50.5L7.04825 49.0008C7.03214 49.0003 7.01601 49 6.99989 49L6.99989 50.5ZM4 47L5.49482 46.8754L4 47ZM13.7138 40.7283C12.4027 42.9134 10.2801 44.5091 8.24514 45.7789C7.74215 46.0927 7.25367 46.3814 6.78836 46.6544C6.33024 46.9231 5.88017 47.185 5.48585 47.4282C5.09515 47.6692 4.7106 47.921 4.38822 48.1792C4.09507 48.414 3.70107 48.7706 3.46511 49.2568L6.16406 50.5666C6.09938 50.6999 6.05838 50.6852 6.26357 50.5208C6.43954 50.3799 6.69866 50.2049 7.06058 49.9817C7.41889 49.7607 7.83039 49.5212 8.30639 49.242C8.77521 48.9669 9.29342 48.6609 9.83329 48.324C11.9697 46.9909 14.5973 45.0866 16.2862 42.2717L13.7138 40.7283ZM120.997 49.9117C121.172 51.4015 121.173 51.4013 121.175 51.4011C121.175 51.401 121.177 51.4008 121.178 51.4007C121.18 51.4004 121.183 51.4002 121.185 51.3999C121.189 51.3993 121.194 51.3987 121.199 51.398C121.209 51.3966 121.22 51.3951 121.232 51.3933C121.256 51.3897 121.283 51.3852 121.313 51.3795C121.374 51.3681 121.448 51.3521 121.534 51.3295C121.707 51.2843 121.927 51.2133 122.188 51.102C122.711 50.8787 123.385 50.4983 124.152 49.8546C125.684 48.5682 127.558 46.2565 129.374 42.1008L126.625 40.8992C124.945 44.7434 123.318 46.6376 122.222 47.557C121.676 48.0162 121.254 48.2388 121.01 48.3428C120.888 48.3951 120.807 48.4187 120.774 48.4273C120.758 48.4316 120.753 48.4322 120.761 48.4308C120.765 48.43 120.772 48.4288 120.782 48.4273C120.787 48.4265 120.793 48.4257 120.799 48.4248C120.803 48.4243 120.806 48.4239 120.81 48.4234C120.812 48.4232 120.814 48.4229 120.816 48.4227C120.817 48.4226 120.818 48.4224 120.819 48.4223C120.82 48.4221 120.822 48.4219 120.997 49.9117ZM16.3794 0.00483565C9.59353 0.551036 4.44647 4.89363 1.77874 8.62809L4.21986 10.3719C6.55262 7.10637 10.9822 3.44896 16.6201 2.99516L16.3794 0.00483565ZM3.38375 50.362C3.74763 51.5183 4.84551 51.8122 5.32925 51.9015C5.89128 52.0053 6.54442 52 6.99989 52V49C6.74393 49 6.52372 48.9998 6.32066 48.9919C6.11595 48.984 5.97204 48.9695 5.87407 48.9514C5.76572 48.9314 5.79195 48.9207 5.87547 48.9718C5.98842 49.0408 6.1631 49.1999 6.24541 49.4615L3.38375 50.362ZM6.95153 51.9992C14.7207 52.2498 42.1108 52.75 68.118 52.8639C81.1219 52.9209 93.7936 52.8815 103.501 52.6655C108.352 52.5576 112.48 52.4052 115.545 52.1972C117.075 52.0933 118.363 51.9741 119.353 51.836C119.847 51.767 120.29 51.6903 120.662 51.6026C121 51.523 121.406 51.4068 121.745 51.2117L120.249 48.6117C120.306 48.5784 120.257 48.616 119.974 48.6825C119.726 48.7409 119.384 48.8026 118.939 48.8647C118.05 48.9887 116.843 49.1022 115.342 49.2041C112.345 49.4075 108.27 49.5586 103.434 49.6662C93.767 49.8813 81.1268 49.9209 68.1311 49.864C42.139 49.75 14.7791 49.2502 7.04825 49.0008L6.95153 51.9992ZM1.77873 8.62811C1.48702 9.03647 1.32248 9.53342 1.21519 9.95696C1.09986 10.4122 1.01343 10.94 0.946877 11.5104C0.813569 12.6528 0.746502 14.088 0.725846 15.6998C0.684447 18.9303 0.828435 23.0051 1.05019 27.1498C1.49403 35.4455 2.25589 44.1328 2.50519 47.1246L5.49482 46.8754C5.24415 43.8672 4.48683 35.2307 4.0459 26.9896C3.82527 22.8658 3.68548 18.8689 3.7256 15.7383C3.7457 14.1695 3.81072 12.8517 3.92666 11.8581C3.98473 11.3604 4.05222 10.9744 4.12333 10.6937C4.20247 10.3812 4.25688 10.3201 4.21988 10.3719L1.77873 8.62811ZM2.50519 47.1246C2.57093 47.9136 2.71465 48.6402 2.89457 49.2453C3.06189 49.8079 3.29944 50.3993 3.62267 50.8224L6.0065 49.001C6.01516 49.0124 5.90277 48.8362 5.77013 48.3902C5.65008 47.9865 5.54379 47.4631 5.49482 46.8754L2.50519 47.1246Z'
+            fill={colors.lilac}
+          />
+        </svg>
+      )}
+      <ButtonWrapper
+        className={`transition-all duration-150 ease-out relative min-w-28 w-full px-4 h-12 flex items-center justify-center font-semibold rounded text-dark-night disabled:opacity-30 ${animate ? 'md:group-active:-translate-x-2 md:group-active:translate-y-1.5' : ''} ${
+          type === 'primary'
+            ? 'bg-lilac'
+            : type === 'secondary'
+              ? 'bg-white'
+              : 'bg-transparent border text-white'
+        }`}
+        href={rest.href as string}
+        {...(ButtonWrapper === 'button' && { type: 'button' })}
+        {...(rest.href &&
+          rest.external && { target: '_blank', rel: 'noopener noreferrer' })}
+        {...{ onClick, disabled }}
+        {...rest}
+      >
+        {children}
+      </ButtonWrapper>
+    </div>
   );
 };
 

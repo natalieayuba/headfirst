@@ -1,7 +1,7 @@
 import React from 'react';
 import Icon from '../../../components/Icon';
-import Link from '@/app/components/Link';
 import type { CategoryProps } from '@/db/schema';
+import Link from 'next/link';
 
 const Breadcrumbs = ({ category }: { category: CategoryProps }) => {
   const breadcrumbs = [

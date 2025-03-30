@@ -43,6 +43,10 @@ const config: Config = {
             transform: 'scale(1) translateY(0) rotate(0)',
           },
         },
+        loaderPulse: {
+          from: { transform: 'scale(1.1)' },
+          to: { transform: 'scale(1)' },
+        },
       },
       animation: {
         fadeIn: `fadeIn ${animationDurations.banner}ms ease-in-out`,
@@ -50,6 +54,7 @@ const config: Config = {
         maskIn: `maskIn ${animationDurations.default}ms ease-out backwards`,
         heartbeat: `heartbeat 200ms ease-in`,
         bounceIn: `bounceIn 900ms ease forwards`,
+        loaderPulse: 'loaderPulse 800ms ease-out infinite',
       },
       screens: {
         xs: '420px', // => @media (min-width: 420px) { ... }
@@ -57,9 +62,8 @@ const config: Config = {
     },
   },
   plugins: [],
-  screens: {
-    touch: { raw: 'hover: none' },
-    hover: { raw: 'hover: hover' },
+  future: {
+    hoverOnlyWhenSupported: true,
   },
 };
 export default config;

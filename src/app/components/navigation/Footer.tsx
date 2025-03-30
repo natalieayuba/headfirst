@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import React from 'react';
-import Link from './Link';
-import Icon from './Icon';
-import Accordian from './Accordian';
-import Button from './buttons/Button';
-import LanguageSelect from './home/LanguageSelect';
+import Icon from '../Icon';
+import Accordian from '../Accordian';
+import Button from '../buttons/Button';
+import LanguageSelect from '../home/LanguageSelect';
+import Link from 'next/link';
 
 const Footer = () => {
   const legalLinks = ['Privacy', 'Terms', 'Cookies', 'Sitemap'];
@@ -30,7 +30,7 @@ const Footer = () => {
             Get weekly updates with the best of music, weird one-off events, and
             sell-out warnings.
           </p>
-          <Button style='tertiary' className='h-10 mt-4'>
+          <Button type='tertiary' className='h-10 mt-4'>
             Sign up
           </Button>
         </div>
@@ -47,7 +47,7 @@ const Footer = () => {
       url: '',
     },
     {
-      alt: 'Download Headfirst Bristol on the App Store',
+      alt: 'Get Headfirst on Google Play',
       src: '/GetItOnGooglePlay_Badge_Web_color_English.png',
       url: '',
     },

@@ -1,27 +1,56 @@
+'use client';
 import React from 'react';
 import HyperLink from './Hyperlink';
-import Button from './buttons/Button';
+import Button, { type ButtonBaseProps } from './buttons/Button';
+import useLocalStorage from '@/hooks/useLocalStorage';
+import Modal from './Modal';
 
-const CookiesBanner = ({ onClose }: { onClose: () => void }) => (
-  <div
-    className='fixed bottom-0 left-0 right-0 bg-night py-4 px-6 md:flex justify-between items-center flex-wrap gap-x-8 gap-y-4 animate-maskIn'
-    style={{ animationDelay: '3000ms', animationDuration: '500ms' }}
-  >
-    <div className='mb-4 md:mb-0'>
-      <p className='text-2xl'>About cookies on this site</p>
-      <p className='text-white text-opacity-60'>
-        Headfirst uses cookies to improve your user experience. Learn more in
-        our <HyperLink href='#'>Privacy Policy</HyperLink>.
-      </p>
+const buttons = [
+  {
+    text: 'Accept all',
+  },
+  {
+    text: 'Reject all',
+    type: 'secondary',
+  },
+  {
+    text: 'Customise',
+    type: 'secondary',
+  },
+];
+
+interface CookiesBannerProps {
+  onClose: () => void;
+}
+
+const CookiesBanner = ({ onClose }: CookiesBannerProps) => (
+  <Modal>
+    <div
+      className='z-10 fixed w-full bg-night p-6 md:px-12 flex justify-between items-center flex-wrap gap-x-8 gap-y-4 animate-maskIn bottom-0'
+      style={{ animationDelay: '300ms', animationDuration: '300ms' }}
+    >
+      <div className='md:flex-1'>
+        <p className='text-2xl'>About cookies on this site</p>
+        <p className='text-white text-opacity-60'>
+          Headfirst uses cookies to improve your user experience. Learn more in
+          our <HyperLink href='#'>Privacy Policy</HyperLink>.
+        </p>
+      </div>
+      <div className='flex flex-col gap-4 flex-1 md:flex-row md:flex-none'>
+        {buttons.map(({ text, type = 'primary' }) => (
+          <Button
+            key={text}
+            onClick={onClose}
+            type={type as ButtonBaseProps['type']}
+            className='w-full block'
+            animate={false}
+          >
+            {text}
+          </Button>
+        ))}
+      </div>
     </div>
-    <div className='flex gap-3 flex-col [&_button]:w-full [&_button]:h-fit xs:flex-row [&_button]:xs:w-fit '>
-      <Button onClick={onClose}>Accept all</Button>
-      <Button style='secondary' onClick={onClose}>
-        Reject all
-      </Button>
-      <Button style='secondary'>Customise</Button>
-    </div>
-  </div>
+  </Modal>
 );
 
 export default CookiesBanner;

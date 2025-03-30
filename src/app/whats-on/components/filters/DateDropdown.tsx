@@ -5,8 +5,6 @@ import Calendar from 'react-calendar';
 import { formatDate, formatDateParam } from '@/utils/formatting';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import Icon from '@/app/components/Icon';
-import useLoader from '@/hooks/useLoader';
-import Loader from '@/app/components/Loader';
 
 type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];
@@ -15,7 +13,6 @@ const DateDropdown = () => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
-  const { loading, loadPage } = useLoader();
 
   const minDate = new Date();
   const [selectedDate, setSelectedDate] = useState<Value>(
@@ -75,48 +72,43 @@ const DateDropdown = () => {
   );
 
   return (
-    <>
-      {loading && <Loader />}
-      <Suspense>
-        <Dropdown
-          title='Date'
-          icon='calendar'
-          selected={
-            selectedDate
-              ? formatDate((selectedDate as Date).toDateString())
-              : ''
-          }
-        >
-          <Calendar
-            onChange={(e) => loadPage(() => onChange(e))}
-            value={selectedDate}
-            next2Label={null}
-            prev2Label={null}
-            minDate={minDate}
-            nextLabel={nextLabel}
-            prevLabel={prevLabel}
-            minDetail='month'
-            tileClassName={({ date, activeStartDate }) =>
-              `${
-                disabled(date)
-                  ? 'opacity-30 '
-                  : notInMonth(date, activeStartDate)
+    <Suspense>
+      <Dropdown
+        title='Date'
+        icon='calendar'
+        selected={
+          selectedDate ? formatDate((selectedDate as Date).toDateString()) : ''
+        }
+      >
+        <Calendar
+          onChange={onChange}
+          value={selectedDate}
+          next2Label={null}
+          prev2Label={null}
+          minDate={minDate}
+          nextLabel={nextLabel}
+          prevLabel={prevLabel}
+          minDetail='month'
+          tileClassName={({ date, activeStartDate }) =>
+            `${
+              disabled(date)
+                ? 'opacity-30 '
+                : notInMonth(date, activeStartDate)
                   ? 'opacity-30 hover:bg-lilac hover:bg-opacity-30 '
                   : isSelectedDate(date)
-                  ? 'bg-lilac text-dark-night font-medium '
-                  : isToday(date)
-                  ? 'border-2 border-lilac hover:bg-lilac hover:bg-opacity-30 '
-                  : 'hover:bg-lilac hover:bg-opacity-30 '
-              }rounded-full aspect-square`
-            }
-            activeStartDate={activeStartDate}
-            onActiveStartDateChange={({ activeStartDate }) => {
-              setActiveStartDate(activeStartDate as Date);
-            }}
-          />
-        </Dropdown>
-      </Suspense>
-    </>
+                    ? 'bg-lilac text-dark-night font-medium '
+                    : isToday(date)
+                      ? 'border-2 border-lilac hover:bg-lilac hover:bg-opacity-30 '
+                      : 'hover:bg-lilac hover:bg-opacity-30 '
+            }rounded-full aspect-square`
+          }
+          activeStartDate={activeStartDate}
+          onActiveStartDateChange={({ activeStartDate }) => {
+            setActiveStartDate(activeStartDate as Date);
+          }}
+        />
+      </Dropdown>
+    </Suspense>
   );
 };
 

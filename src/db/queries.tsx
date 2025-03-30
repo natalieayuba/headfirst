@@ -6,7 +6,7 @@ import type {
   VenueProps,
 } from './schema';
 
-const baseUrl = 'http://localhost:3030';
+const baseUrl = 'http://localhost:3001';
 
 export const getCategories = async () => {
   const data = await fetch(`${baseUrl}/categories`);
