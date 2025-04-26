@@ -13,7 +13,7 @@ interface SaveButtonProps {
 
 const SaveButton = ({ eventId, className, size }: SaveButtonProps) => {
   const [savedEvents, setEvents] = useLocalStorage('savedEvents', []);
-  const saved = savedEvents.includes(eventId);
+  const saved = savedEvents ? savedEvents.includes(eventId) : false;
 
   const updateSavedEvents = () => {
     const updatedSavedEvents =

@@ -57,6 +57,7 @@ const SlotMachine = () => {
 
     return (
       <div
+        key={`${char}${index}`}
         className={`inline-flex justify-center ${char.match(/\W/) ? '' : 'w-9'}`}
       >
         {char.match(/\W/) ? char : slotSlider}

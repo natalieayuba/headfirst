@@ -8,8 +8,11 @@ interface DialogProps {
 }
 
 const Dialog = forwardRef<HTMLDivElement, DialogProps>(
-  ({ children, onClose, contentMaxWidth }) => (
-    <div className='fixed z-20 bg-dark-night backdrop-blur-sm bg-opacity-95 size-full flex justify-center inset-0'>
+  ({ children, onClose, contentMaxWidth }, ref) => (
+    <div
+      className='fixed z-20 bg-dark-night backdrop-blur-sm bg-opacity-95 size-full flex justify-center inset-0'
+      {...{ ref }}
+    >
       <div
         {...(contentMaxWidth && { style: { maxWidth: contentMaxWidth } })}
         className='w-full px-6'
