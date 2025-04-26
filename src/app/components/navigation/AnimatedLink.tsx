@@ -53,7 +53,7 @@ const AnimatedLink = ({
 
   return (
     <Type
-      className={`font-medium relative ${!isSearch ? 'hidden md:block' : ''}`}
+      className={`font-medium relative ${!isSearch ? 'hidden lg:block' : ''}`}
       href={url ?? ''}
       {...{ ...rest, onClick }}
     >

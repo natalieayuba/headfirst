@@ -32,6 +32,7 @@ const Banner = () => {
           backgroundImage: `linear-gradient(transparent -30%, ${colors['dark-night']})`,
         }}
       >
+        {/* TODO Pause video during open modals or when not visible */}
         <source src='/banner-video.mp4' type='video/mp4' />
       </video>
       <div className='max-w-7xl w-full px-6 md:px-12 m-auto mb-20 md:mb-52'>

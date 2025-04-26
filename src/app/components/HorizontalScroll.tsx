@@ -11,22 +11,21 @@ interface HorizontalScrollProps {
   className?: string;
 }
 
-const HorizontalScroll = forwardRef<
-  HTMLOListElement,
-  HorizontalScrollProps & ComponentProps<'ol'>
->(({ list, renderItem, className, ...rest }, ref) => (
-  <ol
-    ref={ref}
-    className={`flex overflow-y-hidden overflow-x-auto gap-4 md:gap-6 content-container hide-scrollbar${appendClassName(
-      className
-    )}`}
-    {...rest}
-  >
-    {list.map((item, index) => (
-      <li key={`${item.name}${index}`}>{renderItem(item, index)}</li>
-    ))}
-  </ol>
-));
+const HorizontalScroll = forwardRef<HTMLOListElement, HorizontalScrollProps>(
+  ({ list, renderItem, className, ...rest }, ref) => (
+    <ul
+      ref={ref}
+      className={`flex overflow-y-hidden overflow-x-auto gap-4 content-container hide-scrollbar${appendClassName(
+        className
+      )}`}
+      {...rest}
+    >
+      {list.map((item, index) => (
+        <li key={`${item.name}${index}`}>{renderItem(item, index)}</li>
+      ))}
+    </ul>
+  )
+);
 
 HorizontalScroll.displayName = 'HorizontalScroll';
 

@@ -11,6 +11,7 @@ import {
 } from '@/utils/formatting';
 import SaveButton from './buttons/SaveButton';
 import useAllowDrag from '@/hooks/useAllowDrag';
+import Card from './card/Card';
 
 interface EventCardProps {
   event: EventProps;
@@ -29,62 +30,6 @@ interface EventCardProps {
   updateSavedEvents?: (updatedEvents: string[]) => void;
 }
 
-interface ImageProps extends Partial<EventCardProps> {
-  animated?: boolean;
-}
-
-export const Image = ({
-  src,
-  alt,
-  animated,
-  imageSize,
-}: ImageProps & Parameters<typeof NextImage>[0]) => (
-  <div
-    className={`aspect-square relative overflow-hidden rounded-lg${appendClassName(
-      imageSize
-    )}`}
-  >
-    <NextImage
-      src={src}
-      fill
-      alt={alt}
-      sizes='100%'
-      draggable={false}
-      className={`object-cover${animated ? ' hovered-img' : ''}`}
-    />
-  </div>
-);
-
-interface ContentProps extends Partial<EventCardProps> {
-  event: EventProps;
-  venue: VenueProps;
-}
-
-const Content = ({
-  event,
-  venue,
-  showTime,
-  showPrice,
-  narrow,
-}: ContentProps) => (
-  <div className='flex-1'>
-    <h3
-      className={`line-clamp-2 ${narrow ? 'text-sm leading-[120%]' : 'mb-0.5'}`}
-    >
-      {event.name}
-    </h3>
-    <div
-      className={`flex secondary-text flex-col ${
-        narrow ? 'leading-[120%]' : ''
-      }`}
-    >
-      <p>{formatDate(event.startDate, showTime)}</p>
-      <p className='line-clamp-1'>{venue.name}</p>
-      {showPrice && <p>{formatPriceRange(event.tickets)}</p>}
-    </div>
-  </div>
-);
-
 const EventCard = ({
   event,
   venue,
@@ -98,45 +43,46 @@ const EventCard = ({
   showPrice = true,
   showTime = true,
   animated = true,
-  savedEvents,
-  updateSavedEvents,
   ...rest
 }: EventCardProps & Partial<Parameters<typeof Link>[0]>) => {
-  const { handleClick, handleMouseDown, handleMouseLeave, handleMouseUp } =
-    useAllowDrag();
+  // const { handleClick, handleMouseDown, handleMouseLeave, handleMouseUp } =
+  //   useAllowDrag();
   return (
-    <Link
-      {...rest}
-      className={`group flex relative${appendClassName(
-        className
-      )}${appendClassName(cardSize)} ${
-        horizontal ? 'gap-3' : 'flex-col gap-2 md:gap-2.5'
-      }`}
-      href={`/event/${formatEventUrl(event.id, event.name)}`}
-      onSelect={onSelect}
-      draggable={false}
-      onClick={handleClick}
-      onMouseDown={handleMouseDown}
-      onMouseLeave={handleMouseLeave}
-      onMouseUp={handleMouseUp}
-    >
-      <Image
-        src={event.media[0].src}
-        alt={`${event.name} image`}
-        imageSize={imageSize}
-        animated={animated}
-      />
-      <Content
-        event={event}
-        venue={venue}
-        showTime={showTime}
-        showPrice={showPrice}
-        narrow={narrow}
-      />
+    <div className='relative'>
+      <Card
+        // {...rest}
+        // className={`group flex relative${appendClassName(
+        //   className
+        // )}${appendClassName(cardSize)} ${
+        //   horizontal ? 'gap-3' : 'flex-col gap-2 md:gap-2.5'
+        // }`}
+        className='w-36 md:w-56'
+        href={`/event/${formatEventUrl(event.id, event.name)}`}
+        // onSelect={onSelect}
+        // draggable={false}
+        // onClick={handleClick}
+        // onMouseDown={handleMouseDown}
+        // onMouseLeave={handleMouseLeave}
+        // onMouseUp={handleMouseUp}
+        image={{
+          src: event.media[0].src,
+          alt: `${event.name} image`,
+          aspectRatio: 1,
+          // imageSize,
+          // animated
+        }}
+      >
+        <div className='flex-1 mt-2.5'>
+          <h3 className='line-clamp-2 leading-tight mb-0.5'>{event.name}</h3>
+          <div className='flex secondary-text flex-col'>
+            <p>{formatDate(event.startDate, showTime)}</p>
+            <p className='line-clamp-1'>{venue.name}</p>
+            {showPrice && <p>{formatPriceRange(event.tickets)}</p>}
+          </div>
+        </div>
+      </Card>
       {showSaved && (
         <SaveButton
-          savedEvents={savedEvents!}
-          updateSavedEvents={updateSavedEvents!}
           eventId={event.id}
           className={
             horizontal
@@ -146,7 +92,7 @@ const EventCard = ({
           size={15}
         />
       )}
-    </Link>
+    </div>
   );
 };
 

@@ -3,7 +3,6 @@ import React, { type RefObject } from 'react';
 import HorizontalScroll from '../../../components/HorizontalScroll';
 import EventCard from '../../../components/EventCard';
 import type { EventProps, VenueProps } from '@/db/schema';
-import useLocalStorage from '@/hooks/useLocalStorage';
 import useHorizontalScroll from '@/hooks/useHorizontalScroll';
 
 interface SimilarEventsProps {
@@ -13,7 +12,6 @@ interface SimilarEventsProps {
 }
 
 const SimilarEvents = ({ event, events, venues }: SimilarEventsProps) => {
-  const [savedEvents, updateSavedEvents] = useLocalStorage('savedEvents', []);
   const max = 5;
   const similarEvents = events
     .filter(
@@ -65,16 +63,14 @@ const SimilarEvents = ({ event, events, venues }: SimilarEventsProps) => {
           cursor === 'grab'
             ? ' [&_a]:cursor-grab'
             : cursor === 'grabbing'
-            ? ' [&_a]:cursor-grabbing'
-            : ''
+              ? ' [&_a]:cursor-grabbing'
+              : ''
         }`}
         list={similarEvents}
         onScroll={handleScroll}
         onMouseDown={handleDragStart}
         renderItem={(event) => (
           <EventCard
-            savedEvents={savedEvents}
-            updateSavedEvents={updateSavedEvents}
             venue={venues.find(({ id }) => id === event.venueId)!}
             event={event}
             cardSize='w-36 md:w-full'

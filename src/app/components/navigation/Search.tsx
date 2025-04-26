@@ -25,6 +25,10 @@ const Search = ({ onClose }: SearchProps) => {
     type,
   });
 
+  // TODO search shows no results while loading
+  // TODO some venues aren't shown
+  // TODO scrollbar not working in search - firefox
+
   useEffect(() => {
     const fetchSearchResults = async () => {
       const events = (await getEvents()).map((item) =>

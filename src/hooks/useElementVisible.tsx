@@ -1,12 +1,8 @@
-import { useEffect, useRef, useState, type RefObject } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-const useElementVisible = (ref?: RefObject<Element>) => {
-  let observedRef = useRef<Element>(null);
+const useElementVisible = () => {
+  let observedRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
-
-  if (ref) {
-    observedRef = ref;
-  }
 
   useEffect(() => {
     if (observedRef.current) {

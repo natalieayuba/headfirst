@@ -1,46 +1,39 @@
 'use client';
-import React, { type MouseEvent } from 'react';
+import React from 'react';
 import Icon from '../Icon';
 import { colors } from '../../../../config';
 import { appendClassName } from '@/utils/formatting';
+import useLocalStorage from '@/hooks/useLocalStorage';
 
 interface SaveButtonProps {
   eventId: string;
   className?: string;
   size?: number;
-  savedEvents: string[];
-  updateSavedEvents: (updatedEvents: string[]) => void;
 }
 
-const SaveButton = ({
-  savedEvents,
-  updateSavedEvents,
-  eventId,
-  className,
-  size,
-}: SaveButtonProps) => {
-  const handleClick = (e: MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    updateSavedEvents(
-      savedEvents.includes(eventId)
+const SaveButton = ({ eventId, className, size }: SaveButtonProps) => {
+  const [savedEvents, setEvents] = useLocalStorage('savedEvents', []);
+  const saved = savedEvents.includes(eventId);
+
+  const updateSavedEvents = () => {
+    const updatedSavedEvents =
+      savedEvents && savedEvents.includes(eventId)
         ? savedEvents.filter((id: string) => id !== eventId)
-        : [...savedEvents, eventId]
-    );
+        : [...savedEvents, eventId];
+    console.log(updatedSavedEvents);
+    setEvents(updatedSavedEvents);
   };
 
   return (
     <button
       className={`circle-button${appendClassName(className)}`}
-      onClick={handleClick}
+      onClick={updateSavedEvents}
     >
       <Icon
         size={size}
         name='heart'
-        fill={savedEvents.includes(eventId) ? colors.lilac : 'none'}
-        className={
-          savedEvents.includes(eventId) ? 'text-lilac animate-heartbeat' : ''
-        }
+        fill={saved ? colors.lilac : 'none'}
+        className={saved ? 'text-lilac animate-heartbeat' : ''}
       />
     </button>
   );

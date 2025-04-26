@@ -1,18 +1,19 @@
 import Image from 'next/image';
 import React from 'react';
-import Icon from '../Icon';
+import Icon, { type IconProps } from '../Icon';
 import Accordian from '../Accordian';
 import Button from '../buttons/Button';
 import LanguageSelect from '../home/LanguageSelect';
 import Link from 'next/link';
+import { navLinks } from '../../../../config';
 
 const Footer = () => {
-  const legalLinks = ['Privacy', 'Terms', 'Cookies', 'Sitemap'];
+  const legal = ['Privacy', 'Terms', 'Cookies', 'Sitemap'];
 
-  const navLinks = [
+  const links = [
     {
       heading: 'Headfirst Bristol',
-      content: ['About us', 'Donations'],
+      content: Object.values(navLinks).map(({ text }) => text),
     },
     {
       heading: 'Help',
@@ -20,7 +21,7 @@ const Footer = () => {
     },
     {
       heading: 'Work with us',
-      content: ['Ticket your event', 'Volunteer'],
+      content: ['Sell tickets', 'Volunteering', 'Careers'],
     },
     {
       heading: 'Subscribe to our newsletter',
@@ -44,12 +45,12 @@ const Footer = () => {
     {
       alt: 'Download Headfirst Bristol on the App Store',
       src: '/download-on-the-app-store.svg',
-      url: '',
+      url: 'https://apps.apple.com/gb/app/headfirst-bristol-whats-on/id444081524',
     },
     {
       alt: 'Get Headfirst on Google Play',
       src: '/GetItOnGooglePlay_Badge_Web_color_English.png',
-      url: '',
+      url: 'https://play.google.com/store/apps/details?id=com.ionicframework.headfirstbristol769518&hl=en_GB',
     },
   ];
 
@@ -69,7 +70,7 @@ const Footer = () => {
           <div className='flex gap-4 mb-6'>
             {socials.map((social) => (
               <a key={social} href='#'>
-                <Icon name={social} fill='#fff' />
+                <Icon name={social as IconProps['name']} fill='#fff' />
               </a>
             ))}
           </div>
@@ -89,13 +90,13 @@ const Footer = () => {
           </div>
         </div>
         <div>
-          {navLinks.map(({ heading, content }) => (
+          {links.map(({ heading, content }) => (
             <Accordian key={heading} heading={heading} content={content} />
           ))}
         </div>
         <div className='pt-3 container-mx flex flex-wrap gap-1'>
           <LanguageSelect className='w-full mb-2' />
-          <p className='text-white text-opacity-80'>
+          <p className='text-white text-opacity-80 mb-1'>
             <Icon
               name='sparkle'
               className='inline-block mr-1.5'
@@ -113,7 +114,7 @@ const Footer = () => {
             </a>
           </p>
           <ul>
-            {legalLinks.map((link) => (
+            {legal.map((link) => (
               <li
                 key={link}
                 className='inline-block [&:not(:last-child)]:after:content-["•"] after:px-2'

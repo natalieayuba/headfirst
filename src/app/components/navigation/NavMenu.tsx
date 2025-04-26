@@ -13,7 +13,7 @@ const NavMenu = () => {
   ];
 
   return (
-    <div className='flex md:hidden'>
+    <div className='flex lg:hidden'>
       <button onClick={toggleDialog}>
         <Icon name='menu' />
       </button>

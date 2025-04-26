@@ -14,7 +14,7 @@ const Header = () => {
   const { isOpen, toggleDialog } = useDialog();
   const [hovered, setHovered] = useState('');
 
-  const animatedLinks = (
+  const renderAnimatedLinks = (
     links: Record<string, LinkProps>,
     svgClassName?: string
   ) =>
@@ -31,10 +31,10 @@ const Header = () => {
 
   return (
     <header
-      className={`z-10 fixed w-full transition-all duration-200 ease-out bg-dark-night h-16 md:h-20 justify-center flex ${scrollY < 100 ? 'bg-opacity-0' : ''}`}
+      className={`z-10 fixed w-full transition-all duration-200 ease-out bg-dark-night h-16 lg:h-20 justify-center flex ${scrollY < 100 ? 'bg-opacity-0' : ''}`}
     >
-      <nav className='flex justify-between items-center size-full max-w-7xl px-6 md:px-12'>
-        <div className='flex gap-4 md:gap-8 items-center h-full'>
+      <nav className='flex justify-between items-center size-full max-w-7xl px-6 lg:px-12'>
+        <div className='flex gap-4 lg:gap-8 items-center h-full'>
           <Link
             href='/'
             className='w-20 relative h-full'
@@ -45,13 +45,13 @@ const Header = () => {
               alt='Headfirst Bristol logo'
               width='0'
               height='0'
-              className='absolute w-14 md:w-16 transition-all duration-150 ease-in md:hover:-rotate-3 md:hover:scale-[120%] left-0 top-1/2 -translate-y-1/2'
+              className='absolute w-14 lg:w-16 transition-all duration-150 ease-in lg:hover:-rotate-3 lg:hover:scale-[120%] left-0 top-1/2 -translate-y-1/2'
             />
           </Link>
-          {animatedLinks(navLinks)}
+          {renderAnimatedLinks(navLinks)}
         </div>
-        <div className='flex gap-4 md:gap-8 items-center'>
-          {animatedLinks(utilities, 'top-1/2 -translate-y-1/2')}
+        <div className='flex gap-4 lg:gap-8 items-center'>
+          {renderAnimatedLinks(utilities, 'top-1/2 -translate-y-1/2')}
           <NavMenu />
         </div>
       </nav>

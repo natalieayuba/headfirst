@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Banner from '@/app/components/home/Banner';
 import Categories from '@/app/components/home/Categories';
 import EditorPicks from '@/app/components/home/EditorPicks';
-import Donations from '@/app/components/home/Donations';
+import Donations from '@/app/components/home/Donations/Donations';
 import Promoters from '@/app/components/home/Promoters';
 import { getCategories, getEvents, getVenues } from '@/db/queries';
 import Main from './components/Main';
+import MobileAppPromo from './components/home/MobileAppPromo';
 
 const Home = async () => {
   const events = await getEvents();
@@ -17,6 +18,7 @@ const Home = async () => {
       <Banner />
       <Categories categories={categories} />
       <EditorPicks events={events} venues={venues} />
+      <MobileAppPromo />
       <Donations />
       <Promoters />
     </Main>

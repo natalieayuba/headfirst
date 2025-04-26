@@ -2,7 +2,6 @@
 import React from 'react';
 import HyperLink from './Hyperlink';
 import Button, { type ButtonBaseProps } from './buttons/Button';
-import useLocalStorage from '@/hooks/useLocalStorage';
 import Modal from './Modal';
 
 const buttons = [

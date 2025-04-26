@@ -1,15 +1,15 @@
 'use client';
 import React from 'react';
-import HomeSection from './HomeSection';
-import Hyperlink from '../Hyperlink';
-import Icon from '../Icon';
-import { colors } from '../../../../config';
-import SlotMachine from './SlotMachine';
+import HomeSectionTemplate from '../HomeSectionTemplate';
+import Hyperlink from '../../Hyperlink';
+import Icon from '../../Icon';
+import { colors } from '../../../../../config';
+import SlotMachine from './components/SlotMachine';
 
 const Donations = () => (
-  <HomeSection heading='Join us in supporting local causes'>
+  <HomeSectionTemplate heading='Join us in supporting local causes'>
     <div className='content-container sm:flex sm:gap-10'>
-      <div className='w-full md:flex-1 h-auto aspect-[1.9] px-20 bg-night text-lilac rounded-lg flex flex-col p-6 gap-3 md:gap-4 items-center justify-center mb-6'>
+      <div className='w-full md:flex-1 h-auto select-none aspect-[1.9] px-20 bg-night text-lilac rounded-lg flex flex-col p-6 gap-3 md:gap-4 items-center justify-center mb-6'>
         <Icon
           name='clap'
           fill={colors.lilac}
@@ -26,15 +26,11 @@ const Donations = () => (
         booking fees are donated directly to local causes in Bristol.
         <Hyperlink href='#' className='block mt-4 default-hover'>
           Learn more
-          <Icon
-            name='arrow-right'
-            size={14}
-            className='ml-2 inline-block md:'
-          />
+          <Icon name='arrow-right' size={14} className='ml-2 inline-block' />
         </Hyperlink>
       </p>
     </div>
-  </HomeSection>
+  </HomeSectionTemplate>
 );
 
 export default Donations;

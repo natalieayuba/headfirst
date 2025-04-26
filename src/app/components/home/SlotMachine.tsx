@@ -36,6 +36,7 @@ const SlotMachine = () => {
         setNumbers(formattedDonation());
       }
     };
+
     const interval = setInterval(() => {
       addToDonation();
     }, 300000);

@@ -38,7 +38,7 @@ import {
 } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 
-interface IconProps {
+export interface IconProps {
   name: keyof typeof icons;
   size?: number | string;
   className?: string;

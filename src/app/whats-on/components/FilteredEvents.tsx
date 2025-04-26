@@ -2,7 +2,7 @@
 import Button from '@/app/components/buttons/Button';
 import EventCard from '@/app/components/EventCard';
 import type { EventProps, VenueProps } from '@/db/schema';
-import useLocalStorage from '@/hooks/useLocalStorage';
+import useLocalStorage from '@/hooks/useSavedEvents';
 import useWindowWidth from '@/hooks/useWindowWidth';
 import { formatDate } from '@/utils/formatting';
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
@@ -21,7 +21,6 @@ const FilteredEvents = ({ events, venues }: FilteredEventsProps) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const { windowWidth } = useWindowWidth();
-  const [savedEvents, updateSavedEvents] = useLocalStorage('savedEvents', []);
 
   const clearFilters = () => {
     const params = new URLSearchParams(searchParams);
@@ -98,8 +97,6 @@ const FilteredEvents = ({ events, venues }: FilteredEventsProps) => {
                   key={event.name}
                   event={event}
                   venue={venues.find(({ id }) => id === event.venueId)!}
-                  savedEvents={savedEvents}
-                  updateSavedEvents={updateSavedEvents}
                   imageSize='w-24 xs:w-full'
                   horizontal={windowWidth < 420}
                 />

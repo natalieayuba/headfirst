@@ -1,67 +1,62 @@
 'use client';
 import React, { type RefObject } from 'react';
-import HomeSection from './HomeSection';
+import HomeSectionTemplate from './HomeSectionTemplate';
 import Image from 'next/image';
 import HorizontalScroll from '../HorizontalScroll';
 import type { CategoryProps } from '@/db/schema';
 import useElementVisible from '@/hooks/useElementVisible';
 import useHorizontalScroll from '@/hooks/useHorizontalScroll';
 import Link from 'next/link';
+import Card from '../card/Card';
 
 const Categories = ({ categories }: { categories: CategoryProps[] }) => {
   // const { visible, observedRef } = useElementVisible();
-  const {
-    sliderRef,
-    handleScroll,
-    SliderArrowLeft,
-    SliderArrowRight,
-    handleDragStart,
-    cursor,
-  } = useHorizontalScroll();
+  // const {
+  //   sliderRef,
+  //   handleScroll,
+  //   SliderArrowLeft,
+  //   SliderArrowRight,
+  //   handleDragStart,
+  //   cursor,
+  // } = useHorizontalScroll();
 
-  const CategoryCard = ({ category }: { category: CategoryProps }) => (
-    <Link
+  const renderItem = (category: CategoryProps) => (
+    <Card
+      className='min-w-48'
       href={`/whats-on?categoryId=${category.id}`}
-      className={`group block w-48 md:w-auto aspect-[1.5] h-auto rounded-lg relative overflow-hidden`}
-      // style={{
-      //   animationDelay: `${75 * Number(category.id.slice(-1))}ms`,
-      //   animationFillMode: 'forwards',
-      //   animationDuration: '200ms',
-      // }}
+      image={{
+        src: category.image,
+        alt: `${category.name} background image`,
+        aspectRatio: 1.5,
+        showGradient: true,
+      }}
+      // {...{ visible }}
     >
-      <Image
-        src={category.image}
-        fill
-        sizes='100vw'
-        className='object-cover hovered-img'
-        alt={`${category.name} background image`}
-      />
-      <div className='bg-gradient-to-b from-transparent to-dark-night to-[110%] w-full h-full absolute'></div>
       <h3 className='px-5 py-3 absolute bottom-0 text-lg md:px-6 [&&]:leading-5'>
         {category.name}
       </h3>
-    </Link>
+    </Card>
   );
 
   return (
-    <HomeSection
-      // ref={observedRef as RefObject<HTMLDivElement>}
+    <HomeSectionTemplate
+      // ref={observedRef}
       heading='Categories'
-      rightDiv={
-        <div className='hidden xs:flex'>
-          {SliderArrowLeft}
-          {SliderArrowRight}
-        </div>
-      }
+      // rightDiv={
+      //   <div className='hidden xs:flex'>
+      //     {SliderArrowLeft}
+      //     {SliderArrowRight}
+      //   </div>
+      // }
     >
       <HorizontalScroll
         // ref={sliderRef as RefObject<HTMLOListElement>}
-        onScroll={handleScroll}
+        // onScroll={handleScroll}
         className='md:grid md:grid-flow-col md:grid-cols-4 md:w-full'
         list={categories}
-        renderItem={(category) => <CategoryCard category={category} />}
+        {...{ renderItem }}
       />
-    </HomeSection>
+    </HomeSectionTemplate>
   );
 };
 
