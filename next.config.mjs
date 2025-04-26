@@ -24,6 +24,31 @@ const nextConfig = {
         hostname: '**.youtube.com',
         port: '',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.squarespace-cdn.com',
+        port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'media.timeout.com',
+        port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'exchangebristol.com',
+        port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i2-prod.bristolpost.co.uk',
+        port: '',
+      },
+      {
+        protocol: 'https',
+        hostname: 'static.ra.co',
+        port: '',
+      },
     ],
   },
 };

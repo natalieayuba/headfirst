@@ -53,7 +53,7 @@ const Button = ({
           type === 'primary'
             ? 'bg-lilac'
             : type === 'secondary'
-              ? 'bg-white'
+              ? 'bg-dark-night text-white'
               : 'bg-transparent border text-white'
         }`}
         href={rest.href as string}

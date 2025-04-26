@@ -46,7 +46,7 @@ export interface IconProps {
   title?: string;
 }
 
-const icons = {
+export const icons = {
   search: FiSearch,
   close: FiX,
   'arrow-right': FiArrowRight,

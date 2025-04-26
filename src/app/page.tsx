@@ -7,6 +7,7 @@ import Promoters from '@/app/components/home/Promoters';
 import { getCategories, getEvents, getVenues } from '@/db/queries';
 import Main from './components/Main';
 import MobileAppPromo from './components/home/MobileAppPromo';
+import Venues from './components/home/Venues';
 
 const Home = async () => {
   const events = await getEvents();
@@ -16,9 +17,10 @@ const Home = async () => {
   return (
     <Main className='[&&]:pt-0 pb-20 flex flex-col gap-24'>
       <Banner />
-      <Categories categories={categories} />
-      <EditorPicks events={events} venues={venues} />
+      <Categories {...{ categories }} />
+      <EditorPicks {...{ events, venues }} />
       <MobileAppPromo />
+      <Venues {...{ venues }} />
       <Donations />
       <Promoters />
     </Main>

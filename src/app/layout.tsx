@@ -38,7 +38,7 @@ const londrina_solid = Londrina_Solid({
 const RootLayout = ({ children }: Readonly<{ children: React.ReactNode }>) => (
   <html lang='en' className='h-full'>
     <body
-      className={`${baloo_2.className} ${londrina_solid.variable} bg-dark-night text-white text-opacity-85 selection:bg-lilac selection:bg-opacity-20 leading-normal flex flex-col h-full overflow-x-hidden`}
+      className={`${baloo_2.className} ${londrina_solid.variable} bg-dark-night text-white text-opacity-85 selection:bg-lilac selection:bg-opacity-20 leading-snug flex flex-col h-full overflow-x-hidden`}
     >
       <Header />
       {children}

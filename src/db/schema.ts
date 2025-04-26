@@ -3,6 +3,7 @@ export interface VenueProps {
   name: string;
   address: string;
   googleMapsLink: string;
+  image?: string;
 }
 
 export interface CategoryProps {

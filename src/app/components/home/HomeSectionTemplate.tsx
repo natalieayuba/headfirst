@@ -3,7 +3,7 @@ import React, { forwardRef, type ReactNode } from 'react';
 interface HomeSectionProps {
   heading: string;
   children: ReactNode;
-  description?: string;
+  description?: string | JSX.Element;
   rightDiv?: JSX.Element;
 }
 
