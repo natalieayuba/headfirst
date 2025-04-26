@@ -74,25 +74,23 @@ const SlotMachine = () => {
     <div ref={observedRef as RefObject<HTMLDivElement>}>
       <p className='font-heading-lg text-6xl font-bold text-lilac flex items-end'>
         <span className='font-sans font-extrabold text-3xl mr-px mb-px'>£</span>
-        {slots.map((col, index, array) => {
-          return (
-            <React.Fragment key={index}>
-              {isCommaPosition(index, array) && <span>,</span>}
-              {index === decimalPosition(array) && <span>.</span>}
-              <span
-                ref={(el) => (ref.current[index] = el as any)}
-                className='inline-flex flex-col-reverse relative overflow-hidden snap-mandatory scroll-smooth'
-                style={{ height }}
-              >
-                {col.map((n: number) => (
-                  <span key={n} className='inline-block text-center'>
-                    {n}
-                  </span>
-                ))}
-              </span>
-            </React.Fragment>
-          );
-        })}
+        {slots.map((col, index, array) => (
+          <React.Fragment key={index}>
+            {isCommaPosition(index, array) && <span>,</span>}
+            {index === decimalPosition(array) && <span>.</span>}
+            <span
+              ref={(el) => (ref.current[index] = el as any)}
+              className='inline-flex flex-col-reverse relative overflow-hidden snap-mandatory scroll-smooth'
+              style={{ height }}
+            >
+              {col.map((n: number) => (
+                <span key={n} className='inline-block text-center'>
+                  {n}
+                </span>
+              ))}
+            </span>
+          </React.Fragment>
+        ))}
       </p>
     </div>
   );

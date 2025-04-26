@@ -12,8 +12,8 @@ const HomeSectionTemplate = forwardRef<HTMLDivElement, HomeSectionProps>(
     <div ref={ref} className='flex flex-col gap-6 relative'>
       <div className='content-container flex justify-between items-end'>
         <div>
-          <h2>{heading}</h2>
-          <p>{description}</p>
+          <h2 className='text-white text-opacity-90'>{heading}</h2>
+          {description && <p className='mt-3 mb-1'>{description}</p>}
         </div>
         {rightDiv}
       </div>

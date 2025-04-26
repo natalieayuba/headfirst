@@ -20,7 +20,6 @@ const SaveButton = ({ eventId, className, size }: SaveButtonProps) => {
       savedEvents && savedEvents.includes(eventId)
         ? savedEvents.filter((id: string) => id !== eventId)
         : [...savedEvents, eventId];
-    console.log(updatedSavedEvents);
     setEvents(updatedSavedEvents);
   };
 

@@ -103,7 +103,6 @@ const NewCardForm = ({
             maxLength={field.maxLength}
             clearInput={() => {
               setNewCardDetails({ ...newCardDetails, [field.id]: '' });
-              console.log(field.id);
             }}
             // onChange={(e) =>
             //   setNewCardDetails({

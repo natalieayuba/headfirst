@@ -23,11 +23,14 @@ const Categories = ({ categories }: { categories: CategoryProps[] }) => (
       list={categories}
       renderItem={(category: CategoryProps) => (
         <ThumbnailCard
-          text={category.name}
           href={`/whats-on?categoryId=${category.id}`}
-          src={category.image}
-          alt={`${category.name} image`}
-        />
+          image={{
+            src: category.image,
+            alt: `${category.name} image`,
+          }}
+        >
+          {category.name}
+        </ThumbnailCard>
       )}
     />
   </HomeSectionTemplate>

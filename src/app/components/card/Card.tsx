@@ -2,14 +2,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import React, { type ReactNode } from 'react';
 
-interface CardProps {
+export interface CardProps {
   href: string;
   className?: string;
   image: {
     src: string;
     alt: string;
-    aspectRatio: 1 | 1.5;
+    aspectRatio?: 1 | 1.5;
     showGradient?: boolean;
+    className?: string;
   };
   children: ReactNode;
 }
@@ -24,8 +25,9 @@ const Card = ({ className, image, children, href }: CardProps) => (
         src={image.src}
         fill
         sizes='100vw'
-        className='object-cover md:group-hover:scale-110 transition duration-200 ease-out h-auto'
+        className={`object-cover md:group-hover:scale-110 transition duration-200 ease-out h-auto ${image.className ?? ''}`}
         alt={image.alt}
+        priority
       />
     </div>
     {children}

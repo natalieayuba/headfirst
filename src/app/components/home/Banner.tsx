@@ -36,7 +36,7 @@ const Banner = () => {
         <source src='/banner-video.mp4' type='video/mp4' />
       </video>
       <div className='max-w-7xl w-full px-6 md:px-12 m-auto mb-20 md:mb-52'>
-        <h1 className='heading-lg'>
+        <h1 className='heading-lg text-white text-opacity-95'>
           {lines().map((line, index) => (
             <span key={line} className='overflow-hidden block'>
               <span
@@ -50,7 +50,7 @@ const Banner = () => {
             </span>
           ))}
         </h1>
-        <p className='text-md lg:text-2xl mt-3 md:mt-6 max-w-lg'>
+        <p className='text-md lg:text-2xl mt-3 md:mt-6 max-w-lg text-white text-opacity-90'>
           {description}
         </p>
         <Button className='mt-6 md:mt-10' href='/whats-on'>

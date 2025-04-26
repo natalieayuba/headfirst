@@ -18,7 +18,6 @@ const Donate = ({ updateOrder, orderSummary }: GetTicketsProps) => {
   );
 
   const handleClick = (pound: number) => {
-    console.log('focus');
     const value = pound === selectedDonation ? 0 : pound;
     setSelectedDonation(value);
     setCustomDonation('');

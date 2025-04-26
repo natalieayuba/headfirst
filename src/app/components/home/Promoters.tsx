@@ -6,9 +6,9 @@ import CTABanner from './CTABanner';
 
 const Promoters = () => (
   <CTABanner
-    heading='React the right people'
+    heading='Reach the right people'
     description="Promote your event with Headfirst's all-in-one ticketing and
-          marketing platform"
+          marketing platform."
   >
     <Button type='secondary' className='mx-auto'>
       Get started

@@ -20,11 +20,15 @@ const Venues = ({ venues }: { venues: VenueProps[] }) => (
       list={venues.slice(0, 5)}
       renderItem={(venue: VenueProps) => (
         <ThumbnailCard
-          text={venue.name}
-          href={'#'}
-          src={venue.image ?? ''}
-          alt={`${venue.name} image`}
-        />
+          href='#'
+          image={{
+            src: venue.image as string,
+            alt: `${venue.name} image`,
+            ...(venue.name === 'Strange Brew' && { className: 'scale-[101%]' }),
+          }}
+        >
+          {venue.name}
+        </ThumbnailCard>
       )}
     />
     <div className='content-container'>

@@ -37,7 +37,7 @@ const MobileAppPromo = () => (
             width={0}
             height={0}
             sizes='100vw'
-            className='h-10 md:h-12 w-auto'
+            className='h-11 w-auto'
           />
         </a>
       ))}
